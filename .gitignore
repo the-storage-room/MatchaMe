@@ -58,3 +58,11 @@ typings/
 .env
 
 bundle.js
+
+*.log
+.DS_Store
+node_modules
+package-lock.json
+bundle.js
+config.js
+configS3.json
