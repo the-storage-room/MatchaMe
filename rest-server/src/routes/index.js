@@ -1,4 +1,4 @@
-import express from ('express');
+import express from 'express';
 
 import authRouter from '../components/auth/authRouter';
 import userRouter from '../components/users/userRouter';
