@@ -1,0 +1,19 @@
+{
+  "name": "s3-server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "S3": "nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "nodemon": "^1.17.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
