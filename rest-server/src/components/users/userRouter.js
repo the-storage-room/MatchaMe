@@ -4,7 +4,8 @@ import {
   fetchAllUsersController,
   fetchSingleUserController,
   fetchMultipleUsersController,
-  updateUserRatingController
+  updateUserRatingController,
+  updateUserInfoController
 } from './userControllers';
 
 const router = express.Router();
@@ -20,6 +21,9 @@ router.route('/fetchMultipleUsers/:userId')
 
 router.route('/updateUserRating')
   .put(updateUserRatingController);
+
+router.route('/updateUserInfo')
+  .put(updateUserInfoController);
 
 export default router;
 
