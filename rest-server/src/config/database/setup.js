@@ -125,12 +125,16 @@ const createUsersTable = async () => {
       (
         id           INT NOT NULL ,
         username     VARCHAR(50) NOT NULL ,
+        lastname     VARCHAR(50) NOT NULL ,
+        firstname    VARCHAR(50) NOT NULL ,
         age          INT NOT NULL ,
+        location     INT NOT NULL ,
         gender       VARCHAR(50) NOT NULL ,
         preference   VARCHAR(50) NOT NULL ,
         bio          VARCHAR(255) NOT NULL ,
         powerRanking INT NOT NULL ,
-        CONSTRAINT PK_Users PRIMARY KEY (id)
+        CONSTRAINT PK_Users PRIMARY KEY (id) ,
+        CONSTRAINT Unique_Username UNIQUE (username)
       )
       `
     );
@@ -225,6 +229,7 @@ const createPhotoTable = async () => {
         url    VARCHAR(50) NOT NULL ,
         rating INT NOT NULL ,
         userId INT NOT NULL ,
+        primaryPhoto SMALLINT NOT NULL DEFAULT 0 ,
         CONSTRAINT PK_Photo PRIMARY KEY (id),
         CONSTRAINT FK_Users_Photo FOREIGN KEY (userId)
           REFERENCES Users(id)
@@ -270,6 +275,7 @@ const createSuccessfulMatchTable = async () => {
         matchId      INT NOT NULL ,
         dateCreated  DATE NOT NULL ,
         isSuccessful SMALLINT NOT NULL DEFAULT 0 ,
+        active       SMALLINT NOT NULL DEFAULT 1 ,
         CONSTRAINT PK_SuccessfulMatch PRIMARY KEY (id),
         CONSTRAINT FK_Match_SuccessfulMatch FOREIGN KEY (matchId)
           REFERENCES Match(id)
