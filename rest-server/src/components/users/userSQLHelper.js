@@ -15,3 +15,9 @@ export const fetchMultipleUsersHelper = () => {
   
   `;
 };
+
+export const updateUserRatingHelper = () => {
+  return `
+  
+  `;
+}
