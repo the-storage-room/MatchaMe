@@ -308,16 +308,16 @@ const createCommentTable = async () => {
 };
 
 const setup = async () => {
-  // await dropDatabase();
-  // await dropTagsTable();
-  // await dropUsersTable();
-  // await dropPhotoTable();
-  // await dropRatingTable();
-  // await dropMatchTable();
-  // await dropUsersTagsTable();
-  // await dropCommentsTable();
-  // await dropSuccessfulMatchTable();
-  // await dropFollowTable();
+  await dropDatabase();
+  await dropTagsTable();
+  await dropUsersTable();
+  await dropPhotoTable();
+  await dropRatingTable();
+  await dropMatchTable();
+  await dropUsersTagsTable();
+  await dropCommentsTable();
+  await dropSuccessfulMatchTable();
+  await dropFollowTable();
 
   await createDatabase();
   await createTagsTable();
