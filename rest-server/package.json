@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server:run": "nodemon src/index.js"
+    "server:run": "nodemon src/index.js",
+    "db:setup": "babel-node src/config/database/setup.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "pg": "^7.4.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "nodemon": "^1.17.2"

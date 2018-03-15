@@ -63,6 +63,7 @@ bundle.js
 .DS_Store
 node_modules
 package-lock.json
+yarn.lock
 bundle.js
 config.js
 configS3.json
