@@ -1,7 +1,10 @@
+// import db from ....
+
 import {
   fetchAllUsersHelper,
   fetchSingleUserHelper,
-  fetchMultipleUsersHelper
+  fetchMultipleUsersHelper,
+  updateUserRatingHelper
 } from './userSQLHelper';
 
 export const fetchAllUsersQuery = async (body) => {
@@ -23,6 +26,14 @@ export const fetchSingleUsersQuery = async (body) => {
 export const fetchMultipleUsersQuery = async (body) => {
   try {
 
+  } catch {
+
+  }
+};
+
+export const updateUserRatingQuery = async (body) => {
+  try {
+    
   } catch {
 
   }

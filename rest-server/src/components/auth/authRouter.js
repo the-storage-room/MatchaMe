@@ -1,4 +1,4 @@
-import express from ('express');
+import express from 'express';
 
 import {
   loginController,
@@ -16,3 +16,5 @@ router.route('/signup')
 
 router.route('/logout')
   .get(logoutController);
+
+export default router;
