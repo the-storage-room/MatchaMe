@@ -3,7 +3,8 @@ import {
   fetchAllUsersQuery,
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
-  updateUserRatingQuery
+  updateUserRatingQuery,
+  updateUserInfoQuery
 } from './userQueries';
 
 export const fetchAllUsersController = async (req, res) => {
@@ -38,3 +39,10 @@ export const updateUserRatingController = async (req, res) => {
   }
 };
 
+export const updateUserInfoController = async (req, res) => {
+  try {
+
+  } catch {
+
+  }
+};

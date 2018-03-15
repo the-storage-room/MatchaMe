@@ -21,3 +21,9 @@ export const updateUserRatingHelper = () => {
   
   `;
 }
+
+export const updateUserInfoHelper = () => {
+  return `
+  
+  `;
+};
