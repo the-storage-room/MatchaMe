@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server:run": "nodemon src/index.js"
+    "server:run": "nodemon src/index.js",
+    "db:setup": "babel-node src/config/database/setup.js"
   },
   "author": "",
   "license": "ISC",

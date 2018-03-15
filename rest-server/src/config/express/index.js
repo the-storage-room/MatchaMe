@@ -1,9 +1,11 @@
-import express from 'express';
-import parser from 'body-parser';
-import routes from './routes';
+const express = require('express');
+const bodyParser = require('body-parser');
+// const routes = require('./routes');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(routes);
+
+module.exports = app;

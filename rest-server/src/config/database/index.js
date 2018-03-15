@@ -16,4 +16,4 @@ db.on('connect', () => {
 
 db.connect();
 
-export default db;
+module.exports = db;

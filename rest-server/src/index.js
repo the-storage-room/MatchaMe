@@ -1,5 +1,5 @@
-import App from './config/express';
-import './config/database';
+const App = require('./config/express');
+require('./config/database');
 
 const PORT = 5000;
 
