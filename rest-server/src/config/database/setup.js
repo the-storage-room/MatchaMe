@@ -30,9 +30,6 @@ DROP TABLE Photo;
 
 DROP TABLE Tags;
  
-
-
-DROP TABLE User;
  
 const dropUserTable = async () => {
   try {
