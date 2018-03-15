@@ -1,14 +1,14 @@
 // import db from ....
 
 import {
-  fetchAllUserPhotosHelper,
+  fetchAllPhotosHelper,
   fetchPrimaryPhotoHelper,
   addPhotoHelper,
   deletePhotoHelper,
   updatePrimaryPhotoHelper
 } from './photoSQLHelpers';
 
-export const fetchAllUserPhotosQuery = async (body) => {
+export const fetchAllPhotosQuery = async (body) => {
   try {
 
   } catch {

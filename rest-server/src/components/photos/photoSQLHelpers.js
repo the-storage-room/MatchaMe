@@ -1,4 +1,4 @@
-export const fetchAllUserPhotosHelper = () => {
+export const fetchAllPhotosHelper = () => {
   return `
   
   `;

@@ -1,7 +1,7 @@
 import express from 'express';
 
 import {
-  fetchAllUserPhotosController,
+  fetchAllPhotosController,
   fetchPrimaryPhotoController,
   addPhotoController,
   deletePhotoController,
@@ -10,8 +10,8 @@ import {
 
 const router = express.Router();
 
-router.route('/fetchAllUserPhotos')
-  .get(fetchAllUserPhotosController);
+router.route('/fetchAllPhotos')
+  .get(fetchAllPhotosController);
 
 router.route('/fetchPrimaryPhoto')
   .get(fetchPrimaryPhotoController);

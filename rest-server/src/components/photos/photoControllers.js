@@ -1,12 +1,12 @@
 import {
-  fetchAllUserPhotosQuery,
+  fetchAllPhotosQuery,
   fetchPrimaryPhotoQuery,
   addPhotoQuery,
   deletePhotoQuery,
   updatePrimaryPhotoQuery
 } from './photoQueries';
 
-export const fetchAllUserPhotosController = async (req, res) => {
+export const fetchAllPhotosController = async (req, res) => {
   try {
 
   } catch {
