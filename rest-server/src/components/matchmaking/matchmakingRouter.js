@@ -11,6 +11,6 @@ router.route('/fetchPendingMatchmaking')
   .get(fetchPendingMatchmakingController);
 
 router.route('/updateMatchmaking')
-  .get(updateMatchmakingController);
+  .put(updateMatchmakingController);
 
 export default router;
