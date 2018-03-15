@@ -270,6 +270,7 @@ const createSuccessfulMatchTable = async () => {
         matchId      INT NOT NULL ,
         dateCreated  DATE NOT NULL ,
         isSuccessful SMALLINT NOT NULL DEFAULT 0 ,
+        active       SMALLINT NOT NULL DEFAULT 1 ,
         CONSTRAINT PK_SuccessfulMatch PRIMARY KEY (id),
         CONSTRAINT FK_Match_SuccessfulMatch FOREIGN KEY (matchId)
           REFERENCES Match(id)
