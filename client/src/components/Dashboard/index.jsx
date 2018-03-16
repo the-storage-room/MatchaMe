@@ -14,7 +14,7 @@ class Dashboard extends Component {
     return (
       <div>
         <Navbar />
-        Render Dashboard Here!
+        <div>Render Dashboard Here!</div>
       </div>
     );
   }

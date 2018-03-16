@@ -2,12 +2,13 @@
   float: right;
   margin: 0px;
   padding: 0px;
+  width: 80%;
 }
 
 .navButton {
   padding: 15px;
   margin: 0px;
-  float: left;
+  float: right;
   border-left-style: solid;
   border-left-width: 3px;
 }

@@ -2,21 +2,54 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import style from './Navbar.css';
+import Logo from '../Logo/index.jsx';
 
 const Navbar = props => {
   return (
     <h2 className={style.navContainer}>
+      <Logo />
       <div
         className={style.navButton}
         onClick={() => props.history.push('/dashboard')}
-        dangerouslySetInnerHTML="Dash"
-      />
-      <div className={style.navButton}>Rate</div>
-      <div className={style.navButton}>MatchMake</div>
-      <div className={style.navButton}>Follows</div>
-      <div className={style.navButton}>My Match</div>
-      <div className={style.navButton}>Leaderboard</div>
-      <div className={style.navButton}>Avatar</div>
+      >
+        Dash
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/rate')}
+      >
+        Rate
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/matchmake')}
+      >
+        MatchMake
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/follows')}
+      >
+        Follows
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/mymatch')}
+      >
+        My Match
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/leaderboard')}
+      >
+        Leaderboard
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/account')}
+      >
+        *Avatar*
+      </div>
     </h2>
   );
 };
