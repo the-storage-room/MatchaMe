@@ -12,7 +12,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(process.env.PORT)
     return (
       <div>
         <Switch>
