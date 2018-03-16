@@ -1,5 +1,5 @@
-const http = require('http');
-const SocketIo = require('socket.io');
+import http from 'http';
+import SocketIo from 'socket.io';
 
 // const Rooms = require('./rooms');
 // const clientEvents = require('./clientEvents');

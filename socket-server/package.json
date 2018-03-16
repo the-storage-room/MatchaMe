@@ -1,10 +1,15 @@
 {
   "name": "socket-server",
+  "main": "index.js",
   "scripts": {
-    "socket": "nodemon src/index.js"
+    "socket": "nodemon bin/entry.js"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0"
   },
   "dependencies": {
     "axios": "^0.17.0",
