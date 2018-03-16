@@ -9,7 +9,7 @@ import {
 export const fetchAllPhotosController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -17,7 +17,7 @@ export const fetchAllPhotosController = async (req, res) => {
 export const fetchPrimaryPhotoController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -25,7 +25,7 @@ export const fetchPrimaryPhotoController = async (req, res) => {
 export const addPhotoController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -33,7 +33,7 @@ export const addPhotoController = async (req, res) => {
 export const deletePhotoController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -41,7 +41,7 @@ export const deletePhotoController = async (req, res) => {
 export const updatePrimaryPhotoController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };

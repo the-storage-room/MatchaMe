@@ -10,7 +10,7 @@ import {
 export const fetchAllUsersController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -18,7 +18,7 @@ export const fetchAllUsersController = async (req, res) => {
 export const fetchSingleUserController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -26,7 +26,7 @@ export const fetchSingleUserController = async (req, res) => {
 export const fetchMultipleUsersController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -34,7 +34,7 @@ export const fetchMultipleUsersController = async (req, res) => {
 export const updateUserRatingController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -42,7 +42,7 @@ export const updateUserRatingController = async (req, res) => {
 export const updateUserInfoController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };

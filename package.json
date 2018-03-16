@@ -5,15 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:static-server": "",
-    "start:rest-server": "",
-    "start:socket-server": "",
-    "start:matchmaker-service": "",
-    "start": "npm-run-all -p ",
-    "setup:rest-server": "",
-    "setup:socket-server": "",
-    "db:setup:rest-server": "",
-    "buildEnv": "node bin/buildEnv.js"
+    "start:static-server": "cd client && nodemon server/bin/entry.js",
+    "start:build": "cd client && webpack -d --watch",
+    "start:rest-server": "cd rest-server && nodemon bin/entry.js",
+    "start:socket-server": "cd socket-server && nodemon bin/entry.js",
+    "start:matchmaker-service": "cd matchmaker-service && nodemon bin/entry.js",
+    "db:setup:rest-server": "cd rest-server && babel-node src/config/database/setup.js",
+    "buildEnv": "node bin/buildEnv.js",
+    "start": "npm-run-all -p start:static-server start:rest-server start:socket-server start:matchmaker-service"
   },
   "repository": {
     "type": "git",

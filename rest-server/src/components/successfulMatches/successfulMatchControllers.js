@@ -8,7 +8,7 @@ import {
 export const fetchSuccessfulMatchController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -16,23 +16,23 @@ export const fetchSuccessfulMatchController = async (req, res) => {
 export const acceptSuccessfulMatchController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
 
-export const rejectSuccessfulMatchQuery = async (req, res) => {
+export const rejectSuccessfulMatchController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
 
-export const ghostSuccessfulMatchQuery = async (req, res) => {
+export const ghostSuccessfulMatchController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };

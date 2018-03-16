@@ -8,7 +8,7 @@ import {
 export const fetchStarredMatchesController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -16,7 +16,7 @@ export const fetchStarredMatchesController = async (req, res) => {
 export const fetchUnstarredMatchesController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -24,7 +24,7 @@ export const fetchUnstarredMatchesController = async (req, res) => {
 export const starSingleMatchController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -32,7 +32,7 @@ export const starSingleMatchController = async (req, res) => {
 export const unstarSingleMatchController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };

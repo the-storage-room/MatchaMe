@@ -11,7 +11,7 @@ import {
 export const fetchAllPhotosQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -19,7 +19,7 @@ export const fetchAllPhotosQuery = async (body) => {
 export const fetchPrimaryPhotoQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -27,7 +27,7 @@ export const fetchPrimaryPhotoQuery = async (body) => {
 export const addPhotoQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -35,7 +35,7 @@ export const addPhotoQuery = async (body) => {
 export const deletePhotoQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -43,7 +43,7 @@ export const deletePhotoQuery = async (body) => {
 export const updatePrimaryPhotoQuery = async (body) => {
   try {
     
-  } catch {
+  } catch (err) {
 
   }
 };
