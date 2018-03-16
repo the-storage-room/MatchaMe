@@ -8,7 +8,7 @@ import {
 export const loginController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -16,7 +16,7 @@ export const loginController = async (req, res) => {
 export const signupController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -24,7 +24,7 @@ export const signupController = async (req, res) => {
 export const logoutController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };

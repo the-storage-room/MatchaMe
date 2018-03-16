@@ -9,7 +9,7 @@ import {
 export const loginQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -17,7 +17,7 @@ export const loginQuery = async (body) => {
 export const signupQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -25,7 +25,7 @@ export const signupQuery = async (body) => {
 export const logoutQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
