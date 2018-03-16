@@ -1,19 +1,57 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import style from './Navbar.css';
+import Logo from '../Logo/index.jsx';
 
-const Navbar = () => {
+const Navbar = props => {
   return (
-    <div>
-      <div>Dash</div>
-      <div>Rate</div>
-      <div>MatchMake</div>
-      <div>Follows</div>
-      <div>My Match</div>
-      <div>Leaderboard</div>
-      <div>Avatar</div>
-    </div>
+    <h2 className={style.navContainer}>
+      <Logo />
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/dashboard')}
+      >
+        Dash
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/rate')}
+      >
+        Rate
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/matchmake')}
+      >
+        MatchMake
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/follows')}
+      >
+        Follows
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/mymatch')}
+      >
+        My Match
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/leaderboard')}
+      >
+        Leaderboard
+      </div>
+      <div
+        className={style.navButton}
+        onClick={() => props.history.push('/account')}
+      >
+        *Avatar*
+      </div>
+    </h2>
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);
