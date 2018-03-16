@@ -1,4 +1,4 @@
-const db = require('./index.js');
+import db from './index.js';
 
 const dropFollowTable = async () => {
   try {

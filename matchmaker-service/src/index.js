@@ -1,4 +1,4 @@
-const App = require('../config/express');
+import App from './config';
 
 const PORT = process.env.PORT || 1147;
 

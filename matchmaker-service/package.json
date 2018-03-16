@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "matchmaker-server:run": "nodemon matchmaker-service/src/index.js"
+    "matchmaker-server:run": "nodemon bin/entry.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +13,11 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "nodemon": "^1.17.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0"
   }
 }

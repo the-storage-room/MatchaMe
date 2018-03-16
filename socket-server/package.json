@@ -2,7 +2,7 @@
   "name": "socket-server",
   "main": "index.js",
   "scripts": {
-    "socket": "nodemon bin/entry.js"
+    "socket-server:run": "nodemon bin/entry.js"
   },
   "devDependencies": {
     "nodemon": "^1.12.1",
