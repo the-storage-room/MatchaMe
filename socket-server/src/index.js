@@ -1,5 +1,5 @@
-const http = require('http');
-const SocketIo = require('socket.io');
+import http from 'http';
+import SocketIo from 'socket.io';
 
 // const Rooms = require('./rooms');
 // const clientEvents = require('./clientEvents');
@@ -12,4 +12,4 @@ io.on('connection', (client) => {
 });
 
 const PORT = process.env.PORT || 4155;
-server.listen(PORT, () => console.log(`Socket Server listening on port ${PORT}`));
+server.listen(PORT, () => console.log(`Socket server listening on port ${PORT}`));

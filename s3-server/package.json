@@ -1,17 +1,16 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
+  "name": "s3-server",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "static": "nodemon bin/entry.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "s3-server:run": "nodemon bin/entry.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "path": "^0.12.7",
+    "express-fileupload": "^0.4.0",
     "nodemon": "^1.17.2"
   },
   "devDependencies": {
@@ -20,4 +19,5 @@
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0"
   }
+
 }
