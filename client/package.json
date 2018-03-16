@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -d --watch",
-    "server:run": "nodemon server/index.js"
+    "server:run": "nodemon server/bin/entry.js"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +27,7 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "dotenv-webpack": "^1.5.5"
   }
 }

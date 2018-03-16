@@ -11,6 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use('/api', router);
 
-const PORT = process.env.PORT || 1111;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

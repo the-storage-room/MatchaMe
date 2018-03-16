@@ -1,8 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const Dotenv = require('dotenv-webpack');
+
 const SRC_DIR = path.join(__dirname, '/src');
 const PUBLIC_DIR = path.join(__dirname, '/public')
+
 
 module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
@@ -10,6 +13,7 @@ module.exports = {
     filename: 'bundle.js', 
     path: PUBLIC_DIR
   },
+  watch: true,
   module: {
     rules: [
       {
@@ -21,7 +25,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new Dotenv()
+  ]
 }
 
 // {

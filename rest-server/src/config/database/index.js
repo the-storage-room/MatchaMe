@@ -1,11 +1,12 @@
 import { Pool } from 'pg';
 
+
 const config = {
-  user: 'root',
-  host: 'localhost',
-  database: 'MatchMe',
-  password: '',
-  port: 5432
+  user: process.env.NODE_ENV === 'production' ? process.env.AWS_USER : process.env.LOCAL_USER,
+  host: process.env.NODE_ENV === 'production' ? process.env.AWS_HOST : process.env.LOCAL_HOST,
+  database: process.env.NODE_ENV === 'production' ? process.env.AWS_DATABASE : process.env.LOCAL_DATABASE,
+  password: process.env.NODE_ENV === 'production' ? process.env.AWS_PASSWORD : process.env.LOCAL_PASSWORD,
+  port: process.env.NODE_ENV === 'production' ? process.env.AWS_PORT : process.env.LOCAL_PORT,
 };
 
 const db = new Pool(config);
