@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
+
+import './index.css';
 
 import LandingPage from './components/LandingPage/index.jsx';
 import Login from './components/Auth/Login.jsx';
@@ -26,4 +28,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
