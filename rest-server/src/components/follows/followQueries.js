@@ -10,7 +10,7 @@ import {
 export const fetchStarredMatchesQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -18,7 +18,7 @@ export const fetchStarredMatchesQuery = async (body) => {
 export const fetchUnstarredMatchesQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -26,7 +26,7 @@ export const fetchUnstarredMatchesQuery = async (body) => {
 export const starSingleMatchQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -34,7 +34,7 @@ export const starSingleMatchQuery = async (body) => {
 export const unstarSingleMatchQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };

@@ -6,7 +6,7 @@ import {
 export const fetchPendingMatchmakingQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -14,7 +14,7 @@ export const fetchPendingMatchmakingQuery = async (body) => {
 export const updateMatchmakingQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };

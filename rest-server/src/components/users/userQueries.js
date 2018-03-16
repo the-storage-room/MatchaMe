@@ -11,7 +11,7 @@ import {
 export const fetchAllUsersQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -19,7 +19,7 @@ export const fetchAllUsersQuery = async (body) => {
 export const fetchSingleUsersQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -27,7 +27,7 @@ export const fetchSingleUsersQuery = async (body) => {
 export const fetchMultipleUsersQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -35,7 +35,7 @@ export const fetchMultipleUsersQuery = async (body) => {
 export const updateUserRatingQuery = async (body) => {
   try {
     
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -43,7 +43,7 @@ export const updateUserRatingQuery = async (body) => {
 export const updateUserInfoQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };

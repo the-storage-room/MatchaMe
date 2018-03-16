@@ -10,7 +10,7 @@ import {
 export const fetchSuccessfulMatchQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -18,7 +18,7 @@ export const fetchSuccessfulMatchQuery = async (body) => {
 export const acceptSuccessfulMatchQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -26,7 +26,7 @@ export const acceptSuccessfulMatchQuery = async (body) => {
 export const rejectSuccessfulMatchQuery = async (body) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -34,7 +34,7 @@ export const rejectSuccessfulMatchQuery = async (body) => {
 export const ghostSuccessfulMatchQuery = async (body) => {
   try {
     
-  } catch {
+  } catch (err) {
 
   }
 };

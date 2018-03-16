@@ -7,7 +7,7 @@ import {
 export const fetchPendingMatchmakingController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
@@ -16,7 +16,7 @@ export const fetchPendingMatchmakingController = async (req, res) => {
 export const updateMatchmakingController = async (req, res) => {
   try {
 
-  } catch {
+  } catch (err) {
 
   }
 };
