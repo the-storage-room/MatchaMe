@@ -10,19 +10,19 @@ import {
 
 const router = express.Router();
 
-router.route('/fetchAllPhotos')
+router.route('/fetchAllPhotos/:userId')
   .get(fetchAllPhotosController);
 
-router.route('/fetchPrimaryPhoto')
+router.route('/fetchPrimaryPhoto/:userId')
   .get(fetchPrimaryPhotoController);
 
 router.route('/addPhoto')
   .post(addPhotoController);
 
-router.route('/deletePhoto')
+router.route('/deletePhoto/:userId/:photoId')
   .delete(deletePhotoController);
 
-router.route('/updatePrimaryPhoto')
+router.route('/updatePrimaryPhoto/:userId')
   .put(updatePrimaryPhotoController);
 
 export default router;
