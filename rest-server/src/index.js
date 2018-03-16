@@ -3,4 +3,4 @@ import './config/database';
 
 const PORT = process.env.PORT;
 
-App.listen(PORT, () => console.log('Listening on port ', PORT));
+App.listen(PORT, () => console.log('Rest-server listening on port ', PORT));
