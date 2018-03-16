@@ -6,7 +6,6 @@ const Dotenv = require('dotenv-webpack');
 const SRC_DIR = path.join(__dirname, '/src');
 const PUBLIC_DIR = path.join(__dirname, '/public');
 
-
 module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
   output: {
@@ -38,21 +37,6 @@ module.exports = {
         ]
       }
     ]
-<<<<<<< HEAD
   },
-  plugins: [
-    new Dotenv()
-  ]
-}
-
-// {
-//   loader: 'css-loader',
-//   options: {
-//     modules: true,
-//     localIdentName: '[name]__[local]__[hash:base64:5]',
-//   },
-// }
-=======
-  }
+  plugins: [new Dotenv()]
 };
->>>>>>> [Client] Dashboard and Navbar components
