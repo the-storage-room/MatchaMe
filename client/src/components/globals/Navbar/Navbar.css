@@ -1,0 +1,13 @@
+.navContainer {
+  float: right;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navButton {
+  padding: 15px;
+  margin: 0px;
+  float: left;
+  border-left-style: solid;
+  border-left-width: 3px;
+}
