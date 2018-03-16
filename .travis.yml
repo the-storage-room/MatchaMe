@@ -1,0 +1,23 @@
+dist: trusty
+notifications: 
+  email: false
+  
+language: 'node_js'
+node_js:
+  - '8'
+
+services:
+  - mongodb
+  - postgresql
+
+cache:
+  directories:
+    - 'node_modules'
+
+before_script:
+  - sleep 15
+  - npm test
+  - npm run buildEnv
+  - npm run start
+  
+  
