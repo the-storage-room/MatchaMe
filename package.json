@@ -10,9 +10,10 @@
     "start:rest-server": "cd rest-server && nodemon bin/entry.js",
     "start:socket-server": "cd socket-server && nodemon bin/entry.js",
     "start:matchmaker-service": "cd matchmaker-service && nodemon bin/entry.js",
+    "start:s3-server": "cd s3-server && nodemon bin/entry.js",
     "db:setup:rest-server": "cd rest-server && babel-node src/config/database/setup.js",
     "buildEnv": "node bin/buildEnv.js",
-    "start": "npm-run-all -p start:static-server start:rest-server start:socket-server start:matchmaker-service"
+    "start": "npm-run-all -p start:static-server start:rest-server start:socket-server start:matchmaker-service start:s3-server"
   },
   "repository": {
     "type": "git",
