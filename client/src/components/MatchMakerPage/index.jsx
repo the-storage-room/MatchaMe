@@ -8,7 +8,7 @@ const MatchMaker = props => {
   return (
     <div>
       <Navbar />
-      Render MatchMake Page Here!
+      Render MatchMaker Page Here!
     </div>
   );
 };

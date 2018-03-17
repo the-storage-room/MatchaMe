@@ -11,26 +11,21 @@ class PhotoUpload extends Component {
     this.state = {
         file: null,
     };
-
-  
-
-  this.handleUploadChange = this.handleUploadChange.bind(this)
-  this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-
-  handleUploadChange(e) {
+  handleUploadChange = (e) => {
     this.setState({ file: e.target.files[0] });
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
     const formData = new FormData();
     formData.append('file', this.state.file);
     formData.append('displayname', 'JackTest');
-
     axios.post(`${S3_SERVER_URL}/api/s3`, formData)
-      .then(() => {console.log('success')})
-      .catch((err) => console.error(err));
+      .then()
+      .catch((err) => {
+      console.error(err)
+    })
   }
 
   render() {

@@ -23,9 +23,9 @@ const Navbar = props => {
         </div>
         <div
           className={style.navButton}
-          onClick={() => props.history.push('/matchmake')}
+          onClick={() => props.history.push('/matchmaker')}
         >
-          MatchMake
+          MatchMaker
         </div>
         <div
           className={style.navButton}
