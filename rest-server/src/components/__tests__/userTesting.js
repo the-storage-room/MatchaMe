@@ -1,16 +1,15 @@
 const request = require('supertest');
 const app = require('../../config/express/index');
 
-test('Testing jest', () => {
-  expect('true').toEqual('true')
-})
-
 //user tests
 describe('fetchAllUsers', () => {
   it('Should return status code of 200', () => {
     return request(app)
       .get('/api/users/fetchAllUsers')
       .expect(200)
+      .then(res => {
+        expect(typeof res).toBe('string')
+      })
   })
 })
 
@@ -40,7 +39,7 @@ describe('updateUserRating', () => {
       request(app)
         .get('/api/users/updateUserRating')
         .then(res => {
-          expect(typeof res).toBe('string')
+          expect(typeof res).toBe('number')
         })
     ])
   })
@@ -50,7 +49,9 @@ describe('updateUserInfo', () => {
   it('Should be able to update a info', () => {
     return request(app)
       .get('/api/users/updateUserInfo')
-      .expect(200)
-      
+      .expect(200) 
+      .then(res => {
+        expect(typeof res).toBe('string')
+      })
   })
 })
