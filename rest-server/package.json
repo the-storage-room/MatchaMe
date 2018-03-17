@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=testing jest",
     "server:run": "nodemon bin/entry.js",
     "db:setup": "babel-node src/config/database/setup.js"
   },

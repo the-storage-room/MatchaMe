@@ -1,6 +1,9 @@
-// const request = require('supertest');
-const app = require('../../index');
+const request = require('supertest');
+const app = require('../../config/express/index');
 
-test('jest testing should workd', () => {
+test('Testing jest connection', () => {
   expect('true').toEqual('true')
 })
+
+request(app) 
+  .get('/')
