@@ -251,6 +251,7 @@ const createFollowTable = async () => {
         id      INT NOT NULL ,
         userId  INT NOT NULL ,
         matchId INT NOT NULL ,
+        starred SMALLINT NOT NULL DEFAULT 0 ,
         CONSTRAINT PK_Follow PRIMARY KEY (id),
         CONSTRAINT FK_Users_Follow FOREIGN KEY (userId)
           REFERENCES Users(id),
