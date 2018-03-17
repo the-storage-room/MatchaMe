@@ -17,7 +17,11 @@ class Signup extends Component {
   }
 
   submitAuthData = async (e) => {
+    try {
 
+    } catch (err) {
+
+    }
   }
 
   handleInputChange = (e) => {
