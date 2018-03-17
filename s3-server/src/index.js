@@ -1,10 +1,19 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
-
-const app = express();
+import cors from 'cors';
+import helmet from 'helmet';
 import router from './components/s3router.js';
 
+const app = express();
+
+app.use(helmet());
+app.use(
+  cors({
+    allowedHeaders: 'Content-Type, authorization',
+    methods: ['GET, POST, PUT, DELETE', 'OPTIONS'],
+  }),
+)
 
 app.use(fileUpload());
 app.use(bodyParser.json());

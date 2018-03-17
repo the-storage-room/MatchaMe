@@ -11,7 +11,13 @@ class PhotoUpload extends Component {
     this.state = {
         file: null,
     };
+
+  
+
+  this.handleUploadChange = this.handleUploadChange.bind(this)
+  this.handleSubmit = this.handleSubmit.bind(this)
   }
+
 
   handleUploadChange(e) {
     this.setState({ file: e.target.files[0] });

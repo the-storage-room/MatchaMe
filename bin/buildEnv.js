@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const envVariables = require('../config/.env.js');
+const envVariables = require('../config/.env.sample.js');
 
 const makeEnvFiles = () => {
   for (let key in envVariables) {
