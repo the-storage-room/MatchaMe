@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../../config/express/index');
 
 //Photos
-describe('fetchAllPhotos/:userId, () => {
+describe('fetchAllPhotos', () => {
   it('Should return status code of 200', () => {
     return request(app)
       .get('/api/photos/fetchAllPhotos/:userId')
@@ -10,7 +10,7 @@ describe('fetchAllPhotos/:userId, () => {
   })
 })
 
-describe('fetchPrimaryPhoto/:userId', () => {
+describe('fetchPrimaryPhoto', () => {
   it('Should return status code of 200', () => {
     return request(app)
       .get('/api/photos/fetchPrimaryPhoto/:userId')
@@ -26,7 +26,7 @@ describe('addPhoto', () => {
   })
 })
 
-describe('deletePhoto/:userId/:photoId', () => {
+describe('deletePhoto', () => {
   it('Should return status code of 200', () => {
     return request(app)
       .get('/api/photos/deletePhoto/:userId/:photoId')
@@ -34,7 +34,7 @@ describe('deletePhoto/:userId/:photoId', () => {
   })
 })
 
-describe('updatePrimaryPhoto/:userId', () => {
+describe('updatePrimaryPhoto', () => {
   it('Should return status code of 200', () => {
     return request(app)
       .get('/api/photos/updatePrimaryPhoto/:userId')
