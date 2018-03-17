@@ -1,8 +1,11 @@
-export const fetchStarredMatchesHelper = () => {
+export const fetchStarredMatchesHelper = (userid) => {
   return `
-    SELECT *
-    FROM follow
-    WHERE star = TRUE
+  SELECT username FROM follow
+  INNER JOIN MATCH ON follow.matchid = match.id
+  INNER JOIN users ON follow.userid = users.id
+  OR match.user1_id = users.id OR match.user2_id = users.id
+  WHERE userid = '1'
+  AND starred = '0'
   `;
 };
 
@@ -26,4 +29,5 @@ export const unstarSingleMatchHelper = () => {
   `;
 };
 
-// FETCH STARRED MATCHES HELPER
+
+//SELECT * FROM follow WHERE star = TRUE ::: userid, matchid, 
