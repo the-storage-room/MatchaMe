@@ -1,0 +1,27 @@
+.followsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 75px;
+  margin: auto;
+}
+
+.starredContainer {
+  display: flex;
+  min-width: 650px;
+  min-height: 150px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-style: solid;
+}
+.resultsContainer {
+  display: flex;
+  min-width: 650px;
+  min-height: 350px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-style: solid;
+}
