@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Input from '../globals/Input';
-import Button from '../globals/Button';
+import Input from '../globals/Input/index.jsx';
+import Button from '../globals/Button/index.jsx';
 
 import './Auth.css';
 
@@ -16,17 +16,18 @@ class Signup extends Component {
     };
   }
 
-  submitAuthData = async (e) => {
-    try {
+  // submitAuthData = async (e) => {
+  //   e.preventDefault();
+  //   try {
 
-    } catch (err) {
+  //   } catch (err) {
 
-    }
-  }
+  //   }
+  // }
 
-  handleInputChange = (e) => {
+  // handleInputChange = (e) => {
 
-  }
+  // }
 
   render() {
     return <div></div>;
