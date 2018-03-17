@@ -8,7 +8,19 @@ const Rate = props => {
   return (
     <div>
       <Navbar />
-      Render Rating Page Here!
+      <div className={style.ratingContainer}>
+        Render Rating Page Here!
+        <div className={style.photoContainer}>
+          <img
+            src="http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg"
+            height="300"
+            width="300"
+          />
+        </div>
+        <div className={style.ratingScaleContainer}>
+          Render Rating Scale Here!
+        </div>
+      </div>
     </div>
   );
 };
