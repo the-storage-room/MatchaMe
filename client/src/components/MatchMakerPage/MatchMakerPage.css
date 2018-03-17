@@ -1,0 +1,63 @@
+.matchMakerContainer {
+  display: flex;
+  height: 100%;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 65px 65px 0px 65px;
+  margin: auto;
+}
+
+.decisionContainer {
+  display: flex;
+  height: 80%;
+  width: 100%;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profileContainer {
+  display: flex;
+  width: 37%;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
+.photoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.userInfoContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 150px;
+  min-width: 350px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-style: solid;
+}
+
+.approvalContainer {
+  display: flex;
+  width: 26%;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
+.commentsContainer {
+  display: flex;
+  height: 20%;
+  justify-content: flex-end;
+  align-items: center;
+  border-style: solid;
+  margin-bottom: 0px;
+}
