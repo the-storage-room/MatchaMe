@@ -8,7 +8,6 @@ const envBuild = {
     'SOCKET_SERVER_URL=http://localhost:4155',
     'MATCHMAKER_SERVICE_URL=http://localhost:1147',
     'S3_SERVER_URL=http://localhost:8080'
-
   ],
   'rest-server': [
     'DEBUG=TRUE',
@@ -51,7 +50,8 @@ const envBuild = {
     'REST_SERVER_URL=http://localhost:5000',
     'AWS_ACCESS_KEY_ID=',
     'AWS_SECRET_ACCESS_KEY=',
-    'AWS_REGION="us-west-1"'
+    'AWS_REGION="us-west-1"',
+    'BUCKET='
   ]
 };
 

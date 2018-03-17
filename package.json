@@ -19,9 +19,11 @@
     "url": "git+https://github.com/the-storage-room/AJJJ-thesis.git"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "npm-run-all": "^4.1.2"
   },
   "devDependencies": {
-    "dotenv": "^4.0.0"
+    "dotenv": "^4.0.0",
+    "nodemon": "^1.17.2"
   }
 }

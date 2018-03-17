@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PhotoUpload from './../globals/PhotoUpload/PhotoUpload.jsx';
 
 import './Auth.css';
 
@@ -8,7 +9,7 @@ class Signup extends Component {
   }
 
   render() {
-    return <div>Render Signup Page Here</div>;
+    return <div><PhotoUpload />test</div>;
   }
 }
 

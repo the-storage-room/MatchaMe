@@ -8,7 +8,7 @@ import Login from './components/Auth/Login.jsx';
 import Signup from './components/Auth/Signup.jsx';
 import Dashboard from './components/Dashboard/index.jsx';
 import Rate from './components/RatingPage/index.jsx';
-import MatchMake from './components/MatchMakerPage/index.jsx';
+import MatchMaker from './components/MatchMakerPage/index.jsx';
 import Follows from './components/FollowsPage/index.jsx';
 import MyMatch from './components/MyMatchPage/index.jsx';
 import Leaderboard from './components/LeaderboardPage/index.jsx';
@@ -28,7 +28,7 @@ class App extends Component {
           <Route path="/signup" component={Signup} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/rate" component={Rate} />
-          <Route path="/matchmake" component={MatchMake} />
+          <Route path="/matchmaker" component={MatchMaker} />
           <Route path="/follows" component={Follows} />
           <Route path="/mymatch" component={MyMatch} />
           <Route path="/leaderboard" component={Leaderboard} />
