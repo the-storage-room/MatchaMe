@@ -1,12 +1,16 @@
 export const fetchStarredMatchesHelper = () => {
   return `
-  
+    SELECT *
+    FROM follow
+    WHERE star = TRUE
   `;
 };
 
 export const fetchUnstarredMatchesHelper = () => {
   return `
-
+    SELECT *
+    FROM follow
+    WHERE star = FALSE
   `;
 };
 
@@ -21,3 +25,5 @@ export const unstarSingleMatchHelper = () => {
   
   `;
 };
+
+// FETCH STARRED MATCHES HELPER
