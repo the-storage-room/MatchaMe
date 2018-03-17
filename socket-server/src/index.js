@@ -11,5 +11,5 @@ io.on('connection', (client) => {
   console.log('client connected');
 });
 
-const PORT = process.env.PORT;
+const { PORT } = process.env;
 server.listen(PORT, () => console.log(`Socket server listening on port ${PORT}`));

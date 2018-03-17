@@ -8,7 +8,7 @@ class Signup extends Component {
   }
 
   render() {
-    return <div>Render Signup Page Here</div>;
+    return <div></div>;
   }
 }
 
