@@ -1,14 +1,23 @@
-.navContainer {
-  float: right;
+.headerContainer {
+  display: flex;
   margin: 0px;
   padding: 0px;
-  width: 80%;
+  /* flex-wrap: nowrap; */
+  flex-flow: row nowrap;
+}
+
+.navContainer {
+  display: flex;
+  align-content: flex-end;
+  margin: 0px;
+  padding: 0px;
 }
 
 .navButton {
   padding: 15px;
-  margin: 0px;
-  float: right;
+  flex-direction: row;
+  flex-shrink: 0;
+  margin: auto;
   border-left-style: solid;
   border-left-width: 3px;
 }
