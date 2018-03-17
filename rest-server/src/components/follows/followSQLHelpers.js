@@ -4,16 +4,19 @@ export const fetchStarredMatchesHelper = (userid) => {
   INNER JOIN MATCH ON follow.matchid = match.id
   INNER JOIN users ON follow.userid = users.id
   OR match.user1_id = users.id OR match.user2_id = users.id
-  WHERE userid = '1'
-  AND starred = '0'
+  WHERE userid = '${userid}'
+  AND starred = '1'
   `;
 };
 
 export const fetchUnstarredMatchesHelper = () => {
   return `
-    SELECT *
-    FROM follow
-    WHERE star = FALSE
+  SELECT username FROM follow
+  INNER JOIN MATCH ON follow.matchid = match.id
+  INNER JOIN users ON follow.userid = users.id
+  OR match.user1_id = users.id OR match.user2_id = users.id
+  WHERE userid = '${userid}'
+  AND starred = '0'
   `;
 };
 
