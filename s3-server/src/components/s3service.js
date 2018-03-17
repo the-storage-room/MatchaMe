@@ -9,11 +9,13 @@ AWS.config.update({
 const s3 = new AWS.S3();
 
 exports.deletePhoto = (bucketName, keyName, cb ) => {
-  const params = { Bucket: bucketName, Key: keyName };
-  s3.deleteObjects(params, (err, data) => {
-    if (err) {
-      console.log(`error deleting key: ${keyName} in bucket: ${bucketName}`, err );
-    }
+  s3.deleteObjects({
+      Bucket: bucketName, 
+      Key: keyName 
+    }, (err, data) => {
+      if (err) {
+        console.error(`error deleting key: ${keyName} in bucket: ${bucketName}`, err );
+      }
     cb(data);
   });
 }
@@ -23,7 +25,8 @@ exports.addPhoto = (user, file, cb) => {
     Bucket: user,
     Key: file.name,
     Body: file.data,
-    ACL: 'public-read'
+    ACL: 'public-read',
+    ContentType: 'image/png'
   }, (data) => {
     console.log('Successfully uploaded photo.');
     cb(data)
