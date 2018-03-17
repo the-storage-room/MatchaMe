@@ -1,0 +1,7 @@
+.logoContainer {
+  padding: 15px;
+  width: 20%;
+  margin-left: 25px;
+  margin-right: auto;
+  flex-direction: row;
+}
