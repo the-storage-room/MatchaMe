@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:static-server": "cd client && nodemon server/bin/entry.js",
     "start:build": "cd client && webpack -d --watch",
     "start:rest-server": "cd rest-server && nodemon bin/entry.js",
