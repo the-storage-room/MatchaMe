@@ -1,0 +1,10 @@
+.leaderboardContainer {
+  display: flex;
+  min-height: 500px;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 65px;
+  padding: 65px;
+  border-style: solid;
+}

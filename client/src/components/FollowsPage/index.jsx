@@ -8,7 +8,12 @@ const Follows = props => {
   return (
     <div>
       <Navbar />
-      Render Follows Page Here!
+      <div className={style.followsContainer}>
+        <div className={style.starredContainer}>
+          Render Starred Matches Here!
+        </div>
+        <div className={style.resultsContainer}>Render All Matches Here!</div>
+      </div>
     </div>
   );
 };

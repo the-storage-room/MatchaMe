@@ -1,0 +1,13 @@
+.defaultButton {
+  background-color: #555555;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.defaultButton:hover {
+  background-color: #e7e7e7;
+  color: black;
+}

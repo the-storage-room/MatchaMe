@@ -8,7 +8,9 @@ const Leaderboard = props => {
   return (
     <div>
       <Navbar />
-      Render Leaderboard Page Here!
+      <div className={style.leaderboardContainer}>
+        <div />
+      </div>
     </div>
   );
 };
