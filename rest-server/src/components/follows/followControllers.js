@@ -7,32 +7,40 @@ import {
 
 export const fetchStarredMatchesController = async (req, res) => {
   try {
-    console.log('hi')
+    const data = await fetchStarredMatchesQuery(req.body);
+    console.log('Success on fetchStarredMatchesController', data)
+    return res.status(200).send(data)
   } catch (err) {
-    error('Error on fetching starred matches', err)
+    console.log('err', err)
   }
 };
 
 export const fetchUnstarredMatchesController = async (req, res) => {
   try {
-
+    const data = await fetchUnstarredMatchesQuery(req.body);
+    console.log('Success on fetchUnstarredMatchesController', data)
+    return res.status(200).send(data)
   } catch (err) {
-    error('Error on fetching unstarred matches', err)
+    console.log('Error on fetchUnstarredMatchesController', err)
   }
 };
 
 export const starSingleMatchController = async (req, res) => {
   try {
-
+    const data = await fetchUnstarredMatchesQuery(req.body);
+    console.log('Success on starSingleMatchController', data);
+    return res.status(200).send(data);
   } catch (err) {
-    error('Error on fetching starred single matches', err)
+    console.log('Error on starsingleMatchController', err)
   }
 };
 
 export const unstarSingleMatchController = async (req, res) => {
   try {
-
+    const data = await unstarSingleMatchQuery(req.body);
+    console.log('Success on unstarSingleMatchController', data);
+    return res.status(200).send(data);
   } catch (err) {
-    error('Error on fetching unstarred single matches')
+    console.log('Error on unstarSingleMatchController', err)
   }
 };
