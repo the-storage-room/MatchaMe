@@ -22,7 +22,7 @@ export const fetchUnstarredMatchesQuery = async (body) => {
   try {
     const queryString = fetchUnstarredMatchesHelper(body);
     const data = await db.query(queryString);
-    // console.log('Success on fetchUnStarredMatchesQuery', data)
+    console.log('Success on fetchUnStarredMatchesQuery', data)
     return data;
   } catch (err) {
     console.log('Error on fetchUnstarredMatchesQuery', err)
@@ -43,7 +43,7 @@ export const starSingleMatchQuery = async (body) => {
 export const unstarSingleMatchQuery = async (body) => {
   try {
     const query = unstarSingleMatchHelper(body);
-    const data = await db.queryAsync(query);
+    const data = await db.query(query);
     console.log('Success on unstarSingleMatchQuery', data)
     return data;
   } catch (err) {
