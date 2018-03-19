@@ -9,7 +9,7 @@ export const fetchStarredMatchesController = async (req, res) => {
   try {
     const data = await fetchStarredMatchesQuery();
     console.log('Success on fetchStarredMatchesController')
-    return res.status(200).send(data)
+    return res.status(200).send(data.rows)
   } catch (err) {
     console.log('Error on fetchStarredMatchesController', err)
   }
@@ -18,8 +18,8 @@ export const fetchStarredMatchesController = async (req, res) => {
 export const fetchUnstarredMatchesController = async (req, res) => {
   try {
     const data = await fetchUnstarredMatchesQuery();
-    console.log('Success on fetchUnstarredMatchesController', data)
-    return res.status(200).send(data)
+    console.log('Success on fetchUnstarredMatchesController')
+    return res.status(200).send(data.rows)
   } catch (err) {
     console.log('Error on fetchUnstarredMatchesController', err)
   }
