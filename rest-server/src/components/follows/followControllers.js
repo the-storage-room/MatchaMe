@@ -7,11 +7,11 @@ import {
 
 export const fetchStarredMatchesController = async (req, res) => {
   try {
-    const data = await fetchStarredMatchesQuery(req.body);
-    console.log('Success on fetchStarredMatchesController', data)
+    const data = await fetchStarredMatchesQuery();
+    console.log('Success on fetchStarredMatchesController')
     return res.status(200).send(data)
   } catch (err) {
-    console.log('err', err)
+    console.log('Error on fetchStarredMatchesController', err)
   }
 };
 

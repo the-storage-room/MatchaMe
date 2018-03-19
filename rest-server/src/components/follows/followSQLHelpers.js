@@ -1,9 +1,9 @@
-export const fetchStarredMatchesHelper = (body) => {
+export const fetchStarredMatchesHelper = () => {
   return `
   SELECT * FROM follow
   INNER JOIN MATCH ON follow.matchid = match.id
   INNER JOIN users ON follow.userid = users.id OR match.user1_id = users.id OR match.user2_id = users.id
-  WHERE userid = '${body.userid}' AND starred = '1' 
+  WHERE starred = '1' 
   `;
 };
 
