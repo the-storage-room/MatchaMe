@@ -1,11 +1,11 @@
-// import db from ....
+import db from '../../config/database/index';
 
 import {
   fetchAllUsersHelper,
   fetchSingleUserHelper,
   fetchMultipleUsersHelper,
   updateUserRatingHelper,
-  updateUserInfoHelper
+  updateUserBioHelper
 } from './userSQLHelper';
 
 export const fetchAllUsersQuery = async (body) => {
@@ -40,9 +40,11 @@ export const updateUserRatingQuery = async (body) => {
   }
 };
 
-export const updateUserInfoQuery = async (body) => {
+export const updateUserBioQuery = async (body) => {
   try {
-
+    const queryString = await updateUserBioHelper(body);
+    const data = await db.query(queryString);
+    return data;
   } catch (err) {
 
   }

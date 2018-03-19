@@ -22,8 +22,15 @@ export const updateUserRatingHelper = () => {
   `;
 }
 
-export const updateUserInfoHelper = () => {
+export const updateUserBioHelper = (body) => {
   return `
-  
+    UPDATE users 
+    SET bio='${body.bio}'
+    WHERE username='${body.username}'
+    RETURNING bio
   `;
 };
+
+export const updateUserAgeHelper = (body) => {
+  
+}
