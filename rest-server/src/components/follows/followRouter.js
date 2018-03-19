@@ -16,10 +16,12 @@ router.route('/fetchUnstarredMatches')
   .get(fetchUnstarredMatchesController);
 
 router.route('/starSingleMatch')
-  .post(starSingleMatchController);
+  .put(starSingleMatchController)
+  .get(starSingleMatchController)
 
 router.route('/unstarSingleMatch')
-  .put(unstarSingleMatchController);
+  .put(unstarSingleMatchController)
+  .get(unstarSingleMatchController)
 
 export default router;
 
