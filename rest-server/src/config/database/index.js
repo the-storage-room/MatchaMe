@@ -1,6 +1,6 @@
 import { Pool } from 'pg';
-require('dotenv').config();
 
+require('dotenv').config();
 
 const config = {
   user: process.env.NODE_ENV === 'production' ? process.env.AWS_USER : process.env.LOCAL_USER,
