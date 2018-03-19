@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import style from './Dashboard.css';
 
 import Navbar from '../globals/Navbar/index.jsx';
+import Profile from '../globals/Profile/index.jsx';
 
 class Dashboard extends Component {
   constructor() {
@@ -16,14 +17,7 @@ class Dashboard extends Component {
         <Navbar />
         <div className={style.dashboardContainer}>
           <div className={style.profileContainer}>
-            <div className={style.photoContainer}>
-              <img
-                src="http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg"
-                height="150"
-                width="150"
-              />
-            </div>
-            <div className={style.bioContainer}>Render Bio Here!</div>
+            <Profile hasBio={true} />
           </div>
 
           <div className={style.matchContainer}>

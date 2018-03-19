@@ -17,33 +17,6 @@
   align-items: center;
 }
 
-.profileContainer {
-  display: flex;
-  width: 37%;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: auto;
-}
-
-.photoContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
-
-.userInfoContainer {
-  display: flex;
-  flex-flow: column nowrap;
-  min-height: 150px;
-  min-width: 350px;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  border-style: solid;
-}
-
 .approvalContainer {
   display: flex;
   width: 26%;
