@@ -31,7 +31,7 @@ export const starSingleMatchController = async (req, res) => {
     console.log('Success on starSingleMatchController', data);
     return res.status(200).send(data.rows);
   } catch (err) {
-    console.log('Error on starsingleMatchController', err)
+    console.log('Error on starSingleMatchController', err)
   }
 };
 
