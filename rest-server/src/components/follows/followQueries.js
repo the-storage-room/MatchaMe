@@ -1,4 +1,4 @@
-import db from '../../config/database/index'
+import db from '../../config/database/index.js'
 
 import {
   fetchStarredMatchesHelper,
@@ -9,9 +9,8 @@ import {
 
 export const fetchStarredMatchesQuery = async (body) => {
   try {
-    const query = fetchStarredMatchesHelper(body);
-    console.log('hi')
-    const data = await db.query(query);
+    const queryString = fetchStarredMatchesHelper(body);
+    const data = await db.query(queryString);
     console.log('Success on fetchStarredMatchesQuery', data)
     return data;
   } catch (err) {
