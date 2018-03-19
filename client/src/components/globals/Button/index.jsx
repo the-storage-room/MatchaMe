@@ -6,11 +6,9 @@ const Button = ({ onClick, text, className }) => {
   className = className || style.defaultButton;
 
   return (
-    <div>
-      <button className={className} onClick={onClick}>
-        {text}
-      </button>
-    </div>
+    <button className={className} onClick={onClick}>
+      {text}
+    </button>
   );
 };
 
