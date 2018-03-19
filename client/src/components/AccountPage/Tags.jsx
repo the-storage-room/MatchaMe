@@ -1,15 +1,23 @@
 
 import React, { Component } from 'react';
-import axios from 'axios';
 
-import style from './Tags.css';
+import style from './AccountPage.css';
+
+import tagsArr from './tagsArr';
 
 
 class Tags extends Component {
   constructor() {
     super();
     this.state = {
+      tags: [],
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      tags: tagsArr
+    })
   }
 
   render() {

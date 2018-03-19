@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import PhotoUpload from './../globals/PhotoUpload/index.jsx';
+
+import PhotoUpload from './PhotoUpload.jsx';
+import Tags from './Tags.jsx';
+import BioInfo from './BioInfo.jsx';
+import Navbar from '../globals/Navbar/index.jsx';
+import Button from '../globals/Button/index.jsx';
 
 import style from './AccountPage.css';
-import Navbar from '../globals/Navbar/index.jsx';
 
 class Account extends Component {
   constructor() {
@@ -14,16 +18,36 @@ class Account extends Component {
     };
   }
 
+  onNextClick = () => {
+    let page = this.state.currentPage;
+    page++
+    this.setState({
+      currentPage: page
+    })
+  }
+
+  pages = {
+    1: <BioInfo />,
+    2: <Tags whoseTags="currentUser"/>,
+    3: <Tags whoseTags="idealMate"/>,
+    4: <PhotoUpload />
+  }
+
   render () {
     return (
       <div>
         {
           this.state.isFirstTimeUser
-          ? <Navbar />
-          : null
+          ? null
+          : <Navbar />
           }
-        <div className={style.upload}>
-          <PhotoUpload />
+        <div className={style.body}>
+          {this.pages[this.state.currentPage]}
+        <Button 
+          className={style.nextBtn}
+          text={'Next Button'}
+          onClick={this.onNextClick}
+          />
         </div>
       </div>
     );

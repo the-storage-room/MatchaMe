@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import style from './PhotoUpload.css';
-
 const S3_SERVER_URL = process.env.S3_SERVER_URL;
 
 class PhotoUpload extends Component {
