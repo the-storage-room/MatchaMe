@@ -1,6 +1,6 @@
 export const fetchStarredMatchesHelper = () => {
   return `
-  SELECT * FROM follow
+  SELECT username FROM follow
   INNER JOIN MATCH ON follow.matchid = match.id
   INNER JOIN users ON follow.userid = users.id OR match.user1_id = users.id OR match.user2_id = users.id
   WHERE starred = '1' 
@@ -12,20 +12,15 @@ export const fetchUnstarredMatchesHelper = (body) => {
   SELECT * FROM follow
   INNER JOIN MATCH ON follow.matchid = match.id
   INNER JOIN users ON follow.userid = users.id OR match.user1_id = users.id OR match.user2_id = users.id
-<<<<<<< HEAD
   WHERE starred = '0' 
-=======
-  WHERE userid = '${body.userid}' AND starred = '0' 
->>>>>>> e57ee119024b6503250bc52452cb54795d6bc17e
   `;
 };
 
 export const starSingleMatchHelper = (body) => {
   return `
-  SELECT * FROM follow
-  INNER JOIN MATCH ON follow.matchid = match.id 
-  INNER JOIN users ON match.user1_id = users.id OR MATCH.user2_id = users.id
-  WHERE userid =${body.userid} 
+  SELECT matchid, starred FROM follow
+  INNER JOIN MATCH ON follow.matchid = match.id
+  WHERE matchid =${body.matchid} 
   `;
 };
 
@@ -34,6 +29,6 @@ export const unstarSingleMatchHelper = (body) => {
   SELECT * FROM follow
   INNER JOIN MATCH ON follow.matchid = match.id 
   INNER JOIN users ON match.user1_id = users.id OR MATCH.user2_id = users.id
-  WHERE userid =${body.userid}
+  WHERE userid =${body.matchid}
   `;
 };
