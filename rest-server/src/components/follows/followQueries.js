@@ -7,46 +7,47 @@ import {
   unstarSingleMatchHelper
 } from './followSQLHelpers';
 
-export const fetchStarredMatchesQuery = async (payload) => {
+export const fetchStarredMatchesQuery = async (body) => {
   try {
-    const query = fetchStarredMatchesHelper(payload);
-    const data = await db.queryAsync(query);
-    success('Success on fetching all starred matches')
+    const query = fetchStarredMatchesHelper(body);
+    console.log('hi')
+    const data = await db.query(query);
+    console.log('Success on fetchStarredMatchesQuery', data)
     return data;
   } catch (err) {
-    error('Error on fetching all starred matches', err);
+    console.log('Error on fetchStarredMatchesQuery', err)
   }
 };
 
-export const fetchUnstarredMatchesQuery = async (payload) => {
+export const fetchUnstarredMatchesQuery = async (body) => {
   try {
-    const query = fetchUnstarredMatchesHelper(payload);
+    const query = fetchUnstarredMatchesHelper(body);
     const data = await db.queryAsync(query);
-    success('Success on fetching all unstarred matches');
+    console.log('Success on fetchUnStarredMatchesQuery', data)
     return data;
   } catch (err) {
-    error('Error on fetching unstarred matches', err)
+    console.log('Error on fetchUnstarredMatchesQuery', err)
   }
 };
 
-export const starSingleMatchQuery = async (payload) => {
+export const starSingleMatchQuery = async (body) => {
   try {
-    const query = starSingleMatchHelper(payload);
+    const query = starSingleMatchHelper(body);
     const data = await db.queryAsync(query);
-    success('Succes on starring a single match');
+    console.log('Success on starSingleMatchQuery', data)
     return data;
   } catch (err) {
-    error('Error on starring a single match', err)
+    console.log('Error on starSingleMatchQuery', err)
   }
 };
 
-export const unstarSingleMatchQuery = async (payload) => {
+export const unstarSingleMatchQuery = async (body) => {
   try {
-    const query = unstarSingleMatchHelper(payload);
+    const query = unstarSingleMatchHelper(body);
     const data = await db.queryAsync(query);
-    success('Success on unstarring a single match');
+    console.log('Success on unstarSingleMatchQuery', data)
     return data;
   } catch (err) {
-    error('Error on unstarring a single match', err)
+    console.log('Error on unstarSingleMatchQuery', err)
   }
 };
