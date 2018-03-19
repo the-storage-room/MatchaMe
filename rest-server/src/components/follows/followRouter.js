@@ -16,7 +16,7 @@ router.route('/fetchUnstarredMatches')
   .get(fetchUnstarredMatchesController);
 
 router.route('/starSingleMatch')
-  .post(starSingleMatchController);
+  .put(starSingleMatchController);
 
 router.route('/unstarSingleMatch')
   .put(unstarSingleMatchController);
