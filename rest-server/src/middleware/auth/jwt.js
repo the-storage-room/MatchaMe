@@ -8,8 +8,8 @@ const generateToken = (id, email) => {
 
   token.accessToken = sign({
     exp: Math.floor(Date.now() / 1000 + (60 * 60)),
-    email,
     id,
+    email
   }, process.env.TOKEN_SECRET);
   return token;
 };
@@ -22,3 +22,6 @@ const verifyUserWithJWT = (req, res, next) => {
     console.log(e)
   }
 };
+
+module.exports.generateToken = generateToken;
+module.exports.verifyUserWithJWT = verifyUserWithJWT;

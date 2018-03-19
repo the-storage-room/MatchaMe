@@ -1,5 +1,5 @@
 import { Pool } from 'pg';
-import Promise from 'bluebird';
+// import Promise from 'bluebird';
 require('dotenv').config();
 
 
@@ -18,6 +18,6 @@ db.on('connect', () => {
 });
 
 db.connect();
-Promise.promisifyAll(db);
+// Promise.promisifyAll(db);
 
 module.exports = db;

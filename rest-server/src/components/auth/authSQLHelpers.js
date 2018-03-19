@@ -1,6 +1,8 @@
-export const loginHelper = () => {
+export const loginHelper = (body) => {
   return `
-
+    SELECT id, username, email
+    FROM users
+    WHERE username='${body.username}'
   `;
 };
 
@@ -32,7 +34,7 @@ export const signupHelper = (body) => {
       '${body.bio}',
        ${body.powerranking}
     )
-    
+    RETURNING id, email, username
   `;
 };
 
