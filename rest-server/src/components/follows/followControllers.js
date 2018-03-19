@@ -17,7 +17,11 @@ export const fetchStarredMatchesController = async (req, res) => {
 
 export const fetchUnstarredMatchesController = async (req, res) => {
   try {
+<<<<<<< HEAD
     const data = await fetchUnstarredMatchesQuery();
+=======
+    const data = await fetchUnstarredMatchesQuery(req.body);
+>>>>>>> e57ee119024b6503250bc52452cb54795d6bc17e
     console.log('Success on fetchUnstarredMatchesController', data)
     return res.status(200).send(data)
   } catch (err) {
