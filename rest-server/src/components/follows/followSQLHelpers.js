@@ -7,12 +7,12 @@ export const fetchStarredMatchesHelper = () => {
   `;
 };
 
-export const fetchUnstarredMatchesHelper = (body) => {
+export const fetchUnstarredMatchesHelper = () => {
   return `
   SELECT * FROM follow
   INNER JOIN MATCH ON follow.matchid = match.id
   INNER JOIN users ON follow.userid = users.id OR match.user1_id = users.id OR match.user2_id = users.id
-  WHERE userid = '${body.userid}' AND starred = '0' 
+  WHERE starred = '0' 
   `;
 };
 

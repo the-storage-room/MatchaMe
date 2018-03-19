@@ -20,8 +20,8 @@ export const fetchStarredMatchesQuery = async (body) => {
 
 export const fetchUnstarredMatchesQuery = async (body) => {
   try {
-    const query = fetchUnstarredMatchesHelper(body);
-    const data = await db.queryAsync(query);
+    const queryString = fetchUnstarredMatchesHelper(body);
+    const data = await db.query(queryString);
     console.log('Success on fetchUnStarredMatchesQuery', data)
     return data;
   } catch (err) {
