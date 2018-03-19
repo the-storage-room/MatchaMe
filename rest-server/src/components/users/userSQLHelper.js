@@ -27,15 +27,3 @@ export const updateUserInfoHelper = () => {
   
   `;
 };
-
-export const fetchUserRankingHelper = () => {
-  return `
-  
-  `;
-};
-
-export const updateUserRankingHelper = () => {
-  return `
-  
-  `;
-};
