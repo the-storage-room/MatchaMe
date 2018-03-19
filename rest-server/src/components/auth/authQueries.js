@@ -1,10 +1,10 @@
-//import db from ...
+import db from '../../config/database/index.js';
 
 import {
   loginHelper,
   signupHelper,
   logoutHelper
-} from './authSQLHelpers'
+} from './authSQLHelpers';
 
 export const loginQuery = async (body) => {
   try {
@@ -16,7 +16,16 @@ export const loginQuery = async (body) => {
 
 export const signupQuery = async (body) => {
   try {
-
+    body.age = Number(body.age);
+    body.location = Number(body.location);
+    body.powerranking = Number(body.powerranking);
+    //onsole.log(body)
+    const queryString = signupHelper(body);
+    console.log(queryString);
+    //console.log(db)
+    const data = await db.query(queryString);
+    console.log(data)
+    return data;
   } catch (err) {
 
   }

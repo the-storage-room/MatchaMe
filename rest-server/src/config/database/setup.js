@@ -105,7 +105,7 @@ const createTagsTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS Tags
       (
-        id  INT NOT NULL ,
+        id  SERIAL ,
         tag VARCHAR(50) NOT NULL ,
         CONSTRAINT PK_Tags PRIMARY KEY (id)
       )
@@ -123,7 +123,7 @@ const createUsersTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS Users
       (
-        id           INT NOT NULL ,
+        id           SERIAL ,
         username     VARCHAR(50) NOT NULL ,
         password     VARCHAR(50) NOT NULL ,
         email        VARCHAR(50) NOT NULL ,
@@ -134,7 +134,7 @@ const createUsersTable = async () => {
         gender       VARCHAR(50) NOT NULL ,
         preference   VARCHAR(50) NOT NULL ,
         bio          VARCHAR(255) NOT NULL ,
-        powerRanking INT NOT NULL ,
+        powerranking INT NOT NULL ,
         CONSTRAINT PK_Users PRIMARY KEY (id) ,
         CONSTRAINT Unique_Username UNIQUE (username)
       )
@@ -152,7 +152,7 @@ const createUsersTagsTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS Users_Tags
       (
-        id     INT NOT NULL ,
+        id     SERIAL ,
         tagId  INT NOT NULL ,
         userId INT NOT NULL ,
         type   VARCHAR(50) NOT NULL ,
@@ -176,7 +176,7 @@ const createMatchTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS Match
       (
-        id            INT NOT NULL ,
+        id            SERIAL ,
         user1_id      INT NOT NULL ,
         user2_id      INT NOT NULL ,
         approvedCount INT NOT NULL ,
@@ -204,7 +204,7 @@ const createRatingTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS Rating
       (
-        id           INT NOT NULL ,
+        id           SERIAL ,
         score        INT NOT NULL ,
         totalRatings INT NOT NULL ,
         users        INT ARRAY NOT NULL ,
@@ -227,7 +227,7 @@ const createPhotoTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS Photo
       (
-        id     INT NOT NULL ,
+        id     SERIAL ,
         url    VARCHAR(50) NOT NULL ,
         rating INT NOT NULL ,
         userId INT NOT NULL ,
@@ -250,7 +250,7 @@ const createFollowTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS Follow
       (
-        id      INT NOT NULL ,
+        id      SERIAL ,
         userId  INT NOT NULL ,
         matchId INT NOT NULL ,
         starred SMALLINT NOT NULL DEFAULT 0 ,
@@ -274,7 +274,7 @@ const createSuccessfulMatchTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS SuccessfulMatch
       (
-        id           INT NOT NULL ,
+        id           SERIAL ,
         matchId      INT NOT NULL ,
         dateCreated  DATE NOT NULL ,
         isSuccessful SMALLINT NOT NULL DEFAULT 0 ,
@@ -297,7 +297,7 @@ const createCommentTable = async () => {
       `
       CREATE TABLE IF NOT EXISTS Comments
       (
-        id      INT NOT NULL ,
+        id      SERIAL ,
         userId  INT NOT NULL ,
         matchId INT NOT NULL ,
         votes   INT NOT NULL DEFAULT 0 ,
