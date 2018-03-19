@@ -8,7 +8,9 @@ import {
 
 export const loginQuery = async (body) => {
   try {
-
+    const queryString = loginHelper(body)
+    const data = await db.query(queryString);
+    return data;
   } catch (err) {
 
   }
@@ -19,12 +21,8 @@ export const signupQuery = async (body) => {
     body.age = Number(body.age);
     body.location = Number(body.location);
     body.powerranking = Number(body.powerranking);
-    //onsole.log(body)
     const queryString = signupHelper(body);
-    console.log(queryString);
-    //console.log(db)
     const data = await db.query(queryString);
-    console.log(data)
     return data;
   } catch (err) {
 
