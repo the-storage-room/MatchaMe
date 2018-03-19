@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import style from './RatingPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
+import Button from '../globals/Button/index.jsx';
 
 const Rate = props => {
   return (
@@ -26,7 +27,7 @@ const Rate = props => {
             <span>Tags: Friendly</span>
           </div>
         </div>
-        <button className={style.nextBtn}>Next Button</button>
+        <Button className={style.nextBtn} text={'Next Button'} />
       </div>
     </div>
   );

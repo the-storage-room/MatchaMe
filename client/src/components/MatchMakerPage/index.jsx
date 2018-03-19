@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import style from './MatchMakerPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
+import Button from '../globals/Button/index.jsx';
 
 const MatchMaker = props => {
   return (
@@ -26,8 +27,8 @@ const MatchMaker = props => {
             </div>
           </div>
           <div className={style.approvalContainer}>
-            <button>Yes</button>
-            <button>No</button>
+            <Button text={'Yes'} />
+            <Button text={'No'} />
           </div>
           <div className={style.profileContainer}>
             <div className={style.photoContainer}>
