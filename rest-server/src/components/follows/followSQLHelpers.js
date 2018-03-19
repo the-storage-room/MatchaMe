@@ -7,7 +7,7 @@ export const fetchStarredMatchesHelper = () => {
   `;
 };
 
-export const fetchUnstarredMatchesHelper = (body) => {
+export const fetchUnstarredMatchesHelper = () => {
   return `
   SELECT username, matchid FROM follow
   INNER JOIN MATCH ON follow.matchid = match.id
@@ -16,13 +16,13 @@ export const fetchUnstarredMatchesHelper = (body) => {
   `;
 };
 
-export const starSingleMatchHelper = (body) => {
+export const starSingleMatchHelper = () => {
   return `
   SELECT id, starred FROM follow
   `;
 }
 
-export const unstarSingleMatchHelper = (body) => {
+export const unstarSingleMatchHelper = () => {
   return `
   SELECT id, starred FROM follow
   `;
