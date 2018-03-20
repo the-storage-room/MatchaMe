@@ -30,20 +30,20 @@ class Account extends Component {
     let currentLocation = this.props.location.pathname
     await this.props.history.push(this.nextPage[currentLocation])
     if (currentLocation !== '/account/photoupload') {
-      const { page, tagtype } = this.props.match.params;
-      this.setState({
-        currentPage: page,
-        tagtype: tagtype
-      })
+      this.setInitialState()
     }
   }
 
-  componentWillMount = () => {
+  setInitialState = () => {
     const { page, tagtype } = this.props.match.params;
     this.setState({
       currentPage: page,
       tagtype: tagtype
     })
+  }
+
+  componentWillMount = () => {
+    this.setInitialState()
   }
 
   render () {
