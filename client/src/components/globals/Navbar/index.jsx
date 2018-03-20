@@ -47,7 +47,7 @@ const Navbar = props => {
         </div>
         <div
           className={style.navButton}
-          onClick={() => props.history.push('/account')}
+          onClick={() => props.history.push('/account/bio')}
         >
           *Avatar*
         </div>

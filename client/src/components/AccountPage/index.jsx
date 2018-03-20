@@ -19,7 +19,26 @@ class Account extends Component {
     };
   }
 
-  componentWillMount() {
+  nextPage = {
+    '/account/bio': '/account/tags/user',
+    '/account/tags/user': '/account/tags/mate',
+    '/account/tags/mate': '/account/photoupload',
+    '/account/photoupload': '/dashboard'
+  }
+
+  onNextClick = async () => {
+    let currentLocation = this.props.location.pathname
+    await this.props.history.push(this.nextPage[currentLocation])
+    if (currentLocation !== '/account/photoupload') {
+      const { page, tagtype } = this.props.match.params;
+      this.setState({
+        currentPage: page,
+        tagtype: tagtype
+      })
+    }
+  }
+
+  componentWillMount = () => {
     const { page, tagtype } = this.props.match.params;
     this.setState({
       currentPage: page,
@@ -28,7 +47,6 @@ class Account extends Component {
   }
 
   render () {
-
     let pages = {
       bio: <BioInfo />,
       tags: <Tags type={this.state.tagtype}/>,
