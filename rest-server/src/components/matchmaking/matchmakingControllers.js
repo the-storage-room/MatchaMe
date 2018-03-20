@@ -14,8 +14,12 @@ export const fetchPendingMatchmakingController = async (req, res) => {
 
 // approve or disapprove a match
 export const updateMatchmakingController = async (req, res) => {
-  const data = await updateMatchmakingQuery(req.body);
-  console.log(data);
+  const { userId, matchId, decision } = req.body;
+  const { approvedcount, rejectedcount } = await updateMatchmakingQuery(
+    matchId,
+    decision
+  );
+
   res.send();
   try {
   } catch (err) {

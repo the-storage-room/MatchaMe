@@ -8,23 +8,19 @@ export const fetchPendingMatchmakingHelper = userId => {
 };
 
 // approve or disapprove a match
-export const updateMatchmakingHelper = body => {
-  console.log(body);
-  const { userId, matchId, decision } = body;
+export const updateMatchmakingHelper = (matchId, decision) => {
   if (decision === 'approved') {
     return `
-    INSERT INTO MATCH 
-    (approvedcount, usersapproved) 
-    VALUES (approvedcount + 1, '{${userId}}')
+    UPDATE MATCH 
+    SET approvedcount = approvedcount + 1
     WHERE id=${matchId}
     RETURNING *;
     `;
   }
   if (decision === 'rejected') {
     return `
-    UPDATE MATCH
+    UPDATE MATCH 
     SET rejectedcount = rejectedcount + 1
-    SET usersrejected = usersrejected || ${userId}
     WHERE id=${matchId}
     RETURNING *;
     `;

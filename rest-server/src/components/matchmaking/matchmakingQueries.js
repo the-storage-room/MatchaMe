@@ -15,11 +15,11 @@ export const fetchPendingMatchmakingQuery = async userId => {
   }
 };
 
-export const updateMatchmakingQuery = async body => {
+export const updateMatchmakingQuery = async (matchId, decision) => {
   try {
-    const string = updateMatchmakingHelper(body);
-    const data = await db.query(string);
-    return data;
+    const string = updateMatchmakingHelper(matchId, decision);
+    const { rows } = await db.query(string);
+    return rows[0];
   } catch (err) {
     console.log(err);
   }
