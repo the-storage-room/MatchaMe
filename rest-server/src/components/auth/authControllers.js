@@ -15,9 +15,11 @@ import {
 export const loginController = async (req, res) => {
   try {
     const { rows } = await loginQuery(req.body);
+    delete rows[0].password;
     const { id, email } = rows[0];
     const token = await generateToken(id, email);
     rows[0].token = token.accessToken;
+    console.log(rows[0])
     return res.status(200).send(rows[0]);
   } catch (err) {
     throw new Error(err);
@@ -29,7 +31,6 @@ export const signupController = async (req, res) => {
     
     req.body.password = await hashPassword(req.body.password);
     const { rows } = await signupQuery(req.body);
-    //console.log(rows)
     const { id, email } = rows[0];
     const token = await generateToken(id, email);
     rows[0].token = token.accessToken;

@@ -1,5 +1,6 @@
 import passport from 'passport';
 import jwt from 'passport-jwt';
+import local from 'passport-local';
 
 import {
   loginQuery
@@ -10,13 +11,22 @@ import {
 
 const JwtStrategy = jwt.Strategy;
 const ExtractJwt = jwt.ExtractJwt;
+const LocalStrategy = local.Strategy;
 
-const options = {};
+const localOptions = {
+  usernameField: 'username',
+};
 
-options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-options.secretOrKey = 'secret';
+const jwtOptions = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.TOKEN_SECRET
+};
 
-passport.use(new JwtStrategy(options, async (username, password, done) => {
+// options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+// options.secretOrKey = 'secret';
+
+
+passport.use(new LocalStrategy(localOptions, async (username, password, done) => {
   try {
     const { rows } = await loginQuery({ username });
     if (!rows.length) {
@@ -32,6 +42,12 @@ passport.use(new JwtStrategy(options, async (username, password, done) => {
   }
 }));
 
-passport.use(new JwtStrategy(options, async (jwt_payload, done) => {
- 
-}));
+// passport.use(new JwtStrategy(jwtOptions, async (jwt_payload, done) => {
+//   try {
+//    
+//   } catch (err) {
+//     return done(err);
+//   }
+// }));
+
+export default passport;

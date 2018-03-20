@@ -22,16 +22,17 @@ class Login extends Component {
     e.preventDefault();
     const body = {
       username,
-      email, 
       password
     };
+    console.log(body)
     try {
       const data = await axios.post(`http://localhost:5000/api/auth/login`, body);
       localStorage.setItem('id', data.data.id);
       localStorage.setItem('email', data.data.email);
       localStorage.setItem('token', data.data.token);
-      data ? this.props.history.push('/dashboard') : this.props.history.push('/login');
       console.log(localStorage);
+      data ? this.props.history.push('/dashboard') : this.props.history.push('/login');
+      
     } catch (err) {
       throw new Error(err);
     }
@@ -50,13 +51,6 @@ class Login extends Component {
             name="username"
             type="text"
             placeholder="Enter username"
-            onChange={this.handleInputChange}
-          /> <br />
-          <span> or </span> <br />
-          <Input 
-            name="email"
-            type="text"
-            placeholder="Enter e-mail"
             onChange={this.handleInputChange}
           /> <br />
           <Input 
