@@ -1,8 +1,8 @@
 export const loginHelper = (body) => {
   return `
-    SELECT id, username, email
+    SELECT id, username, email, password
     FROM users
-    WHERE username='${body.username}'
+    WHERE email='${body.email}'
   `;
 };
 
@@ -11,28 +11,12 @@ export const signupHelper = (body) => {
     INSERT INTO users (
       username, 
       password, 
-      email, 
-      lastname, 
-      firstname, 
-      age,
-      location, 
-      gender,
-      preference,
-      bio,
-      powerranking
+      email 
     )
     VALUES (
       '${body.username}',
       '${body.password}',
-      '${body.email}',
-      '${body.lastname}',
-      '${body.firstname}',
-       ${body.age},
-       ${body.location},
-      '${body.gender}',
-      '${body.preference}',
-      '${body.bio}',
-       ${body.powerranking}
+      '${body.email}'
     )
     RETURNING id, email, username
   `;

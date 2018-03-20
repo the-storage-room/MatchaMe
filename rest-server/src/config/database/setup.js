@@ -135,6 +135,7 @@ const createUsersTable = async () => {
         preference   INT ,
         bio          VARCHAR(255) ,
         powerranking INT ,
+        attractiveness INT , 
         signupComplete BOOLEAN ,
         CONSTRAINT PK_Users PRIMARY KEY (id) ,
         CONSTRAINT Unique_Username UNIQUE (username)

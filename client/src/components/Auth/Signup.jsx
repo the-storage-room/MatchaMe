@@ -4,7 +4,7 @@ import axios from 'axios';
 import Input from '../globals/Input/index.jsx';
 import Button from '../globals/Button/index.jsx';
 
-import './Auth.css';
+import style from './Auth.css';
 
 class Signup extends Component {
   constructor() {
@@ -16,21 +16,57 @@ class Signup extends Component {
     };
   }
 
-  // submitAuthData = async (e) => {
-  //   e.preventDefault();
-  //   try {
+  submitAuthData = async (e) => {
+    e.preventDefault();
+    const { username, email, password } = this.state;
+    const body = {
+      username,
+      email,
+      password
+    }
+    try {
+      const data = await axios.post(`http://localhost:5000/api/auth/signup`, body);
+      data ? this.props.history.push('/login') : alert('taken');
+    } catch (err) {
 
-  //   } catch (err) {
+    }
+  }
 
-  //   }
-  // }
-
-  // handleInputChange = (e) => {
-
-  // }
+  handleInputChange = (e) => {
+    const { value, name } = e.target;
+    this.setState({ [name]: value });
+  }
 
   render() {
-    return <div></div>;
+    return (
+      <div className={style.signupContainer}>
+        <form className={style.signupForm}>
+          <Input
+            name="username"
+            type="text"
+            placeholder="Enter username"
+            onChange={this.handleInputChange}
+          /> <br />
+          <Input 
+            name="email"
+            type="text"
+            placeholder="Enter e-mail"
+            onChange={this.handleInputChange}
+          /> <br />
+          <Input 
+            name="password"
+            type="text"
+            placeholder="Enter password"
+            onChange={this.handleInputChange}
+          /> <br />
+          <Button
+            className={style.signupButton}
+            text="Sign Up"
+            onClick={(e) => this.submitAuthData(e)}
+          />
+        </form>
+      </div>
+    );
   }
 }
 
