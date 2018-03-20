@@ -16,6 +16,7 @@ class Account extends Component {
       isFirstTimeUser: true,
       currentPage: 'bio',
       tagtype: null,
+      renderButton: false,
     };
   }
 
@@ -29,9 +30,19 @@ class Account extends Component {
   onNextClick = () => {
     let { pathname } = this.props.location;
     this.props.history.push(this.nextPage[pathname])
+    this.shouldRenderNextButton(false)
   }
 
-  setInitialState = () => {
+  shouldRenderNextButton = (bool) => {
+    let { renderButton } = this.state
+    if (renderButton !== bool) {
+      this.setState({
+        renderButton: bool
+      })
+    }
+  }
+
+  componentWillMount = () => {
     let { page, tagtype } = this.props.match.params;
     this.setState({
       currentPage: page,
@@ -39,15 +50,11 @@ class Account extends Component {
     })
   }
 
-  componentWillMount = () => {
-    this.setInitialState()
-  }
-
   render () {
     let pages = {
-      bio: <BioInfo />,
-      tags: <Tags type={this.props.match.params.tagtype}/>,
-      photoupload: <PhotoUpload />
+      bio: <BioInfo renderButton={this.shouldRenderNextButton} />,
+      tags: <Tags type={this.props.match.params.tagtype} renderButton={this.shouldRenderNextButton}/>,
+      photoupload: <PhotoUpload renderButton={this.shouldRenderNextButton}/>
     }
 
     return (
@@ -59,11 +66,14 @@ class Account extends Component {
           }
         <div className={style.body}>
           {pages[this.props.match.params.page]}
-        <Button 
-          className={style.nextBtn}
-          text={'Next Button'}
-          onClick={this.onNextClick}
-          />
+        { this.state.renderButton ?
+          <Button 
+            className={style.nextBtn}
+            text={'Next Button'}
+            onClick={this.onNextClick}
+          /> :
+          "Fill out form!"
+        }
         </div>
       </div>
     );
