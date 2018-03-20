@@ -210,21 +210,23 @@ const createOutcomesTable = async () => {
   try {
     await db.query(
       `
-      CREATE TABLE IF NOT EXISTS approvedUsers
+      CREATE TABLE IF NOT EXISTS Outcomes
       (
       id                SERIAL,
       userId            INT NOT null,
       matchId           INT NOT null,
-      starred           SMALLINT NOT NULL DEFAULT 0
-      decision          VARCHAR(25) NOT NULL 
-      CONSTRAINT FK_approvedUsers_Users FOREIGN KEY (userId)
-          REFERENCES Users(id)
+      starred           SMALLINT NOT NULL DEFAULT 0,
+      decision          VARCHAR(25) NOT NULL, 
+      CONSTRAINT FK_Outcomes_Users FOREIGN KEY (userId)
+        REFERENCES Users(id),
+      CONSTRAINT FK_Outcomes_Match FOREIGN KEY (matchId)
+        REFERENCES Match(id)
       )
       `
     );
-    console.log('Successfully Created approvedUsers Table')
+    console.log('Successfully Created Outcomes Table')
   } catch (err) {
-    console.log('Error creating approvedUsers Table', err)
+    console.log('Error creating Outcomes Table', err)
   }
 }
 
