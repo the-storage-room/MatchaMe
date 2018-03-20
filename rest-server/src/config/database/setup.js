@@ -1,4 +1,4 @@
-import db from './index.js';
+import db from './index';
 
 const dropFollowTable = async () => {
   try {
@@ -44,6 +44,24 @@ const dropMatchTable = async () => {
     console.log('error dropping Match Table ');
   }
 };
+
+const dropApprovedUsersTable = async () => {
+  try {
+    await db.query(`DROP TABLE IF EXISTS approvedUsers`);
+    console.log('successfully dropped approvedUsers Table');
+  } catch (err) {
+    console.log('error dropping approvedUsers Table');
+  }
+}
+
+const dropRejectedUsersTable = async () => {
+  try {
+    await db.query(`DROP TABLE IF EXISTS rejectedUsers`);
+    console.log('successfully dropped rejectedUsers Table');
+  } catch (err) {
+    console.log('error dropping rejectedUsers Table')
+  }
+}
 
 const dropRatingTable = async () => {
   try {
@@ -182,8 +200,6 @@ const createMatchTable = async () => {
         user2_id      INT NOT NULL ,
         approvedCount INT NOT NULL ,
         rejectedCount INT NOT NULL ,
-        usersApproved INT ARRAY NOT NULL ,
-        usersRejected INT ARRAY NOT NULL ,
         activeVoting  SMALLINT NOT NULL DEFAULT 0 ,
         CONSTRAINT PK_Match PRIMARY KEY (id),
         CONSTRAINT FK_User2_Match FOREIGN KEY (user1_id)
@@ -198,6 +214,46 @@ const createMatchTable = async () => {
     console.log('Error creating Match Table', err);
   }
 };
+
+const createApprovedUsersTable = async () => {
+  try {
+    await db.query(
+      `
+      CREATE TABLE IF NOT EXISTS approvedUsers
+      (
+      id                SERIAL,
+      userId            INT NOT null,
+      matchId           INT NOT null,
+      CONSTRAINT FK_approvedUsers_Users FOREIGN KEY (userId)
+          REFERENCES Users(id)
+      )
+      `
+    );
+    console.log('Successfully Created approvedUsers Table')
+  } catch (err) {
+    console.log('Error creating approvedUsers Table', err)
+  }
+}
+
+const createRejectedUsersTable = async () => {
+  try {
+    await db.query(
+      `
+      CREATE TABLE IF NOT EXISTS rejectedUsers 
+      (
+        id              SERIAL,
+        userId          INT NOT null,
+        matchId         INT NOT null,
+        CONSTRAINT FK_rejectedUsers_Users FOREIGN KEY (userId)
+          REFERENCES Users(id)
+      )
+      `
+    );
+    console.log('Successfully Created rejectedUsers Table');
+  } catch (err) {
+    console.log('Error creating rejectedUsers Table', err)
+  }
+}
 
 const createRatingTable = async () => {
   try {
@@ -324,6 +380,8 @@ const setup = async () => {
   await dropPhotoTable();
   await dropRatingTable();
   await dropMatchTable();
+  await dropApprovedUsersTable();
+  await dropRejectedUsersTable();
   await dropUsersTagsTable();
   await dropCommentsTable();
   await dropSuccessfulMatchTable();
@@ -334,6 +392,8 @@ const setup = async () => {
   await createUsersTable();
   await createUsersTagsTable();
   await createMatchTable();
+  await createApprovedUsersTable();
+  await createRejectedUsersTable();
   await createRatingTable();
   await createPhotoTable();
   await createFollowTable();
