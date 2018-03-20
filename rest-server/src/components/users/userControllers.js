@@ -4,7 +4,8 @@ import {
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
   updateUserRatingQuery,
-  updateUserBioQuery
+  updateUserBioQuery,
+  updateUserAgeQuery
 } from './userQueries';
 
 export const fetchAllUsersController = async (req, res) => {
@@ -42,7 +43,7 @@ export const updateUserRatingController = async (req, res) => {
 export const updateUserInfoController = async (req, res) => {
   const queries = {
     bio: updateUserBioQuery,
-    
+    age: updateUserAgeQuery
   }
   try {
     const updatedInfo = {};
@@ -50,6 +51,9 @@ export const updateUserInfoController = async (req, res) => {
       if (key === 'username') {
         continue;
       } else {
+        if (key === "age" || key === "location") {
+          req.body[key] = Number(req.body[key]);
+        }
         let query = queries[key];
         let { rows } = await query(req.body);
         updatedInfo[key] = rows[0][key];

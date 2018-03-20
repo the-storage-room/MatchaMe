@@ -5,7 +5,8 @@ import {
   fetchSingleUserHelper,
   fetchMultipleUsersHelper,
   updateUserRatingHelper,
-  updateUserBioHelper
+  updateUserBioHelper,
+  updateUserAgeHelper
 } from './userSQLHelper';
 
 export const fetchAllUsersQuery = async (body) => {
@@ -43,6 +44,17 @@ export const updateUserRatingQuery = async (body) => {
 export const updateUserBioQuery = async (body) => {
   try {
     const queryString = await updateUserBioHelper(body);
+    const data = await db.query(queryString);
+    return data;
+  } catch (err) {
+
+  }
+};
+
+export const updateUserAgeQuery = async (body) => {
+  //console.log('getting called')
+  try {
+    const queryString = await updateUserAgeHelper(body);
     const data = await db.query(queryString);
     return data;
   } catch (err) {

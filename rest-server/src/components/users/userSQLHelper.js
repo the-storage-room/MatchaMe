@@ -32,5 +32,10 @@ export const updateUserBioHelper = (body) => {
 };
 
 export const updateUserAgeHelper = (body) => {
-  
-}
+  return `
+    UPDATE users 
+    SET age='${body.age}'
+    WHERE username='${body.username}'
+    RETURNING age
+  `;
+};
