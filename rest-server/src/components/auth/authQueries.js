@@ -18,11 +18,9 @@ export const loginQuery = async (body) => {
 
 export const signupQuery = async (body) => {
   try {
-    body.age = Number(body.age);
-    body.location = Number(body.location);
-    body.powerranking = Number(body.powerranking);
     const queryString = signupHelper(body);
     const data = await db.query(queryString);
+    console.log(body)
     return data;
   } catch (err) {
 

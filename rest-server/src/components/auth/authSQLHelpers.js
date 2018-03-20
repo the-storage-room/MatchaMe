@@ -11,12 +11,12 @@ export const signupHelper = (body) => {
     INSERT INTO users (
       username, 
       password, 
-      email, 
+      email 
     )
     VALUES (
       '${body.username}',
       '${body.password}',
-      '${body.email}',
+      '${body.email}'
     )
     RETURNING id, email, username
   `;
