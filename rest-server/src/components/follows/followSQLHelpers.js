@@ -16,14 +16,18 @@ export const fetchUnstarredMatchesHelper = () => {
   `;
 };
 
-export const starSingleMatchHelper = () => {
+export const starSingleMatchHelper = (body) => {
   return `
-  SELECT id, starred FROM follow
+  UPDATE follow
+  SET starred = ${body.starred}
+  WHERE matchid=${body.matchid}
   `;
 }
 
-export const unstarSingleMatchHelper = () => {
+export const unstarSingleMatchHelper = (body) => {
   return `
-  SELECT id, starred FROM follow
+  UPDATE follow
+  SET starred = ${body.starred}
+  WHERE matchid=${body.matchid}
   `;
 };
