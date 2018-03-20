@@ -4,6 +4,8 @@ import {
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
   updateUserRatingQuery,
+  updateUserInfoQuery,
+  updateUserRankingQuery
 } from './userQueries';
 import {
   updateUserInfoHelper
@@ -61,3 +63,12 @@ export const updateUserInfoController = async (req, res) => {
     throw new Error(err);
   }
 };
+
+export const updateUserRankingController = async (req, res) => {
+  try {
+    const data = updateUserRankingQuery(req.body)
+    res.status(200).send(data)
+  } catch (err) {
+    console.log('Error on updateUserRankingController')
+  }
+}

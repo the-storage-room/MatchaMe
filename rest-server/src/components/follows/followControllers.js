@@ -27,11 +27,11 @@ export const fetchUnstarredMatchesController = async (req, res) => {
 
 export const starSingleMatchController = async (req, res) => {
   try {
-    const data = await starSingleMatchQuery();
+    const data = await starSingleMatchQuery(req.body);
     console.log('Success on starSingleMatchController', data);
-    return res.status(200).send(data.rows);
+    return res.status(200).send(data);
   } catch (err) {
-    console.log('Error on starsingleMatchController', err)
+    console.log('Error on starSingleMatchController', err)
   }
 };
 

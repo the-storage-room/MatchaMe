@@ -31,13 +31,14 @@ export const updateUserInfoHelper = (setting, newInfo, username) => {
   `;
 };
 
-// !! Will implement later ->
-
-// export const updateUsernameHelper = (newUsername, oldUsername) => {
-//   return `
-//     UPDATE users
-//     SET username='${newUsername}'
-//     WHERE username='${oldUsername}'
-//     RETURNING username
-//   `;
-// }
+export const updateUserRankingHelper = () => {
+  return `
+    UPDATE user
+    SET powerranking = powerranking + '1'
+    FROM approve
+    INNER JOIN successfulMatch ON approve.matchid = successfulMatch.matchid
+    WHERE successfulMatch.isSuccessful = '1'
+    AND users.id = approved.userid
+    RETURNING *
+  `;
+};

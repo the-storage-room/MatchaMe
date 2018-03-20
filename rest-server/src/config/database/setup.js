@@ -1,13 +1,4 @@
-import db from './index.js';
-
-const dropFollowTable = async () => {
-  try {
-    await db.query(`DROP TABLE IF EXISTS Follow`);
-    console.log('successfully dropped Follow Table');
-  } catch (err) {
-    console.log('error dropping Follow Table ');
-  }
-};
+import db from './index';
 
 const dropSuccessfulMatchTable = async () => {
   try {
@@ -44,6 +35,15 @@ const dropMatchTable = async () => {
     console.log('error dropping Match Table ');
   }
 };
+
+const dropOutcomesTable = async () => {
+  try {
+    await db.query(`DROP TABLE IF EXISTS Outcomes`);
+    console.log('successfully dropped Outcomes Table');
+  } catch (err) {
+    console.log('error dropping Outcomes Table');
+  }
+}
 
 const dropRatingTable = async () => {
   try {
@@ -183,8 +183,6 @@ const createMatchTable = async () => {
         user2_id      INT NOT NULL ,
         approvedCount INT NOT NULL ,
         rejectedCount INT NOT NULL ,
-        usersApproved INT ARRAY NOT NULL ,
-        usersRejected INT ARRAY NOT NULL ,
         activeVoting  SMALLINT NOT NULL DEFAULT 0 ,
         CONSTRAINT PK_Match PRIMARY KEY (id),
         CONSTRAINT FK_User2_Match FOREIGN KEY (user1_id)
@@ -199,6 +197,30 @@ const createMatchTable = async () => {
     console.log('Error creating Match Table', err);
   }
 };
+
+const createOutcomesTable = async () => {
+  try {
+    await db.query(
+      `
+      CREATE TABLE IF NOT EXISTS Outcomes
+      (
+      id                SERIAL,
+      userId            INT NOT null,
+      matchId           INT NOT null,
+      starred           SMALLINT NOT NULL DEFAULT 0,
+      decision          VARCHAR(25) NOT NULL, 
+      CONSTRAINT FK_Outcomes_Users FOREIGN KEY (userId)
+        REFERENCES Users(id),
+      CONSTRAINT FK_Outcomes_Match FOREIGN KEY (matchId)
+        REFERENCES Match(id)
+      )
+      `
+    );
+    console.log('Successfully Created Outcomes Table')
+  } catch (err) {
+    console.log('Error creating Outcomes Table', err)
+  }
+}
 
 const createRatingTable = async () => {
   try {
@@ -243,30 +265,6 @@ const createPhotoTable = async () => {
     console.log('Successfully Created Photo Table');
   } catch (err) {
     console.log('Error creating Photo Table', err);
-  }
-};
-
-const createFollowTable = async () => {
-  try {
-    await db.query(
-      `
-      CREATE TABLE IF NOT EXISTS Follow
-      (
-        id      SERIAL ,
-        userId  INT NOT NULL ,
-        matchId INT NOT NULL ,
-        starred SMALLINT NOT NULL DEFAULT 0 ,
-        CONSTRAINT PK_Follow PRIMARY KEY (id),
-        CONSTRAINT FK_Users_Follow FOREIGN KEY (userId)
-          REFERENCES Users(id),
-        CONSTRAINT FK_Match_Follow FOREIGN KEY (matchId)
-          REFERENCES Match(id)
-      )
-      `
-    );
-    console.log('Successfully Created Follow Table');
-  } catch (err) {
-    console.log('Error creating Follow Table', err);
   }
 };
 
@@ -325,19 +323,19 @@ const setup = async () => {
   await dropPhotoTable();
   await dropRatingTable();
   await dropMatchTable();
+  await dropOutcomesTable();
   await dropUsersTagsTable();
   await dropCommentsTable();
   await dropSuccessfulMatchTable();
-  await dropFollowTable();
 
   await createDatabase();
   await createTagsTable();
   await createUsersTable();
   await createUsersTagsTable();
   await createMatchTable();
+  await createOutcomesTable();
   await createRatingTable();
   await createPhotoTable();
-  await createFollowTable();
   await createSuccessfulMatchTable();
   await createCommentTable();
 
