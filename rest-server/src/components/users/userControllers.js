@@ -1,12 +1,16 @@
-// import db from '../../config/database';
+import db from '../../config/database/index';
 import {
   fetchAllUsersQuery,
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
   updateUserRatingQuery,
-  updateUserBioQuery,
-  updateUserAgeQuery
 } from './userQueries';
+import {
+  updateUserBioHelper,
+  updateUserAgeHelper,
+  updateUserLocationHelper
+
+} from './userSQLHelper';
 
 export const fetchAllUsersController = async (req, res) => {
   try {
@@ -41,9 +45,10 @@ export const updateUserRatingController = async (req, res) => {
 };
 
 export const updateUserInfoController = async (req, res) => {
-  const queries = {
-    bio: updateUserBioQuery,
-    age: updateUserAgeQuery
+  const queryHelpers = {
+    bio: updateUserBioHelper,
+    age: updateUserAgeHelper,
+    location: updateUserLocationHelper,
   }
   try {
     const updatedInfo = {};
@@ -54,9 +59,12 @@ export const updateUserInfoController = async (req, res) => {
         if (key === "age" || key === "location") {
           req.body[key] = Number(req.body[key]);
         }
-        let query = queries[key];
-        let { rows } = await query(req.body);
-        updatedInfo[key] = rows[0][key];
+        let helper = queryHelpers[key];
+        
+        let queryString =  helper(req.body[key], req.body.username);
+        console.log(queryString)
+        let data = await db.query(queryString);
+        updatedInfo[key] = data.rows[0][key];
       };
     };
     res.status(200).send(updatedInfo);

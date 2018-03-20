@@ -22,20 +22,29 @@ export const updateUserRatingHelper = () => {
   `;
 }
 
-export const updateUserBioHelper = (body) => {
+export const updateUserBioHelper = (bio, username) => {
   return `
     UPDATE users 
-    SET bio='${body.bio}'
-    WHERE username='${body.username}'
+    SET bio='${bio}'
+    WHERE username='${username}'
     RETURNING bio
   `;
 };
 
-export const updateUserAgeHelper = (body) => {
+export const updateUserAgeHelper = (age, username) => {
   return `
     UPDATE users 
-    SET age='${body.age}'
-    WHERE username='${body.username}'
+    SET age='${age}'
+    WHERE username='${username}'
     RETURNING age
   `;
 };
+
+export const updateUserLocationHelper = (location, username) => {
+  return `
+    UPDATE users 
+    SET location='${location}'
+    WHERE username='${username}'
+    RETURNING location 
+  `
+}

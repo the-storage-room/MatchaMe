@@ -41,23 +41,8 @@ export const updateUserRatingQuery = async (body) => {
   }
 };
 
-export const updateUserBioQuery = async (body) => {
-  try {
-    const queryString = await updateUserBioHelper(body);
-    const data = await db.query(queryString);
-    return data;
-  } catch (err) {
+// Took the logic from the updateUserInfoQueries were doing
+  // and put it in a single controller function in userControllers.js
+    // ...saved a lot of duplicate code
+     // - jon
 
-  }
-};
-
-export const updateUserAgeQuery = async (body) => {
-  //console.log('getting called')
-  try {
-    const queryString = await updateUserAgeHelper(body);
-    const data = await db.query(queryString);
-    return data;
-  } catch (err) {
-
-  }
-};
