@@ -15,6 +15,7 @@ class Tags extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.setState({
       tags: tagsArr
     })

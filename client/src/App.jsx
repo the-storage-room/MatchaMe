@@ -32,7 +32,8 @@ class App extends Component {
           <Route path="/follows" component={Follows} />
           <Route path="/mymatch" component={MyMatch} />
           <Route path="/leaderboard" component={Leaderboard} />
-          <Route path="/account" component={Account} />
+          <Route path="/account/:page/:tagtype" component={Account} />
+          <Route path="/account/:page/" component={Account} />
           <Route path="/" component={LandingPage} />
         </Switch>
       </div>

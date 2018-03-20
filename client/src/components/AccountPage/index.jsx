@@ -14,23 +14,32 @@ class Account extends Component {
     super();
     this.state = {
       isFirstTimeUser: true,
-      currentPage: 1,
+      currentPage: null,
     };
+
+    this.tagtype;
   }
 
   onNextClick = () => {
-    let page = this.state.currentPage;
-    page++
-    this.setState({
-      currentPage: page
-    })
+
   }
 
+
   pages = {
-    1: <BioInfo />,
-    2: <Tags whoseTags="currentUser"/>,
-    3: <Tags whoseTags="idealMate"/>,
-    4: <PhotoUpload />
+    bio: <BioInfo />,
+    tags: "",
+    photoupload: <PhotoUpload />
+  }
+
+  componentWillMount() {
+  }
+  
+  componentDidMount() {
+    const { page, tagtype } = this.props.match.params
+    console.log(this.props)
+    this.setState({
+      currentPage: page,
+    })
   }
 
   render () {
