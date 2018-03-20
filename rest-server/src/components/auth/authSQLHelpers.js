@@ -1,8 +1,8 @@
 export const loginHelper = (body) => {
   return `
-    SELECT id, username, email
+    SELECT id, username, email, password
     FROM users
-    WHERE username='${body.username}'
+    WHERE email='${body.email}'
   `;
 };
 
