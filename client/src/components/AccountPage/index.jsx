@@ -15,34 +15,26 @@ class Account extends Component {
     this.state = {
       isFirstTimeUser: true,
       currentPage: null,
+      tagtype: null,
     };
-
-    this.tagtype;
-  }
-
-  onNextClick = () => {
-
-  }
-
-
-  pages = {
-    bio: <BioInfo />,
-    tags: "",
-    photoupload: <PhotoUpload />
   }
 
   componentWillMount() {
-  }
-  
-  componentDidMount() {
-    const { page, tagtype } = this.props.match.params
-    console.log(this.props)
+    const { page, tagtype } = this.props.match.params;
     this.setState({
       currentPage: page,
+      tagtype: tagtype
     })
   }
 
   render () {
+
+    let pages = {
+      bio: <BioInfo />,
+      tags: <Tags type={this.state.tagtype}/>,
+      photoupload: <PhotoUpload />
+    }
+
     return (
       <div>
         {
@@ -51,7 +43,7 @@ class Account extends Component {
           : <Navbar />
           }
         <div className={style.body}>
-          {this.pages[this.state.currentPage]}
+          {pages[this.state.currentPage]}
         <Button 
           className={style.nextBtn}
           text={'Next Button'}

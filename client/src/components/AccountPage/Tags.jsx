@@ -11,17 +11,19 @@ class Tags extends Component {
     super();
     this.state = {
       tags: [],
+      tagtype: '',
     };
   }
 
-  componentDidMount() {
-    console.log(this.props)
+  componentWillMount() {
     this.setState({
-      tags: tagsArr
+      tags: tagsArr,
+      tagtype: this.props.type
     })
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <div className={style.basicMargin}>
