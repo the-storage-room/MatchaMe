@@ -45,21 +45,12 @@ const dropMatchTable = async () => {
   }
 };
 
-const dropApprovedUsersTable = async () => {
+const dropOutcomesTable = async () => {
   try {
-    await db.query(`DROP TABLE IF EXISTS approvedUsers`);
-    console.log('successfully dropped approvedUsers Table');
+    await db.query(`DROP TABLE IF EXISTS Outcomes`);
+    console.log('successfully dropped Outcomes Table');
   } catch (err) {
-    console.log('error dropping approvedUsers Table');
-  }
-}
-
-const dropRejectedUsersTable = async () => {
-  try {
-    await db.query(`DROP TABLE IF EXISTS rejectedUsers`);
-    console.log('successfully dropped rejectedUsers Table');
-  } catch (err) {
-    console.log('error dropping rejectedUsers Table')
+    console.log('error dropping Outcomes Table');
   }
 }
 
@@ -215,7 +206,7 @@ const createMatchTable = async () => {
   }
 };
 
-const createApprovedUsersTable = async () => {
+const createOutcomesTable = async () => {
   try {
     await db.query(
       `
@@ -224,6 +215,8 @@ const createApprovedUsersTable = async () => {
       id                SERIAL,
       userId            INT NOT null,
       matchId           INT NOT null,
+      starred           SMALLINT NOT NULL DEFAULT 0
+      decision          VARCHAR(25) NOT NULL 
       CONSTRAINT FK_approvedUsers_Users FOREIGN KEY (userId)
           REFERENCES Users(id)
       )
@@ -232,26 +225,6 @@ const createApprovedUsersTable = async () => {
     console.log('Successfully Created approvedUsers Table')
   } catch (err) {
     console.log('Error creating approvedUsers Table', err)
-  }
-}
-
-const createRejectedUsersTable = async () => {
-  try {
-    await db.query(
-      `
-      CREATE TABLE IF NOT EXISTS rejectedUsers 
-      (
-        id              SERIAL,
-        userId          INT NOT null,
-        matchId         INT NOT null,
-        CONSTRAINT FK_rejectedUsers_Users FOREIGN KEY (userId)
-          REFERENCES Users(id)
-      )
-      `
-    );
-    console.log('Successfully Created rejectedUsers Table');
-  } catch (err) {
-    console.log('Error creating rejectedUsers Table', err)
   }
 }
 
@@ -380,8 +353,7 @@ const setup = async () => {
   await dropPhotoTable();
   await dropRatingTable();
   await dropMatchTable();
-  await dropApprovedUsersTable();
-  await dropRejectedUsersTable();
+  await dropOutcomesTable();
   await dropUsersTagsTable();
   await dropCommentsTable();
   await dropSuccessfulMatchTable();
@@ -392,8 +364,7 @@ const setup = async () => {
   await createUsersTable();
   await createUsersTagsTable();
   await createMatchTable();
-  await createApprovedUsersTable();
-  await createRejectedUsersTable();
+  await createOutcomesTable();
   await createRatingTable();
   await createPhotoTable();
   await createFollowTable();
