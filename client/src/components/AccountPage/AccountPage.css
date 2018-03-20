@@ -38,4 +38,15 @@
 .selected {
   background-color: black;
   color: white;
+  border: solid red 1px;
+  margin: 3px;
+  padding: 2px;
+}
+
+.selected:hover {
+  background-color: brown;
+}
+
+.selected:active {
+  background-color: rgb(184, 80, 80);
 }

@@ -11,9 +11,22 @@ class Tags extends Component {
     super();
     this.state = {
       tags: tagsArr,
-      user: ["Sport Enthusist", "Stoner", "Raver"],
-      mate: ["Religious", "Thoughtful", "Adventerous"],
+      user: [],
+      mate: [],
     };
+  }
+
+  addToTagArray = (tag) => {
+    let { type } = this.props
+    let array = this.state[type]
+    if (array.includes(tag)) {
+      array.splice(array.indexOf(tag), 1);
+    } else if (array.length < 3) {
+      array.push(tag)
+    } 
+    this.setState({
+      type: array
+    })
   }
 
   render() {
@@ -28,8 +41,9 @@ class Tags extends Component {
         <div className={style.basicMargin}>
           {
             this.state.tags.map((tag) => {
-              let selected = this.state[this.props.type].includes(tag)
-              return <TagItem tag={tag} key={tag} selected={selected}/>
+              let { type } = this.props
+              let selected = this.state[type].includes(tag)
+              return <TagItem tag={tag} key={tag} selected={selected} onClick={this.addToTagArray} />
             })
           }
         </div>
