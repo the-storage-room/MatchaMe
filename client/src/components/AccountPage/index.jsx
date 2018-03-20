@@ -14,7 +14,7 @@ class Account extends Component {
     super();
     this.state = {
       isFirstTimeUser: true,
-      currentPage: null,
+      currentPage: 'bio',
       tagtype: null,
     };
   }
@@ -26,16 +26,13 @@ class Account extends Component {
     '/account/photoupload': '/dashboard'
   }
 
-  onNextClick = async () => {
-    let currentLocation = this.props.location.pathname
-    await this.props.history.push(this.nextPage[currentLocation])
-    if (currentLocation !== '/account/photoupload') {
-      this.setInitialState()
-    }
+  onNextClick = () => {
+    let { pathname } = this.props.location;
+    this.props.history.push(this.nextPage[pathname])
   }
 
   setInitialState = () => {
-    const { page, tagtype } = this.props.match.params;
+    let { page, tagtype } = this.props.match.params;
     this.setState({
       currentPage: page,
       tagtype: tagtype
@@ -49,7 +46,7 @@ class Account extends Component {
   render () {
     let pages = {
       bio: <BioInfo />,
-      tags: <Tags type={this.state.tagtype}/>,
+      tags: <Tags type={this.props.match.params.tagtype}/>,
       photoupload: <PhotoUpload />
     }
 
@@ -61,7 +58,7 @@ class Account extends Component {
           : <Navbar />
           }
         <div className={style.body}>
-          {pages[this.state.currentPage]}
+          {pages[this.props.match.params.page]}
         <Button 
           className={style.nextBtn}
           text={'Next Button'}

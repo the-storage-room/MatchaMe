@@ -1,39 +1,37 @@
 
 import React, { Component } from 'react';
 
-import style from './AccountPage.css';
-
 import tagsArr from './tagsArr';
+import TagItem from './TagItem.jsx'
+import style from './AccountPage.css';
 
 
 class Tags extends Component {
   constructor() {
     super();
     this.state = {
-      tags: [],
-      tagtype: '',
+      tags: tagsArr,
+      user: ["Sport Enthusist", "Stoner", "Raver"],
+      mate: ["Religious", "Thoughtful", "Adventerous"],
     };
   }
 
-  componentWillMount() {
-    this.setState({
-      tags: tagsArr,
-      tagtype: this.props.type
-    })
-  }
-
   render() {
-    console.log(this.state)
     return (
       <div>
         <div className={style.basicMargin}>
-          Describe yourself:
+          Tag Picker!
         </div>
         <div className={style.basicMargin}>
-          Describe your IDEAL mate:
+          Pick 3 Tags to Describe {this.props.type === 'user' ? 'YOURSELF' : 'YOUR IDEAL MATCH'}
         </div>
         <div className={style.basicMargin}>
-          Box of Tags
+          {
+            this.state.tags.map((tag) => {
+              let selected = this.state[this.props.type].includes(tag)
+              return <TagItem tag={tag} key={tag} selected={selected}/>
+            })
+          }
         </div>
       </div>
     )

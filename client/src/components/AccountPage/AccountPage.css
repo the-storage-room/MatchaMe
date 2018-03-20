@@ -7,6 +7,10 @@
   margin: auto;
 }
 
+.basicMargin {
+  margin: 10px;
+}
+
 .nextBtn {
   display: flex;
   max-height: 75px;
@@ -15,4 +19,23 @@
   justify-content: center;
   align-self: right flex-end;
   border-style: solid;
+}
+
+.tag {
+  border: solid black 1px;
+  margin: 3px;
+  padding: 2px;
+}
+
+.tag:hover {
+  background-color: brown;
+}
+
+.tag:active {
+  background-color: rgb(184, 80, 80);
+}
+
+.selected {
+  background-color: black;
+  color: white;
 }
