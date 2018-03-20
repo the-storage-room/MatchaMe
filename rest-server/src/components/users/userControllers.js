@@ -6,11 +6,7 @@ import {
   updateUserRatingQuery,
 } from './userQueries';
 import {
-  updateUserBioHelper,
-  updateUserAgeHelper,
-  updateUserLocationHelper,
-  updateUserGenderHelper,
-  updateUserPreference
+  updateUserInfoHelper
 } from './userSQLHelper';
 
 export const fetchAllUsersController = async (req, res) => {
@@ -46,13 +42,6 @@ export const updateUserRatingController = async (req, res) => {
 };
 
 export const updateUserInfoController = async (req, res) => {
-  const queryHelpers = {
-    bio: updateUserBioHelper,
-    age: updateUserAgeHelper,
-    location: updateUserLocationHelper,
-    gender: updateUserGenderHelper,
-    preference: updateUserPreference
-  }
   try {
     const updatedInfo = {};
     for (let key in req.body) {
@@ -62,15 +51,11 @@ export const updateUserInfoController = async (req, res) => {
         if (key === "age" || key === "location" || key === "gender" || key === "preference") {
           req.body[key] = Number(req.body[key]);
         }
-        let helper = queryHelpers[key];
-        
-        let queryString =  helper(req.body[key], req.body.username);
-        console.log(queryString)
+        let queryString =  updateUserInfoHelper(key, req.body[key], req.body.username);
         let data = await db.query(queryString);
         updatedInfo[key] = data.rows[0][key];
       };
     };
-    console.log(updatedInfo)
     res.status(200).send(updatedInfo);
   } catch (err) {
     throw new Error(err);

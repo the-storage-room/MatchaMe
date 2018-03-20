@@ -22,12 +22,12 @@ export const updateUserRatingHelper = () => {
   `;
 }
 
-export const updateUserBioHelper = (bio, username) => {
+export const updateUserInfoHelper = (setting, newInfo, username) => {
   return `
     UPDATE users 
-    SET bio='${bio}'
+    SET ${setting}='${newInfo}'
     WHERE username='${username}'
-    RETURNING bio
+    RETURNING ${setting}
   `;
 };
 
@@ -46,7 +46,7 @@ export const updateUserLocationHelper = (location, username) => {
     SET location='${location}'
     WHERE username='${username}'
     RETURNING location 
-  `
+  `;
 };
 
 export const updateUserGenderHelper = (gender, username) => {
@@ -55,14 +55,40 @@ export const updateUserGenderHelper = (gender, username) => {
     SET gender='${gender}'
     WHERE username='${username}'
     RETURNING gender
-  `
+  `;
 };
 
-export const updateUserPreference = (preference, username) => {
+export const updateUserPreferenceHelper = (preference, username) => {
   return `
     UPDATE users 
     SET preference='${preference}'
     WHERE username='${username}'
     RETURNING preference
-  `
+  `;
 };
+
+export const updateUserEmailHelper = (email, username) => {
+  return `
+    UPDATE users
+    SET email='${email}
+    WHERE username='${username}
+    RETURNING email
+  `;
+};
+
+export const updateFirstNameHelper = (firstName, username) => {
+  return `
+    UPDATE users
+  `;
+};
+
+// !! Will implement later ->
+
+// export const updateUsernameHelper = (newUsername, oldUsername) => {
+//   return `
+//     UPDATE users
+//     SET username='${newUsername}'
+//     WHERE username='${oldUsername}'
+//     RETURNING username
+//   `;
+// }
