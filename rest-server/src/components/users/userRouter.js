@@ -22,7 +22,7 @@ router.route('/fetchMultipleUsers/:userId')
 router.route('/updateUserRating')
   .put(updateUserRatingController);
 
-router.route('/updateUserInfo/:username')
+router.route('/updateUserInfo')
   .put(updateUserInfoController);
 
 export default router;

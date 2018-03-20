@@ -9,8 +9,8 @@ import {
   updateUserBioHelper,
   updateUserAgeHelper,
   updateUserLocationHelper,
-  updateUserGenderHelper
-
+  updateUserGenderHelper,
+  updateUserPreference
 } from './userSQLHelper';
 
 export const fetchAllUsersController = async (req, res) => {
@@ -50,7 +50,8 @@ export const updateUserInfoController = async (req, res) => {
     bio: updateUserBioHelper,
     age: updateUserAgeHelper,
     location: updateUserLocationHelper,
-    gender: updateUserGenderHelper
+    gender: updateUserGenderHelper,
+    preference: updateUserPreference
   }
   try {
     const updatedInfo = {};
@@ -58,7 +59,7 @@ export const updateUserInfoController = async (req, res) => {
       if (key === 'username') {
         continue;
       } else {
-        if (key === "age" || key === "location") {
+        if (key === "age" || key === "location" || key === "gender" || key === "preference") {
           req.body[key] = Number(req.body[key]);
         }
         let helper = queryHelpers[key];

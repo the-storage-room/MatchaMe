@@ -58,3 +58,11 @@ export const updateUserGenderHelper = (gender, username) => {
   `
 };
 
+export const updateUserPreference = (preference, username) => {
+  return `
+    UPDATE users 
+    SET preference='${preference}'
+    WHERE username='${username}'
+    RETURNING preference
+  `
+};
