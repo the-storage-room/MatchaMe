@@ -6,8 +6,6 @@ import {
   fetchMultipleUsersController,
   updateUserRatingController,
   updateUserInfoController,
-  fetchUserRankingController,
-  updateUserRankingController
 } from './userControllers';
 
 const router = express.Router();

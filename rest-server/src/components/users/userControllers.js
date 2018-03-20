@@ -5,8 +5,6 @@ import {
   fetchMultipleUsersQuery,
   updateUserRatingQuery,
   updateUserInfoQuery,
-  fetchUserRankingQuery,
-  updateUserRankingQuery
 } from './userQueries';
 import {
   updateUserInfoHelper

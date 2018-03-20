@@ -6,8 +6,6 @@ import {
   fetchMultipleUsersHelper,
   updateUserRatingHelper,
   updateUserInfoHelper,
-  fetchUserRankingHelper,
-  updateUserRankingHelper
 } from './userSQLHelper';
 
 export const fetchAllUsersQuery = async (body) => {
