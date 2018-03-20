@@ -1,14 +1,5 @@
 import db from './index';
 
-const dropFollowTable = async () => {
-  try {
-    await db.query(`DROP TABLE IF EXISTS Follow`);
-    console.log('successfully dropped Follow Table');
-  } catch (err) {
-    console.log('error dropping Follow Table ');
-  }
-};
-
 const dropSuccessfulMatchTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS SuccessfulMatch`);
@@ -276,30 +267,6 @@ const createPhotoTable = async () => {
   }
 };
 
-const createFollowTable = async () => {
-  try {
-    await db.query(
-      `
-      CREATE TABLE IF NOT EXISTS Follow
-      (
-        id      SERIAL ,
-        userId  INT NOT NULL ,
-        matchId INT NOT NULL ,
-        starred SMALLINT NOT NULL DEFAULT 0 ,
-        CONSTRAINT PK_Follow PRIMARY KEY (id),
-        CONSTRAINT FK_Users_Follow FOREIGN KEY (userId)
-          REFERENCES Users(id),
-        CONSTRAINT FK_Match_Follow FOREIGN KEY (matchId)
-          REFERENCES Match(id)
-      )
-      `
-    );
-    console.log('Successfully Created Follow Table');
-  } catch (err) {
-    console.log('Error creating Follow Table', err);
-  }
-};
-
 const createSuccessfulMatchTable = async () => {
   try {
     await db.query(
@@ -359,7 +326,6 @@ const setup = async () => {
   await dropUsersTagsTable();
   await dropCommentsTable();
   await dropSuccessfulMatchTable();
-  await dropFollowTable();
 
   await createDatabase();
   await createTagsTable();
@@ -369,7 +335,6 @@ const setup = async () => {
   await createOutcomesTable();
   await createRatingTable();
   await createPhotoTable();
-  await createFollowTable();
   await createSuccessfulMatchTable();
   await createCommentTable();
 
