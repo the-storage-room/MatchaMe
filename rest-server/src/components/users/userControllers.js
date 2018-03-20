@@ -8,7 +8,8 @@ import {
 import {
   updateUserBioHelper,
   updateUserAgeHelper,
-  updateUserLocationHelper
+  updateUserLocationHelper,
+  updateUserGenderHelper
 
 } from './userSQLHelper';
 
@@ -49,6 +50,7 @@ export const updateUserInfoController = async (req, res) => {
     bio: updateUserBioHelper,
     age: updateUserAgeHelper,
     location: updateUserLocationHelper,
+    gender: updateUserGenderHelper
   }
   try {
     const updatedInfo = {};
@@ -67,6 +69,7 @@ export const updateUserInfoController = async (req, res) => {
         updatedInfo[key] = data.rows[0][key];
       };
     };
+    console.log(updatedInfo)
     res.status(200).send(updatedInfo);
   } catch (err) {
     throw new Error(err);

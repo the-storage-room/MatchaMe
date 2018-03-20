@@ -47,4 +47,14 @@ export const updateUserLocationHelper = (location, username) => {
     WHERE username='${username}'
     RETURNING location 
   `
-}
+};
+
+export const updateUserGenderHelper = (gender, username) => {
+  return `
+    UPDATE users
+    SET gender='${gender}'
+    WHERE username='${username}'
+    RETURNING gender
+  `
+};
+

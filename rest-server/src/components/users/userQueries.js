@@ -41,7 +41,7 @@ export const updateUserRatingQuery = async (body) => {
   }
 };
 
-// Took the logic from the updateUserInfoQueries were doing
+// I took the logic from the updateUserInfoQueries were doing
   // and put it in a single controller function in userControllers.js
     // ...saved a lot of duplicate code
      // - jon
