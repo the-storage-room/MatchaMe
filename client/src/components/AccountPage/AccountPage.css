@@ -10,3 +10,41 @@
 .basicMargin {
   margin: 10px;
 }
+
+.targetBox {
+  width: 500px;
+  height: 400px;
+  float: left;
+  overflow: hidden;
+  border: solid black 1px;
+  margin: 5px;
+}
+
+.target {
+  display: block;
+  height: 400px;
+  margin: auto;
+}
+
+.smallImageBox{
+  width: 100px;
+  height:75px;
+  float: left;
+  overflow: hidden;
+  border: solid black 1px;
+  margin: 5px;
+}
+
+.smallImage {
+  height: 75px;
+  display: block;
+  margin: auto;
+}
+
+.photoPage {
+  width: 600px;
+}
+
+.smallImageHolder{
+  margin-left: 15px;
+}

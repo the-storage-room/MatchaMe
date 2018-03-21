@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import TargetPhoto from './TargetPhoto.jsx';
+import PhotoItem from './PhotoItem.jsx'
+import style from './AccountPage.css'
+
 const S3_SERVER_URL = process.env.S3_SERVER_URL;
 
 class PhotoUpload extends Component {
@@ -8,6 +12,15 @@ class PhotoUpload extends Component {
     super();
     this.state = {
         file: null,
+        userId: 102032134123523,
+        userPhotos: [
+          'https://s3-us-west-1.amazonaws.com/ajjjthesis/azrael.jpg1521649554118',
+          'https://s3-us-west-1.amazonaws.com/ajjjthesis/2017fordfusion-factsheet.jpg1521649496626',
+          'https://s3-us-west-1.amazonaws.com/ajjjthesis/6s2w1zHIv_k.jpg1521615210130',
+          'https://s3-us-west-1.amazonaws.com/ajjjthesis/jacten1521651049116',
+        ],
+        username: 'jacten',
+        targetPhoto: 0,
     };
   }
 
@@ -18,7 +31,8 @@ class PhotoUpload extends Component {
   handleSubmit = async () => {
     const formData = new FormData();
     formData.append('file', this.state.file);
-    formData.append('filename', 'JackTest');
+    formData.append('userId', this.state.userId);
+    formData.append('username', this.state.username);
     try {
       const data = await axios.post(`${S3_SERVER_URL}/api/s3`, formData)
       console.log(data.data)
@@ -29,19 +43,35 @@ class PhotoUpload extends Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <label>
-          Upload:
-            <input
-              type="file"
-              onChange={this.handleUploadChange}
-            />
-          </label>
-        </form>
-        <button onClick={this.handleSubmit}>
-          Submit
-        </button>
+      <div className = {style.photoPage}>
+        <div className={style.basicMargin}>
+          <form>
+            <label>
+            Upload:
+              <input
+                type="file"
+                onChange={this.handleUploadChange}
+              />
+            </label>
+          </form>
+          <button onClick={this.handleSubmit}>
+            Submit
+          </button>
+        </div>
+        <div className={style.basicMargin}>
+          <TargetPhoto photo={this.state.userPhotos[this.state.targetPhoto]}/>
+        </div>
+        <div className={style.smallImageHolder}>
+          {
+            this.state.userPhotos
+              .map(photo => 
+                <PhotoItem
+                key={photo}
+                photo={photo}
+                />
+              )
+          }
+        </div>
       </div>
     )
   }

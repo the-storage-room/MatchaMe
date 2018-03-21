@@ -10,26 +10,27 @@ const s3 = new AWS.S3();
 
 exports.deletePhoto = (bucketName, keyName, cb ) => {
   s3.deleteObjects({
-      Bucket: bucketName, 
-      Key: keyName 
-    }, (err, data) => {
-      if (err) {
-        console.error(`error deleting key: ${keyName} in bucket: ${bucketName}`, err );
-      }
+    Bucket: bucketName, 
+    Key: keyName 
+  }, (err, data) => {
+    if (err) {
+      console.error(`error deleting key: ${keyName} in bucket: ${bucketName}`, err );
+    }
     cb(data);
   });
 }
 
 exports.addPhoto = (bucket, file, filename, cb) => {
-  console.log(filename)
   s3.upload({
     Bucket: bucket,
     Key: filename,
     Body: file.data,
     ACL: 'public-read',
     ContentType: 'image/png'
-  }, (data) => {
-    console.log('Successfully uploaded photo.');
+  }, (err, data) => {
+    if (err) {
+      console.error(`error uploading photo: ${filename}`, err)
+    }
     cb(data)
   });
 }

@@ -5,13 +5,13 @@ const { BUCKET , REST_SERVER_URL} = process.env;
 
 module.exports = {
   addPhoto: async (input, cb) => {
-    const filename = generateNewFileName(input.files.file.name)
+    const filename = generateNewFileName(input.body.username)
     const url = `https://s3-us-west-1.amazonaws.com/${process.env.BUCKET}/${filename}`;
     try {
       await s3service.addPhoto(BUCKET, input.files.file, filename, (data) => {
         cb(data);
       })
-      await axios.post(`${REST_SERVER_URL}/api/photos/addPhoto`, {url: url});
+      await axios.post(`${REST_SERVER_URL}/api/photos/addPhoto`, {url: url, userId: input.body.userId});
     } catch (err) {
       console.error(err)
     }
