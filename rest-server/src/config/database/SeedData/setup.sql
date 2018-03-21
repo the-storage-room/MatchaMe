@@ -90,3 +90,14 @@ insert into outcomes (id, userid, matchid, decision) values (47, 25, 13, 'reject
 insert into outcomes (id, userid, matchid, decision) values (48, 20, 14, 'rejected');
 insert into outcomes (id, userid, matchid, decision) values (49, 19, 5, 'rejected');
 insert into outcomes (id, userid, matchid, decision) values (50, 10, 15, 'rejected');
+
+insert into stagetwo (id, matchid) values (2, 12);
+insert into stagetwo (id, matchid) values (3, 8);
+insert into stagetwo (id, matchid) values (4, 12);
+insert into stagetwo (id, matchid) values (5, 6);
+insert into stagetwo (id, matchid) values (6, 13);
+insert into stagetwo (id, matchid) values (1, 9);
+insert into stagetwo (id, matchid) values (7, 6);
+insert into stagetwo (id, matchid) values (8, 1);
+insert into stagetwo (id, matchid) values (9, 8);
+insert into stagetwo (id, matchid) values (10, 1);
