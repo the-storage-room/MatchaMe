@@ -19,7 +19,6 @@ export const loginController = async (req, res) => {
     const { id, email } = rows[0];
     const token = await generateToken(id, email);
     rows[0].token = token.accessToken;
-    console.log(rows[0])
     return res.status(200).send(rows[0]);
   } catch (err) {
     throw new Error(err);

@@ -18,7 +18,7 @@ const localOptions = {
 };
 
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: process.env.TOKEN_SECRET
 };
 
@@ -41,13 +41,5 @@ passport.use(new LocalStrategy(localOptions, async (username, password, done) =>
     return done(err);
   }
 }));
-
-// passport.use(new JwtStrategy(jwtOptions, async (jwt_payload, done) => {
-//   try {
-//    
-//   } catch (err) {
-//     return done(err);
-//   }
-// }));
 
 export default passport;
