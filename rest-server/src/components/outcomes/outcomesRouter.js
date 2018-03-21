@@ -9,9 +9,11 @@ import {
 
 const router = express.Router();
 
-router.route('/fetchStarredMatches').get(fetchStarredMatchesController);
+router.route('/fetchStarredMatches/:userId').get(fetchStarredMatchesController);
 
-router.route('/fetchUnstarredMatches').get(fetchUnstarredMatchesController);
+router
+  .route('/fetchUnstarredMatches/:userId')
+  .get(fetchUnstarredMatchesController);
 
 router
   .route('/starSingleMatch')

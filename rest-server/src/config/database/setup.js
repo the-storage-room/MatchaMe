@@ -43,7 +43,7 @@ const dropOutcomesTable = async () => {
   } catch (err) {
     console.log('error dropping Outcomes Table');
   }
-}
+};
 
 const dropRatingTable = async () => {
   try {
@@ -216,11 +216,11 @@ const createOutcomesTable = async () => {
       )
       `
     );
-    console.log('Successfully Created Outcomes Table')
+    console.log('Successfully Created Outcomes Table');
   } catch (err) {
-    console.log('Error creating Outcomes Table', err)
+    console.log('Error creating Outcomes Table', err);
   }
-}
+};
 
 const createRatingTable = async () => {
   try {
@@ -268,7 +268,7 @@ const createPhotoTable = async () => {
   }
 };
 
-const createSuccessfulMatchTable = async () => {
+const createStageTwoTable = async () => {
   try {
     await db.query(
       `
@@ -276,7 +276,6 @@ const createSuccessfulMatchTable = async () => {
       (
         id           SERIAL ,
         matchId      INT NOT NULL ,
-        dateCreated  DATE NOT NULL ,
         isSuccessful SMALLINT NOT NULL DEFAULT 0 ,
         active       SMALLINT NOT NULL DEFAULT 1 ,
         CONSTRAINT PK_SuccessfulMatch PRIMARY KEY (id),

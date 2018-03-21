@@ -5,6 +5,8 @@ import {
 
 import { addOutcomeQuery } from '../outcomes/outcomesQueries';
 
+import { addSuccessfulMatchQuery } from '../stageTwo/stageTwoQueries';
+
 // fetch multiple matches to vote on, based on user params
 export const fetchPendingMatchmakingController = async (req, res) => {
   try {
@@ -16,13 +18,16 @@ export const fetchPendingMatchmakingController = async (req, res) => {
 
 // approve or disapprove a match
 export const updateMatchmakingController = async (req, res) => {
-  const { decision } = req.body;
-  const { approvedcount, rejectedcount } = await updateMatchmakingQuery(
-    req.body
-  );
-  const data = await addOutcomeQuery(req.body);
-  res.send();
   try {
+    const { decision } = req.body;
+    const { approvedcount, rejectedcount } = await updateMatchmakingQuery(
+      req.body
+    );
+    const data = await addOutcomeQuery(req.body);
+    if (approvedcount + rejectedcount > 5 && approvedcount > rejectedcount) {
+      const test = await addSuccessfulMatchQuery(req.body);
+    }
+    res.send();
   } catch (err) {
     console.log(err);
   }
