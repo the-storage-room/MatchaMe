@@ -15,10 +15,11 @@ import {
 export const loginController = async (req, res) => {
   try {
     const { rows } = await loginQuery(req.body);
+    delete rows[0].password;
     const { id, email } = rows[0];
     const token = await generateToken(id, email);
-    rows[0].token = token.accessToken;
-    return res.status(200).send(rows[0]);
+    rows[0].token = token;
+    return res.status(200).header(`Authorization: bearer ${JSON.stringify(token.accessToken)}`).send(rows[0]);
   } catch (err) {
     throw new Error(err);
   }
@@ -26,14 +27,12 @@ export const loginController = async (req, res) => {
 
 export const signupController = async (req, res) => {
   try {
-    
     req.body.password = await hashPassword(req.body.password);
     const { rows } = await signupQuery(req.body);
-    //console.log(rows)
-    const { id, email } = rows[0];
-    const token = await generateToken(id, email);
+    const { id, username } = rows[0];
+    const token = await generateToken(id, username);
     rows[0].token = token.accessToken;
-    return res.status(200).send(rows[0])
+    return res.status(200).header(`Authorization: bearer ${JSON.stringify(token.accessToken)}`).send(rows[0]);
   } catch (err) {
     throw new Error(err);
   }

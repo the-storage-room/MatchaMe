@@ -20,7 +20,6 @@ export const signupQuery = async (body) => {
   try {
     const queryString = signupHelper(body);
     const data = await db.query(queryString);
-    console.log(data);
     return data;
   } catch (err) {
 

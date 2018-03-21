@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './index.css';
 
@@ -23,20 +24,21 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/rate" component={Rate} />
-          <Route path="/matchmaker" component={MatchMaker} />
-          <Route path="/follows" component={Follows} />
-          <Route path="/mymatch" component={MyMatch} />
-          <Route path="/leaderboard" component={Leaderboard} />
-          <Route path="/account/:page(tags)/:tagtype(user|mate)" component={Account} />
-          <Route path="/account/:page(bio|photoupload)" component={Account} />
-          <Route path="/" component={LandingPage} />
-        </Switch>
-      </div>
+        <MuiThemeProvider>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/rate" component={Rate} />
+            <Route path="/matchmaker" component={MatchMaker} />
+            <Route path="/follows" component={Follows} />
+            <Route path="/mymatch" component={MyMatch} />
+            <Route path="/leaderboard" component={Leaderboard} />
+            <Route path="/account" component={Account} />
+            <Route path="/" component={LandingPage} />
+          </Switch>
+        </MuiThemeProvider>
+        </div>
     );
   }
 }

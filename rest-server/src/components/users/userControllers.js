@@ -38,7 +38,8 @@ export const fetchMultipleUsersController = async (req, res) => {
 
 export const updateUserRatingController = async (req, res) => {
   try {
-
+    await updateUserRatingQuery(req.body);
+    return res.status(200).send('success');
   } catch (err) {
 
   }

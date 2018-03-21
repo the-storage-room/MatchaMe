@@ -19,10 +19,10 @@ class Login extends Component {
   
 
   submitAuthData = async (e) => {
+    const { username, password } = this.state;
     e.preventDefault();
     const body = {
       username,
-      email, 
       password
     };
     try {
@@ -30,8 +30,9 @@ class Login extends Component {
       localStorage.setItem('id', data.data.id);
       localStorage.setItem('email', data.data.email);
       localStorage.setItem('token', data.data.token);
-      data ? this.props.history.push('/dashboard') : this.props.history.push('/login');
       console.log(localStorage);
+      data ? this.props.history.push('/dashboard') : this.props.history.push('/login');
+      
     } catch (err) {
       throw new Error(err);
     }
@@ -50,13 +51,6 @@ class Login extends Component {
             name="username"
             type="text"
             placeholder="Enter username"
-            onChange={this.handleInputChange}
-          /> <br />
-          <span> or </span> <br />
-          <Input 
-            name="email"
-            type="text"
-            placeholder="Enter e-mail"
             onChange={this.handleInputChange}
           /> <br />
           <Input 

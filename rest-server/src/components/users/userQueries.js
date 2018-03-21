@@ -39,9 +39,11 @@ export const fetchMultipleUsersQuery = async (body) => {
 
 export const updateUserRatingQuery = async (body) => {
   try {
-    
+    const queryString = updateUserRatingHelper(body);
+    const data = await db.query(queryString);
+    return data;
   } catch (err) {
-
+    throw new Error(err);
   }
 };
 // I took the logic from the updateUserInfoQueries were doing

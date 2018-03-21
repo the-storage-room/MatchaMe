@@ -12,13 +12,15 @@ export const fetchSingleUserHelper = () => {
 
 export const fetchMultipleUsersHelper = () => {
   return `
-  
+
   `;
 };
 
-export const updateUserRatingHelper = () => {
+export const updateUserRatingHelper = ({ id, attractiveness }) => {
   return `
-  
+    UPDATE users
+    SET attractiveness=${attractiveness}
+    WHERE id=${id}
   `;
 }
 

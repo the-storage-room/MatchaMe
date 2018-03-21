@@ -7,7 +7,7 @@ import {
 const hashPassword = async (password) => {
   const salt = await genSalt(JSON.parse(process.env.SALT_ROUNDS));
   const hashed = await hash(password, salt);
-  return salt;
+  return hashed;
 };
 
 const comparePasswords = async (password, hash) => {
@@ -17,4 +17,3 @@ const comparePasswords = async (password, hash) => {
 
 module.exports.hashPassword = hashPassword;
 module.exports.comparePasswords = comparePasswords;
-
