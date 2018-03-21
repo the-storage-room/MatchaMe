@@ -1,11 +1,11 @@
 import db from './index';
 
-const dropSuccessfulMatchTable = async () => {
+const dropStageTwoTable = async () => {
   try {
-    await db.query(`DROP TABLE IF EXISTS SuccessfulMatch`);
-    console.log('successfully dropped SuccessfulMatch Table');
+    await db.query(`DROP TABLE IF EXISTS StageTwo`);
+    console.log('successfully dropped StageTwo Table');
   } catch (err) {
-    console.log('error dropping SuccessfulMatch Table ');
+    console.log('error dropping StageTwo Table ');
   }
 };
 
@@ -190,9 +190,9 @@ const createMatchTable = async () => {
         id            SERIAL ,
         user1_id      INT NOT NULL ,
         user2_id      INT NOT NULL ,
-        approvedCount INT NOT NULL ,
-        rejectedCount INT NOT NULL ,
-        activeVoting  SMALLINT NOT NULL DEFAULT 0 ,
+        approvedCount INT DEFAULT 0 ,
+        rejectedCount INT DEFAULT 0 ,
+        activeVoting  SMALLINT DEFAULT 1 ,
         CONSTRAINT PK_Match PRIMARY KEY (id),
         CONSTRAINT FK_User2_Match FOREIGN KEY (user1_id)
           REFERENCES Users(id),
@@ -336,7 +336,7 @@ const setup = async () => {
   await dropOutcomesTable();
   await dropUsersTagsTable();
   await dropCommentsTable();
-  await dropSuccessfulMatchTable();
+  await dropStageTwoTable();
 
   await createDatabase();
   await createTagsTable();
