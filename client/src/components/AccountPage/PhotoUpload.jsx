@@ -14,11 +14,11 @@ class PhotoUpload extends Component {
         file: null,
         userId: 102032134123523,
         userPhotos: [
-          'https://s3-us-west-1.amazonaws.com/ajjjthesis/azrael.jpg1521649554118',
-          'https://s3-us-west-1.amazonaws.com/ajjjthesis/2017fordfusion-factsheet.jpg1521649496626',
-          'https://s3-us-west-1.amazonaws.com/ajjjthesis/6s2w1zHIv_k.jpg1521615210130',
-          'https://s3-us-west-1.amazonaws.com/ajjjthesis/Bentley+Bentayga++.jpg1521649326452',
-          'https://s3-us-west-1.amazonaws.com/ajjjthesis/09172015_3578.jpg1521614906951'
+          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/azrael.jpg1521649554118', id: 12315527224, primary: 0},
+          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/2017fordfusion-factsheet.jpg1521649496626', id: 123124, primary: 0},
+          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/6s2w1zHIv_k.jpg1521615210130', id: 12317542724, primary: 0},
+          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/Bentley+Bentayga++.jpg1521649326452', id: 12334234124, primary: 1},
+          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/09172015_3578.jpg1521614906951', id: 123142342424, primary: 0},
         ],
         username: 'jacten',
         targetPhoto: 0,
@@ -42,6 +42,26 @@ class PhotoUpload extends Component {
     }
   }
 
+  handleLittlePhotoClick = (photo) => {
+    this.setState({
+      targetPhoto: photo
+    })
+  }
+
+  componentDidMount = () => {
+    this.state.userPhotos
+      .forEach((photoObj) => {
+        if (photoObj.primary === 1) {
+          this.setState({
+            targetPhoto: photoObj
+          })
+        }
+      })
+  }
+
+  componentDidUpdate = () => {
+    this.props.renderButton(!!this.state.userPhotos.length)
+  }
   render() {
     return (
       <div className = {style.photoPage}>
@@ -60,15 +80,16 @@ class PhotoUpload extends Component {
           </button>
         </div>
         <div className={style.basicMargin}>
-          <TargetPhoto photo={this.state.userPhotos[this.state.targetPhoto]}/>
+          <TargetPhoto photo={this.state.targetPhoto}/>
         </div>
         <div className={style.smallImageHolder}>
           {
             this.state.userPhotos
               .map(photo => 
                 <PhotoItem
-                key={photo}
+                key={photo.id}
                 photo={photo}
+                onClick={() => this.handleLittlePhotoClick(photo)}
                 />
               )
           }

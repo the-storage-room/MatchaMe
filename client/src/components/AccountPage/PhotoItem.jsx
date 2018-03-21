@@ -2,12 +2,15 @@ import React from 'react';
 
 import style from './AccountPage.css';
 
-const PhotoItem = ({ photo }) => {
+const PhotoItem = ({ photo, onClick }) => {
   return (
-    <div className={style.smallImageBox}>
+    <div
+      className={style.smallImageBox}
+      onClick={onClick}
+      >
       <img 
         className={style.smallImage}
-        src={photo}
+        src={photo.url}
         />
     </div>
   );

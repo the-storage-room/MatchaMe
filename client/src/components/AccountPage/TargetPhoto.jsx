@@ -7,7 +7,7 @@ const TargetPhoto = ({ photo }) => {
     <div className={style.targetBox}>
       <img 
         className={style.target}
-        src={photo}
+        src={photo.url}
         />
     </div>
   );
