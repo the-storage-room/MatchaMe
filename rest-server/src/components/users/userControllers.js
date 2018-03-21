@@ -5,7 +5,8 @@ import {
   fetchMultipleUsersQuery,
   updateUserRatingQuery,
   updateUserInfoQuery,
-  updateUserRankingQuery
+  updateUserRankingForTrueQuery,
+  updateUserRankingForFalseQuery
 } from './userQueries';
 import {
   updateUserInfoHelper
@@ -58,17 +59,22 @@ export const updateUserInfoController = async (req, res) => {
         updatedInfo[key] = data.rows[0][key];
       };
     };
-    res.status(200).send(updatedInfo);
+    res.status(200).send(data);
   } catch (err) {
     throw new Error(err);
   }
 };
 
+//if both parties say yes (successful match)
+//if either party says no (unsuccessful match)
+
+//if req.body.finalDecision = success
+
 export const updateUserRankingController = async (req, res) => {
   try {
-    //data should be an object with increase and decreased powerranking
-    const data = updateUserRankingQuery()
-    res.status(200).send(data)
+    const { finalDecision } = req.body;
+    finalDecision === 'success' ? updateUserRankingForTrueQuery(): updateUserRankingForFalseQuery();
+    res.status(200).send();
   } catch (err) {
     console.log('Error on updateUserRankingController')
   }

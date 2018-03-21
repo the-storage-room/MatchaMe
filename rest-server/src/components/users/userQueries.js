@@ -6,8 +6,11 @@ import {
   fetchMultipleUsersHelper,
   updateUserRatingHelper,
   updateUserInfoHelper,
-  updateAcceptedUserRankingHelper,
-  updateRejectedUserRankingHelper
+  updateAndIncreasePRForTrueAndYesHelper,
+  updateAndDecreasePRForTrueAndNoHelper,
+  updateAndIncreasePRForFalseAndNoHelper,
+  updateAndIncreasePRForFalseAndYesHelper
+
 } from './userSQLHelper';
 
 export const fetchAllUsersQuery = async (body) => {
@@ -46,22 +49,33 @@ export const updateUserRatingQuery = async (body) => {
     // ...saved a lot of duplicate code
      // - jon
 
-export const updateAcceptedUserRankingForTrueQuery = async () => {
+export const updateUserRankingForTrueQuery = async () => {
   try { 
     let dataObj = {};
     const queryString1 = updateAndIncreasePRForTrueAndYesHelper();
-    const data1 = await db.query(queryString);
+    const data1 = await db.query(queryString1);
     dataObj['increasedPR'] = data1
     const queryString2 = updateAndDecreasePRForTrueAndNoHelper();
-    const data2 = await db.query(queryStsring)
+    const data2 = await db.query(queryString2)
     dataObj['decreasedPR'] = data2
-    console.log('Success on updateAcceptedUserRankingQuery', data)
+    console.log('Success on updateUserRankingForTrueQuery')
     return dataObj;
   } catch (err) {
-    console.log('Error on updateAcceptedUserRankingQuery', err)
+    console.log('Error on updateUserRankingForTrueQuery', err)
   }
 }
 
-
-
-  
+export const updateUserRankingsForFalseQuery = async () => {
+  try {
+    let dataObj = {};
+    const queryString1 = updateAndIncreasePRForFalseAndNoHelper();
+    const data1 = await db.query(queryString1);
+    dataObj['increasedPR'] = data1;
+    const queryString2 = updateAndIncreasePRForFalseAndYesHelper();
+    const data2 = await db.query(queryString2);
+    dataObj['decreasedPR'] = data2;
+    console.log('Success on updateUserRankingsForFalseQuery', dataObj)
+  } catch (err) {
+    console.log('Error on updateUserRankingsForFalseQuery', err)
+  }
+}
