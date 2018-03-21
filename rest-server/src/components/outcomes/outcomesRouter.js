@@ -5,23 +5,24 @@ import {
   fetchUnstarredMatchesController,
   starSingleMatchController,
   unstarSingleMatchController
-} from './followControllers';
+} from './outcomesControllers';
 
 const router = express.Router();
 
-router.route('/fetchStarredMatches')
-  .get(fetchStarredMatchesController);
+router.route('/fetchStarredMatches/:userId').get(fetchStarredMatchesController);
 
-router.route('/fetchUnstarredMatches')
+router
+  .route('/fetchUnstarredMatches/:userId')
   .get(fetchUnstarredMatchesController);
 
-router.route('/starSingleMatch')
+router
+  .route('/starSingleMatch')
   .put(starSingleMatchController)
-  .get(starSingleMatchController)
+  .get(starSingleMatchController);
 
-router.route('/unstarSingleMatch')
+router
+  .route('/unstarSingleMatch')
   .put(unstarSingleMatchController)
-  .get(unstarSingleMatchController)
+  .get(unstarSingleMatchController);
 
 export default router;
-
