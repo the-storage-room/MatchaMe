@@ -7,13 +7,12 @@
   margin: auto;
 }
 
-.profileContainer {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
+.profileContainer { 
+  flex-flow: column nowrap; 
+  justify-content: space-around; 
   align-items: center;
   margin: auto;
-}
+} 
 
 .photoContainer {
   display: flex;
@@ -22,7 +21,7 @@
   margin: auto;
 }
 
-.ratingScaleContainer {
+/* .ratingScaleContainer {
   display: flex;
   min-height: 50px;
   min-width: 350px;
@@ -30,7 +29,7 @@
   align-items: center;
   margin: auto;
   border-style: solid;
-}
+} */
 
 .userInfoContainer {
   display: flex;
