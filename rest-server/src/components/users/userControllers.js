@@ -59,7 +59,7 @@ export const updateUserInfoController = async (req, res) => {
         updatedInfo[key] = data.rows[0][key];
       };
     };
-    res.status(200).send(data);
+    res.status(200).send(updatedInfo);
   } catch (err) {
     throw new Error(err);
   }
