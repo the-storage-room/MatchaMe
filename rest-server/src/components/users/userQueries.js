@@ -49,13 +49,14 @@ export const updateUserRatingQuery = async (body) => {
     // ...saved a lot of duplicate code
      // - jon
 
-export const updateUserRankingForTrueQuery = async () => {
+export const updateUserRankingForTrueQuery = async (body) => {
   try { 
     let dataObj = {};
-    const queryString1 = updateAndIncreasePRForTrueAndYesHelper();
+    
+    const queryString1 = updateAndIncreasePRForTrueAndYesHelper(body);
     const data1 = await db.query(queryString1);
     dataObj['increasedPR'] = data1
-    const queryString2 = updateAndDecreasePRForTrueAndNoHelper();
+    const queryString2 = updateAndDecreasePRForTrueAndNoHelper(body);
     const data2 = await db.query(queryString2)
     dataObj['decreasedPR'] = data2
     console.log('Success on updateUserRankingForTrueQuery')
@@ -65,15 +66,16 @@ export const updateUserRankingForTrueQuery = async () => {
   }
 }
 
-export const updateUserRankingsForFalseQuery = async () => {
+export const updateUserRankingForFalseQuery = async (body) => {
   try {
     let dataObj = {};
-    const queryString1 = updateAndIncreasePRForFalseAndNoHelper();
+    const queryString1 = updateAndIncreasePRForFalseAndNoHelper(body);
     const data1 = await db.query(queryString1);
     dataObj['increasedPR'] = data1;
-    const queryString2 = updateAndIncreasePRForFalseAndYesHelper();
+    const queryString2 = updateAndIncreasePRForFalseAndYesHelper(body);
     const data2 = await db.query(queryString2);
     dataObj['decreasedPR'] = data2;
+    console.log('dataobj', dataObj)
     console.log('Success on updateUserRankingsForFalseQuery', dataObj)
   } catch (err) {
     console.log('Error on updateUserRankingsForFalseQuery', err)

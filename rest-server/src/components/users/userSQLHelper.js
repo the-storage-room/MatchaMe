@@ -32,86 +32,64 @@ export const updateUserInfoHelper = (setting, newInfo, username) => {
 };
 
 //increase power ranking by one for matchmakers who voted 'yes' on a successful match
-export const updateAndIncreasePRForTrueAndYesHelper = () => {
+export const updateAndIncreasePRForTrueAndYesHelper = (matchId) => {
   return `
   UPDATE users
   SET powerranking = powerranking + '1'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
+  INNER JOIN MATCH ON match.id = stageTwo.matchid
   WHERE stagetwo.issuccessful = '1'
   AND users.id = outcomes.userid 
   AND outcomes.decision = 'approved'
+  AND match.id = '${matchId}'
   `;
 };
 
 //decrease power ranking by one for matchmakers who voted 'no' on a successful match
-export const updateAndDecreasePRForTrueAndNoHelper = () => {
+export const updateAndDecreasePRForTrueAndNoHelper = (matchId) => {
   return `
   UPDATE users
   SET powerranking = powerranking - '1'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
+  INNER JOIN MATCH ON match.id = stageTwo.matchid
   WHERE stageTwo.issuccessful = '1'
   AND users.id = outcomes.userid
   AND outcomes.decision = 'rejected'
+  AND match.id = '${matchId}'
   `
 }
 
 //increase power ranking by one for matchmakers who voted 'no' on an unsuccessful match
-export const updateAndIncreasePRForFalseAndNoHelper = () => {
+export const updateAndIncreasePRForFalseAndNoHelper = (matchId) => {
   return `
   UPDATE users
   SET powerranking = powerranking + '1'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
+  INNER JOIN MATCH ON match.id = stageTwo.matchid
   WHERE stageTwo.issuccessful = '0'
   AND users.id = outcomes.userid
   AND outcomes.decision = 'rejected'
+  AND match.id = '${matchId}'
   `
 }
 
 //decrease power ranking by one for matchmakers who voted 'yes' on an unsuccessful match
-export const updateAndIncreasePRForFalseAndYesHelper = () => {
+export const updateAndIncreasePRForFalseAndYesHelper = (matchId) => {
   return `
   UPDATE users
   SET powerranking = powerranking - '1'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
+  INNER JOIN MATCH ON match.id = stageTwo.matchid
   WHERE stageTwo.issuccessful = '0'
   AND users.id = outcomes.userid
   AND outcomes.decision = 'approved'
+  AND match.id = '${matchId}'
   `
 }
-
-/*UPDATE users
-SET powerranking = powerranking - '1' 
-FROM outcomes
-INNER JOIN successfulmatch ON outcomes.matchid = successfulmatch.matchid
-WHERE successfulmatch.issuccessful = '0' 
-AND users.id = outcomes.userid
-RETURNING **/
-
-
-// -- issuccessful is true, increase for users who voted yes
-// UPDATE users
-// SET powerranking = powerranking + '1'
-// FROM yesUsers
-// INNER JOIN stagetwo ON stagetwo.matchid = yesUsers.matchid
-// WHERE stagetwo.issuccessful = '1'
-// AND users.id = yesUsers.id
-// --
-// UPDATE users
-// SET powerranking = powerranking + '1'
-// FROM outcomes
-// INNER JOIN stagtwo ON stagetwo.matchid = outcomes.matchid
-// WHERE successfulmatch.issuccessful = '1'
-// AND users.id = outcomes.userid
-// returning*
-// -- issuccessful is true, decrease for users who voted no
-// -- issuccessful is false, increase for users who voted no
-// -- issuccessful is false, decrease for users who voted yes
-
-
 /*with split tables*/
 //-- who voted correctly
 /*UPDATE users

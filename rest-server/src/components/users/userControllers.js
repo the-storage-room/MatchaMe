@@ -65,17 +65,20 @@ export const updateUserInfoController = async (req, res) => {
   }
 };
 
-//if both parties say yes (successful match)
-//if either party says no (unsuccessful match)
-
-//if req.body.finalDecision = success
-
+//'success' referring to both users accepting the match
 export const updateUserRankingController = async (req, res) => {
   try {
     const { finalDecision } = req.body;
-    finalDecision === 'success' ? updateUserRankingForTrueQuery(): updateUserRankingForFalseQuery();
+    const { matchId } = req.body;
+    if(finalDecision ==='success') {
+      updateUserRankingForTrueQuery(matchId)
+    } 
+    if (finalDecision === 'fail') {
+      updateUserRankingForFalseQuery(matchId)
+    }
+    console.log('Success on updateUserRankingController')
     res.status(200).send();
   } catch (err) {
-    console.log('Error on updateUserRankingController')
+    console.log('Error on updateUserRankingController', err)
   }
 }
