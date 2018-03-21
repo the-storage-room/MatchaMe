@@ -54,6 +54,15 @@ const dropRatingTable = async () => {
   }
 };
 
+const dropStageTwoTable = async () =>  {
+  try {
+    await db.query(`DROP TABLE IF EXISTS Rating`);
+    console.log('successfuly droopped StageTwo Table');
+  } catch (err) {
+    console.log('error dropping StageTwo Table')
+  }
+}
+
 const dropPhotoTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Photo`);
@@ -209,6 +218,7 @@ const createOutcomesTable = async () => {
       matchId           INT NOT null,
       starred           SMALLINT NOT NULL DEFAULT 0,
       decision          VARCHAR(25) NOT NULL, 
+      CONSTRAINT PK_Outcomes PRIMARY KEY (id),
       CONSTRAINT FK_Outcomes_Users FOREIGN KEY (userId)
         REFERENCES Users(id),
       CONSTRAINT FK_Outcomes_Match FOREIGN KEY (matchId)
@@ -272,21 +282,21 @@ const createStageTwoTable = async () => {
   try {
     await db.query(
       `
-      CREATE TABLE IF NOT EXISTS SuccessfulMatch
+      CREATE TABLE IF NOT EXISTS StageTwo
       (
         id           SERIAL ,
         matchId      INT NOT NULL ,
         isSuccessful SMALLINT NOT NULL DEFAULT 0 ,
         active       SMALLINT NOT NULL DEFAULT 1 ,
-        CONSTRAINT PK_SuccessfulMatch PRIMARY KEY (id),
-        CONSTRAINT FK_Match_SuccessfulMatch FOREIGN KEY (matchId)
+        CONSTRAINT PK_StageTwo PRIMARY KEY (id),
+        CONSTRAINT FK_Match_StageTwo FOREIGN KEY (matchId)
           REFERENCES Match(id)
       )
       `
     );
-    console.log('Successfully Created SuccessfulMatch Table');
+    console.log('Successfully Created StageTwo Table');
   } catch (err) {
-    console.log('Error creating SuccessfulMatch Table', err);
+    console.log('Error creating StageTwo Table', err);
   }
 };
 
@@ -320,6 +330,7 @@ const setup = async () => {
   await dropTagsTable();
   await dropUsersTable();
   await dropPhotoTable();
+  await dropStageTwoTable();
   await dropRatingTable();
   await dropMatchTable();
   await dropOutcomesTable();
@@ -335,7 +346,7 @@ const setup = async () => {
   await createOutcomesTable();
   await createRatingTable();
   await createPhotoTable();
-  await createSuccessfulMatchTable();
+  await createStageTwoTable();
   await createCommentTable();
 
   process.exit();

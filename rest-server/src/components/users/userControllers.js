@@ -5,7 +5,8 @@ import {
   fetchMultipleUsersQuery,
   updateUserRatingQuery,
   updateUserInfoQuery,
-  updateUserRankingQuery
+  updateUserRankingForTrueQuery,
+  updateUserRankingForFalseQuery
 } from './userQueries';
 import {
   updateUserInfoHelper
@@ -64,11 +65,20 @@ export const updateUserInfoController = async (req, res) => {
   }
 };
 
+//'success' referring to both users accepting the match
 export const updateUserRankingController = async (req, res) => {
   try {
-    const data = updateUserRankingQuery(req.body)
-    res.status(200).send(data)
+    const { finalDecision } = req.body;
+    const { matchId } = req.body;
+    if(finalDecision ==='success') {
+      updateUserRankingForTrueQuery(matchId)
+    } 
+    if (finalDecision === 'fail') {
+      updateUserRankingForFalseQuery(matchId)
+    }
+    console.log('Success on updateUserRankingController')
+    res.status(200).send();
   } catch (err) {
-    console.log('Error on updateUserRankingController')
+    console.log('Error on updateUserRankingController', err)
   }
 }
