@@ -54,7 +54,7 @@ const dropRatingTable = async () => {
   }
 };
 
-drop dropStageTwoTable = async () =>  {
+const dropStageTwoTable = async () =>  {
   try {
     await db.query(`DROP TABLE IF EXISTS Rating`);
     console.log('successfuly droopped StageTwo Table');
