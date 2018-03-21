@@ -54,15 +54,6 @@ const dropRatingTable = async () => {
   }
 };
 
-const dropStageTwoTable = async () =>  {
-  try {
-    await db.query(`DROP TABLE IF EXISTS Rating`);
-    console.log('successfuly droopped StageTwo Table');
-  } catch (err) {
-    console.log('error dropping StageTwo Table')
-  }
-}
-
 const dropPhotoTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Photo`);
@@ -336,7 +327,6 @@ const setup = async () => {
   await dropOutcomesTable();
   await dropUsersTagsTable();
   await dropCommentsTable();
-  await dropStageTwoTable();
 
   await createDatabase();
   await createTagsTable();
