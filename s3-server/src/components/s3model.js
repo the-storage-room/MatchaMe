@@ -1,17 +1,17 @@
 import axios from 'axios';
 import s3service from './s3service';
 
-const { BUCKET } = process.env;
+const { BUCKET , REST_SERVER_URL} = process.env;
 
 module.exports = {
   addPhoto: async (input, cb) => {
     const filename = generateNewFileName(input.files.file.name)
-    const info = `https://s3-us-west-1.amazonaws.com/${process.env.BUCKET}/${filename}`;
+    const url = `https://s3-us-west-1.amazonaws.com/${process.env.BUCKET}/${filename}`;
     try {
       await s3service.addPhoto(BUCKET, input.files.file, filename, (data) => {
         cb(data);
       })
-      await axios.post(`${S3_SERVER_URL}/api/addPhoto`, info);
+      await axios.post(`${REST_SERVER_URL}/api/photos/addPhoto`, {url: url});
     } catch (err) {
       console.error(err)
     }
