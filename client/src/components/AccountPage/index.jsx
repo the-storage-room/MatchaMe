@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 
 import PhotoUpload from './PhotoUpload.jsx';
 import Tags from './Tags.jsx';
@@ -58,6 +57,7 @@ class Account extends Component {
       photoupload: <PhotoUpload renderButton={this.shouldRenderNextButton}/>
     }
 
+    console.log(this.props)
     return (
       <div>
         {
@@ -86,4 +86,4 @@ class Account extends Component {
   }
 }
 
-export default withRouter(Account);
+export default Account;
