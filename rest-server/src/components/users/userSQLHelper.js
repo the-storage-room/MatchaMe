@@ -90,29 +90,3 @@ export const updateAndIncreasePRForFalseAndYesHelper = (matchId) => {
   AND match.id = '${matchId}'
   `
 }
-/*with split tables*/
-//-- who voted correctly
-/*UPDATE users
-SET powerranking = powerranking + '1'
-FROM yes_Users 
-INNER JOIN stage_two ON stage_two.matchid = yes_Users.matchid
-WHERE stage_two.issuccessful = '1'
-AND users.id = yes_Users.userid*/
-
-// --who voted incorrectly
-// UPDATE users
-// SET powerranking = powerranking - '1'
-// FROM no_Users 
-// INNER JOIN stage_two ON stage_two.matchid = no_Users.matchid
-// WHERE stage_two.issuccessful = '1'
-// AND users.id = no_Users.userid
-
-
-/**
- * updateAndIncreasePRForTrueAndYes
- * updateAndDecreasePRForTrueAndNo
- * 
- * updateAndInceasePRForFalseAndNo
- * updateAndIncreasePRForFalseAndYes
- */
-
