@@ -20,10 +20,11 @@ exports.deletePhoto = (bucketName, keyName, cb ) => {
   });
 }
 
-exports.addPhoto = (user, file, cb) => {
+exports.addPhoto = (bucket, file, filename, cb) => {
+  console.log(filename)
   s3.upload({
-    Bucket: user,
-    Key: file.name,
+    Bucket: bucket,
+    Key: filename,
     Body: file.data,
     ACL: 'public-read',
     ContentType: 'image/png'

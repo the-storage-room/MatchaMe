@@ -18,7 +18,7 @@ class PhotoUpload extends Component {
   handleSubmit = async () => {
     const formData = new FormData();
     formData.append('file', this.state.file);
-    formData.append('displayname', 'JackTest');
+    formData.append('filename', 'JackTest');
     try {
       const data = await axios.post(`${S3_SERVER_URL}/api/s3`, formData)
       console.log(data.data)
