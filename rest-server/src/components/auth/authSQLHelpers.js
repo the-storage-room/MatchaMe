@@ -11,14 +11,16 @@ export const signupHelper = ({ username, password, email }) => {
     INSERT INTO users (
       username, 
       password, 
-      email 
+      email,
+      signupComplete 
     )
     VALUES (
       '${username}',
       '${password}',
-      '${email}'
+      '${email}',
+      '0'
     )
-    RETURNING id, email, username
+    RETURNING id, email, username, signupComplete
   `;
 };
 
