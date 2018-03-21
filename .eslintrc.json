@@ -4,7 +4,8 @@
     "airbnb-base",
     "plugin:security/recommended",
     "eslint:recommended",
-    "plugin:node/recommended"
+    "plugin:node/recommended",
+    "plugin:react/recommended"
     ],
   "env": {
     "browser": true,
@@ -16,7 +17,7 @@
     "node",
     "security",
     "import",
-    "react", 
+    "react",
     "jsx-a11y"
     ],
   "parserOptions": {

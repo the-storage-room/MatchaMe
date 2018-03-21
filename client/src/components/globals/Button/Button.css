@@ -12,3 +12,60 @@
   background-color: #e7e7e7;
   color: black;
 }
+
+.tag {
+  border: solid black 1px;
+  margin: 3px;
+  padding: 2px;
+}
+
+.tag:hover {
+  background-color: brown;
+}
+
+.tag:active {
+  background-color: rgb(184, 80, 80);
+}
+
+.selected {
+  background-color: black;
+  color: white;
+  border: solid red 1px;
+  margin: 3px;
+  padding: 2px;
+}
+
+.selected:hover {
+  background-color: brown;
+}
+
+.selected:active {
+  background-color: rgb(184, 80, 80);
+}
+
+.next {
+  display: flex;
+  justify-content: center;
+  align-self: right flex-end;
+  width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-left: 50px solid #555;
+	border-bottom: 25px solid transparent;
+}
+
+.next:hover {
+  width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-left: 50px solid rgb(221, 119, 119);
+	border-bottom: 25px solirgb(226, 96, 96)ansparent;
+}
+
+.next:active {
+  width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-left: 50px solid rgb(24, 255, 109);
+	border-bottom: 25px solid transparent;
+}

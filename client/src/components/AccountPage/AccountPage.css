@@ -1,3 +1,12 @@
-.upload {
-  margin: 90px;
+.body {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 65px 0px 65px 65px;
+  margin: auto;
+}
+
+.basicMargin {
+  margin: 10px;
 }

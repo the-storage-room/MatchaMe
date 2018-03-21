@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import style from './PhotoUpload.css';
-
 const S3_SERVER_URL = process.env.S3_SERVER_URL;
 
 class PhotoUpload extends Component {
@@ -17,15 +15,16 @@ class PhotoUpload extends Component {
     this.setState({ file: e.target.files[0] });
   }
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     const formData = new FormData();
     formData.append('file', this.state.file);
     formData.append('displayname', 'JackTest');
-    axios.post(`${S3_SERVER_URL}/api/s3`, formData)
-      .then()
-      .catch((err) => {
+    try {
+      const data = await axios.post(`${S3_SERVER_URL}/api/s3`, formData)
+      console.log(data.data)
+    } catch (err) {
       console.error(err)
-    })
+    }
   }
 
   render() {
@@ -37,7 +36,6 @@ class PhotoUpload extends Component {
             <input
               type="file"
               onChange={this.handleUploadChange}
-              className={style.form}
             />
           </label>
         </form>

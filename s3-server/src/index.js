@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
 import helmet from 'helmet';
-import router from './components/s3router.js';
+import router from './components/s3router';
 
 const app = express();
 
