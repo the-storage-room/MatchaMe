@@ -8,41 +8,32 @@ import {
   updateUserRankingForTrueQuery,
   updateUserRankingForFalseQuery
 } from './userQueries';
-import {
-  updateUserInfoHelper
-} from './userSQLHelper';
+import { updateUserInfoHelper } from './userSQLHelper';
 
 export const fetchAllUsersController = async (req, res) => {
   try {
-
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };
 
 export const fetchSingleUserController = async (req, res) => {
   try {
-
+    const data = await fetchSingleUsersQuery(req.params);
+    res.status(200).send(data);
   } catch (err) {
-
+    console.log('Error on fetchSingleUserController', err);
   }
 };
 
 export const fetchMultipleUsersController = async (req, res) => {
   try {
-
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };
 
 export const updateUserRatingController = async (req, res) => {
   try {
     await updateUserRatingQuery(req.body);
     return res.status(200).send('success');
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };
 
 export const updateUserInfoController = async (req, res) => {
@@ -52,14 +43,23 @@ export const updateUserInfoController = async (req, res) => {
       if (key === 'username') {
         continue;
       } else {
-        if (key === "age" || key === "location" || key === "gender" || key === "preference") {
+        if (
+          key === 'age' ||
+          key === 'location' ||
+          key === 'gender' ||
+          key === 'preference'
+        ) {
           req.body[key] = Number(req.body[key]);
         }
-        let queryString =  updateUserInfoHelper(key, req.body[key], req.body.username);
+        let queryString = updateUserInfoHelper(
+          key,
+          req.body[key],
+          req.body.username
+        );
         let data = await db.query(queryString);
         updatedInfo[key] = data.rows[0][key];
-      };
-    };
+      }
+    }
     res.status(200).send(updatedInfo);
   } catch (err) {
     throw new Error(err);
@@ -71,15 +71,15 @@ export const updateUserRankingController = async (req, res) => {
   try {
     const { finalDecision } = req.body;
     const { matchId } = req.body;
-    if(finalDecision ==='success') {
-      updateUserRankingForTrueQuery(matchId)
-    } 
-    if (finalDecision === 'fail') {
-      updateUserRankingForFalseQuery(matchId)
+    if (finalDecision === 'success') {
+      updateUserRankingForTrueQuery(matchId);
     }
-    console.log('Success on updateUserRankingController')
+    if (finalDecision === 'fail') {
+      updateUserRankingForFalseQuery(matchId);
+    }
+    console.log('Success on updateUserRankingController');
     res.status(200).send();
   } catch (err) {
-    console.log('Error on updateUserRankingController', err)
+    console.log('Error on updateUserRankingController', err);
   }
-}
+};

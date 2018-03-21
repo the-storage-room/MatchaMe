@@ -6,30 +6,21 @@ import {
   fetchMultipleUsersController,
   updateUserRatingController,
   updateUserInfoController,
-  updateUserRankingController,
-  
+  updateUserRankingController
 } from './userControllers';
 
 const router = express.Router();
 
-router.route('/fetchAllUsers')
-  .get(fetchAllUsersController);
+router.route('/fetchAllUsers').get(fetchAllUsersController);
 
-router.route('/fetchSingleUser')
-  .get(fetchSingleUserController);
+router.route('/fetchSingleUser/:userId').get(fetchSingleUserController);
 
-router.route('/fetchMultipleUsers/:userId')
-  .get(fetchMultipleUsersController);
+router.route('/fetchMultipleUsers/:userId').get(fetchMultipleUsersController);
 
-router.route('/updateUserRating')
-  .put(updateUserRatingController);
+router.route('/updateUserRating').put(updateUserRatingController);
 
-router.route('/updateUserInfo')
-  .put(updateUserInfoController);
+router.route('/updateUserInfo').put(updateUserInfoController);
 
-router.route('/updateUserRanking')
-  .put(updateUserRankingController);
+router.route('/updateUserRanking').put(updateUserRankingController);
 
 export default router;
-
-
