@@ -17,7 +17,8 @@ class PhotoUpload extends Component {
           'https://s3-us-west-1.amazonaws.com/ajjjthesis/azrael.jpg1521649554118',
           'https://s3-us-west-1.amazonaws.com/ajjjthesis/2017fordfusion-factsheet.jpg1521649496626',
           'https://s3-us-west-1.amazonaws.com/ajjjthesis/6s2w1zHIv_k.jpg1521615210130',
-          'https://s3-us-west-1.amazonaws.com/ajjjthesis/jacten1521651049116',
+          'https://s3-us-west-1.amazonaws.com/ajjjthesis/Bentley+Bentayga++.jpg1521649326452',
+          'https://s3-us-west-1.amazonaws.com/ajjjthesis/09172015_3578.jpg1521614906951'
         ],
         username: 'jacten',
         targetPhoto: 0,
