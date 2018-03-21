@@ -25,6 +25,7 @@
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.11",
     "dotenv-webpack": "^1.5.5",
+    "material-ui": "^0.20.0",
     "nodemon": "^1.17.2",
     "path": "^0.12.7",
     "react": "^16.2.0",

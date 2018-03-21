@@ -16,9 +16,12 @@ export const fetchMultipleUsersHelper = () => {
   `;
 };
 
-export const updateUserRatingHelper = () => {
+export const updateUserRatingHelper = ({ id, attractiveness }) => {
   return `
-  
+    UPDATE users
+    SET attractiveness=${attractiveness}
+    WHERE id=${id}
+    RETURNING id, attractiveness
   `;
 }
 
