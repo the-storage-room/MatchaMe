@@ -5,6 +5,7 @@
   align-items: center;
   padding: 65px 0px 65px 65px;
   margin: auto;
+  margin-left: 140px;
 }
 
 .basicMargin {
@@ -47,4 +48,34 @@
 
 .smallImageHolder{
   margin-left: 15px;
+}
+
+.star {
+  width: 40px;
+}
+
+.sidenav {
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 80px;
+  left: 20px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+
+}
+
+.navbutton {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: yellowgreen;
+  display: block;
+}
+
+
+.navbutton:hover {
+  color: #064579;
+  cursor: default;
 }

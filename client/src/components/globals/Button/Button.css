@@ -43,15 +43,21 @@
   background-color: rgb(184, 80, 80);
 }
 
-.next {
-  display: flex;
-  justify-content: center;
-  align-self: right flex-end;
+.next, .disabled{
+  position: fixed;
+  z-index: 1;
+  top: 200px;
+  right: 150px;
   width: 0;
 	height: 0;
 	border-top: 25px solid transparent;
-	border-left: 50px solid #555;
+	border-left: 50px solid rgb(236, 61, 149);
 	border-bottom: 25px solid transparent;
+}
+
+.disabled {
+  opacity: 0.1;
+  cursor: not-allowed;
 }
 
 .next:hover {
@@ -59,7 +65,7 @@
 	height: 0;
 	border-top: 25px solid transparent;
 	border-left: 50px solid rgb(221, 119, 119);
-	border-bottom: 25px solirgb(226, 96, 96)ansparent;
+	border-bottom: 25px solid transparent;
 }
 
 .next:active {
@@ -68,4 +74,28 @@
 	border-top: 25px solid transparent;
 	border-left: 50px solid rgb(24, 255, 109);
 	border-bottom: 25px solid transparent;
+}
+
+.primaryTrue, .delete {
+  background-color: lightgrey;
+  display: flex;
+  border: solid black 1px;
+  margin: 3px;
+  padding: 2px;
+}
+
+.delete:hover, .primaryTrue:hover {
+  display: flex;
+  background-color: yellowgreen;
+  border: solid black 1px;
+  margin: 3px;
+  padding: 2px;
+}
+
+.primaryTrue:active, .delete:active {
+  background-color: pink;
+  display: flex;
+  border: solid black 1px;
+  margin: 3px;
+  padding: 2px;
 }

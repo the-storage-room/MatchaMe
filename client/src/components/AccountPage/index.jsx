@@ -5,6 +5,7 @@ import PhotoUpload from './PhotoUpload.jsx';
 import Tags from './Tags.jsx';
 import BioInfo from './BioInfo.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
+import SideNavbar from './SideNavbar.jsx'
 import Button from '../globals/Button/index.jsx';
 
 import style from './AccountPage.css';
@@ -13,7 +14,7 @@ class Account extends Component {
   constructor() {
     super();
     this.state = {
-      isFirstTimeUser: true,
+      isFirstTimeUser: false,
       currentPage: 'bio',
       tagtype: null,
       renderButton: false
@@ -62,16 +63,22 @@ class Account extends Component {
         {
           this.state.isFirstTimeUser
           ? null
-          : <Navbar />
+          : <div><Navbar />
+            <SideNavbar history={this.props.history}/>
+            </div>
           }
         <div className={style.body}>
           {pages[this.props.match.params.page]}
-        { this.state.renderButton ?
+        { 
+          this.state.renderButton
+          ? <Button 
+              className={'next'}
+              onClick={this.onNextClick}
+              />
+          :
           <Button 
-            className={'next'}
-            onClick={this.onNextClick}
-          /> :
-          "Fill out form!"
+            className={'disabled'}
+            />
         }
         </div>
       </div>

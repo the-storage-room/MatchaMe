@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import TargetPhoto from './TargetPhoto.jsx';
-import PhotoItem from './PhotoItem.jsx'
-import style from './AccountPage.css'
+import PhotoItem from './PhotoItem.jsx';
+import Button from '../globals/Button/index.jsx';
+import style from './AccountPage.css';
 
-const S3_SERVER_URL = process.env.S3_SERVER_URL;
+const { S3_SERVER_URL } = process.env;
 
 class PhotoUpload extends Component {
   constructor() {
@@ -48,6 +49,14 @@ class PhotoUpload extends Component {
     })
   }
 
+  handleDeletePhoto = () => {
+    console.log('delete this shit')
+  }
+
+  handleSetPrimaryPhoto = () => {
+    
+  }
+
   componentDidMount = () => {
     this.state.userPhotos
       .forEach((photoObj) => {
@@ -62,37 +71,65 @@ class PhotoUpload extends Component {
   componentDidUpdate = () => {
     this.props.renderButton(!!this.state.userPhotos.length)
   }
+
   render() {
     return (
-      <div className = {style.photoPage}>
-        <div className={style.basicMargin}>
-          <form>
-            <label>
-            Upload:
-              <input
-                type="file"
-                onChange={this.handleUploadChange}
-              />
-            </label>
-          </form>
-          <button onClick={this.handleSubmit}>
-            Submit
-          </button>
-        </div>
-        <div className={style.basicMargin}>
-          <TargetPhoto photo={this.state.targetPhoto}/>
-        </div>
-        <div className={style.smallImageHolder}>
-          {
-            this.state.userPhotos
-              .map(photo => 
-                <PhotoItem
-                key={photo.id}
-                photo={photo}
-                onClick={() => this.handleLittlePhotoClick(photo)}
+      <div>
+        <div className = {style.photoPage}>
+          <div className={style.basicMargin}>
+            <form>
+              <label>
+              Upload:
+                <input
+                  type="file"
+                  onChange={this.handleUploadChange}
                 />
-              )
-          }
+              </label>
+            </form>
+            <button onClick={this.handleSubmit}>
+              Submit
+            </button>
+          </div>
+          <div className={style.basicMargin}>
+            <TargetPhoto photo={this.state.targetPhoto}/>
+          </div>
+          <div className={style.smallImageHolder}>
+            {
+              this.state.userPhotos
+                .map(photo => 
+                  <PhotoItem
+                  key={photo.id}
+                  photo={photo}
+                  onClick={() => this.handleLittlePhotoClick(photo)}
+                  />
+                )
+            }
+          </div>
+        </div>
+        <div>
+          <div>
+          <Button
+            text="Delete Photo"
+            onClick={this.handleDeletePhoto}
+            className="delete"
+            />
+          </div>
+          <div>
+          <Button
+            text="Set as Primary Photo"
+            onClick={this.handleSetPrimaryPhoto}
+            className="primaryTrue"
+            />
+          </div>
+          <div>
+            {
+              this.state.targetPhoto.primary ?
+              <img
+                className={style.star}
+                src="http://moziru.com/images/star-clipart-clear-background-5.png" />
+              : null
+            }
+          </div>
         </div>
       </div>
     )
