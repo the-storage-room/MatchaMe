@@ -3,6 +3,8 @@ import {
   updateMatchmakingQuery
 } from './matchmakingQueries';
 
+import { addOutcomeQuery } from '../outcomes/outcomesQueries';
+
 // fetch multiple matches to vote on, based on user params
 export const fetchPendingMatchmakingController = async (req, res) => {
   try {
@@ -14,12 +16,11 @@ export const fetchPendingMatchmakingController = async (req, res) => {
 
 // approve or disapprove a match
 export const updateMatchmakingController = async (req, res) => {
-  const { userId, matchId, decision } = req.body;
+  const { decision } = req.body;
   const { approvedcount, rejectedcount } = await updateMatchmakingQuery(
-    matchId,
-    decision
+    req.body
   );
-
+  const data = await addOutcomeQuery(req.body);
   res.send();
   try {
   } catch (err) {

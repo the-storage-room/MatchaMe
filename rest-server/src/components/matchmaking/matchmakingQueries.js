@@ -15,7 +15,7 @@ export const fetchPendingMatchmakingQuery = async userId => {
   }
 };
 
-export const updateMatchmakingQuery = async (matchId, decision) => {
+export const updateMatchmakingQuery = async ({ matchId, decision }) => {
   try {
     const string = updateMatchmakingHelper(matchId, decision);
     const { rows } = await db.query(string);
