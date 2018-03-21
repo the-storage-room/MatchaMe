@@ -31,47 +31,55 @@ export const updateUserInfoHelper = (setting, newInfo, username) => {
   `;
 };
 
+//increase power ranking by one for matchmakers who voted 'yes' on a successful match
 export const updateAndIncreasePRForTrueAndYesHelper = () => {
   return `
   UPDATE users
   SET powerranking = powerranking + '1'
   FROM outcomes
-  INNER JOIN match ON outcomes.matchid = stageTwo.matchid
-  WHERE stageTwo.issuccessful = '1'
-  AND users.id = outcomes.userid
+  INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
+  WHERE stagetwo.issuccessful = '1'
+  AND users.id = outcomes.userid 
+  AND outcomes.decision = 'approved'
   `;
 };
 
+//decrease power ranking by one for matchmakers who voted 'no' on a successful match
 export const updateAndDecreasePRForTrueAndNoHelper = () => {
   return `
   UPDATE users
   SET powerranking = powerranking - '1'
   FROM outcomes
-  INNER JOIN match ON outcomes.matchid = stageTwo.matchid
+  INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   WHERE stageTwo.issuccessful = '1'
   AND users.id = outcomes.userid
+  AND outcomes.decision = 'rejected'
   `
 }
 
+//increase power ranking by one for matchmakers who voted 'no' on an unsuccessful match
 export const updateAndIncreasePRForFalseAndNoHelper = () => {
   return `
   UPDATE users
   SET powerranking = powerranking + '1'
   FROM outcomes
-  INNER JOIN match ON outcomes.matchid = stageTwo.matchid
+  INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   WHERE stageTwo.issuccessful = '0'
   AND users.id = outcomes.userid
+  AND outcomes.decision = 'rejected'
   `
 }
 
+//decrease power ranking by one for matchmakers who voted 'yes' on an unsuccessful match
 export const updateAndIncreasePRForFalseAndYesHelper = () => {
   return `
   UPDATE users
   SET powerranking = powerranking - '1'
   FROM outcomes
-  INNER JOIN match ON outcomes.matchid = stageTwo.matchid
+  INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   WHERE stageTwo.issuccessful = '0'
   AND users.id = outcomes.userid
+  AND outcomes.decision = 'approved'
   `
 }
 
