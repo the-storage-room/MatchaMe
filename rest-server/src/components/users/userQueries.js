@@ -6,7 +6,8 @@ import {
   fetchMultipleUsersHelper,
   updateUserRatingHelper,
   updateUserInfoHelper,
-  updateUserRankingHelper
+  updateAcceptedUserRankingHelper,
+  updateRejectedUserRankingHelper
 } from './userSQLHelper';
 
 export const fetchAllUsersQuery = async (body) => {
@@ -41,13 +42,23 @@ export const updateUserRatingQuery = async (body) => {
   }
 };
 
-export const updateUserRankingQuery = async () => {
+export const updateAcceptedUserRankingQuery = async () => {
   try { 
-    const queryString = updateUserRankingHelper();
+    const queryString = updateAcceptedUserRankingHelper();
     const data = await db.query(queryString);
-    console.log('Success on updateUserRankingQuery', data)
+    console.log('Success on updateAcceptedUserRankingQuery', data)
   } catch (err) {
-    console.log('Success on updateUserRankingQuery', err)
+    console.log('Error on updateAcceptedUserRankingQuery', err)
+  }
+}
+
+export const updateRejectedUserRankingQuery = async() => {
+  try {
+    const queryString = updateRejectedUserRankingHelper();
+    const data = await db.query(queryString);
+    console.log('Success on updateRejectedUserRankingQuery', data)
+  } catch (err) {
+    console.log('Error on updateRejectedUserRankingQuery', err)
   }
 }
 

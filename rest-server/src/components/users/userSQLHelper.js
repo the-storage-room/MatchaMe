@@ -31,7 +31,7 @@ export const updateUserInfoHelper = (setting, newInfo, username) => {
   `;
 };
 
-export const updateUserRankingHelper = () => {
+export const updateAcceptedUserRankingHelper = () => {
   return `
   UPDATE USERs
   SET powerranking = powerranking + '1'
@@ -42,3 +42,15 @@ export const updateUserRankingHelper = () => {
   RETURNING *
   `;
 };
+
+export const updateRejectedUserRankingHelper = () => {
+  return `
+  UPDATE USERs
+  SET powerranking = powerranking - '1'
+  FROM outcomes
+  INNER JOIN successfulmatch ON outcomes.matchid = successfulmatch.matchid
+  WHERE successfulmatch.issuccessful = '0'
+  AND users.id = outcomes.userid
+  RETURNING *
+  `
+}
