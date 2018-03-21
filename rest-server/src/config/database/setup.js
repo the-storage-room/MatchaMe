@@ -134,7 +134,7 @@ const createUsersTable = async () => {
       (
         id           SERIAL ,
         username     VARCHAR(50) ,
-        password     VARCHAR(50) ,
+        password     VARCHAR(255) ,
         email        VARCHAR(50) ,
         lastname     VARCHAR(50) ,
         firstname    VARCHAR(50) ,

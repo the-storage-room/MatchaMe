@@ -3,13 +3,13 @@ import {
   verify
 } from 'jsonwebtoken';
 
-const generateToken = (id, email) => {
+const generateToken = (id, username) => {
   const token = {};
 
   token.accessToken = sign({
     exp: Math.floor(Date.now() / 1000 + (60 * 60)),
     id,
-    email
+    username
   }, process.env.TOKEN_SECRET);
   return token;
 };
