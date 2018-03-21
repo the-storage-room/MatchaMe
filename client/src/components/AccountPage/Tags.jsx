@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 import tagsArr from './tagsArr';
-import TagItem from './TagItem.jsx'
+import Button from '../globals/Button/index.jsx';
 import style from './AccountPage.css';
 
 
@@ -21,11 +21,11 @@ class Tags extends Component {
     let array = this.state[type]
     if (array.includes(tag)) {
       array.splice(array.indexOf(tag), 1);
-      this.props.renderButton(false)
+      this.props.renderButton(false);
     } else if (array.length < 3) {
       array.push(tag)
       if (array.length === 3) {
-        this.props.renderButton(true)
+        this.props.renderButton(true);
       }
     }
     this.setState({
@@ -58,11 +58,11 @@ class Tags extends Component {
             this.state.tags.map((tag) => {
               let { type } = this.props
               let selected = this.state[type].includes(tag)
-              return <TagItem 
-                tag={tag} 
+              return <Button 
+                text={tag} 
                 key={tag} 
-                selected={selected} 
-                onClick={this.addToTagArray} 
+                className={selected ? 'selected' : 'tag'} 
+                onClick={() => this.addToTagArray(tag)} 
                 />
             })
           }

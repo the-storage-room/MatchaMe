@@ -16,7 +16,7 @@ class Account extends Component {
       isFirstTimeUser: true,
       currentPage: 'bio',
       tagtype: null,
-      renderButton: false,
+      renderButton: false
     };
   }
 
@@ -68,8 +68,7 @@ class Account extends Component {
           {pages[this.props.match.params.page]}
         { this.state.renderButton ?
           <Button 
-            className={style.nextBtn}
-            text={'Next Button'}
+            className={'next'}
             onClick={this.onNextClick}
           /> :
           "Fill out form!"
