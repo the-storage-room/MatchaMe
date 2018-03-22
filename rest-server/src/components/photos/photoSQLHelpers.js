@@ -20,7 +20,7 @@ export const addPhotoHelper = () => {
   `;
 };
 
-export const deletePhotoHelper = (userId, photoId) => {
+export const deletePhotoHelper = () => {
   return `
   `;
 };
