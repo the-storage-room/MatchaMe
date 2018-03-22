@@ -8,7 +8,6 @@ export const fetchAllPhotosHelper = userId => {
 
 export const fetchPrimaryPhotoHelper = () => {
   return `
-  
   `;
 };
 
@@ -20,7 +19,6 @@ export const addPhotoHelper = () => {
 
 export const deletePhotoHelper = () => {
   return `
-  
   `;
 };
 

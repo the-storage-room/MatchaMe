@@ -8,7 +8,7 @@ import {
 
 export const fetchAllPhotosController = async (req, res) => {
   try {
-
+    
   } catch (err) {
 
   }
@@ -33,9 +33,7 @@ export const addPhotoController = async (req, res) => {
 
 export const deletePhotoController = async (req, res) => {
   try {
-
   } catch (err) {
-
   }
 };
 
