@@ -26,13 +26,8 @@ export const deletePhotoHelper = () => {
 };
 
 export const updatePrimaryPhotoHelper = ({ userId, photoId }) => {
-  return `
-  UPDATE photo
-  SET primaryphoto=0
-  WHERE userid=${userId} AND primaryphoto=1;
-  UPDATE photo
-  SET primaryphoto=1
-  WHERE userid=${userId} AND id=${photoId}
-  RETURNING *;
-  `;
+  return [
+    `UPDATE photo SET primaryphoto=0 WHERE userid=${userId} AND primaryphoto=1 RETURNING *;`,
+    `UPDATE photo SET primaryphoto=1 WHERE userid=${userId} AND id=${photoId} RETURNING *;`
+  ];
 };

@@ -41,9 +41,16 @@ export const deletePhotoQuery = async body => {
 };
 
 export const updatePrimaryPhotoQuery = async body => {
-  const queryString = updatePrimaryPhotoHelper(body);
-  const { rows } = await db.query(queryString);
-  return rows[0];
   try {
-  } catch (err) {}
+    console.log(body);
+    const queryString = updatePrimaryPhotoHelper(body);
+    console.log('this is first query', queryString[0]);
+    const temp = await db.query(queryString[0]);
+    console.log('this is second query', queryString[1]);
+    const { rows } = await db.query(queryString[1]);
+    console.log(rows);
+    return rows[0];
+  } catch (err) {
+    console.log('Error with updatePrimaryPhotoQuery:', err);
+  }
 };
