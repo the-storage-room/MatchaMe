@@ -1,20 +1,20 @@
-export const fetchStarredMatchesHelper = ({ userId }) => {
+export const fetchStarredMatchesHelper = () => {
   return `
   SELECT match.id, user1_id, USER2_id, activevoting, starred, decision FROM MATCH
   INNER JOIN outcomes
   ON match.id=outcomes.matchid
   WHERE starred=1
-  AND outcomes.userid=${userId}
+  AND outcomes.userid=$1
   `;
 };
 
-export const fetchUnstarredMatchesHelper = ({ userId }) => {
+export const fetchUnstarredMatchesHelper = () => {
   return `
   SELECT match.id, user1_id, USER2_id, activevoting, starred, decision FROM MATCH
   INNER JOIN outcomes
   ON match.id=outcomes.matchid
   WHERE starred=0
-  AND outcomes.userid=${userId}
+  AND outcomes.userid=$1
   `;
 };
 
