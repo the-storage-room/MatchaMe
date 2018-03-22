@@ -52,6 +52,7 @@ export const updateUserRatingQuery = async body => {
 
 export const updateUserInfoQuery = async body => {
   try {
+    let data;
     for (let key in body) {
       if (key === 'id' || key === 'username') {
         continue;
@@ -69,11 +70,11 @@ export const updateUserInfoQuery = async body => {
           body[key],
           body.id
         );
-        let data = await db.query(queryString);
+        data = await db.query(queryString);
         console.log('success on userInfoQuery')
-        return data;
       }
     }
+    return data;
   } catch (err) {
     console.error
   }
