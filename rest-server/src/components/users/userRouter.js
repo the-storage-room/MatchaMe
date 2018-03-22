@@ -15,7 +15,8 @@ router.route('/fetchAllUsers').get(fetchAllUsersController);
 
 router.route('/fetchSingleUser/:userId').get(fetchSingleUserController);
 
-router.route('/fetchMultipleUsers/:userId').get(fetchMultipleUsersController);
+router.route('/fetchMultipleUsers/:userID')
+  .get(fetchMultipleUsersController);
 
 router.route('/updateUserRating').put(updateUserRatingController);
 

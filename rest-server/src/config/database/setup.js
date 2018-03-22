@@ -135,7 +135,9 @@ const createUsersTable = async () => {
         preference   INT ,
         bio          VARCHAR(255) ,
         powerranking INT ,
-        attractiveness INT , 
+        totalAttractiveness INT ,
+        totalNumOfRatings INT , 
+        averageAttractiveness INT ,
         signupComplete BOOLEAN ,
         CONSTRAINT PK_Users PRIMARY KEY (id) ,
         CONSTRAINT Unique_Username UNIQUE (username)
@@ -253,8 +255,12 @@ const createPhotoTable = async () => {
       CREATE TABLE IF NOT EXISTS Photo
       (
         id     SERIAL ,
+<<<<<<< HEAD
         url    VARCHAR(80) NOT NULL ,
         rating INT ,
+=======
+        url    VARCHAR(50) NOT NULL ,
+>>>>>>> get users info
         userId INT NOT NULL ,
         primaryPhoto SMALLINT NOT NULL DEFAULT 0 ,
         CONSTRAINT PK_Photo PRIMARY KEY (id),

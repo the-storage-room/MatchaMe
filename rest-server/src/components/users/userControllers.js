@@ -2,7 +2,7 @@ import {
   fetchAllUsersQuery,
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
-  updateUserRatingQuery,
+  updateUserAttractivenessQuery,
   updateUserInfoQuery,
   updateUserRankingForTrueQuery,
   updateUserRankingForFalseQuery
@@ -24,10 +24,15 @@ export const fetchSingleUserController = async (req, res) => {
 
 export const fetchMultipleUsersController = async (req, res) => {
   try {
-  } catch (err) {}
+    const { rows } = fetchMultipleUsersQuery(req.body);
+    console.log(rows);
+    res.send(rows);
+  } catch (err) {
+
+  }
 };
 
-export const updateUserRatingController = async (req, res) => {
+export const updateUserAttractivenessController = async (req, res) => {
   try {
     await updateUserRatingQuery(req.body);
     return res.status(200).send('success');

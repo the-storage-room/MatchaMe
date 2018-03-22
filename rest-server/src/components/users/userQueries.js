@@ -4,7 +4,8 @@ import {
   fetchAllUsersHelper,
   fetchSingleUserHelper,
   fetchMultipleUsersHelper,
-  updateUserRatingHelper,
+  fetchUsersTagsHelper,
+  updateUserAttractivenessHelper,
   updateUserInfoHelper,
   updateAndIncreasePRForTrueAndYesHelper,
   updateAndDecreasePRForTrueAndNoHelper,
@@ -36,11 +37,25 @@ export const fetchSingleUsersQuery = async body => {
 export const fetchMultipleUsersQuery = async body => {
   try {
   } catch (err) {
+<<<<<<< HEAD
     console.error
+=======
+    
   }
 };
 
-export const updateUserRatingQuery = async body => {
+export const fetchUsersTagsQuery = async (body) => {
+  try {
+    const queryString = await fetchMultipleUsersHelper(body);
+    const data = await db.query(queryString);
+    return data;
+  } catch (err) {
+
+>>>>>>> get users info
+  }
+};
+
+export const updateUserAttractivenessQuery = async (body) => {
   try {
     const queryString = updateUserRatingHelper(body);
     const data = await db.query(queryString);

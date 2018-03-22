@@ -17,13 +17,35 @@ export const fetchSingleUserHelper = userId => {
   `;
 };
 
-export const fetchMultipleUsersHelper = () => {
+export const fetchMultipleUsersHelper = ({ min, max }) => {
   return `
+    SELECT firstname, lastname, age, location, url, primaryphoto
+    FROM USERS
+    INNER JOIN PHOTO on USERS.id=PHOTO.userid
+    WHERE users.attractiveness > '${min}'
+    AND user.attractiveness < '${max}'
+  ` 
+};
 
+export const fetchUsersTagsHelper = ({ min, max }) => {
+  return `
+    SELECT tags  
+    FROM USERS
+    INNER JOIN USERS_TAGS on USERS.id=USERS_TAGS.userid
+    INNER JOIN TAGS on USERS_TAGS.tagid=TAGS.id
+    WHERE users.attractiveness > '${min}'
+    AND user.attractiveness < '${max}'
   `;
 };
 
-export const updateUserRatingHelper = ({ id, attractiveness }) => {
+export const fetchUserPhotos = ({ id }) => {
+  return `
+    SELECT 
+  `;
+};
+
+
+export const updateUserAttractivenessHelper = ({ id, attractiveness }) => {
   return `
     UPDATE users
     SET attractiveness=${attractiveness}
