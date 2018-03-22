@@ -23,9 +23,3 @@ export const signupHelper = ({ username, password, email }) => {
     RETURNING id, email, username, signupComplete
   `;
 };
-
-export const logoutHelper = () => {
-  return `
-    SELECT 
-  `;
-};
