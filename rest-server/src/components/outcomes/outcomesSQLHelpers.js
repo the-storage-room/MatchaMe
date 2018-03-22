@@ -27,11 +27,12 @@ export const starSingleMatchHelper = (userId, matchId) => {
   `;
 };
 
-export const unstarSingleMatchHelper = body => {
+export const unstarSingleMatchHelper = (userId, matchId) => {
   return `
-  UPDATE follow
-  SET starred = ${body.starred}
-  WHERE matchid=${body.matchid}
+  UPDATE outcomes
+  SET starred = 0
+  WHERE matchid=${matchId}
+  AND userid = ${userId}
   `;
 };
 
