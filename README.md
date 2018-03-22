@@ -21,7 +21,25 @@ Initial Get Request:
 
 /api/initialize/:userId/
 
-initializeObject = {
+singleUserData:
+  {
+    id:
+    username:
+    email:
+    lastname:
+    firstname:
+    age:
+    location:
+    gender:
+    preference:
+    bio:
+    powerranking:
+    signupcomplete:
+    photos:
+  }
+
+
+stateTree = {
   accountData: 
     {
       id:
@@ -44,11 +62,11 @@ initializeObject = {
       pref: []
     }
   photoData: 
-    {[
+    [{
       photoid:
       url: 
       primaryPhoto: 
-    ]}
+    }]
   powerRankingData:
     {
       totalPoints:
@@ -66,13 +84,13 @@ initializeObject = {
 
     }
   ratingsData: 
-    {
+    [{
     20 people to rate
-    }
+    }]
   matchesData: 
-    {
+    [{
       20 matches to rate
-    }
+    }]
   leaderboardData: 
     {
       Top 10? on leaderboard

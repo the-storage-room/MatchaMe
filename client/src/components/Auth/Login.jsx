@@ -31,7 +31,7 @@ class Login extends Component {
       localStorage.setItem('token', data.data.token);
       console.log(localStorage);
       if (data) {
-        axios.get(`${REST_SERVER_URL}/api/initialize/${data.data.id}`)
+        
         this.props.history.push('/dashboard');
       } else {
         this.props.history.push('/login');

@@ -1,4 +1,3 @@
-import db from '../../config/database/index';
 import {
   fetchAllUsersQuery,
   fetchSingleUsersQuery,
@@ -8,7 +7,6 @@ import {
   updateUserRankingForTrueQuery,
   updateUserRankingForFalseQuery
 } from './userQueries';
-import { updateUserInfoHelper } from './userSQLHelper';
 
 export const fetchAllUsersController = async (req, res) => {
   try {
@@ -33,36 +31,18 @@ export const updateUserRatingController = async (req, res) => {
   try {
     await updateUserRatingQuery(req.body);
     return res.status(200).send('success');
-  } catch (err) {}
+  } catch (err) {
+    console.error;
+  }
 };
 
 export const updateUserInfoController = async (req, res) => {
   try {
-    const updatedInfo = {};
-    for (let key in req.body) {
-      if (key === 'username') {
-        continue;
-      } else {
-        if (
-          key === 'age' ||
-          key === 'location' ||
-          key === 'gender' ||
-          key === 'preference'
-        ) {
-          req.body[key] = Number(req.body[key]);
-        }
-        let queryString = updateUserInfoHelper(
-          key,
-          req.body[key],
-          req.body.username
-        );
-        let data = await db.query(queryString);
-        updatedInfo[key] = data.rows[0][key];
-      }
-    }
-    res.status(200).send(updatedInfo);
+    console.log(req.body)
+    await updateUserInfoQuery(req.body);
+    return res.status(200).send('success');
   } catch (err) {
-    throw new Error(err);
+    console.error;
   }
 };
 
