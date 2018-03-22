@@ -1,18 +1,20 @@
-export const fetchStarredMatchesHelper = () => {
+export const fetchStarredMatchesHelper = ({ userId }) => {
   return `
-  SELECT username, gender, matchid FROM outcomes
-  INNER JOIN MATCH ON outcomes.matchid = match.id
-  INNER JOIN users ON match.user1_id = users.id OR match.user2_id = users.id
-  WHERE starred = '1' 
+  SELECT match.id, user1_id, USER2_id, activevoting, starred, decision FROM MATCH
+  INNER JOIN outcomes
+  ON match.id=outcomes.matchid
+  WHERE starred=1
+  AND outcomes.userid=${userId}
   `;
 };
 
-export const fetchUnstarredMatchesHelper = () => {
+export const fetchUnstarredMatchesHelper = ({ userId }) => {
   return `
-  SELECT username, matchid FROM outcomes
-  INNER JOIN MATCH ON outcomes.matchid = match.id
-  INNER JOIN users ON outcomes.userid = users.id OR match.user1_id = users.id OR match.user2_id = users.id
-  WHERE starred = '0' 
+  SELECT match.id, user1_id, USER2_id, activevoting, starred, decision FROM MATCH
+  INNER JOIN outcomes
+  ON match.id=outcomes.matchid
+  WHERE starred=0
+  AND outcomes.userid=${userId}
   `;
 };
 

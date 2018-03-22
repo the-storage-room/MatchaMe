@@ -12,8 +12,8 @@ const router = express.Router();
 router.use('/auth', authRouter);
 router.use('/users', userRouter);
 router.use('/matchmaking', matchmakingRouter);
-router.use('/successfulMatches', stageTwoRouter);
-router.use('/follows', outcomesRouter);
+router.use('/stageTwo', stageTwoRouter);
+router.use('/outcomes', outcomesRouter);
 router.use('/photos', photoRouter);
 
 export default router;

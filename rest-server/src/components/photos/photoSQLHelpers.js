@@ -1,6 +1,8 @@
-export const fetchAllPhotosHelper = () => {
+export const fetchAllPhotosHelper = userId => {
   return `
-  
+  SELECT url FROM Photo
+  WHERE userid=${userId}
+  ORDER BY primaryphoto DESC;
   `;
 };
 
@@ -20,11 +22,10 @@ export const deletePhotoHelper = () => {
   return `
   
   `;
-}
+};
 
 export const updatePrimaryPhotoHelper = () => {
   return `
   
   `;
 };
-

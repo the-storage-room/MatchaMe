@@ -12,6 +12,8 @@ import {
   updateAndIncreasePRForFalseAndYesHelper
 } from './userSQLHelper';
 
+import { fetchAllPhotosQuery } from '../photos/photoQueries';
+
 export const fetchAllUsersQuery = async body => {
   try {
   } catch (err) {}
@@ -19,8 +21,10 @@ export const fetchAllUsersQuery = async body => {
 
 export const fetchSingleUsersQuery = async body => {
   try {
-    const queryString = fetchSingleUserHelper(body);
+    const { userId } = body;
+    const queryString = fetchSingleUserHelper(userId);
     const { rows } = await db.query(queryString);
+    rows[0].photos = await fetchAllPhotosQuery(userId);
     return rows[0];
   } catch (err) {}
 };

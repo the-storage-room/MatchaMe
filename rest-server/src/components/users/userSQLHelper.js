@@ -1,13 +1,19 @@
 export const fetchAllUsersHelper = () => {
   return `
-    
+  SELECT users.id, users.username, users.email, users.lastname, users.firstname,
+    users.age, users.location, users.gender, users.preference, users.bio,
+    users.powerranking, users.signupcomplete
+  FROM users;
   `;
 };
 
-export const fetchSingleUserHelper = ({ userId }) => {
+export const fetchSingleUserHelper = userId => {
   return `
-  SELECT * FROM users
-  WHERE id=${userId};
+  SELECT users.id, users.username, users.email, users.lastname, users.firstname,
+    users.age, users.location, users.gender, users.preference, users.bio,
+    users.powerranking, users.signupcomplete
+  FROM users
+  WHERE users.id=${userId};
   `;
 };
 
