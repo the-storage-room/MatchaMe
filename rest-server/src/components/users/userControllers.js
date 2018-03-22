@@ -70,7 +70,7 @@ export const updateUserInfoController = async (req, res) => {
 export const updateUserRankingController = async (req, res) => {
   try {
     const { finalDecision } = req.body;
-    const { matchId } = req.body;
+    const { matchId } = req.params;
     if(finalDecision ==='success') {
       updateUserRankingForTrueQuery(matchId)
     } 
