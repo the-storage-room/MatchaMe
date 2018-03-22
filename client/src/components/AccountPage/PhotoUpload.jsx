@@ -17,9 +17,7 @@ class PhotoUpload extends Component {
         userPhotos: [
           {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/azrael.jpg1521649554118', id: 12315527224, primary: 0},
           {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/2017fordfusion-factsheet.jpg1521649496626', id: 123124, primary: 0},
-          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/6s2w1zHIv_k.jpg1521615210130', id: 12317542724, primary: 0},
           {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/Bentley+Bentayga++.jpg1521649326452', id: 12334234124, primary: 1},
-          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/09172015_3578.jpg1521614906951', id: 123142342424, primary: 0},
         ],
         username: 'jacten',
         targetPhoto: 0,
@@ -69,7 +67,7 @@ class PhotoUpload extends Component {
   }
 
   componentDidUpdate = () => {
-    this.props.renderButton(!!this.state.userPhotos.length)
+    this.props.renderButton(this.state.userPhotos.length)
   }
 
   render() {

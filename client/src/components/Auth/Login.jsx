@@ -6,6 +6,7 @@ import Button from '../globals/Button/index.jsx';
 
 import style from './Auth.css';
 
+const { REST_SERVER_URL } = process.env;
 
 class Login extends Component {
   constructor() {
@@ -16,8 +17,6 @@ class Login extends Component {
     };
   }
 
-  
-
   submitAuthData = async (e) => {
     const { username, password } = this.state;
     e.preventDefault();
@@ -26,15 +25,19 @@ class Login extends Component {
       password
     };
     try {
-      const data = await axios.post(`http://localhost:5000/api/auth/login`, body);
+      const data = await axios.post(`${REST_SERVER_URL}/api/auth/login`, body);
       localStorage.setItem('id', data.data.id);
       localStorage.setItem('email', data.data.email);
       localStorage.setItem('token', data.data.token);
       console.log(localStorage);
-      data ? this.props.history.push('/dashboard') : this.props.history.push('/login');
-      
+      if (data) {
+        axios.get(`${REST_SERVER_URL}/api/initialize/${data.data.id}`)
+        this.props.history.push('/dashboard');
+      } else {
+        this.props.history.push('/login');
+      }
     } catch (err) {
-      throw new Error(err);
+      console.error(err)
     }
   }
 

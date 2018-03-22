@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './index.css';
@@ -34,7 +34,8 @@ class App extends Component {
             <Route path="/follows" component={Follows} />
             <Route path="/mymatch" component={MyMatch} />
             <Route path="/leaderboard" component={Leaderboard} />
-            <Route path="/account" component={Account} />
+            <Route path="/account/:page(tags)/:tagtype(user|mate)" component={Account} />
+            <Route path="/account/:page(bio|photoupload)" component={Account} />
             <Route path="/" component={LandingPage} />
           </Switch>
         </MuiThemeProvider>
@@ -43,4 +44,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default App;

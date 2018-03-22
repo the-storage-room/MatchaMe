@@ -16,3 +16,46 @@
 * git checkout FEATURE_NAME
 * git rebase master
 * MASTER ONLY PULL AND REBASE
+
+Initial Get Request. 
+
+/api/initialize/:user/
+
+initialObj = {
+
+
+
+  userData: 
+    {
+      id:
+      username:
+      email:
+      firstname:
+      lastname:
+      age:
+      location:
+      gender:
+      preference:
+      bio:
+      powerranking:
+      signupComplete:
+      userPhotos: 
+        [{
+          photoid:
+          url: 
+          primaryPhoto: 
+        }]
+      tags: {user: [], pref: []}
+      match: {
+        current match if it exists
+      }
+    }
+  ratings: {
+    10 people to rate
+  }
+  matches: {
+    10 matches to rate
+  }
+  follows: ,
+  leaderboard: ,
+}
