@@ -21,6 +21,7 @@ router.route('/updateUserRating').put(updateUserRatingController);
 
 router.route('/updateUserInfo').put(updateUserInfoController);
 
-router.route('/updateUserRanking').put(updateUserRankingController);
+router.route('/updateUserRanking/:matchId')
+  .put(updateUserRankingController);
 
 export default router;
