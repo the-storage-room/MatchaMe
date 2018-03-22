@@ -39,7 +39,6 @@ export const deletePhotoController = async (req, res) => {
 export const updatePrimaryPhotoController = async (req, res) => {
   try {
 
-
   } catch (err) {
 
   }
