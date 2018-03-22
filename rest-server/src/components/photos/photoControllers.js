@@ -8,6 +8,7 @@ import {
 
 export const fetchAllPhotosController = async (req, res) => {
   try {
+    
   } catch (err) {
 
   }
