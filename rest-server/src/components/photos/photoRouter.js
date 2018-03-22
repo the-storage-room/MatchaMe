@@ -22,7 +22,7 @@ router.route('/addPhoto')
 router.route('/deletePhoto/:userId/:photoId')
   .delete(deletePhotoController);
 
-router.route('/updatePrimaryPhoto/:userId')
+router.route('/updatePrimaryPhoto/:userId/:photoId')
   .put(updatePrimaryPhotoController);
 
 export default router;
