@@ -18,21 +18,21 @@ export const fetchUnstarredMatchesHelper = ({ userId }) => {
   `;
 };
 
-export const starSingleMatchHelper = (userId, matchId) => {
+export const starSingleMatchHelper = () => {
   return `
   UPDATE outcomes
   SET starred = 1
-  WHERE matchid=${matchId}
-  AND userid=${userId}
+  WHERE matchid=$1
+  AND userid=$2
   `;
 };
 
-export const unstarSingleMatchHelper = (userId, matchId) => {
+export const unstarSingleMatchHelper = () => {
   return `
   UPDATE outcomes
   SET starred = 0
-  WHERE matchid=${matchId}
-  AND userid = ${userId}
+  WHERE matchid=$1
+  AND userid = $2
   `;
 };
 

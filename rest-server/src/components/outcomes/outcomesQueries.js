@@ -45,10 +45,9 @@ export const starSingleMatchQuery = async body => {
   try {
     const { userId } = body;
     const { matchId } = body;
-    const queryString = starSingleMatchHelper(userId, matchId);
-    const data = await db.query(queryString);
-    console.log('dataaaaa', data)
-    console.log('Success on starSingleMatchQuery', data);
+    const queryString = starSingleMatchHelper();
+    const data = await db.query(queryString, [matchId, userId]);
+    console.log('Success on starSingleMatchQuery');
     return data;
   } catch (err) {
     console.log('Error on starSingleMatchQuery', err);
@@ -60,7 +59,7 @@ export const unstarSingleMatchQuery = async body => {
     const { userId } = body;
     const { matchId } = body;
     const queryString = unstarSingleMatchHelper(userId, matchId);
-    const data = await db.query(queryString);
+    const data = await db.query(queryString, [matchId, userId]);
     console.log('Success on unstarSingleMatchQuery', data);
     return data;
   } catch (err) {
