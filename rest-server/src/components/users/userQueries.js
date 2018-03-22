@@ -36,6 +36,9 @@ export const fetchSingleUsersQuery = async body => {
 
 export const fetchMultipleUsersQuery = async body => {
   try {
+    const queryString = fetchMultipleUsersHelper(body);
+    const data = await db.query(queryString);
+    return data;
   } catch (err) {
 <<<<<<< HEAD
     console.error
@@ -46,7 +49,9 @@ export const fetchMultipleUsersQuery = async body => {
 
 export const fetchUsersTagsQuery = async (body) => {
   try {
-    const queryString = await fetchMultipleUsersHelper(body);
+    
+    const queryString = await fetchUsersTagsHelper(body);
+    console.log(queryString)
     const data = await db.query(queryString);
     return data;
   } catch (err) {

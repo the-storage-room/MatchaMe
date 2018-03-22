@@ -15,15 +15,11 @@ router.route('/fetchAllUsers').get(fetchAllUsersController);
 
 router.route('/fetchSingleUser/:userId').get(fetchSingleUserController);
 
-router.route('/fetchMultipleUsers/:userID')
+router.route('/fetchMultipleUsers/:attractiveness')
   .get(fetchMultipleUsersController);
 
-<<<<<<< HEAD
-router.route('/updateUserRating').put(updateUserRatingController);
-=======
 router.route('/updateUserRating')
   .put(updateUserAttractivenessController);
->>>>>>> refactor sql query
 
 router.route('/updateUserInfo').put(updateUserInfoController);
 

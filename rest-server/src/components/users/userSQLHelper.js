@@ -22,19 +22,30 @@ export const fetchMultipleUsersHelper = ({ min, max }) => {
     SELECT firstname, lastname, age, location, url, primaryphoto
     FROM USERS
     INNER JOIN PHOTO on USERS.id=PHOTO.userid
-    WHERE users.averageattractiveness > '${min}'
-    AND users.averageattractiveness < '${max}'
+    WHERE users.averageattractiveness > ${min}
+    AND users.averageattractiveness < ${max}
   ` 
 };
 
-export const fetchUsersTagsHelper = ({ min, max }) => {
+export const fetchUserPhotos = ({ min, max }) => {
   return `
-    SELECT tags.tag  
+    SELECT url, users.id 
+    FROM PHOTO
+    INNER JOIN USERS on USERS.id=PHOTO.userid
+    WHERE users.averageattractiveness > ${min}
+    AND users.averageattractiveness < ${max}
+  `;
+};
+
+export const fetchUsersTagsHelper = ({ min, max }) => {
+  console.log('min and max', min, max)
+  return `
+    SELECT tag, users.id
     FROM TAGS
     INNER JOIN USERS_TAGS on TAGS.id=USERS_TAGS.tagid
     INNER JOIN USERS on USERS_TAGS.userid=USERS.id
-    WHERE users.averageattractiveness > '${min}'
-    AND users.averageattractiveness < '${max}'
+    WHERE users.averageattractiveness > ${min}
+    AND users.averageattractiveness < ${max}
   `;
 };
 

@@ -2,6 +2,7 @@ import {
   fetchAllUsersQuery,
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
+  fetchUsersTagsQuery,
   updateUserAttractivenessQuery,
   updateUserInfoQuery,
   updateUserRankingForTrueQuery,
@@ -24,9 +25,47 @@ export const fetchSingleUserController = async (req, res) => {
 
 export const fetchMultipleUsersController = async (req, res) => {
   try {
-    const { rows } = fetchMultipleUsersQuery(req.body);
-    console.log(rows);
-    res.send(rows);
+    const users = {};
+    let tags = [];
+    const min = Number(req.params.attractiveness) - 3;
+    const max = Number(req.params.attractiveness) + 3;
+    const payload = {
+      min: min,
+      max: max
+    }
+
+    const tagData = await fetchUsersTagsQuery(payload);
+    const tagRows = tagData.rows;
+    console.log(tagRows)
+
+    for (let i = 0; i < tagRows.length; i++) {
+      let currId = tagRows[i].id;
+      tags.push(tagRows[i].tag);
+      users[currId] = {
+        tags: tags
+      };
+      if (tagRows[i + 1] === undefined) {
+        break;
+      }
+      if (currId !== tagRows[i + 1].id) {
+        tags = [];
+      }
+    }
+    console.log(users)
+    const userData = await fetchMultipleUsersQuery(payload);
+    const userRows = userData.rows;
+    console.log(userRows)
+
+    for (let z = 0; i < userRows.length; z++) {
+      console.log('im in')
+      console.log('i is', z)
+
+      let currId = userRows[i].id;
+      
+      
+    }
+
+    res.send(users);
   } catch (err) {
 
   }
