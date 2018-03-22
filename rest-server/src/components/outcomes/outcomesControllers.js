@@ -61,7 +61,9 @@ export const fetchUnstarredMatchesController = async (req, res) => {
 
 export const starSingleMatchController = async (req, res) => {
   try {
-    const data = await starSingleMatchQuery(req.body);
+    const { userId } = req.params;
+    const { matchId } = req.params;
+    const data = await starSingleMatchQuery({userId, matchId});
     console.log('Success on starSingleMatchController', data);
     return res.status(200).send(data);
   } catch (err) {
@@ -71,7 +73,9 @@ export const starSingleMatchController = async (req, res) => {
 
 export const unstarSingleMatchController = async (req, res) => {
   try {
-    const data = await unstarSingleMatchQuery(req.body);
+    const { userId } = req.params;
+    const { matchId } = req.params;
+    const data = await unstarSingleMatchQuery(matchId);
     console.log('Success on unstarSingleMatchController', data);
     return res.status(200).send(data);
   } catch (err) {
