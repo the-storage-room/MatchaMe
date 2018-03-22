@@ -70,6 +70,7 @@ export const updateUserInfoQuery = async body => {
           body.id
         );
         let data = await db.query(queryString);
+        console.log('success on userInfoQuery')
         return data;
       }
     }

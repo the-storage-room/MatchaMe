@@ -95,7 +95,7 @@ export default {
           type: 'LEADERBOARD_RECIEVED',
           payload: leaderboardData
           });
-      } catch {
+      } catch (err) {
         console.error
       }
     }

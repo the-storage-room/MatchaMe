@@ -14,15 +14,15 @@ export default {
           type: 'USER_ACCOUNT_DATA_UPDATED',
           payload: accountData
           });
-      } catch {
+      } catch (err) {
         console.error
       }
     }
   },
   updateBioData(bioData) {
     return async (dispatch, getState) => {
-      const { id } = await getState().accountData
-      bioData.id = id;
+      // const { id } = await getState().accountData
+      bioData.id = 1;
       await axios
         .put(`${REST_SERVER_URL}/api/users/updateUserInfo`, bioData)
       delete bioData.id
@@ -31,7 +31,7 @@ export default {
           type: 'USER_BIO_DATA_UPDATED',
           payload: bioData
           });
-      } catch {
+      } catch (err) {
         console.error
       }
     }
@@ -44,7 +44,7 @@ export default {
   //         type: 'USER_TAGS_UPDATED',
   //         payload: tagsData
   //         });
-  //     } catch {
+  //     } catch (err) {
   //       console.error
   //     }
   //   }
@@ -57,7 +57,7 @@ export default {
   //         type: 'USER_PHOTOS_UPDATED',
   //         payload: photosData
   //         });
-  //     } catch {
+  //     } catch (err) {
   //       console.error
   //     }
   //   }
@@ -70,7 +70,7 @@ export default {
           type: 'SIGNUP_COMPLETE',
           payload: 1
           });
-      } catch {
+      } catch (err) {
         console.error
       }
     }

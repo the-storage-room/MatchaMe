@@ -38,6 +38,7 @@ export const updateUserRatingController = async (req, res) => {
 
 export const updateUserInfoController = async (req, res) => {
   try {
+    console.log(req.body)
     await updateUserInfoQuery(req.body);
     return res.status(200).send('success');
   } catch (err) {
