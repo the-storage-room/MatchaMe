@@ -12,8 +12,11 @@ export const fetchAllPhotosQuery = async userId => {
   try {
     const queryString = fetchAllPhotosHelper(userId);
     const { rows } = await db.query(queryString);
+    console.log('Success on fetchAllPhotosQuery')
     return rows;
-  } catch (err) {}
+  } catch (err) {
+    console.log('Error on fetchAllPhotosQuery', err)
+  }
 };
 
 export const fetchPrimaryPhotoQuery = async body => {
@@ -34,7 +37,14 @@ export const addPhotoQuery = async body => {
 
 export const deletePhotoQuery = async body => {
   try {
-  } catch (err) {}
+    console.log('body', body)
+    const queryString = deletePhotoHelper(userId, photoId);
+    const data = await db.query(queryString);
+    console.log('Success on deletePhotoQuery')
+    return data;
+  } catch (err) {
+    console.log('Error on deletePhotoQuery', err)
+  }
 };
 
 export const updatePrimaryPhotoQuery = async body => {

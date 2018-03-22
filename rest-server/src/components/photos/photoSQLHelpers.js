@@ -10,7 +10,7 @@ export const fetchPrimaryPhotoHelper = (userId) => {
   return `
   SELECT photo.url FROM photo
   INNER JOIN users ON users.id = photo.userid
-  WHERE primaryphoto=1 AND users.id='${userId}'
+  WHERE primaryphoto=1 AND users.id=${userId}
   `;
 };
 
@@ -20,9 +20,10 @@ export const addPhotoHelper = () => {
   `;
 };
 
-export const deletePhotoHelper = () => {
+export const deletePhotoHelper = (userId, photoId) => {
   return `
-  
+  DELETE FROM photo
+  WHERE userid=${userId} AND id =${photoId}
   `;
 };
 
