@@ -1,4 +1,4 @@
-// import db from ....
+import db from '../../config/database/index';
 
 import {
   fetchAllPhotosHelper,
@@ -8,42 +8,30 @@ import {
   updatePrimaryPhotoHelper
 } from './photoSQLHelpers';
 
-export const fetchAllPhotosQuery = async (body) => {
+export const fetchAllPhotosQuery = async userId => {
   try {
-
-  } catch (err) {
-
-  }
+    const queryString = fetchAllPhotosHelper(userId);
+    const { rows } = await db.query(queryString);
+    return rows;
+  } catch (err) {}
 };
 
-export const fetchPrimaryPhotoQuery = async (body) => {
+export const fetchPrimaryPhotoQuery = async body => {
   try {
-
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };
 
-export const addPhotoQuery = async (body) => {
+export const addPhotoQuery = async body => {
   try {
-
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };
 
-export const deletePhotoQuery = async (body) => {
+export const deletePhotoQuery = async body => {
   try {
-
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };
 
-export const updatePrimaryPhotoQuery = async (body) => {
+export const updatePrimaryPhotoQuery = async body => {
   try {
-    
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };

@@ -7,8 +7,7 @@
     "test": "NODE_ENV=testing jest",
     "server:run": "nodemon bin/entry.js",
     "db:setup": "babel-node src/config/database/setup.js",
-    "db:setupdata":
-      "cd src/config/database/SeedData && psql -f setup.sql MatchMe"
+    "db:setupdata": "cd src/config/database/SeedData && psql -f setup.sql MatchMe"
   },
   "author": "",
   "license": "ISC",

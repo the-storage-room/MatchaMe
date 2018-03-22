@@ -1,12 +1,19 @@
 export const fetchAllUsersHelper = () => {
   return `
-    
+  SELECT users.id, users.username, users.email, users.lastname, users.firstname,
+    users.age, users.location, users.gender, users.preference, users.bio,
+    users.powerranking, users.signupcomplete
+  FROM users;
   `;
 };
 
-export const fetchSingleUserHelper = () => {
+export const fetchSingleUserHelper = userId => {
   return `
-  
+  SELECT users.id, users.username, users.email, users.lastname, users.firstname,
+    users.age, users.location, users.gender, users.preference, users.bio,
+    users.powerranking, users.signupcomplete
+  FROM users
+  WHERE users.id=${userId};
   `;
 };
 
@@ -22,7 +29,7 @@ export const updateUserRatingHelper = ({ id, attractiveness }) => {
     SET attractiveness=${attractiveness}
     WHERE id=${id}
   `;
-}
+};
 
 export const updateUserInfoHelper = (setting, newInfo, username) => {
   return `
@@ -34,7 +41,7 @@ export const updateUserInfoHelper = (setting, newInfo, username) => {
 };
 
 //increase power ranking by one for matchmakers who voted 'yes' on a successful match
-export const updateAndIncreasePRForTrueAndYesHelper = (matchId) => {
+export const updateAndIncreasePRForTrueAndYesHelper = matchId => {
   return `
   UPDATE users
   SET powerranking = powerranking + '1'
@@ -49,7 +56,7 @@ export const updateAndIncreasePRForTrueAndYesHelper = (matchId) => {
 };
 
 //decrease power ranking by one for matchmakers who voted 'no' on a successful match
-export const updateAndDecreasePRForTrueAndNoHelper = (matchId) => {
+export const updateAndDecreasePRForTrueAndNoHelper = matchId => {
   return `
   UPDATE users
   SET powerranking = powerranking - '1'
@@ -60,11 +67,11 @@ export const updateAndDecreasePRForTrueAndNoHelper = (matchId) => {
   AND users.id = outcomes.userid
   AND outcomes.decision = 'rejected'
   AND match.id = '${matchId}'
-  `
-}
+  `;
+};
 
 //increase power ranking by one for matchmakers who voted 'no' on an unsuccessful match
-export const updateAndIncreasePRForFalseAndNoHelper = (matchId) => {
+export const updateAndIncreasePRForFalseAndNoHelper = matchId => {
   return `
   UPDATE users
   SET powerranking = powerranking + '1'
@@ -75,11 +82,11 @@ export const updateAndIncreasePRForFalseAndNoHelper = (matchId) => {
   AND users.id = outcomes.userid
   AND outcomes.decision = 'rejected'
   AND match.id = '${matchId}'
-  `
-}
+  `;
+};
 
 //decrease power ranking by one for matchmakers who voted 'yes' on an unsuccessful match
-export const updateAndIncreasePRForFalseAndYesHelper = (matchId) => {
+export const updateAndIncreasePRForFalseAndYesHelper = matchId => {
   return `
   UPDATE users
   SET powerranking = powerranking - '1'
@@ -90,5 +97,5 @@ export const updateAndIncreasePRForFalseAndYesHelper = (matchId) => {
   AND users.id = outcomes.userid
   AND outcomes.decision = 'approved'
   AND match.id = '${matchId}'
-  `
-}
+  `;
+};

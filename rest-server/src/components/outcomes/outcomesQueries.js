@@ -22,9 +22,9 @@ export const addOutcomeQuery = async body => {
 export const fetchStarredMatchesQuery = async body => {
   try {
     const queryString = fetchStarredMatchesHelper(body);
-    const data = await db.query(queryString);
-    console.log('Success on fetchStarredMatchesQuery', data);
-    return data;
+    const { rows } = await db.query(queryString);
+    console.log('Success on fetchStarredMatchesQuery');
+    return rows;
   } catch (err) {
     console.log('Error on fetchStarredMatchesQuery', err);
   }
@@ -33,9 +33,9 @@ export const fetchStarredMatchesQuery = async body => {
 export const fetchUnstarredMatchesQuery = async body => {
   try {
     const queryString = fetchUnstarredMatchesHelper(body);
-    const data = await db.query(queryString);
-    console.log('Success on fetchUnStarredMatchesQuery', data);
-    return data;
+    const { rows } = await db.query(queryString);
+    console.log('Success on fetchUnStarredMatchesQuery', rows);
+    return rows;
   } catch (err) {
     console.log('Error on fetchUnstarredMatchesQuery', err);
   }
