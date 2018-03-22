@@ -1,7 +1,7 @@
-export const fetchAllPhotosHelper = userId => {
+export const fetchAllPhotosHelper = () => {
   return `
   SELECT id, url FROM Photo
-  WHERE userid=${userId}
+  WHERE userid=$1
   ORDER BY primaryphoto DESC;
   `;
 };
