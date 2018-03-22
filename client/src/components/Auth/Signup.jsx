@@ -6,6 +6,8 @@ import Button from '../globals/Button/index.jsx';
 
 import style from './Auth.css';
 
+const { REST_SERVER_URL } = process.env;
+
 class Signup extends Component {
   constructor() {
     super();
@@ -25,10 +27,10 @@ class Signup extends Component {
       password
     }
     try {
-      const data = await axios.post(`http://localhost:5000/api/auth/signup`, body);
+      const data = await axios.post(`${REST_SERVER_URL}/api/auth/signup`, body);
       data ? this.props.history.push('/login') : alert('taken');
     } catch (err) {
-
+      console.error(err)
     }
   }
 

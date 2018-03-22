@@ -1,4 +1,4 @@
-export default function example(state = [], action) {
+export default (state = [], action) => {
   switch (action.type) {
     case 'EXAMPLE':
       return (state = action.payload);
