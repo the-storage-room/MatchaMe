@@ -17,45 +17,64 @@
 * git rebase master
 * MASTER ONLY PULL AND REBASE
 
-Initial Get Request. 
+Initial Get Request:
 
-/api/initialize/:user/
+/api/initialize/:userId/
 
-initialObj = {
-
-
-
-  userData: 
+initializeObject = {
+  accountData: 
     {
       id:
       username:
       email:
       firstname:
       lastname:
+    }
+  bioData: 
+    {
       age:
       location:
       gender:
       preference:
       bio:
-      powerranking:
-      signupComplete:
-      userPhotos: 
-        [{
-          photoid:
-          url: 
-          primaryPhoto: 
-        }]
-      tags: {user: [], pref: []}
-      match: {
-        current match if it exists
-      }
     }
-  ratings: {
-    10 people to rate
-  }
-  matches: {
-    10 matches to rate
-  }
-  follows: ,
-  leaderboard: ,
+  tagData: 
+    {
+      user: [], 
+      pref: []
+    }
+  photoData: 
+    {[
+      photoid:
+      url: 
+      primaryPhoto: 
+    ]}
+  powerRankingData:
+    {
+      totalPoints:
+      userRanking:
+    }
+
+  signupStatusData: boolean
+
+  outcomesData: 
+    {
+      
+    }
+  currentMatchData: 
+    {
+
+    }
+  ratingsData: 
+    {
+    20 people to rate
+    }
+  matchesData: 
+    {
+      20 matches to rate
+    }
+  leaderboardData: 
+    {
+      Top 10? on leaderboard
+    }
 }
