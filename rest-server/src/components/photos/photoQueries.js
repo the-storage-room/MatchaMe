@@ -18,7 +18,13 @@ export const fetchAllPhotosQuery = async userId => {
 
 export const fetchPrimaryPhotoQuery = async body => {
   try {
-  } catch (err) {}
+    const queryString = fetchPrimaryPhotoHelper();
+    const data = await db.query(queryString);
+    console.log('Success on fetchPrimaryPhotoQuery')
+    return data;
+  } catch (err) {
+    console.log('Error on fetchPrimaryPhotoQuery', err)
+  }
 };
 
 export const addPhotoQuery = async body => {
