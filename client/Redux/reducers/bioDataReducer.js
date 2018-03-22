@@ -1,6 +1,7 @@
-export default (state = [], action) => {
+
+export default (state = {}, action) => {
   switch (action.type) {
-    case 'EXAMPLE':
+    case 'USER_ACCOUNT_DATA_RECIEVED':
       return (state = action.payload);
     default:
       return state;
