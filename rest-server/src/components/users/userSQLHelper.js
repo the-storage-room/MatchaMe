@@ -31,11 +31,11 @@ export const updateUserRatingHelper = ({ id, attractiveness }) => {
   `;
 };
 
-export const updateUserInfoHelper = (setting, newInfo, username) => {
+export const updateUserInfoHelper = (setting, newInfo, id) => {
   return `
     UPDATE users 
     SET ${setting}='${newInfo}'
-    WHERE username='${username}'
+    WHERE id='${id}'
     RETURNING ${setting}
   `;
 };

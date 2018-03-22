@@ -21,7 +21,25 @@ Initial Get Request:
 
 /api/initialize/:userId/
 
-initializeObject = {
+singleUserData:
+  {
+    id:
+    username:
+    email:
+    lastname:
+    firstname:
+    age:
+    location:
+    gender:
+    preference:
+    bio:
+    powerranking:
+    signupcomplete:
+    photos:
+  }
+
+
+stateTree = {
   accountData: 
     {
       id:
