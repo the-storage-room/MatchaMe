@@ -30,9 +30,9 @@ export const fetchMultipleUsersHelper = ({ min, max }) => {
 export const fetchUsersTagsHelper = ({ min, max }) => {
   return `
     SELECT tags.tag  
-    FROM USERS
-    INNER JOIN USERS_TAGS on USERS.id=USERS_TAGS.userid
-    INNER JOIN TAGS on USERS_TAGS.tagid=TAGS.id
+    FROM TAGS
+    INNER JOIN USERS_TAGS on TAGS.id=USERS_TAGS.tagid
+    INNER JOIN USERS on USERS_TAGS.userid=USERS.id
     WHERE users.averageattractiveness > '${min}'
     AND users.averageattractiveness < '${max}'
   `;
