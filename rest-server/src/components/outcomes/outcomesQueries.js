@@ -43,8 +43,8 @@ export const fetchUnstarredMatchesQuery = async body => {
 
 export const starSingleMatchQuery = async body => {
   try {
-    const { userId } = body.userId;
-    const { matchId } = body.matchId;
+    const { userId } = body;
+    const { matchId } = body;
     const queryString = starSingleMatchHelper(userId, matchId);
     const data = await db.query(queryString);
     console.log('dataaaaa', data)
