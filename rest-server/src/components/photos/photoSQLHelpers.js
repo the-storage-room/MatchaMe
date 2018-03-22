@@ -22,8 +22,6 @@ export const addPhotoHelper = () => {
 
 export const deletePhotoHelper = (userId, photoId) => {
   return `
-  DELETE FROM photo
-  WHERE userid=${userId} AND id =${photoId}
   `;
 };
 

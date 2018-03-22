@@ -18,11 +18,9 @@ router
 router
   .route('/starSingleMatch')
   .put(starSingleMatchController)
-  .get(starSingleMatchController);
 
 router
   .route('/unstarSingleMatch')
   .put(unstarSingleMatchController)
-  .get(unstarSingleMatchController);
 
 export default router;

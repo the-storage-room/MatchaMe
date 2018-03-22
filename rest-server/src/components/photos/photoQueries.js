@@ -37,13 +37,7 @@ export const addPhotoQuery = async body => {
 
 export const deletePhotoQuery = async body => {
   try {
-    console.log('body', body)
-    const queryString = deletePhotoHelper(userId, photoId);
-    const data = await db.query(queryString);
-    console.log('Success on deletePhotoQuery')
-    return data;
   } catch (err) {
-    console.log('Error on deletePhotoQuery', err)
   }
 };
 
