@@ -1,4 +1,4 @@
-// import db from ....
+import db from '../../config/database/index';
 
 import {
   fetchAllPhotosHelper,
@@ -12,15 +12,18 @@ export const fetchAllPhotosQuery = async (body) => {
   try {
 
   } catch (err) {
-
+    
   }
 };
 
 export const fetchPrimaryPhotoQuery = async (body) => {
   try {
-
+    const queryString = fetchPrimaryPhotoHelper();
+    const data = await db.query(queryString);
+    console.log('Success on fetchPrimaryPhotoQuery')
+    return data;
   } catch (err) {
-
+    console.log('Error on fetchPrimaryPhotoQuery', err)
   }
 };
 
