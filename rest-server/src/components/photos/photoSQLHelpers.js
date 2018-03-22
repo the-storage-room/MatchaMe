@@ -19,7 +19,6 @@ export const addPhotoHelper = () => {
 
 export const deletePhotoHelper = () => {
   return `
-  
   `;
 };
 
