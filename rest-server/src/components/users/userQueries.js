@@ -18,7 +18,6 @@ import { fetchAllPhotosQuery } from '../photos/photoQueries';
 
 export const fetchAllUsersQuery = async body => {
   try {
-
   } catch (err) {
     console.log(err);
   }
