@@ -59,8 +59,8 @@ export const updateUserAttractivenessHelper = () => {
 export const updateUserInfoHelper = () => {
   return `
     UPDATE users 
-    SET $1='$2
-    WHERE id='$3
+    SET $1=$2
+    WHERE id=$3
     RETURNING $1
   `;
 };
