@@ -1,34 +1,46 @@
 import {
   fetchPendingMatchmakingQuery,
-  updateMatchmakingQuery
+  updateMatchmakingQuery,
+  inactivateMatchMakingQuery
 } from './matchmakingQueries';
 
 import { addOutcomeQuery } from '../outcomes/outcomesQueries';
 
-import { addSuccessfulMatchQuery } from '../stageTwo/stageTwoQueries';
+import { addStageTwoQuery } from '../stageTwo/stageTwoQueries';
 
-// fetch multiple matches to vote on, based on user params
 export const fetchPendingMatchmakingController = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const { rows } = await fetchPendingMatchmakingQuery(userId);
+    const { rows } = await fetchPendingMatchmakingQuery(req.params);
+    console.log('Success with fetchPendingMatchmakingController: ', err);
     res.send(rows);
-  } catch (err) {}
+  } catch (err) {
+    console.log('Error with fetchPendingMatchmakingController: ', err);
+  }
 };
 
 // approve or disapprove a match  **WORK IN PROGRESS TALK TO JUSTIN**
+// req.body { userId, matchId, decision }
 export const updateMatchmakingController = async (req, res) => {
   try {
-    const { decision } = req.body;
-    const { approvedcount, rejectedcount } = await updateMatchmakingQuery(
-      req.body
-    );
-    const data = await addOutcomeQuery(req.body);
-    if (approvedcount + rejectedcount > 5 && approvedcount > rejectedcount) {
-      const test = await addSuccessfulMatchQuery(req.body);
+    const check = await addOutcomeQuery(req.body);
+    if (check) {
+      const { approvedcount, rejectedcount } = await updateMatchmakingQuery(
+        req.body
+      );
+      console.log('approved:', approvedcount, ' - rejected:', rejectedcount);
+      if (approvedcount + rejectedcount > 15) {
+        if (approvedcount - rejectedcount > 5) {
+          await addStageTwoQuery(req.body);
+          await inactivateMatchMakingQuery(req.body);
+          console.log('Added to StageTwo');
+        }
+        if (rejectedcount - approvedcount > 5) {
+          await inactivateMatchMakingQuery(req.body);
+        }
+      }
     }
     res.send();
   } catch (err) {
-    console.log(err);
+    console.log('Error with updateMatchmakingController: ', err);
   }
 };

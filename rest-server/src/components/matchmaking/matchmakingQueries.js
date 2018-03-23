@@ -2,13 +2,13 @@ import db from '../../config/database/index';
 
 import {
   fetchPendingMatchmakingHelper,
-  updateMatchmakingHelper
+  updateMatchmakingHelper,
+  inactivateMatchMakingHelper
 } from './matchmakingSQLHelpers';
 
-export const fetchPendingMatchmakingQuery = async userId => {
+export const fetchPendingMatchmakingQuery = async ({ userId }) => {
   try {
-    const string = fetchPendingMatchmakingHelper();
-    const data = await db.query(string, [userId]);
+    const data = await db.query(fetchPendingMatchmakingHelper(), [userId]);
     return data;
   } catch (err) {
     console.log(err);
@@ -17,10 +17,22 @@ export const fetchPendingMatchmakingQuery = async userId => {
 
 export const updateMatchmakingQuery = async ({ matchId, decision }) => {
   try {
-    const string = updateMatchmakingHelper(decision);
-    const { rows } = await db.query(string, [matchId]);
+    const { rows } = await db.query(updateMatchmakingHelper(decision), [
+      matchId
+    ]);
+    console.log('Success with updateMatchmakingQuery');
     return rows[0];
   } catch (err) {
-    console.log(err);
+    console.log('Error with updateMatchmakingQuery: ', err);
+  }
+};
+
+export const inactivateMatchMakingQuery = async ({ matchId }) => {
+  try {
+    const { rows } = await db.query(inactivateMatchMakingHelper(), [matchId]);
+    console.log('Success with inactivateMatchMakingQuery');
+    return rows[0];
+  } catch (err) {
+    console.log('Error with inactivateMatchMakingQuery: ', err);
   }
 };

@@ -137,7 +137,7 @@ const createUsersTable = async () => {
         powerranking INT ,
         totalAttractiveness INT ,
         totalNumOfRatings INT , 
-        averageAttractiveness INT ,
+        averageAttractiveness INT DEFAULT 5 ,
         signupComplete BOOLEAN ,
         CONSTRAINT PK_Users PRIMARY KEY (id) ,
         CONSTRAINT Unique_Username UNIQUE (username)
@@ -159,7 +159,7 @@ const createUsersTagsTable = async () => {
         id     SERIAL ,
         tagId  INT NOT NULL ,
         userId INT NOT NULL ,
-        type   VARCHAR(50) NOT NULL ,
+        type   INT NOT NULL ,
         CONSTRAINT PK_Users_Tags PRIMARY KEY (id),
         CONSTRAINT FK_UsersTags_Tag FOREIGN KEY (tagId)
         REFERENCES Tags(id),
@@ -255,7 +255,7 @@ const createPhotoTable = async () => {
       CREATE TABLE IF NOT EXISTS Photo
       (
         id     SERIAL ,
-        url    VARCHAR(80) NOT NULL ,
+        url    VARCHAR(128) NOT NULL ,
         userId INT NOT NULL ,
         primaryPhoto SMALLINT NOT NULL DEFAULT 0 ,
         CONSTRAINT PK_Photo PRIMARY KEY (id),
@@ -283,7 +283,8 @@ const createStageTwoTable = async () => {
         firstDecision INT DEFAULT NULL,
         CONSTRAINT PK_StageTwo PRIMARY KEY (id),
         CONSTRAINT FK_Match_StageTwo FOREIGN KEY (matchId)
-          REFERENCES Match(id)
+          REFERENCES Match(id),
+        CONSTRAINT Unique_matchId UNIQUE (matchId)
       )
       `
     );

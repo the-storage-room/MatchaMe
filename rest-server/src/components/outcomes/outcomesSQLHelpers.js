@@ -44,3 +44,10 @@ export const addOutcomesHelper = () => {
   RETURNING *;
   `;
 };
+
+export const fetchOneOutcomesHelper = () => {
+  return `
+  SELECT * FROM outcomes
+  WHERE userid=$1 AND matchid=$2;
+  `;
+};

@@ -2,13 +2,13 @@
 export const fetchPendingMatchmakingHelper = () => {
   return `
   SELECT * FROM MATCH
-  WHERE user1_id=$1
-  OR user2_id=$1
+  WHERE NOT user1_id=$1
+  AND NOT user2_id=$1;
   `;
 };
 
 // approve or disapprove a match
-export const updateMatchmakingHelper = (decision) => {
+export const updateMatchmakingHelper = decision => {
   if (decision === 'approved') {
     return `
     UPDATE MATCH 
@@ -25,4 +25,13 @@ export const updateMatchmakingHelper = (decision) => {
     RETURNING *;
     `;
   }
+};
+
+export const inactivateMatchMakingHelper = () => {
+  return `
+  UPDATE MATCH
+  SET activevoting = 0
+  WHERE id=$1
+  RETURNING *;
+  `;
 };
