@@ -21,8 +21,8 @@ export const fetchAllPhotosQuery = async userId => {
 
 export const fetchPrimaryPhotoQuery = async userId => {
   try {
-    const queryString = fetchPrimaryPhotoHelper(userId);
-    const { rows } = await db.query(queryString);
+    const queryString = fetchPrimaryPhotoHelper();
+    const { rows } = await db.query(queryString, [userId]);
     console.log('Successfully used fetchPrimaryPhotoQuery');
     return rows[0];
   } catch (err) {
@@ -42,12 +42,14 @@ export const deletePhotoQuery = async body => {
 
 export const updatePrimaryPhotoQuery = async body => {
   try {
+    const { userId } = body;
+    const { photoId } = body;
     console.log(body);
     const queryString = updatePrimaryPhotoHelper(body);
     console.log('this is first query', queryString[0]);
-    const temp = await db.query(queryString[0]);
+    const temp = await db.query(queryString[0], [userId]);
     console.log('this is second query', queryString[1]);
-    const { rows } = await db.query(queryString[1]);
+    const { rows } = await db.query(queryString[1], [photoId]);
     console.log(rows);
     return rows[0];
   } catch (err) {

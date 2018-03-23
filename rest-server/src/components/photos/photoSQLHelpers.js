@@ -6,10 +6,10 @@ export const fetchAllPhotosHelper = () => {
   `;
 };
 
-export const fetchPrimaryPhotoHelper = userId => {
+export const fetchPrimaryPhotoHelper = () => {
   return `
   SELECT id, url FROM Photo
-  WHERE userid=${userId}
+  WHERE userid=$1
   AND primaryphoto=1;
   `;
 };
@@ -25,9 +25,9 @@ export const deletePhotoHelper = () => {
   `;
 };
 
-export const updatePrimaryPhotoHelper = ({ userId, photoId }) => {
+export const updatePrimaryPhotoHelper = () => {
   return [
-    `UPDATE photo SET primaryphoto=0 WHERE userid=${userId} AND primaryphoto=1 RETURNING *;`,
-    `UPDATE photo SET primaryphoto=1 WHERE userid=${userId} AND id=${photoId} RETURNING *;`
+    `UPDATE photo SET primaryphoto=0 WHERE userid=$1 AND primaryphoto=1 RETURNING *;`,
+    `UPDATE photo SET primaryphoto=1 WHERE userid=$1 AND id=$2 RETURNING *;`
   ];
 };
