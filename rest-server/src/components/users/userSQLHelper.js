@@ -31,12 +31,12 @@ export const updateUserRatingHelper = () => {
   `;
 };
 
-export const updateUserInfoHelper = (setting, newInfo, id) => {
+export const updateUserInfoHelper = () => {
   return `
     UPDATE users 
-    SET ${setting}='${newInfo}'
-    WHERE id='${id}'
-    RETURNING ${setting}
+    SET $1='$2
+    WHERE id='$3
+    RETURNING $1
   `;
 };
 

@@ -8,10 +8,10 @@ import {
   addOutcomesHelper
 } from './outcomesSQLHelpers';
 
-export const addOutcomeQuery = async body => {
+export const addOutcomeQuery = async ({ userId, matchId, starred, decision }) => {
   try {
-    const queryString = addOutcomesHelper(body);
-    const { rows } = await db.query(queryString);
+    const queryString = addOutcomesHelper();
+    const { rows } = await db.query(queryString, [userId, matchId, starred, decision]);
     console.log('Success on addOutcomeQuery', rows[0]);
     return rows[0];
   } catch (err) {
