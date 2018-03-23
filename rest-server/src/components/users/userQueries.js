@@ -4,7 +4,7 @@ import {
   fetchAllUsersHelper,
   fetchSingleUserHelper,
   fetchMultipleUsersHelper,
-  fetchUsersTagsHelper,
+  fetchUsersTagsForRatingHelper,
   fetchUsersPhotosHelper,
   fetchSingleUserAttractivenessHelper,
   updateTotalAttractivenessHelper,
@@ -33,7 +33,7 @@ export const fetchSingleUsersQuery = async body => {
     rows[0].photos = await fetchAllPhotosQuery(userId);
     return rows[0];
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
 
@@ -41,7 +41,7 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
   try {
     const infoQueryString = fetchMultipleUsersHelper();
     const photoQueryString = fetchUsersPhotosHelper();
-    const tagQueryString = fetchUsersTagsHelper();
+    const tagQueryString = fetchUsersTagsForRatingHelper();
 
     const userData = await db.query(infoQueryString, [min, max]);
     const userRows = userData.rows;
@@ -53,16 +53,22 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
     const tagRows = tagData.rows;
 
     let tags = [];
+    let preferenceTags = [];
     let photos = [];
 
     for (let i = 0; i < userRows.length; i++) {
       for (let z = 0; z < tagRows.length; z++) {
         if (userRows[i].id === tagRows[z].id) {
-          tags.push(tagRows[z].tag);
-          userRows[i].tags = tags;
+          if (tagRows[z].type === 0) {
+            tags.push(tagRows[z].tag)
+            userRows[i].tags = tags;
+          } else {
+            continue;
+          }
         }
       }
       tags = [];
+      preferenceTags = [];
     }
 
     for (let i = 0; i < userRows.length; i++) {
@@ -80,9 +86,9 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
   }
 };
 
-export const fetchUsersTagsQuery = async (body) => {
+export const fetchUsersTagsForRatingQuery = async (body) => {
   try {
-    const queryString = await fetchUsersTagsHelper(body);
+    const queryString = await fetchUsersTagsForRatingHelper(body);
     const data = await db.query(queryString);
     return data;
   } catch (err) {
