@@ -36,11 +36,23 @@ export const unstarSingleMatchHelper = (userId, matchId) => {
   `;
 };
 
-export const addOutcomesHelper = ({ userId, matchId, starred, decision }) => {
+export const addOutcomesHelper = ({
+  userId,
+  matchId,
+  starred = 0,
+  decision
+}) => {
   return `
   INSERT INTO outcomes
   (userid, matchid, starred, decision)
   VALUES (${userId}, ${matchId}, ${starred}, '${decision}')
   RETURNING *;
+  `;
+};
+
+export const fetchOneOutcomesHelper = ({ userId, matchId }) => {
+  return `
+  SELECT * FROM outcomes
+  WHERE userid=${userId} AND matchid=${matchId};
   `;
 };

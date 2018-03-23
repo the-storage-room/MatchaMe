@@ -2,8 +2,8 @@
 export const fetchPendingMatchmakingHelper = userId => {
   return `
   SELECT * FROM MATCH
-  WHERE user1_id=${userId}
-  OR user2_id=${userId}
+  WHERE NOT user1_id=${userId}
+  AND NOT user2_id=${userId};
   `;
 };
 
@@ -25,4 +25,13 @@ export const updateMatchmakingHelper = (matchId, decision) => {
     RETURNING *;
     `;
   }
+};
+
+export const inactivateMatchMakingHelper = ({ matchId }) => {
+  return `
+  UPDATE MATCH
+  SET activevoting = 0
+  WHERE id=${matchId}
+  RETURNING *;
+  `;
 };

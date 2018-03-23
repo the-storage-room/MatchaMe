@@ -5,15 +5,22 @@ import {
   fetchUnstarredMatchesHelper,
   starSingleMatchHelper,
   unstarSingleMatchHelper,
-  addOutcomesHelper
+  addOutcomesHelper,
+  fetchOneOutcomesHelper
 } from './outcomesSQLHelpers';
 
 export const addOutcomeQuery = async body => {
   try {
-    const queryString = addOutcomesHelper(body);
-    const { rows } = await db.query(queryString);
-    console.log('Success on addOutcomeQuery', rows[0]);
-    return rows[0];
+    const check = await db.query(fetchOneOutcomesHelper(body));
+    if (check.rows.length === 0) {
+      const queryString = addOutcomesHelper(body);
+      const { rows } = await db.query(queryString);
+      console.log('Success on addOutcomeQuery');
+      return rows[0];
+    } else {
+      console.log('User already voted on this match!');
+      return null;
+    }
   } catch (err) {
     console.log('Error on addOutcomeQuery', err);
   }
@@ -47,7 +54,7 @@ export const starSingleMatchQuery = async body => {
     const { matchId } = body;
     const queryString = starSingleMatchHelper(userId, matchId);
     const data = await db.query(queryString);
-    console.log('dataaaaa', data)
+    console.log('dataaaaa', data);
     console.log('Success on starSingleMatchQuery', data);
     return data;
   } catch (err) {
