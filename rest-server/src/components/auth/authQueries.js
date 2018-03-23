@@ -1,4 +1,4 @@
-import db from '../../config/database/index.js';
+import db from '../../config/database/index';
 
 import { loginHelper, signupHelper, logoutHelper } from './authSQLHelpers';
 

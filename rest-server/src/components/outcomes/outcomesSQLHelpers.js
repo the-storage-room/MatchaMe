@@ -40,7 +40,7 @@ export const addOutcomesHelper = () => {
   return `
   INSERT INTO outcomes
   (userid, matchid, starred, decision)
-  VALUES ($1, $2 $3, $4)
+  VALUES ($1, $2, $3, $4)
   RETURNING *;
   `;
 };
