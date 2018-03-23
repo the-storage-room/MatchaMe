@@ -159,7 +159,7 @@ const createUsersTagsTable = async () => {
         id     SERIAL ,
         tagId  INT NOT NULL ,
         userId INT NOT NULL ,
-        type   VARCHAR(50) NOT NULL ,
+        type   INT NOT NULL ,
         CONSTRAINT PK_Users_Tags PRIMARY KEY (id),
         CONSTRAINT FK_UsersTags_Tag FOREIGN KEY (tagId)
         REFERENCES Tags(id),
@@ -255,7 +255,7 @@ const createPhotoTable = async () => {
       CREATE TABLE IF NOT EXISTS Photo
       (
         id     SERIAL ,
-        url    VARCHAR(80) NOT NULL ,
+        url    VARCHAR(128) NOT NULL ,
         userId INT NOT NULL ,
         primaryPhoto SMALLINT NOT NULL DEFAULT 0 ,
         CONSTRAINT PK_Photo PRIMARY KEY (id),

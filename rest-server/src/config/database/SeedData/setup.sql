@@ -101,3 +101,45 @@ insert into stagetwo (matchid) values (6);
 insert into stagetwo (matchid) values (1);
 insert into stagetwo (matchid) values (8);
 insert into stagetwo (matchid) values (1);
+
+insert into tags (tag) values ('happy');
+insert into tags (tag) values ('sad');
+insert into tags (tag) values ('chill');
+
+insert into users_tag (tagid, userid, type) values (1, 1, 0)
+insert into users_tag (tagid, userid, type) values (2, 1, 0)
+insert into users_tag (tagid, userid, type) values (3, 1, 0)
+insert into users_tag (tagid, userid, type) values (1, 1, 1)
+insert into users_tag (tagid, userid, type) values (2, 1, 1)
+insert into users_tag (tagid, userid, type) values (3, 1, 1)
+
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 1, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 2, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 3, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 4, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 5, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 6, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 7, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 8, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 9, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 10, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 11, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 12, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 13, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 14, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 15, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 16, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 17, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 18, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 19, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 20, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 21, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 22, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 23, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 24, 1)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 25, 1)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 1, 0)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 1, 0)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 1, 0)
+insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 2, 0)
+insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 2, 0)
