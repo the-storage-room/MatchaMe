@@ -2,7 +2,9 @@ import db from '../../config/database/index'
 
 import {
   fetchAllTagsHelper,
-  fetchUserAndTheirPreferenceTagsHelper
+  fetchUserAndTheirPreferenceTagsHelper,
+  deleteUserTagsHelper,
+  postUserAndPreferenceTagsHelper
 } from './tagsSQLHelper';
 
 export const fetchAllTagsQuery = async () => {
@@ -33,7 +35,7 @@ export const deleteUserAndPreferencesTagsQuery = async (userId, tagId, type) => 
     if (type === 'user') {
       const queryString = deleteUserTagsHelper();
       rows = await db.query(queryString[0], [userId, tagId, type]);
-    } else if (type==='preference') {
+    } else {
       const queryString = deleteUserTagsHelper();
       rows = await db.query(queryString[1], [userId, tagId, type]);
     }
@@ -41,5 +43,22 @@ export const deleteUserAndPreferencesTagsQuery = async (userId, tagId, type) => 
     return rows;
   } catch (err) {
     console.log('Error on deleteUserTagsQuery', err)
+  }
+}
+
+export const postUserAndPreferenceTagsQuery= async (tagId, userId, type) => {
+  try {
+    let rows;
+    if(type === 'user') {
+      const queryString = postUserAndPreferenceTagsHelper();
+      rows = await db.query(queryString[0], [userId, tagId, type]);
+    } else {
+      const queryString = postUserAndPreferenceTagsHelper();
+      rows = await db.query(queryString[1], [tagId, userId, type])
+    }
+    console.log('Success on postUserPreferenceTagsQuery')
+    return rows;
+  } catch (err) {
+    console.log('Error on postUserPreferenceTagsQuery', err)
   }
 }

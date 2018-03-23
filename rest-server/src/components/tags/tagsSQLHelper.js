@@ -13,30 +13,18 @@ export const fetchUserAndTheirPreferenceTagsHelper = () => {
   `;
 } 
 
-export const updateUsersTagsHelper = () => {
-  return `
-  
-  `;
-}
-
 export const deleteUserTagsHelper = () => {
   return [
-  `DELETE FROM users_tags WHERE userid=$1 AND tagid=$2 AND type=$3 RETURNING*;`, 
-  `DELETE FROM users_tags WHERE userid=$1 AND tagid=$2 AND type=$3 RETURNING*;`
+  `DELETE FROM users_tags USING tags WHERE userid=$1 
+   AND tagid=$2 AND type=$3 RETURNING *;`, 
+  `DELETE FROM users_tags USING tags WHERE userid=$1 
+  AND tagid=$2 AND type=$3 RETURNING *;`
 ];
 }
 
-export const updateUserPreferenceTags = () => {
-  return `
-  
-  `;
+export const postUserAndPreferenceTagsHelper = () => {
+  return [
+  `INSERT INTO users_tags(tagid, userid, type) values($1, $2, $3);`,
+  `INSERT INTO users_tags(tagid, userid, type) values($1, $2, $3); `
+  ];
 }
-
-// export const deleteUserPreferenceTagsHelper = () => {
-//   return `
-//   DELETE FROM users_tags
-//   WHERE userid=$1 
-//   AND tagid=$2
-//   AND type=$3
-//   `;
-// }

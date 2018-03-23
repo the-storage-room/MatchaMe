@@ -3,7 +3,8 @@ import express from 'express';
 import {
   fetchAllTagsController,
   fetchUserAndTheirPreferenceTagsController,
-  deleteUserAndPreferenceTagsController
+  deleteUserAndPreferenceTagsController,
+  postUserAndPreferenceTagsController
 } from '../tags/tagsController';
 
 const router = express.Router();
@@ -14,15 +15,8 @@ router.route('/fetchAllTags')
 router.route('/fetchUserAndTheirPreferenceTags/:userId')
   .get(fetchUserAndTheirPreferenceTagsController)
 
-router.route('/deleteUserAndPreferenceTags/:userId/:tagId')
+router.route('/UserAndPreferenceTags/:userId/:tagId')
   .delete(deleteUserAndPreferenceTagsController)
-
-// router.route('/updateAndDeleteTags/:userId')
-//   .put(updateAndDeleteTagsController)
-//   .delete(updateAndDeleteTagsController)
-
-// router.route('/updateAndDeletePreferenceTags/:userId')
-//   .put(updateAndDeletePreferenceTagsController)
-//   .delete(updateAndDeletePreferenceTagsController)
+  .post(postUserAndPreferenceTagsController)
 
 export default router;
