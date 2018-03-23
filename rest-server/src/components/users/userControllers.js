@@ -30,8 +30,8 @@ export const fetchMultipleUsersController = async (req, res) => {
     const id = req.params.id;
     const { rows } = await fetchSingleUserAttractivenessQuery(id);
     const attractiveness = rows[0].averageattractiveness;
-    const min = Number(attractiveness) - 3;
-    const max = Number(attractiveness) + 3;
+    const min = attractiveness - 3;
+    const max = attractiveness + 3;
     const constraints = {
       min: min,
       max: max
