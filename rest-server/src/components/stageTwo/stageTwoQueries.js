@@ -48,8 +48,8 @@ export const acceptStageTwoQuery = async ({ id, userId }) => {
 
 export const rejectStageTwoQuery = async ({ id }) => {
   try {
-    const queryString = rejectStageTwoHelper(body);
-    const { rows } = await db.query(queryString), [id];
+    const queryString = rejectStageTwoHelper();
+    const { rows } = await db.query(queryString, [id]);
     console.log('Successful with rejectStageTwoQuery');
     return rows;
   } catch (err) {
