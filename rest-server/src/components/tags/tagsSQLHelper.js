@@ -20,17 +20,9 @@ export const updateUsersTagsHelper = () => {
 }
 
 export const deleteUserTagsHelper = () => {
-  return [`
-  DELETE FROM users_tags
-  WHERE userid=$1 
-  AND tagid=$2
-  AND type=$3
-  `, `
-  DELETE FROM users_tags
-  WHERE userid=$1
-  AND tagid=$2,
-  AND type=$3
-  `
+  return [
+  `DELETE FROM users_tags WHERE userid=$1 AND tagid=$2 AND type=$3 RETURNING*;`, 
+  `DELETE FROM users_tags WHERE userid=$1 AND tagid=$2 AND type=$3 RETURNING*;`
 ];
 }
 
