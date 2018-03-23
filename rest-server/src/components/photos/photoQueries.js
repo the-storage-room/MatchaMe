@@ -49,7 +49,7 @@ export const updatePrimaryPhotoQuery = async body => {
     console.log('this is first query', queryString[0]);
     const temp = await db.query(queryString[0], [userId]);
     console.log('this is second query', queryString[1]);
-    const { rows } = await db.query(queryString[1], [photoId]);
+    const { rows } = await db.query(queryString[1], [userId, photoId]);
     console.log(rows);
     return rows[0];
   } catch (err) {
