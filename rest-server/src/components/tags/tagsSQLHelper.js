@@ -13,16 +13,25 @@ export const fetchUserAndTheirPreferenceTagsHelper = () => {
   `;
 } 
 
-export const updateUsersTags = () => {
+export const updateUsersTagsHelper = () => {
   return `
   
   `;
 }
 
-export const deleteUserTags = () => {
-  return `
-  
-  `;
+export const deleteUserTagsHelper = () => {
+  return [`
+  DELETE FROM users_tags
+  WHERE userid=$1 
+  AND tagid=$2
+  AND type=$3
+  `, `
+  DELETE FROM users_tags
+  WHERE userid=$1
+  AND tagid=$2,
+  AND type=$3
+  `
+];
 }
 
 export const updateUserPreferenceTags = () => {
@@ -31,8 +40,11 @@ export const updateUserPreferenceTags = () => {
   `;
 }
 
-export const deleteUserPreferenceTags = () => {
-  return `
-  
-  `;
-}
+// export const deleteUserPreferenceTagsHelper = () => {
+//   return `
+//   DELETE FROM users_tags
+//   WHERE userid=$1 
+//   AND tagid=$2
+//   AND type=$3
+//   `;
+// }

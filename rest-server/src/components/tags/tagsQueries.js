@@ -2,7 +2,9 @@ import db from '../../config/database/index'
 
 import {
   fetchAllTagsHelper,
-  fetchUserAndTheirPreferenceTagsHelper
+  fetchUserAndTheirPreferenceTagsHelper,
+  deleteUserTagsHelper,
+  // deleteUserPreferenceTagsHelper 
 } from './tagsSQLHelper';
 
 export const fetchAllTagsQuery = async () => {
@@ -26,3 +28,21 @@ export const fetchUserAndTheirPreferenceTagsQuery = async userId => {
     console.log('Error on fetchUserAndTheirPreferenceTagsQuery', err)
   }
 }
+
+export const deleteUserAndPreferencesTagsQuery = async ({ userId, tagId, type }) => {
+  try {
+    if (type === 'user') {
+      const queryString = deleteUserTagsHelper();
+      const { rows } = await db.query(queryString[0], [userId, tagId, type]);
+    } else if (type==='preference') {
+      const queryString = deleteUserTagsHelper();
+      const { rows } = await db.query(queryString[1], [userId, tagId, type])
+    }
+    console.log('Success on deleteUserTags');
+    return rows;
+  } catch (err) {
+    console.log('Error on deleteUserTagsQuery', err)
+  }
+}
+
+// export const deleteUserPreferenceTagsQuery = async ({userId})

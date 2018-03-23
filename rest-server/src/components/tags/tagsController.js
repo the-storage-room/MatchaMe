@@ -1,6 +1,7 @@
 import {
   fetchAllTagsQuery,
-  fetchUserAndTheirPreferenceTagsQuery
+  fetchUserAndTheirPreferenceTagsQuery,
+  deleteUserAndPreferencesTagsQuery
 } from './tagsQueries';
 
 export const fetchAllTagsController = async (req, res) => {
@@ -21,5 +22,17 @@ export const fetchUserAndTheirPreferenceTagsController = async (req, res) => {
     res.status(200).send(data);
   } catch (err) {
     console.log('Error on fetchUserAndTheirPreferenceTags', err)
+  }
+}
+
+export const deleteUserAndPreferenceTagsController = async (req, res) => {
+  try {
+    const { userId, tagId } = req.params;
+    const { type } = req.body;
+    const data = await deleteUserAndPreferencesTagsQuery(userId, tagId, type);
+    console.log('Success on deleteUserAndPreferenceTagsController')
+    res.status(200).send(data)
+  } catch (err) {
+    console.log('Error on deleteUserAndPreferenceTagsController', err)
   }
 }
