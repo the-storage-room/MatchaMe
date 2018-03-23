@@ -32,7 +32,7 @@ export const deleteUserAndPreferenceTagsController = async (req, res) => {
     const { type } = req.body;
     const data = await deleteUserAndPreferencesTagsQuery(userId, tagId, type);
     console.log('Success on deleteUserAndPreferenceTagsController')
-    res.status(200).send(data.rows)
+    res.status(200).send('Successful deletion')
   } catch (err) {
     console.log('Error on deleteUserAndPreferenceTagsController', err)
   }
@@ -44,7 +44,7 @@ export const postUserAndPreferenceTagsController = async (req, res) => {
     const { type } = req.body;
     const data = await postUserAndPreferenceTagsQuery(tagId, userId, type);
     console.log('Success on postUserAndPreferenceTagsController')
-    res.status(200).send(data.rows)
+    res.status(200).send('Successful post')
   } catch (err) {
     console.log('Error on postUserAndPreferenceTags', err)
   }
