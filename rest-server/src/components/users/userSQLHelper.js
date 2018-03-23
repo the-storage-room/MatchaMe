@@ -48,12 +48,22 @@ export const fetchUsersPhotosHelper = () => {
 };
 
 
-export const updateUserAttractivenessHelper = () => {
+export const updateTotalAttractivenessHelper = () => {
   return `
     UPDATE users
     SET totalattractiveness=(totalattractiveness+$1)
     WHERE id=$2
+    RETURNING totalattractiveness, totalNumOfRatings
   `;
+};
+
+export const updateAverageAttractivenessHelper = ({ id, newAverageAttractiveness, newTotalNumOfRatings }) => {
+  return `
+    UPDATE users
+    SET averageattractiveness=${newAverageAttractiveness},
+    totalNumOfRatings=${newTotalNumOfRatings}
+    WHERE id=${id}
+  `
 };
 
 export const updateUserInfoHelper = () => {
@@ -64,6 +74,18 @@ export const updateUserInfoHelper = () => {
     RETURNING $1
   `;
 };
+
+export const deleteUserTags = ({ id }) => {
+  return `
+    
+  `;
+};
+
+export const updateUserTags = ({ id }) => {
+  return `
+  
+  `
+}
 
 //increase power ranking by one for matchmakers who voted 'yes' on a successful match
 export const updateAndIncreasePRForTrueAndYesHelper = () => {

@@ -6,7 +6,8 @@ import {
   fetchMultipleUsersHelper,
   fetchUsersTagsHelper,
   fetchUsersPhotosHelper,
-  updateUserAttractivenessHelper,
+  updateTotalAttractivenessHelper,
+  updateAverageAttractivenessHelper,
   updateUserInfoHelper,
   updateAndIncreasePRForTrueAndYesHelper,
   updateAndDecreasePRForTrueAndNoHelper,
@@ -18,7 +19,6 @@ import { fetchAllPhotosQuery } from '../photos/photoQueries';
 
 export const fetchAllUsersQuery = async body => {
   try {
-
   } catch (err) {
     console.log(err);
   }
@@ -118,15 +118,25 @@ export const updateUserInfoQuery = async body => {
   }
 }
 
-export const updateUserAttractivenessQuery = async ({ id, attractiveness }) => {
+export const updateTotalAttractivenessQuery = async ({ id, attractiveness }) => {
   try {
-    const queryString = await updateUserAttractivenessHelper();
+    const queryString = await updateTotalAttractivenessHelper();
     const data = await db.query(queryString, [attractiveness, id]);
     return data;
   } catch (err) {
     console.log(err);
   }
-}
+};
+
+export const updateAverageAttractivenessQuery = async (body) => {
+  try {
+    const queryString = await updateAverageAttractivenessHelper(body);
+    const data = await db.query(queryString);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const updateUserRankingForTrueQuery = async matchId => {
   try {
