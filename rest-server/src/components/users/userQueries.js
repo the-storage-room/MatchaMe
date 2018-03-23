@@ -4,7 +4,9 @@ import {
   fetchAllUsersHelper,
   fetchSingleUserHelper,
   fetchMultipleUsersHelper,
-  updateUserRatingHelper,
+  fetchUsersTagsHelper,
+  fetchUsersPhotosHelper,
+  updateUserAttractivenessHelper,
   updateUserInfoHelper,
   updateAndIncreasePRForTrueAndYesHelper,
   updateAndDecreasePRForTrueAndNoHelper,
@@ -16,8 +18,9 @@ import { fetchAllPhotosQuery } from '../photos/photoQueries';
 
 export const fetchAllUsersQuery = async body => {
   try {
+
   } catch (err) {
-    console.error
+    console.log(err);
   }
 };
 
@@ -29,24 +32,60 @@ export const fetchSingleUsersQuery = async body => {
     rows[0].photos = await fetchAllPhotosQuery(userId);
     return rows[0];
   } catch (err) {
-    console.error
+    console.log(err)
   }
 };
 
 export const fetchMultipleUsersQuery = async body => {
   try {
+    const infoQueryString = fetchMultipleUsersHelper(body);
+    const photoQueryString = fetchUsersPhotosHelper(body);
+    const tagQueryString = fetchUsersTagsHelper(body);
+
+    const userData = await db.query(infoQueryString);
+    const userRows = userData.rows;
+
+    const photoData = await db.query(photoQueryString);
+    const photoRows = photoData.rows;
+
+    const tagData = await db.query(tagQueryString);
+    const tagRows = tagData.rows;
+
+    let tags = [];
+    let photos = [];
+
+    for (let i = 0; i < userRows.length; i++) {
+      for (let z = 0; z < tagRows.length; z++) {
+        if (userRows[i].id === tagRows[z].id) {
+          tags.push(tagRows[z].tag);
+          userRows[i].tags = tags;
+        }
+      }
+      tags = [];
+    }
+
+    for (let i = 0; i < userRows.length; i++) {
+      for (let z = 0; z < photoRows.length; z++) {
+        if (userRows[i].id === photoRows[z].id) {
+          photos.push(photoRows[z].url);
+          userRows[i].photos = photos;
+        }
+      }
+      photos = [];
+    }
+    return userRows;
   } catch (err) {
-    console.error
+    console.log(err);
   }
 };
 
-export const updateUserRatingQuery = async body => {
+export const fetchUsersTagsQuery = async (body) => {
   try {
-    const queryString = updateUserRatingHelper(body);
+    const queryString = await fetchUsersTagsHelper(body);
     const data = await db.query(queryString);
     return data;
   } catch (err) {
-   console.error
+    console.log(err);
   }
 };
 
@@ -74,9 +113,18 @@ export const updateUserInfoQuery = async body => {
         console.log('success on userInfoQuery')
       }
     }
+  } catch (err) { 
+    console.log(err);
+  }
+}
+
+export const updateUserAttractivenessQuery = async (body) => {
+  try {
+    const queryString = await updateUserAttractivenessHelper(body);
+    const data = await db.query(queryString);
     return data;
   } catch (err) {
-    console.error
+    console.log(err);
   }
 }
 

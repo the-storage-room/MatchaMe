@@ -2,7 +2,8 @@ import {
   fetchAllUsersQuery,
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
-  updateUserRatingQuery,
+  fetchUsersTagsQuery,
+  updateUserAttractivenessQuery,
   updateUserInfoQuery,
   updateUserRankingForTrueQuery,
   updateUserRankingForFalseQuery
@@ -24,12 +25,22 @@ export const fetchSingleUserController = async (req, res) => {
 
 export const fetchMultipleUsersController = async (req, res) => {
   try {
-  } catch (err) {}
+    const min = Number(req.params.attractiveness) - 3;
+    const max = Number(req.params.attractiveness) + 3;
+    const constraints = {
+      min: min,
+      max: max
+    }
+    const rows = await fetchMultipleUsersQuery(constraints);
+    res.status(200).send(rows);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-export const updateUserRatingController = async (req, res) => {
+export const updateUserAttractivenessController = async (req, res) => {
   try {
-    await updateUserRatingQuery(req.body);
+    await updateUserAttractivenessQuery(req.body);
     return res.status(200).send('success');
   } catch (err) {
     console.error;

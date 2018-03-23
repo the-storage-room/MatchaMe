@@ -17,16 +17,43 @@ export const fetchSingleUserHelper = userId => {
   `;
 };
 
-export const fetchMultipleUsersHelper = () => {
+export const fetchMultipleUsersHelper = ({ min, max }) => {
   return `
+    SELECT id, firstname, lastname, age, location, bio, gender
+    FROM USERS
+    WHERE users.averageattractiveness > ${min}
+    AND users.averageattractiveness < ${max}
+  ` 
+};
 
+export const fetchUsersTagsHelper = ({ min, max }) => {
+  console.log('min and max', min, max)
+  return `
+    SELECT tag, users.id
+    FROM TAGS
+    INNER JOIN USERS_TAGS on TAGS.id=USERS_TAGS.tagid
+    INNER JOIN USERS on USERS_TAGS.userid=USERS.id
+    WHERE users.averageattractiveness > ${min}
+    AND users.averageattractiveness < ${max}
   `;
 };
 
-export const updateUserRatingHelper = ({ id, attractiveness }) => {
+export const fetchUsersPhotosHelper = ({ min, max }) => {
+  return `
+    SELECT url, users.id 
+    FROM PHOTO
+    INNER JOIN USERS on USERS.id=PHOTO.userid
+    WHERE users.averageattractiveness > ${min}
+    AND users.averageattractiveness < ${max}
+  `;
+};
+
+
+export const updateUserAttractivenessHelper = ({ id, attractiveness }) => {
+  console.log(attractiveness)
   return `
     UPDATE users
-    SET attractiveness=${attractiveness}
+    SET totalattractiveness=(totalattractiveness+${attractiveness})
     WHERE id=${id}
   `;
 };

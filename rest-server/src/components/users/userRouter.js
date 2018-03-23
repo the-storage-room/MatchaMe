@@ -4,7 +4,7 @@ import {
   fetchAllUsersController,
   fetchSingleUserController,
   fetchMultipleUsersController,
-  updateUserRatingController,
+  updateUserAttractivenessController,
   updateUserInfoController,
   updateUserRankingController
 } from './userControllers';
@@ -15,9 +15,9 @@ router.route('/fetchAllUsers').get(fetchAllUsersController);
 
 router.route('/fetchSingleUser/:userId').get(fetchSingleUserController);
 
-router.route('/fetchMultipleUsers/:userId').get(fetchMultipleUsersController);
+router.route('/fetchMultipleUsers/:attractiveness').get(fetchMultipleUsersController);
 
-router.route('/updateUserRating').put(updateUserRatingController);
+router.route('/updateUserRating').put(updateUserAttractivenessController);
 
 router.route('/updateUserInfo').put(updateUserInfoController);
 
