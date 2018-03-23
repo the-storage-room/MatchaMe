@@ -9,7 +9,7 @@ AWS.config.update({
 const s3 = new AWS.S3();
 
 exports.deletePhoto = (bucketName, keyName, cb ) => {
-  s3.deleteObjects({
+  s3.deleteObject({
     Bucket: bucketName, 
     Key: keyName 
   }, (err, data) => {

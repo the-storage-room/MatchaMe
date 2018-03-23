@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Input from '../globals/Input/index.jsx';
 import Gender from './Gender.jsx';
-import actions from '../../../Redux/actions/account_page_actions'
+import actions from '../../../Redux/actions/account_page_actions';
 import style from './AccountPage.css';
 import Button from '../globals/Button/index.jsx';
 
@@ -43,7 +43,7 @@ class BioInfo extends Component {
         allValuesEntered = false;
       }
     }
-    this.props.renderButton(allValuesEntered)
+    this.props.renderButton(allValuesEntered);
   }
 
   render() {

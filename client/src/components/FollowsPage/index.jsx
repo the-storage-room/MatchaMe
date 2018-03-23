@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import style from './FollowsPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
-import StarredFollowsList from './StarredFollowsList'
+// import StarredFollowsList from './StarredFollowsList'
 
 const Follows = props => {
   return (
@@ -12,7 +12,7 @@ const Follows = props => {
       <div className={style.followsContainer}>
         <div className={style.starredContainer}>
           Render Starred matches Here
-          <StarredFollowsList />
+          {/* <StarredFollowsList /> */}
         </div>
         <div className={style.resultsContainer}>Render All Matches Here!</div>
       </div>

@@ -30,14 +30,25 @@ export const fetchPrimaryPhotoQuery = async userId => {
   }
 };
 
-export const addPhotoQuery = async body => {
+export const addPhotoQuery = async ({ body }) => {
   try {
-  } catch (err) {}
+    const queryString = addPhotoHelper(body)
+    const { rows } = await db.query(queryString, [url,id]);
+    return rows
+  } catch (err) {
+    console.error
+  }
 };
 
-export const deletePhotoQuery = async body => {
+export const deletePhotoQuery = async (req) => {
+  const { photoId } = req.params;
   try {
-  } catch (err) {}
+    const queryString = (deletePhotoHelper(req.params))
+    const { rows } = await db.query(queryString, [req.params.photoId])
+    return rows
+  } catch (err) {
+    console.error
+  }
 };
 
 export const updatePrimaryPhotoQuery = async ({ userId, photoId }) => {

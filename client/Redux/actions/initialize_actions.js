@@ -5,52 +5,52 @@ const { REST_SERVER_URL } = process.env;
 export default {
   initialize() {
     return async (dispatch, getState) => {
-      const { id } = await getState().accountData
-      const { data } = await axios
-        .get(`${REST_SERVER_URL}/api/initialize/${id}`)
-      const {
-        userData,
-        tagData,
-        userLeaderboardRanking,
-        outcomesData,
-        currentMatchData,
-        ratingsData,
-        matchesData,
-        leaderboardData,
-        } = data.initializeObject
-      const {
-        username,
-        email,
-        lastname,
-        firstname,
-        age,
-        location,
-        gender,
-        preference,
-        bio,
-        powerranking,
-        signupcomplete,
-        photos,
-      } = userData
-      const accountData = {
-        id: id,
-        username: username,
-        email: email,
-        firstname: firstname,
-        lastname: lastname
-      }
-      const bioData = {
-        age: age,
-        location: location,
-        gender: gender,
-        preference: preference,
-        bio: bio,
-      }
-      const powerRankingData = {
-        totalPoints: powerranking,
-        userRanking: userLeaderboardRanking,
-      }
+      const { id } = getState().accountData
       try {
+        const { data } = await axios
+          .get(`${REST_SERVER_URL}/api/initialize/${id}`)
+        const {
+          userData,
+          tagData,
+          userLeaderboardRanking,
+          outcomesData,
+          currentMatchData,
+          ratingsData,
+          matchesData,
+          leaderboardData,
+          } = data.initializeObject
+        const {
+          username,
+          email,
+          lastname,
+          firstname,
+          age,
+          location,
+          gender,
+          preference,
+          bio,
+          powerranking,
+          signupcomplete,
+          photos,
+        } = userData
+        const accountData = {
+          id,
+          username,
+          email,
+          firstname,
+          lastname
+        }
+        const bioData = {
+          age,
+          location,
+          gender,
+          preference,
+          bio,
+        }
+        const powerRankingData = {
+          totalPoints: powerranking,
+          userRanking: userLeaderboardRanking,
+        }
         dispatch({
           type: 'USER_ACCOUNT_DATA_RECIEVED',
           payload: accountData

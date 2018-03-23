@@ -16,12 +16,23 @@ export const fetchPrimaryPhotoHelper = () => {
 
 export const addPhotoHelper = () => {
   return `
-  
+  INSERT INTO photo (
+    url, 
+    userid,
+    primaryphoto
+  )
+  VALUES (
+    $1,
+    $2,
+    0
+  )
   `;
 };
 
 export const deletePhotoHelper = () => {
   return `
+  DELETE FROM photo
+  WHERE id=$1;
   `;
 };
 
