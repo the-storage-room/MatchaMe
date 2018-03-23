@@ -3,7 +3,8 @@ import {
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
   fetchUsersTagsQuery,
-  updateUserAttractivenessQuery,
+  updateTotalAttractivenessQuery,
+  updateAverageAttractivenessQuery,
   updateUserInfoQuery,
   updateUserRankingForTrueQuery,
   updateUserRankingForFalseQuery
@@ -40,8 +41,20 @@ export const fetchMultipleUsersController = async (req, res) => {
 
 export const updateUserAttractivenessController = async (req, res) => {
   try {
-    await updateUserAttractivenessQuery(req.body);
-    return res.status(200).send('success');
+    let { rows } = await updateTotalAttractivenessQuery(req.body);
+    const newTotalAttractivenessScore = rows[0].totalattractiveness;
+    let newTotalNumOfRatings = (rows[0].totalnumofratings + 1);
+
+    // change math.floor to reflect proper rounding ...later
+    const newAverageAttractiveness = Math.floor(newTotalAttractivenessScore / (newTotalNumOfRatings));
+
+    const body = {
+      id: req.body.id,
+      newAverageAttractiveness: newAverageAttractiveness,
+      newTotalNumOfRatings: newTotalNumOfRatings
+    };
+    await updateAverageAttractivenessQuery(body);
+    return res.send('user attractiveness updated');
   } catch (err) {
     console.error;
   }

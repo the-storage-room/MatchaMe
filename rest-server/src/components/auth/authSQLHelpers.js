@@ -1,12 +1,12 @@
-export const loginHelper = ({ username }) => {
+export const loginHelper = () => {
   return `
     SELECT id, username, email, password
     FROM users
-    WHERE username='${username}'
+    WHERE username=$1
   `;
 };
 
-export const signupHelper = ({ username, password, email }) => {
+export const signupHelper = () => {
   return `
     INSERT INTO users (
       username, 
@@ -15,9 +15,9 @@ export const signupHelper = ({ username, password, email }) => {
       signupComplete 
     )
     VALUES (
-      '${username}',
-      '${password}',
-      '${email}',
+      $1,
+      $2,
+      $3,
       '0'
     )
     RETURNING id, email, username, signupComplete

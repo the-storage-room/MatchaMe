@@ -1,19 +1,19 @@
 // fetch multiple matches to vote on, based on user params
-export const fetchPendingMatchmakingHelper = userId => {
+export const fetchPendingMatchmakingHelper = () => {
   return `
   SELECT * FROM MATCH
-  WHERE NOT user1_id=${userId}
-  AND NOT user2_id=${userId};
+  WHERE NOT user1_id=$1
+  OR NOT user2_id=$1
   `;
 };
 
 // approve or disapprove a match
-export const updateMatchmakingHelper = (matchId, decision) => {
+export const updateMatchmakingHelper = decision => {
   if (decision === 'approved') {
     return `
     UPDATE MATCH 
     SET approvedcount = approvedcount + 1
-    WHERE id=${matchId}
+    WHERE id=$1
     RETURNING *;
     `;
   }
@@ -21,7 +21,7 @@ export const updateMatchmakingHelper = (matchId, decision) => {
     return `
     UPDATE MATCH 
     SET rejectedcount = rejectedcount + 1
-    WHERE id=${matchId}
+    WHERE id=$1
     RETURNING *;
     `;
   }

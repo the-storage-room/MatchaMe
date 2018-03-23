@@ -7,14 +7,14 @@ import router from './components/s3router';
 
 const app = express();
 
-app.use(
-  cors({
-    origin: process.env.STATIC_SERVER_URL,
-    allowedHeaders: 'Content-Type, authorization',
-    methods: ['GET, POST, PUT, DELETE', 'OPTIONS'],
-  }),
-)
-
+// app.use(
+//   cors({
+//     origin: process.env.STATIC_SERVER_URL,
+//     allowedHeaders: 'Content-Type, authorization', 
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   }),
+// )
+app.use(cors())
 app.use(helmet()); 
 app.use(fileUpload());
 app.use(bodyParser.json());

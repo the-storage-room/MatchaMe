@@ -29,21 +29,23 @@ export const fetchPrimaryPhotoController = async (req, res) => {
 };
 
 export const addPhotoController = async (req, res) => {
-  const { url, userId } = req.body;
+  const { url, id } = req.body;
   try {
-    console.log(url, userId);
-  } catch (err) {}
+    const data = await addPhotoQuery(req);
+  } catch (err) {
+    console.error
+  }
 };
 
 export const deletePhotoController = async (req, res) => {
   try {
+    const data = await deletePhotoQuery(req);
   } catch (err) {}
 };
 
 export const updatePrimaryPhotoController = async (req, res) => {
   try {
     const data = await updatePrimaryPhotoQuery(req.params);
-    console.log(data);
     res.status(200).send(data);
   } catch (err) {
     console.log('Error on updatePrimaryPhotoController', err);

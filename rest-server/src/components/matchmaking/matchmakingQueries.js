@@ -1,4 +1,4 @@
-import db from '../../config/database/index.js';
+import db from '../../config/database/index';
 
 import {
   fetchPendingMatchmakingHelper,
@@ -8,8 +8,8 @@ import {
 
 export const fetchPendingMatchmakingQuery = async userId => {
   try {
-    const string = fetchPendingMatchmakingHelper(userId);
-    const data = await db.query(string);
+    const string = fetchPendingMatchmakingHelper();
+    const data = await db.query(string, [userId]);
     return data;
   } catch (err) {
     console.log(err);
@@ -18,8 +18,8 @@ export const fetchPendingMatchmakingQuery = async userId => {
 
 export const updateMatchmakingQuery = async ({ matchId, decision }) => {
   try {
-    const string = updateMatchmakingHelper(matchId, decision);
-    const { rows } = await db.query(string);
+    const string = updateMatchmakingHelper(decision);
+    const { rows } = await db.query(string, [matchId]);
     console.log('Success with updateMatchmakingQuery');
     return rows[0];
   } catch (err) {
