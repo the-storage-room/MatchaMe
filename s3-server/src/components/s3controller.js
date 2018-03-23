@@ -7,10 +7,7 @@ module.exports = {
     });
   },
   deletePhoto: (req, res) => {
-    s3model.deletePhoto(req, (err) => {
-      if (err) {
-        throw err;
-      }
+    s3model.deletePhoto(req, () => {
       res.send('Deleted Photo');
     });
   },
