@@ -36,19 +36,19 @@ export const fetchSingleUsersQuery = async body => {
   }
 };
 
-export const fetchMultipleUsersQuery = async body => {
+export const fetchMultipleUsersQuery = async ({ min, max }) => {
   try {
-    const infoQueryString = fetchMultipleUsersHelper(body);
-    const photoQueryString = fetchUsersPhotosHelper(body);
-    const tagQueryString = fetchUsersTagsHelper(body);
+    const infoQueryString = fetchMultipleUsersHelper();
+    const photoQueryString = fetchUsersPhotosHelper();
+    const tagQueryString = fetchUsersTagsHelper();
 
-    const userData = await db.query(infoQueryString);
+    const userData = await db.query(infoQueryString, [min, max]);
     const userRows = userData.rows;
 
-    const photoData = await db.query(photoQueryString);
+    const photoData = await db.query(photoQueryString, [min, max]);
     const photoRows = photoData.rows;
 
-    const tagData = await db.query(tagQueryString);
+    const tagData = await db.query(tagQueryString, [min, max]);
     const tagRows = tagData.rows;
 
     let tags = [];
@@ -118,10 +118,10 @@ export const updateUserInfoQuery = async body => {
   }
 }
 
-export const updateUserAttractivenessQuery = async (body) => {
+export const updateUserAttractivenessQuery = async ({ id, attractiveness }) => {
   try {
-    const queryString = await updateUserAttractivenessHelper(body);
-    const data = await db.query(queryString);
+    const queryString = await updateUserAttractivenessHelper();
+    const data = await db.query(queryString, [attractiveness, id]);
     return data;
   } catch (err) {
     console.log(err);

@@ -17,44 +17,42 @@ export const fetchSingleUserHelper = () => {
   `;
 };
 
-export const fetchMultipleUsersHelper = ({ min, max }) => {
+export const fetchMultipleUsersHelper = () => {
   return `
     SELECT id, firstname, lastname, age, location, bio, gender
     FROM USERS
-    WHERE users.averageattractiveness > ${min}
-    AND users.averageattractiveness < ${max}
+    WHERE users.averageattractiveness > $1
+    AND users.averageattractiveness < $2
   ` 
 };
 
-export const fetchUsersTagsHelper = ({ min, max }) => {
-  console.log('min and max', min, max)
+export const fetchUsersTagsHelper = () => {
   return `
     SELECT tag, users.id
     FROM TAGS
     INNER JOIN USERS_TAGS on TAGS.id=USERS_TAGS.tagid
     INNER JOIN USERS on USERS_TAGS.userid=USERS.id
-    WHERE users.averageattractiveness > ${min}
-    AND users.averageattractiveness < ${max}
+    WHERE users.averageattractiveness > $1
+    AND users.averageattractiveness < $2
   `;
 };
 
-export const fetchUsersPhotosHelper = ({ min, max }) => {
+export const fetchUsersPhotosHelper = () => {
   return `
     SELECT url, users.id 
     FROM PHOTO
     INNER JOIN USERS on USERS.id=PHOTO.userid
-    WHERE users.averageattractiveness > ${min}
-    AND users.averageattractiveness < ${max}
+    WHERE users.averageattractiveness > $1
+    AND users.averageattractiveness < $2
   `;
 };
 
 
-export const updateUserAttractivenessHelper = ({ id, attractiveness }) => {
-  console.log(attractiveness)
+export const updateUserAttractivenessHelper = () => {
   return `
     UPDATE users
-    SET totalattractiveness=(totalattractiveness+${attractiveness})
-    WHERE id=${id}
+    SET totalattractiveness=(totalattractiveness+$1)
+    WHERE id=$2
   `;
 };
 
