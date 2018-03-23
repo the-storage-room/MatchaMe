@@ -27,10 +27,9 @@ export const updateMatchmakingQuery = async ({ matchId, decision }) => {
   }
 };
 
-export const inactivateMatchMakingQuery = async body => {
+export const inactivateMatchMakingQuery = async ({ matchId }) => {
   try {
-    const queryString = inactivateMatchMakingHelper(body);
-    const { rows } = await db.query(queryString);
+    const { rows } = await db.query(inactivateMatchMakingHelper(), [matchId]);
     console.log('Success with inactivateMatchMakingQuery');
     return rows[0];
   } catch (err) {

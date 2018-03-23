@@ -27,11 +27,11 @@ export const updateMatchmakingHelper = decision => {
   }
 };
 
-export const inactivateMatchMakingHelper = ({ matchId }) => {
+export const inactivateMatchMakingHelper = () => {
   return `
   UPDATE MATCH
   SET activevoting = 0
-  WHERE id=${matchId}
+  WHERE id=$1
   RETURNING *;
   `;
 };
