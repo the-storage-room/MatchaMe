@@ -79,17 +79,10 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
   }
 };
 
-<<<<<<< HEAD
 export const fetchUsersTagsQuery = async (body) => {
   try {
     const queryString = await fetchUsersTagsHelper(body);
     const data = await db.query(queryString);
-=======
-export const updateUserRatingQuery = async ({ attractiveness, id }) => {
-  try {
-    const queryString = updateUserRatingHelper();
-    const data = await db.query(queryString, [attractiveness, id]);
->>>>>>> 337281b4d43cddf21689ffb28c7e7fd141a0e33a
     return data;
   } catch (err) {
     console.log(err);
