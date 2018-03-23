@@ -6,7 +6,10 @@ export const fetchAllTagsHelper = () => {
 
 export const fetchUserAndTheirPreferenceTagsHelper = () => {
   return `
-  
+  SELECT username, firstname, lastname, tag, type FROM users_tags
+  INNER JOIN users ON users_tags.userid = users.id
+  INNER JOIN tags ON users_tags.tagid = tags.id
+  WHERE users.id = $1
   `;
 } 
 

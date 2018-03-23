@@ -2,7 +2,7 @@ import db from '../../config/database/index'
 
 import {
   fetchAllTagsHelper,
-  UserAndPreferencseTagsHelper
+  fetchUserAndTheirPreferenceTagsHelper
 } from './tagsSQLHelper';
 
 export const fetchAllTagsQuery = async () => {
@@ -16,10 +16,13 @@ export const fetchAllTagsQuery = async () => {
   }
 }
 
-export const UserAndPreferencseTagsQuery = async () => {
+export const fetchUserAndTheirPreferenceTagsQuery = async userId => {
   try {
-
+    const queryString = fetchUserAndTheirPreferenceTagsHelper();
+    const { rows } = await db.query(queryString, [userId])
+    console.log('Success on fetchUserAndTheirPreferenceTagsQuery')
+    return rows;
   } catch (err) {
-
+    console.log('Error on fetchUserAndTheirPreferenceTagsQuery', err)
   }
 }
