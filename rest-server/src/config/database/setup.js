@@ -279,6 +279,7 @@ const createStageTwoTable = async () => {
         matchId      INT NOT NULL ,
         isSuccessful SMALLINT NOT NULL DEFAULT 0 ,
         active       SMALLINT NOT NULL DEFAULT 1 ,
+        firstDecision INT DEFAULT NULL,
         CONSTRAINT PK_StageTwo PRIMARY KEY (id),
         CONSTRAINT FK_Match_StageTwo FOREIGN KEY (matchId)
           REFERENCES Match(id)
