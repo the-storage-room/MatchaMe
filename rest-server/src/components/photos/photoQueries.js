@@ -40,12 +40,9 @@ export const deletePhotoQuery = async body => {
   } catch (err) {}
 };
 
-export const updatePrimaryPhotoQuery = async body => {
+export const updatePrimaryPhotoQuery = async ({ userId, photoId }) => {
   try {
-    const { userId } = body;
-    const { photoId } = body;
-    console.log(body);
-    const queryString = updatePrimaryPhotoHelper(body);
+    const queryString = updatePrimaryPhotoHelper();
     console.log('this is first query', queryString[0]);
     const temp = await db.query(queryString[0], [userId]);
     console.log('this is second query', queryString[1]);

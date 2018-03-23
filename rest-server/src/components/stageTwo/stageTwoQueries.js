@@ -11,7 +11,7 @@ import { FORMERR } from 'dns';
 
 export const addStageTwoQuery = async ({ matchId }) => {
   try {
-    const queryString = addStageTwoHelper(body);
+    const queryString = addStageTwoHelper();
     const { rows } = await db.query(queryString, [matchId]);
     console.log('Success with addStageTwo');
     return rows;
