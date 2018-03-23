@@ -48,12 +48,22 @@ export const fetchUsersPhotosHelper = () => {
 };
 
 
-export const updateUserAttractivenessHelper = () => {
+export const updateTotalAttractivenessHelper = () => {
   return `
     UPDATE users
     SET totalattractiveness=(totalattractiveness+$1)
     WHERE id=$2
+    RETURNING totalattractiveness, totalNumOfRatings
   `;
+};
+
+export const updateAverageAttractivenessHelper = ({ id, newAverageAttractiveness, newTotalNumOfRatings }) => {
+  return `
+    UPDATE users
+    SET averageattractiveness=${newAverageAttractiveness},
+    totalNumOfRatings=${newTotalNumOfRatings}
+    WHERE id=${id}
+  `
 };
 
 export const updateUserInfoHelper = () => {
@@ -67,8 +77,7 @@ export const updateUserInfoHelper = () => {
 
 export const deleteUserTags = ({ id }) => {
   return `
-    DELETE from users_tags
-    WHERE userid=${id}
+    
   `;
 };
 
