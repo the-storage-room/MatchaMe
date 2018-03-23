@@ -16,6 +16,7 @@ const Follows = props => {
         </div>
         <div className={style.resultsContainer}>Render All Matches Here!</div>
       </div>
+      </div>
     )
   }
 }
