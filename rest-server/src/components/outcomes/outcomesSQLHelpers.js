@@ -36,11 +36,11 @@ export const unstarSingleMatchHelper = () => {
   `;
 };
 
-export const addOutcomesHelper = ({ userId, matchId, starred, decision }) => {
+export const addOutcomesHelper = () => {
   return `
   INSERT INTO outcomes
   (userid, matchid, starred, decision)
-  VALUES (${userId}, ${matchId}, ${starred}, '${decision}')
+  VALUES ($1, $2 $3, $4)
   RETURNING *;
   `;
 };

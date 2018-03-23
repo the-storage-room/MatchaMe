@@ -109,7 +109,7 @@ export const updateUserInfoQuery = async body => {
           body[key],
           body.id
         );
-        data = await db.query(queryString);
+        data = await db.query(queryString, [key, body[key], body.id]);
         console.log('success on userInfoQuery')
       }
     }
