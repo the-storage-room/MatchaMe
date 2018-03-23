@@ -5,19 +5,30 @@ import style from './FollowsPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
 import StarredFollowsList from './StarredFollowsList'
 
-const Follows = props => {
-  return (
-    <div>
-      <Navbar />
-      <div className={style.followsContainer}>
-        <div className={style.starredContainer}>
-          Render Starred matches Here
-          <StarredFollowsList />
-        </div>
-        <div className={style.resultsContainer}>Render All Matches Here!</div>
+// const Follows = props => {
+//   return (
+//     <div>
+//       <Navbar />
+//       <div className={style.followsContainer}>
+//         <div className={style.starredContainer}>
+//           Render Starred matches Here
+//           <StarredFollowsList />
+//         </div>
+//         <div className={style.resultsContainer}>Render All Matches Here!</div>
+//       </div>
+//     </div>
+//   );
+// };
+
+class Follow extends React.Component => {
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <div className={style.followContainer}
       </div>
-    </div>
-  );
-};
+    )
+  }
+}
 
 export default withRouter(Follows);
