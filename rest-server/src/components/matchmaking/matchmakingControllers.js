@@ -10,10 +10,12 @@ import { addStageTwoQuery } from '../stageTwo/stageTwoQueries';
 
 export const fetchPendingMatchmakingController = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const { rows } = await fetchPendingMatchmakingQuery(userId);
+    const { rows } = await fetchPendingMatchmakingQuery(req.params);
+    console.log('Success with fetchPendingMatchmakingController: ', err);
     res.send(rows);
-  } catch (err) {}
+  } catch (err) {
+    console.log('Error with fetchPendingMatchmakingController: ', err);
+  }
 };
 
 // approve or disapprove a match  **WORK IN PROGRESS TALK TO JUSTIN**
@@ -39,6 +41,6 @@ export const updateMatchmakingController = async (req, res) => {
     }
     res.send();
   } catch (err) {
-    console.log(err);
+    console.log('Error with updateMatchmakingController: ', err);
   }
 };

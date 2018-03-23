@@ -6,10 +6,9 @@ import {
   inactivateMatchMakingHelper
 } from './matchmakingSQLHelpers';
 
-export const fetchPendingMatchmakingQuery = async userId => {
+export const fetchPendingMatchmakingQuery = async ({ userId }) => {
   try {
-    const string = fetchPendingMatchmakingHelper();
-    const data = await db.query(string, [userId]);
+    const data = await db.query(fetchPendingMatchmakingHelper(), [userId]);
     return data;
   } catch (err) {
     console.log(err);
@@ -18,8 +17,9 @@ export const fetchPendingMatchmakingQuery = async userId => {
 
 export const updateMatchmakingQuery = async ({ matchId, decision }) => {
   try {
-    const string = updateMatchmakingHelper(decision);
-    const { rows } = await db.query(string, [matchId]);
+    const { rows } = await db.query(updateMatchmakingHelper(decision), [
+      matchId
+    ]);
     console.log('Success with updateMatchmakingQuery');
     return rows[0];
   } catch (err) {
