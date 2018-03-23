@@ -43,7 +43,6 @@ export const deletePhotoController = async (req, res) => {
 export const updatePrimaryPhotoController = async (req, res) => {
   try {
     const data = await updatePrimaryPhotoQuery(req.params);
-    console.log(data);
     res.status(200).send(data);
   } catch (err) {
     console.log('Error on updatePrimaryPhotoController', err);

@@ -27,8 +27,8 @@ export const fetchAllUsersQuery = async body => {
 export const fetchSingleUsersQuery = async body => {
   try {
     const { userId } = body;
-    const queryString = fetchSingleUserHelper(userId);
-    const { rows } = await db.query(queryString);
+    const queryString = fetchSingleUserHelper();
+    const { rows } = await db.query(queryString, [userId]);
     rows[0].photos = await fetchAllPhotosQuery(userId);
     return rows[0];
   } catch (err) {
@@ -36,19 +36,19 @@ export const fetchSingleUsersQuery = async body => {
   }
 };
 
-export const fetchMultipleUsersQuery = async body => {
+export const fetchMultipleUsersQuery = async ({ min, max }) => {
   try {
-    const infoQueryString = fetchMultipleUsersHelper(body);
-    const photoQueryString = fetchUsersPhotosHelper(body);
-    const tagQueryString = fetchUsersTagsHelper(body);
+    const infoQueryString = fetchMultipleUsersHelper();
+    const photoQueryString = fetchUsersPhotosHelper();
+    const tagQueryString = fetchUsersTagsHelper();
 
-    const userData = await db.query(infoQueryString);
+    const userData = await db.query(infoQueryString, [min, max]);
     const userRows = userData.rows;
 
-    const photoData = await db.query(photoQueryString);
+    const photoData = await db.query(photoQueryString, [min, max]);
     const photoRows = photoData.rows;
 
-    const tagData = await db.query(tagQueryString);
+    const tagData = await db.query(tagQueryString, [min, max]);
     const tagRows = tagData.rows;
 
     let tags = [];
@@ -109,7 +109,7 @@ export const updateUserInfoQuery = async body => {
           body[key],
           body.id
         );
-        data = await db.query(queryString);
+        data = await db.query(queryString, [key, body[key], body.id]);
         console.log('success on userInfoQuery')
       }
     }
@@ -118,25 +118,24 @@ export const updateUserInfoQuery = async body => {
   }
 }
 
-export const updateUserAttractivenessQuery = async (body) => {
+export const updateUserAttractivenessQuery = async ({ id, attractiveness }) => {
   try {
-    const queryString = await updateUserAttractivenessHelper(body);
-    const data = await db.query(queryString);
+    const queryString = await updateUserAttractivenessHelper();
+    const data = await db.query(queryString, [attractiveness, id]);
     return data;
   } catch (err) {
     console.log(err);
   }
 }
 
-export const updateUserRankingForTrueQuery = async body => {
+export const updateUserRankingForTrueQuery = async matchId => {
   try {
     let dataObj = {};
-
-    const queryString1 = updateAndIncreasePRForTrueAndYesHelper(body);
-    const data1 = await db.query(queryString1);
+    const queryString1 = updateAndIncreasePRForTrueAndYesHelper();
+    const data1 = await db.query(queryString1, [matchId]);
     dataObj['increasedPR'] = data1;
-    const queryString2 = updateAndDecreasePRForTrueAndNoHelper(body);
-    const data2 = await db.query(queryString2);
+    const queryString2 = updateAndDecreasePRForTrueAndNoHelper();
+    const data2 = await db.query(queryString2, [matchId]);
     dataObj['decreasedPR'] = data2;
     console.log('Success on updateUserRankingForTrueQuery');
     return dataObj;
@@ -145,16 +144,15 @@ export const updateUserRankingForTrueQuery = async body => {
   }
 };
 
-export const updateUserRankingForFalseQuery = async body => {
+export const updateUserRankingForFalseQuery = async matchId => {
   try {
     let dataObj = {};
-    const queryString1 = updateAndIncreasePRForFalseAndNoHelper(body);
-    const data1 = await db.query(queryString1);
+    const queryString1 = updateAndIncreasePRForFalseAndNoHelper();
+    const data1 = await db.query(queryString1, [matchId]);
     dataObj['increasedPR'] = data1;
-    const queryString2 = updateAndIncreasePRForFalseAndYesHelper(body);
-    const data2 = await db.query(queryString2);
+    const queryString2 = updateAndIncreasePRForFalseAndYesHelper();
+    const data2 = await db.query(queryString2, [matchId]);
     dataObj['decreasedPR'] = data2;
-    console.log('dataobj', dataObj);
     console.log('Success on updateUserRankingsForFalseQuery', dataObj);
   } catch (err) {
     console.log('Error on updateUserRankingsForFalseQuery', err);

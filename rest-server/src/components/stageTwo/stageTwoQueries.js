@@ -9,10 +9,10 @@ import {
 } from './stageTwoSQLHelpers';
 import { FORMERR } from 'dns';
 
-export const addStageTwoQuery = async body => {
+export const addStageTwoQuery = async ({ matchId }) => {
   try {
-    const queryString = addStageTwoHelper(body);
-    const { rows } = await db.query(queryString);
+    const queryString = addStageTwoHelper();
+    const { rows } = await db.query(queryString, [matchId]);
     console.log('Success with addStageTwo');
     return rows;
   } catch (err) {
@@ -20,25 +20,24 @@ export const addStageTwoQuery = async body => {
   }
 };
 
-export const fetchStageTwoQuery = async body => {
+export const fetchStageTwoQuery = async ({ id }) => {
   try {
-    const { rows } = await db.query(fetchStageTwoHelper(body));
+    const { rows } = await db.query(fetchStageTwoHelper(), [id]);
     return rows;
   } catch (err) {
     console.log('Error with fetchStageTwoQuery', err);
   }
 };
 
-export const acceptStageTwoQuery = async body => {
+export const acceptStageTwoQuery = async ({ id, userId }) => {
   try {
     let rows;
-    const check = await db.query(fetchStageTwoHelper(body));
-    const queryStrings = acceptStageTwoHelper(body);
+    const check = await db.query(fetchStageTwoHelper(), [id]);
+    const queryStrings = acceptStageTwoHelper();
     if (!!check.rows[0].firstdecision) {
-      rows = await db.query(queryStrings[0]);
+      rows = await db.query(queryStrings[0], [id]);
     } else {
-      console.log('hello from the insday');
-      rows = await db.query(queryStrings[1]);
+      rows = await db.query(queryStrings[1], [userId, id]);
     }
     console.log('Successful with acceptStageTwoQuery');
     return rows.rows;
@@ -47,10 +46,10 @@ export const acceptStageTwoQuery = async body => {
   }
 };
 
-export const rejectStageTwoQuery = async body => {
+export const rejectStageTwoQuery = async ({ id }) => {
   try {
-    const queryString = rejectStageTwoHelper(body);
-    const { rows } = await db.query(queryString);
+    const queryString = rejectStageTwoHelper();
+    const { rows } = await db.query(queryString, [id]);
     console.log('Successful with rejectStageTwoQuery');
     return rows;
   } catch (err) {

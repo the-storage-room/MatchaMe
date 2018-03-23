@@ -1,22 +1,22 @@
-export const fetchStageTwoHelper = ({ id }) => {
+export const fetchStageTwoHelper = () => {
   return `
   SELECT * FROM stagetwo
-  WHERE id=${id};
+  WHERE id=$1;
   `;
 };
 
-export const acceptStageTwoHelper = ({ id, userId }) => {
+export const acceptStageTwoHelper = () => {
   return [
-    `UPDATE stagetwo SET issuccessful=1 WHERE id=${id} AND firstdecision IS NOT NULL RETURNING *;`,
-    `UPDATE stagetwo SET firstdecision=${userId} WHERE id=${id} RETURNING *;`
+    `UPDATE stagetwo SET issuccessful=1 WHERE id=$1 AND firstdecision IS NOT NULL RETURNING *;`,
+    `UPDATE stagetwo SET firstdecision=$1 WHERE id=$2 RETURNING *;`
   ];
 };
 
-export const rejectStageTwoHelper = ({ id }) => {
+export const rejectStageTwoHelper = () => {
   return `
   UPDATE stagetwo
   SET active=0
-  WHERE id=${id}
+  WHERE id=$1
   RETURNING *;
   `;
 };
@@ -27,9 +27,9 @@ export const ghostStageTwoHelper = () => {
   `;
 };
 
-export const addStageTwoHelper = ({ matchId }) => {
+export const addStageTwoHelper = () => {
   return `
   INSERT INTO stagetwo
-  (matchid) VALUES (${matchId})
+  (matchid) VALUES ($1)
   `;
 };
