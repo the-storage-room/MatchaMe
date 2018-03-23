@@ -2,7 +2,7 @@ import express from 'express';
 
 import {
   fetchAllTagsController,
-  // UserAndPreferencseTagsController
+  fetchUserAndTheirPreferenceTagsController
 } from '../tags/tagsController';
 
 const router = express.Router();
@@ -10,8 +10,8 @@ const router = express.Router();
 router.route('/fetchAllTags')
   .get(fetchAllTagsController)
 
-// router.route('/fetchAllUserAndPreferencseTags/:userId')
-//   .get(fetchAllUserAndPreferencesTagsController)
+router.route('/fetchUserAndTheirPreferenceTags/:userId')
+  .get(fetchUserAndTheirPreferenceTagsController)
 
 // router.route('/updateAndDeleteTags/:userId')
 //   .put(updateAndDeleteTagsController)

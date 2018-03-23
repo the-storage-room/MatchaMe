@@ -1,6 +1,6 @@
 import {
   fetchAllTagsQuery,
-  UserAndPreferencseTagsQuery
+  fetchUserAndTheirPreferenceTagsQuery
 } from './tagsQueries';
 
 export const fetchAllTagsController = async (req, res) => {
@@ -13,10 +13,13 @@ export const fetchAllTagsController = async (req, res) => {
   }
 }
 
-export const UserAndPreferencseTagsController = async (req, res) => {
+export const fetchUserAndTheirPreferenceTagsController = async (req, res) => {
   try {
-
+    const { userId } = req.params;
+    const data = await fetchUserAndTheirPreferenceTagsQuery(userId);
+    console.log('Success on fetchUserAndTheirPreferenceTagsController')
+    res.status(200).send(data);
   } catch (err) {
-
+    console.log('Error on fetchUserAndTheirPreferenceTags', err)
   }
 }
