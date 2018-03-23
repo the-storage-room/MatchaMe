@@ -28,17 +28,12 @@ class PhotoUpload extends Component {
     this.setState({ file: e.target.files[0] });
   }
 
-  handleSubmit = async () => {
+  handleSubmit = () => {
     const formData = new FormData();
     formData.append('file', this.state.file);
     formData.append('id', this.state.userId);
     formData.append('username', this.state.username);
-    try {
-      const data = await axios.post(`${S3_SERVER_URL}/api/s3`, formData)
-      console.log(data.data)
-    } catch (err) {
-      console.error(err)
-    }
+    this.props.uploadPhoto(formData);
   }
 
   handleLittlePhotoClick = (photo) => {
@@ -48,7 +43,6 @@ class PhotoUpload extends Component {
   }
 
   handleDeletePhoto = () => {
-    const { userId } = this.state;
     const { url, id } = this.state.targetPhoto
     const key = url.slice(46)
     axios
@@ -98,11 +92,12 @@ class PhotoUpload extends Component {
           <div className={style.smallImageHolder}>
             {
               this.state.userPhotos
-                .map(photo => 
+                .map((photo, index) => 
                   <PhotoItem
                   key={photo.id}
                   photo={photo}
-                  onClick={() => this.handleLittlePhotoClick(photo)}
+                  index={index}
+                  onClick={() => this.handleLittlePhotoClick(index)}
                   />
                 )
             }
@@ -125,7 +120,7 @@ class PhotoUpload extends Component {
           </div>
           <div>
             {
-              this.state.targetPhoto.primary ?
+              this.state.targetPhoto === 0 ?
               <img
                 className={style.star}
                 src="http://moziru.com/images/star-clipart-clear-background-5.png" />
