@@ -3,7 +3,7 @@ export const fetchPendingMatchmakingHelper = () => {
   return `
   SELECT * FROM MATCH
   WHERE NOT user1_id=$1
-  OR NOT user2_id=$1
+  AND NOT user2_id=$1;
   `;
 };
 

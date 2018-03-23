@@ -9,12 +9,21 @@ import {
   fetchOneOutcomesHelper
 } from './outcomesSQLHelpers';
 
-export const addOutcomeQuery = async ({ userId, matchId, starred, decision }) => {
+export const addOutcomeQuery = async ({
+  userId,
+  matchId,
+  starred,
+  decision
+}) => {
   try {
-    const check = await db.query(fetchOneOutcomesHelper(body));
+    const check = await db.query(fetchOneOutcomesHelper(), [userId, matchId]);
     if (check.rows.length === 0) {
-      const queryString = addOutcomesHelper();
-      const { rows } = await db.query(queryString, [userId, matchId, starred, decision]);
+      const { rows } = await db.query(addOutcomesHelper(), [
+        userId,
+        matchId,
+        starred,
+        decision
+      ]);
       console.log('Success on addOutcomeQuery');
       return rows[0];
     } else {
@@ -26,10 +35,9 @@ export const addOutcomeQuery = async ({ userId, matchId, starred, decision }) =>
   }
 };
 
-export const fetchStarredMatchesQuery = async ({userId}) => {
+export const fetchStarredMatchesQuery = async ({ userId }) => {
   try {
-    const queryString = fetchStarredMatchesHelper();
-    const { rows } = await db.query(queryString, [userId]);
+    const { rows } = await db.query(fetchStarredMatchesHelper(), [userId]);
     console.log('Success on fetchStarredMatchesQuery');
     return rows;
   } catch (err) {
@@ -37,10 +45,9 @@ export const fetchStarredMatchesQuery = async ({userId}) => {
   }
 };
 
-export const fetchUnstarredMatchesQuery = async ({userId}) => {
+export const fetchUnstarredMatchesQuery = async ({ userId }) => {
   try {
-    const queryString = fetchUnstarredMatchesHelper();
-    const { rows } = await db.query(queryString, [userId]);
+    const { rows } = await db.query(fetchUnstarredMatchesHelper(), [userId]);
     console.log('Success on fetchUnStarredMatchesQuery', rows);
     return rows;
   } catch (err) {
@@ -48,30 +55,19 @@ export const fetchUnstarredMatchesQuery = async ({userId}) => {
   }
 };
 
-export const starSingleMatchQuery = async ({userId, matchId}) => {
+export const starSingleMatchQuery = async ({ userId, matchId }) => {
   try {
-<<<<<<< HEAD
-    const { userId } = body;
-    const { matchId } = body;
-    const queryString = starSingleMatchHelper(userId, matchId);
-    const data = await db.query(queryString);
-    console.log('dataaaaa', data);
-    console.log('Success on starSingleMatchQuery', data);
-=======
-    const queryString = starSingleMatchHelper();
-    const data = await db.query(queryString, [matchId, userId]);
+    const data = await db.query(starSingleMatchHelper(), [matchId, userId]);
     console.log('Success on starSingleMatchQuery');
->>>>>>> cdda6f78569116d0857a5861dfec3a362c3b6040
     return data;
   } catch (err) {
     console.log('Error on starSingleMatchQuery', err);
   }
 };
 
-export const unstarSingleMatchQuery = async ({matchId, userId}) => {
+export const unstarSingleMatchQuery = async ({ matchId, userId }) => {
   try {
-    const queryString = unstarSingleMatchHelper();
-    const data = await db.query(queryString, [matchId, userId]);
+    const data = await db.query(unstarSingleMatchHelper(), [matchId, userId]);
     console.log('Success on unstarSingleMatchQuery', data);
     return data;
   } catch (err) {
