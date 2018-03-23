@@ -36,9 +36,48 @@ export const fetchSingleUsersQuery = async body => {
 
 export const fetchMultipleUsersQuery = async body => {
   try {
+<<<<<<< HEAD
     const queryString = fetchMultipleUsersHelper(body);
     const data = await db.query(queryString);
     return data;
+=======
+    const infoQueryString = fetchMultipleUsersHelper(body);
+    const photoQueryString = fetchUserPhotosHelper(body);
+    const tagQueryString = fetchUsersTagsHelper(body);
+
+    const userData = await db.query(infoQueryString);
+    const userRows = userData.rows;
+
+    const photoData = await db.query(photoQueryString);
+    const photoRows = photoData.rows;
+
+    const tagData = await db.query(tagQueryString);
+    const tagRows = tagData.rows;
+
+    let tags = [];
+    let photos = [];
+
+    for (let i = 0; i < userRows.length; i++) {
+      for (let z = 0; z < tagRows.length; z++) {
+        if (userRows[i].id === tagRows[z].id) {
+          tags.push(tagRows[z].tag);
+          userRows[i].tags = tags;
+        }
+      }
+      tags = [];
+    }
+
+    for (let i = 0; i < userRows.length; i++) {
+      for (let z = 0; z < photoRows.length; z++) {
+        if (userRows[i].id === photoRows[z].id) {
+          photos.push(photoRows[z].url);
+          userRows[i].photos = photos;
+        }
+      }
+      photos = [];
+    }
+    return userRows;
+>>>>>>> ratings and stuff
   } catch (err) {
 <<<<<<< HEAD
     console.error
@@ -70,6 +109,7 @@ export const updateUserAttractivenessQuery = async (body) => {
   }
 };
 
+<<<<<<< HEAD
 export const updateUserInfoQuery = async body => {
   try {
     let data;
@@ -94,6 +134,15 @@ export const updateUserInfoQuery = async body => {
         console.log('success on userInfoQuery')
       }
     }
+=======
+export const updateUserAttractivenessQuery = async (body) => {
+  
+  try {
+    
+    const queryString = await updateUserAttractivenessHelper(body);
+    console.log(queryString)
+    const data = await db.query(queryString);
+>>>>>>> ratings and stuff
     return data;
   } catch (err) {
     console.error

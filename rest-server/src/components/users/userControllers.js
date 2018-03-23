@@ -33,39 +33,9 @@ export const fetchMultipleUsersController = async (req, res) => {
       min: min,
       max: max
     }
-
-    const tagData = await fetchUsersTagsQuery(payload);
-    const tagRows = tagData.rows;
-    console.log(tagRows)
-
-    for (let i = 0; i < tagRows.length; i++) {
-      let currId = tagRows[i].id;
-      tags.push(tagRows[i].tag);
-      users[currId] = {
-        tags: tags
-      };
-      if (tagRows[i + 1] === undefined) {
-        break;
-      }
-      if (currId !== tagRows[i + 1].id) {
-        tags = [];
-      }
-    }
-    console.log(users)
-    const userData = await fetchMultipleUsersQuery(payload);
-    const userRows = userData.rows;
-    console.log(userRows)
-
-    for (let z = 0; i < userRows.length; z++) {
-      console.log('im in')
-      console.log('i is', z)
-
-      let currId = userRows[i].id;
-      
-      
-    }
-
-    res.send(users);
+    const rows = await fetchMultipleUsersQuery(constraints);
+    console.log(rows)
+    res.status(200).send(rows);
   } catch (err) {
 
   }
@@ -73,7 +43,7 @@ export const fetchMultipleUsersController = async (req, res) => {
 
 export const updateUserAttractivenessController = async (req, res) => {
   try {
-    await updateUserRatingQuery(req.body);
+    await updateUserAttractivenessQuery(req.body);
     return res.status(200).send('success');
   } catch (err) {
     console.error;

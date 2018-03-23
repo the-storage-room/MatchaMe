@@ -57,9 +57,10 @@ export const fetchUserPhotos = ({ id }) => {
 
 
 export const updateUserAttractivenessHelper = ({ id, attractiveness }) => {
+  console.log(attractiveness)
   return `
     UPDATE users
-    SET attractiveness=${attractiveness}
+    SET totalattractiveness=(totalattractiveness+${attractiveness})
     WHERE id=${id}
   `;
 };

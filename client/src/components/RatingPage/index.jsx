@@ -14,8 +14,19 @@ class Rate extends React.Component {
   constructor() {
     super();
     this.state = {
-      rating: null
+      rating: null,
+      users: []
     };
+  }
+
+  componentDidMount = async () => {
+    // use .env for http request
+    try {
+      const users = await axios.get(`http://localhost:5000/api/users/fetchMultipleUsers/6`);
+      users.data.forEach(user => this.setState({ users: [...this.state.users, user ]}));
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   onSliderChange = (e, val) => {
@@ -35,7 +46,8 @@ class Rate extends React.Component {
   }
 
   myfunc = () => {
-    console.log(localStorage);
+    console.log(this.state.users);
+    
   }
 
   render() {
@@ -56,6 +68,7 @@ class Rate extends React.Component {
           </div>
         </div>
         <Button onClick={() => this.submitUserAttractiveness()} className={style.nextBtn} text={'Next Button'} />
+        <Button onClick={() => this.myfunc()} text='test' />
       </div>
     </div>
     )
