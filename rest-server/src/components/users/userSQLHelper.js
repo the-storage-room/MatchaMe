@@ -26,9 +26,9 @@ export const fetchMultipleUsersHelper = () => {
   ` 
 };
 
-export const fetchUsersTagsHelper = () => {
+export const fetchUsersTagsForRatingHelper = () => {
   return `
-    SELECT tag, users.id
+    SELECT tag, type, users.id
     FROM TAGS
     INNER JOIN USERS_TAGS on TAGS.id=USERS_TAGS.tagid
     INNER JOIN USERS on USERS_TAGS.userid=USERS.id
@@ -47,6 +47,13 @@ export const fetchUsersPhotosHelper = () => {
   `;
 };
 
+export const fetchSingleUserAttractivenessHelper = () => {
+  return `
+    SELECT averageattractiveness
+    FROM users
+    WHERE id=$1
+  `
+}
 
 export const updateTotalAttractivenessHelper = () => {
   return `
