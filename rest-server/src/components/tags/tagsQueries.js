@@ -2,9 +2,7 @@ import db from '../../config/database/index'
 
 import {
   fetchAllTagsHelper,
-  fetchUserAndTheirPreferenceTagsHelper,
-  deleteUserTagsHelper,
-  // deleteUserPreferenceTagsHelper 
+  fetchUserAndTheirPreferenceTagsHelper
 } from './tagsSQLHelper';
 
 export const fetchAllTagsQuery = async () => {
