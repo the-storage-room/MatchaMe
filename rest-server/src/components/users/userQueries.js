@@ -36,11 +36,6 @@ export const fetchSingleUsersQuery = async body => {
 
 export const fetchMultipleUsersQuery = async body => {
   try {
-<<<<<<< HEAD
-    const queryString = fetchMultipleUsersHelper(body);
-    const data = await db.query(queryString);
-    return data;
-=======
     const infoQueryString = fetchMultipleUsersHelper(body);
     const photoQueryString = fetchUserPhotosHelper(body);
     const tagQueryString = fetchUsersTagsHelper(body);
@@ -77,11 +72,7 @@ export const fetchMultipleUsersQuery = async body => {
       photos = [];
     }
     return userRows;
->>>>>>> ratings and stuff
   } catch (err) {
-<<<<<<< HEAD
-    console.error
-=======
     
   }
 };
@@ -95,7 +86,6 @@ export const fetchUsersTagsQuery = async (body) => {
     return data;
   } catch (err) {
 
->>>>>>> get users info
   }
 };
 
@@ -109,7 +99,6 @@ export const updateUserAttractivenessQuery = async (body) => {
   }
 };
 
-<<<<<<< HEAD
 export const updateUserInfoQuery = async body => {
   try {
     let data;
@@ -134,7 +123,6 @@ export const updateUserInfoQuery = async body => {
         console.log('success on userInfoQuery')
       }
     }
-=======
 export const updateUserAttractivenessQuery = async (body) => {
   
   try {
@@ -142,7 +130,6 @@ export const updateUserAttractivenessQuery = async (body) => {
     const queryString = await updateUserAttractivenessHelper(body);
     console.log(queryString)
     const data = await db.query(queryString);
->>>>>>> ratings and stuff
     return data;
   } catch (err) {
     console.error
