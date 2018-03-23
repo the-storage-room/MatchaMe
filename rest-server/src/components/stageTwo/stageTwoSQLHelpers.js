@@ -31,5 +31,6 @@ export const addStageTwoHelper = () => {
   return `
   INSERT INTO stagetwo
   (matchid) VALUES ($1)
+  RETURNING *;
   `;
 };

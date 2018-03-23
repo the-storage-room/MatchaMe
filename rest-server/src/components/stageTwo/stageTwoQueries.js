@@ -16,7 +16,7 @@ export const addStageTwoQuery = async ({ matchId }) => {
     console.log('Success with addStageTwo');
     return rows;
   } catch (err) {
-    console.log('Error with addStageTwo');
+    console.log('Error with addStageTwo', err);
   }
 };
 
