@@ -29,14 +29,15 @@ export const fetchUserAndTheirPreferenceTagsQuery = async userId => {
   }
 }
 
-export const deleteUserAndPreferencesTagsQuery = async ({ userId, tagId, type }) => {
+export const deleteUserAndPreferencesTagsQuery = async (userId, tagId, type) => {
   try {
+    let rows;
     if (type === 'user') {
       const queryString = deleteUserTagsHelper();
-      const { rows } = await db.query(queryString[0], [userId, tagId, type]);
+      rows = await db.query(queryString[0], [userId, tagId, type]);
     } else if (type==='preference') {
       const queryString = deleteUserTagsHelper();
-      const { rows } = await db.query(queryString[1], [userId, tagId, type])
+      rows = await db.query(queryString[1], [userId, tagId, type]);
     }
     console.log('Success on deleteUserTags');
     return rows;
@@ -44,5 +45,3 @@ export const deleteUserAndPreferencesTagsQuery = async ({ userId, tagId, type })
     console.log('Error on deleteUserTagsQuery', err)
   }
 }
-
-// export const deleteUserPreferenceTagsQuery = async ({userId})

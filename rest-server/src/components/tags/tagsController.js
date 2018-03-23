@@ -31,7 +31,7 @@ export const deleteUserAndPreferenceTagsController = async (req, res) => {
     const { type } = req.body;
     const data = await deleteUserAndPreferencesTagsQuery(userId, tagId, type);
     console.log('Success on deleteUserAndPreferenceTagsController')
-    res.status(200).send(data)
+    res.status(200).send(data.rows)
   } catch (err) {
     console.log('Error on deleteUserAndPreferenceTagsController', err)
   }
