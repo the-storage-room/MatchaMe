@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Slider from 'material-ui/Slider';
-import axios from 'axios';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import style from './RatingPage.css';

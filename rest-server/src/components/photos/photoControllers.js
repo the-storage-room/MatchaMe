@@ -29,7 +29,6 @@ export const fetchPrimaryPhotoController = async (req, res) => {
 };
 
 export const addPhotoController = async (req, res) => {
-  const { url, id } = req.body;
   try {
     const data = await addPhotoQuery(req);
   } catch (err) {

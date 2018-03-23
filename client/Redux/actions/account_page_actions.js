@@ -59,15 +59,17 @@ export default {
   // },
   uploadPhoto(formData) {
     return async (dispatch, getState) => {
-      const { id } = await getState().accountData;
+      // const { id } = await getState().accountData;
+      let id = 333;
       try {
         await axios
           .post(`${S3_SERVER_URL}/api/s3`, formData);
         const photoData = await axios
           .get(`${REST_SERVER_URL}/api/photos/fetchAllPhotos/${id}`)
+        console.log(photoData)
         dispatch({
-          type: 'USER_PHOTO_ADDED_UPDATED',
-          payload: photoData
+          type: 'USER_PHOTO_ADDED',
+          payload: photoData.data
           });
       } catch (err) {
         console.error
