@@ -6,6 +6,7 @@ import {
   fetchMultipleUsersHelper,
   fetchUsersTagsHelper,
   fetchUsersPhotosHelper,
+  fetchSingleUserAttractivenessHelper,
   updateTotalAttractivenessHelper,
   updateAverageAttractivenessHelper,
   updateUserInfoHelper,
@@ -88,6 +89,16 @@ export const fetchUsersTagsQuery = async (body) => {
     console.log(err);
   }
 };
+
+export const fetchSingleUserAttractivenessQuery = async (id) => {
+  try {
+    const queryString = await fetchSingleUserAttractivenessHelper();
+    const data = await db.query(queryString, [id]);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 export const updateUserInfoQuery = async body => {
   try {

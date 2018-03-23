@@ -3,6 +3,7 @@ import {
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
   fetchUsersTagsQuery,
+  fetchSingleUserAttractivenessQuery,
   updateTotalAttractivenessQuery,
   updateAverageAttractivenessQuery,
   updateUserInfoQuery,
@@ -26,6 +27,11 @@ export const fetchSingleUserController = async (req, res) => {
 
 export const fetchMultipleUsersController = async (req, res) => {
   try {
+    const id = req.body.id;
+
+    const attractiveness = await fetchSingleUserAttractivenessQuery(id);
+    console.log(attractiveness)
+
     const min = Number(req.params.attractiveness) - 3;
     const max = Number(req.params.attractiveness) + 3;
     const constraints = {

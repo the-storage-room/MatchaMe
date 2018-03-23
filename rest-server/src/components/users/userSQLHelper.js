@@ -47,6 +47,13 @@ export const fetchUsersPhotosHelper = () => {
   `;
 };
 
+export const fetchSingleUserAttractivenessHelper = () => {
+  return `
+    SELECT averageattractiveness
+    FROM users
+    WHERE id=$1
+  `
+}
 
 export const updateTotalAttractivenessHelper = () => {
   return `
