@@ -65,6 +65,19 @@ export const updateUserInfoHelper = () => {
   `;
 };
 
+export const deleteUserTags = ({ id }) => {
+  return `
+    DELETE from users_tags
+    WHERE userid=${id}
+  `;
+};
+
+export const updateUserTags = ({ id }) => {
+  return `
+  
+  `
+}
+
 //increase power ranking by one for matchmakers who voted 'yes' on a successful match
 export const updateAndIncreasePRForTrueAndYesHelper = () => {
   return `
