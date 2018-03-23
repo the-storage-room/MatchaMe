@@ -1,5 +1,5 @@
 // fetch multiple matches to vote on, based on user params
-export const fetchPendingMatchmakingHelper = userId => {
+export const fetchPendingMatchmakingHelper = () => {
   return `
   SELECT * FROM MATCH
   WHERE user1_id=$1
