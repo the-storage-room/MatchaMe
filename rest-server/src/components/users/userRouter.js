@@ -15,11 +15,9 @@ router.route('/fetchAllUsers').get(fetchAllUsersController);
 
 router.route('/fetchSingleUser/:userId').get(fetchSingleUserController);
 
-router.route('/fetchMultipleUsers/:attractiveness')
-  .get(fetchMultipleUsersController);
+router.route('/fetchMultipleUsers/:attractiveness').get(fetchMultipleUsersController);
 
-router.route('/updateUserRating')
-  .put(updateUserAttractivenessController);
+router.route('/updateUserRating').put(updateUserAttractivenessController);
 
 router.route('/updateUserInfo').put(updateUserInfoController);
 

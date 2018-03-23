@@ -25,19 +25,16 @@ export const fetchSingleUserController = async (req, res) => {
 
 export const fetchMultipleUsersController = async (req, res) => {
   try {
-    const users = {};
-    let tags = [];
     const min = Number(req.params.attractiveness) - 3;
     const max = Number(req.params.attractiveness) + 3;
-    const payload = {
+    const constraints = {
       min: min,
       max: max
     }
     const rows = await fetchMultipleUsersQuery(constraints);
-    console.log(rows)
     res.status(200).send(rows);
   } catch (err) {
-
+    console.log(err);
   }
 };
 

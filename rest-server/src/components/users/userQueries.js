@@ -5,6 +5,7 @@ import {
   fetchSingleUserHelper,
   fetchMultipleUsersHelper,
   fetchUsersTagsHelper,
+  fetchUsersPhotosHelper,
   updateUserAttractivenessHelper,
   updateUserInfoHelper,
   updateAndIncreasePRForTrueAndYesHelper,
@@ -17,8 +18,9 @@ import { fetchAllPhotosQuery } from '../photos/photoQueries';
 
 export const fetchAllUsersQuery = async body => {
   try {
+
   } catch (err) {
-    console.error
+    console.log(err);
   }
 };
 
@@ -30,14 +32,14 @@ export const fetchSingleUsersQuery = async body => {
     rows[0].photos = await fetchAllPhotosQuery(userId);
     return rows[0];
   } catch (err) {
-    console.error
+    console.log(err)
   }
 };
 
 export const fetchMultipleUsersQuery = async body => {
   try {
     const infoQueryString = fetchMultipleUsersHelper(body);
-    const photoQueryString = fetchUserPhotosHelper(body);
+    const photoQueryString = fetchUsersPhotosHelper(body);
     const tagQueryString = fetchUsersTagsHelper(body);
 
     const userData = await db.query(infoQueryString);
@@ -73,29 +75,17 @@ export const fetchMultipleUsersQuery = async body => {
     }
     return userRows;
   } catch (err) {
-    
+    console.log(err);
   }
 };
 
 export const fetchUsersTagsQuery = async (body) => {
   try {
-    
     const queryString = await fetchUsersTagsHelper(body);
-    console.log(queryString)
     const data = await db.query(queryString);
     return data;
   } catch (err) {
-
-  }
-};
-
-export const updateUserAttractivenessQuery = async (body) => {
-  try {
-    const queryString = updateUserRatingHelper(body);
-    const data = await db.query(queryString);
-    return data;
-  } catch (err) {
-   console.error
+    console.log(err);
   }
 };
 
@@ -123,16 +113,18 @@ export const updateUserInfoQuery = async body => {
         console.log('success on userInfoQuery')
       }
     }
+  } catch (err) { 
+    console.log(err);
+  }
+}
+
 export const updateUserAttractivenessQuery = async (body) => {
-  
   try {
-    
     const queryString = await updateUserAttractivenessHelper(body);
-    console.log(queryString)
     const data = await db.query(queryString);
     return data;
   } catch (err) {
-    console.error
+    console.log(err);
   }
 }
 
