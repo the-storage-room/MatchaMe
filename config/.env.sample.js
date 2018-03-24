@@ -26,7 +26,7 @@ const envBuild = {
     'AWS_PASSWORD=',
     'AWS_PORT=',
     'SALT_ROUNDS=10',
-    'TOKEN_SECRET=theStorageRoom',
+    'TOKEN_SECRET=theStorageRoom'
   ],
   'socket-server': [
     'NODE_ENV=DEVELOPMENT',
