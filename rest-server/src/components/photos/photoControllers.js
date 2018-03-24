@@ -29,9 +29,9 @@ export const fetchPrimaryPhotoController = async (req, res) => {
 };
 
 export const addPhotoController = async (req, res) => {
-  const { url, id } = req.body;
   try {
-    const data = await addPhotoQuery(req);
+    await addPhotoQuery(req);
+    res.status(200).send('added photo');
   } catch (err) {
     console.error
   }
@@ -39,8 +39,11 @@ export const addPhotoController = async (req, res) => {
 
 export const deletePhotoController = async (req, res) => {
   try {
-    const data = await deletePhotoQuery(req);
-  } catch (err) {}
+    await deletePhotoQuery(req);
+    res.status(200).send('deleted photo');
+  } catch (err) {
+    console.error
+  }
 };
 
 export const updatePrimaryPhotoController = async (req, res) => {

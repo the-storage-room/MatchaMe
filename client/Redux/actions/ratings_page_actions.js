@@ -23,8 +23,8 @@ export default {
   submitRating(ratingObject) {
     return async (dispatch, getState) => {
       const { ratings } = getState();
-      ratings.pop();
       const newRatings = JSON.parse(JSON.stringify(ratings))
+      newRatings.pop();
       // if (ratings.length === 1) { this.fetchMoreUsersToRate(ratings) }
       try {
       await axios

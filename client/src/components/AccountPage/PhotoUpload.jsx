@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import TargetPhoto from './TargetPhoto.jsx';
 import PhotoItem from './PhotoItem.jsx';
 import Button from '../globals/Button/index.jsx';
+import actions from '../../../Redux/actions/account_page_actions';
 import style from './AccountPage.css';
 
 const { S3_SERVER_URL } = process.env;
@@ -12,15 +14,9 @@ class PhotoUpload extends Component {
   constructor() {
     super();
     this.state = {
-        file: null,
-        userId: 1,
-        userPhotos: [
-          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/azrael.jpg1521649554118', id: 12315527224, primary: 0},
-          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/2017fordfusion-factsheet.jpg1521649496626', id: 123124, primary: 0},
-          {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/Bentley+Bentayga++.jpg1521649326452', id: 12334234124, primary: 1},
-        ],
-        username: 'jacten',
         targetPhoto: 0,
+        file: null,
+        currentFunc: null,
     };
   }
 
@@ -31,9 +27,12 @@ class PhotoUpload extends Component {
   handleSubmit = () => {
     const formData = new FormData();
     formData.append('file', this.state.file);
-    formData.append('id', this.state.userId);
-    formData.append('username', this.state.username);
+    formData.append('id', this.props.userId);
+    formData.append('username', this.props.username);
     this.props.uploadPhoto(formData);
+    this.setState({
+      currentFunc: 'add'
+    })
   }
 
   handleLittlePhotoClick = (photo) => {
@@ -43,29 +42,48 @@ class PhotoUpload extends Component {
   }
 
   handleDeletePhoto = () => {
-    const { url, id } = this.state.targetPhoto
-    const key = url.slice(46)
-    axios
-      .delete(`${S3_SERVER_URL}/api/s3/${userId}/${key}/${id}`)
+    const index = this.state.targetPhoto
+    const { url, id } = this.props.userPhotos[index];
+    const key = url.slice(46);
+    this.props.deletePhoto(key, id, index)
+    this.setState({
+      currentFunc: 'delete'
+    })
   }
 
   handleSetPrimaryPhoto = () => {
-    
+    const index = this.state.targetPhoto
+    const { id } = this.props.userPhotos[index];
+    this.props.updatePrimaryPhoto(id, index)
+    this.setState({
+      currentFunc: 'primary'
+    })
   }
 
   componentDidMount = () => {
-    this.state.userPhotos
-      .forEach((photoObj) => {
-        if (photoObj.primary === 1) {
-          this.setState({
-            targetPhoto: photoObj
-          })
-        }
-      })
+    this.props.renderButton(this.props.userPhotos.length)
   }
 
   componentDidUpdate = () => {
-    this.props.renderButton(this.state.userPhotos.length)
+    this.props.renderButton(this.props.userPhotos.length)
+  }
+
+  componentWillReceiveProps = () => {
+    console.log(this.props.userPhotos)
+    if (
+      this.state.currentFunc === 'primary' || 
+      this.state.currentFunc === 'delete'
+    ) {
+      this.setState({
+        targetPhoto: 0
+      })
+    } else if (
+      this.state.currentFunc === 'add'
+    ) {
+      this.setState({
+        targetPhoto: this.props.userPhotos.length - 1
+      })
+    }
   }
 
   render() {
@@ -87,11 +105,11 @@ class PhotoUpload extends Component {
             </button>
           </div>
           <div className={style.basicMargin}>
-            <TargetPhoto photo={this.state.targetPhoto}/>
+            <TargetPhoto photo={this.props.userPhotos[this.state.targetPhoto]}/>
           </div>
           <div className={style.smallImageHolder}>
             {
-              this.state.userPhotos
+              this.props.userPhotos
                 .map((photo, index) => 
                   <PhotoItem
                   key={photo.id}
@@ -133,4 +151,20 @@ class PhotoUpload extends Component {
   }
 }
 
-export default PhotoUpload;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    uploadPhoto: actions.uploadPhoto,
+    deletePhoto: actions.deletePhoto,
+    updatePrimaryPhoto: actions.updatePrimaryPhoto,
+  }, dispatch);
+}
+
+const mapStateToProps = (state) => {
+  return {
+    userPhotos: state.userPhotos,
+    userId: state.accountData.id,
+    username: state.accountData.username,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoUpload);

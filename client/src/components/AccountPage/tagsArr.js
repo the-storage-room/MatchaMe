@@ -1,7 +1,7 @@
 export default [
-    "Neat Freak",
-    "Hardcore Gamer",
-    "Book Worm",
+    "happy",
+    "sad",
+    "chill",
     "Health Nut",
     "Patron of the Arts",
     "Sport Enthusist",

@@ -32,18 +32,18 @@ export const fetchPrimaryPhotoQuery = async userId => {
 
 export const addPhotoQuery = async ({ body }) => {
   try {
-    const queryString = addPhotoHelper(body)
-    const { rows } = await db.query(queryString, [url,id]);
-    return rows
+    const { url, id } = body;
+    const queryString = addPhotoHelper()
+    const data = await db.query(queryString, [url,id]);
+    return data
   } catch (err) {
     console.error
   }
 };
 
 export const deletePhotoQuery = async (req) => {
-  const { photoId } = req.params;
   try {
-    const queryString = (deletePhotoHelper(req.params))
+    const queryString = deletePhotoHelper(req.params);
     const { rows } = await db.query(queryString, [req.params.photoId])
     return rows
   } catch (err) {

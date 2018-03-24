@@ -1,6 +1,9 @@
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import actions from '../../../Redux/actions/account_page_actions';
 import tagsArr from './tagsArr';
 import Button from '../globals/Button/index.jsx';
 import style from './AccountPage.css';
@@ -10,38 +13,61 @@ class Tags extends Component {
   constructor() {
     super();
     this.state = {
-      tags: tagsArr,
-      user: [],
-      mate: ["Stoner","Neat Freak"],
+      tagsTemp: [],
     };
   }
 
+  handleSave = () => {
+    this.props.updateTagsData(this.props.type, this.state.tagsTemp)
+  }
+
   addToTagArray = (tag) => {
-    let { type } = this.props
-    let array = this.state[type]
-    if (array.includes(tag)) {
-      array.splice(array.indexOf(tag), 1);
-      this.props.renderButton(false);
-    } else if (array.length < 3) {
-      array.push(tag)
-      if (array.length === 3) {
-        this.props.renderButton(true);
+    const { type, tagsData} = this.props
+    const tagsArray = tagsData[type]
+    if (tagsArray.includes(tag)) {
+      tagsArray
+        .splice(tagsArray
+          .indexOf(tag), 1);
+      this
+        .props
+        .renderButton(false);
+      this
+        .setState(
+          {tagsTemp: tagsArray}
+        )
+    } else if (
+      tagsArray.length < 3
+    ) {
+      tagsArray.push(tag);
+      this.setState({tagsTemp: tagsArray})
+      if ( tagsArray.length === 3 ) {
+        this.props
+          .renderButton(true);
       }
     }
-    this.setState({
-      type: array
-    })
+  }
+
+  componentDidMount = () => {
+    const { type } = this.props;
+    const tagsArray = this.props.tagsData[type];
+    this.setState({ 
+      tagsTemp: tagsArray,
+    });
   }
 
   componentDidUpdate = () => {
-    let { type } = this.props
-    let array = this.state[type];
-    this.props.renderButton(array.length === 3);
-    }
-
+    let { type } = this.props;
+    let  tagsArray  = this.props.tagsData[type];
+    this.props.renderButton(tagsArray.length === 3);
+  }
+  
   render() {
     return (
       <div>
+        <Button
+          text="Save!"
+          onClick={this.handleSave}
+          />
         <div className={style.basicMargin}>
           Tag Picker!
         </div>
@@ -55,9 +81,8 @@ class Tags extends Component {
         </div>
         <div className={style.basicMargin}>
           {
-            this.state.tags.map((tag) => {
-              let { type } = this.props
-              let selected = this.state[type].includes(tag)
+            tagsArr.map((tag) => {
+              let selected = this.props.tagsData[this.props.type].includes(tag)
               return <Button 
                 text={tag} 
                 key={tag} 
@@ -72,4 +97,16 @@ class Tags extends Component {
   }
 }
 
-export default Tags;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    updateTagsData: actions.updateTagsData,
+  }, dispatch);
+}
+
+const mapStateToProps = (state) => {
+  return {
+    tagsData: state.tags,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tags);
