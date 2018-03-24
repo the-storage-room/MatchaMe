@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-import {fetchSingleUsersQuery} from '../users/userQueries';
+import API_KEY from './apikey'
 
-import {distanceBetweenCoordinates} from './locationHelper'
+import {fetchSingleUsersQuery} from '../users/userQueries';
+import {distanceBetweenCoordinates} from './locationHelper';
+
 
 //location/zipcode sent as a string
 export const fetchUserZipcodeController = async (req, res) => {
@@ -22,12 +24,12 @@ export const fetchDistanceController = async (req, res) => {
     const { user1zipcode, user2zipcode } = req.params;
     let userOne;
     let userTwo;
-    const userOneObj = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${user1zipcode}&key=AIzaSyCvmj0OjxdSwFskshMqBaZbdSJI1QYhQpo`)
+    const userOneObj = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${user1zipcode}&key=${API_KEY}`)
       .then(res => {
         userOne = res.data.results[0].geometry.location
         return userOne
       })
-    const userTwoObj = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${user2zipcode}&key=AIzaSyCvmj0OjxdSwFskshMqBaZbdSJI1QYhQpo`)
+    const userTwoObj = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${user2zipcode}&key=${API_KEY}`)
       .then(res => {
         userTwo = res.data.results[0].geometry.location
         return userTwo;
