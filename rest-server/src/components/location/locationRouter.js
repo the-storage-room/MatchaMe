@@ -9,13 +9,10 @@ import {
 const router = express.Router();
 
 
-router.route('/fetchUserZipcode')
+router.route('/fetchUserZipcode/:userId')
   .get(fetchUserZipcodeController)
 
-// router.route('/fetchLonAndLatFromZipCode')
-//   .get(fetchLonAndLatFromZipCodeController)
-
-// router.route('/fetchDistanceBetweenTwoCoordinate')
-//   .get(fetchDistanceController)
+router.route('/fetchDistance/:user1zipcode/:user2zipcode')
+  .get(fetchDistanceController)
 
 export default router;
