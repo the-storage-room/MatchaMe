@@ -82,7 +82,7 @@ export const fetchUnstarredMatchesQuery = async ({ userId }) => {
       await delete match.user1_id.signupcomplete;
       await delete match.user2_id.signupcomplete;
     }
-    console.log('Success on fetchUnStarredMatchesQuery', rows);
+    console.log('Success on fetchUnStarredMatchesQuery');
     return rows;
   } catch (err) {
     console.log('Error on fetchUnstarredMatchesQuery', err);

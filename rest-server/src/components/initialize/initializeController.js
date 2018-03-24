@@ -7,6 +7,8 @@ import {
   fetchUnstarredMatchesQuery
 } from '../outcomes/outcomesQueries';
 
+import { fetchStageTwoQuery } from '../stageTwo/stageTwoQueries';
+
 import { fetchUserTagsAndPreferencesHelper } from '../users/userSQLHelper';
 
 export const fetchInitializeController = async (req, res) => {
@@ -45,9 +47,8 @@ export const fetchInitializeController = async (req, res) => {
       starred: await fetchStarredMatchesQuery(req.params),
       allOthers: await fetchUnstarredMatchesQuery(req.params)
     };
-    data.currentMatchData = console.log(
-      'Success with fetchInitializeController: '
-    );
+    data.currentMatchData = await fetchStageTwoQuery(req.params);
+    console.log('Success with fetchInitializeController: ');
     res.send(data);
   } catch (err) {
     console.log('Error with fetchInitializeController: ', err);
