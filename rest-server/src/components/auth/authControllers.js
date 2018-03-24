@@ -32,7 +32,7 @@ export const signupController = async (req, res) => {
     const { id, username } = rows[0];
     const token = await generateToken(id, username);
     rows[0].token = token.accessToken;
-    return res.status(200).header(`Authorization: bearer ${JSON.stringify(token.accessToken)}`).send(rows[0]);
+    return res.status(200).append('Authorization', JSON.stringify(token)).send(rows[0]);
   } catch (err) {
     throw new Error(err);
   }

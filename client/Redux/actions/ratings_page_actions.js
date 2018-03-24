@@ -5,11 +5,12 @@ const { REST_SERVER_URL } = process.env;
 export default {
   fetchMoreUsersToRate() {
     return async (dispatch, getState) => {
-      const { id } = await getState().accountData
+      const { id } = await getState().accountData;
+      console.log(id)
       try {
         const data = await axios
         // hard coded user id in request params for now (will use current client's id)
-          .get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/1`);
+          .get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/${id}`);
         dispatch({
           type: 'ADDITIONAL_USERS_TO_RATE_ADDED',
           payload: data.data

@@ -28,7 +28,8 @@ class Signup extends Component {
     }
     try {
       const data = await axios.post(`${REST_SERVER_URL}/api/auth/signup`, body);
-      data ? this.props.history.push('/login') : alert('taken');
+      console.log(data)
+      //data ? this.props.history.push('/login') : alert('taken');
     } catch (err) {
       console.error(err)
     }

@@ -20,7 +20,7 @@ const localOptions = {
 };
 
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken('Authorization'),
+  jwtFromRequest: ExtractJwt.fromHeader('Authorization'),
   secretOrKey: process.env.TOKEN_SECRET
 };
 
