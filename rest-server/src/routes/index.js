@@ -20,6 +20,6 @@ router.use('/outcomes', outcomesRouter);
 router.use('/photos', photoRouter);
 router.use('/tags', tagsRouter);
 router.use('/comments', commentsRouter);
-router.use('/initialize', initializeRouter);
+router.use('/initialize', initializeRouter)
 
 export default router;

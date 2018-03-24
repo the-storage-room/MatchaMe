@@ -22,8 +22,8 @@ class Account extends Component {
 
   nextPage = {
     '/account/bio': '/account/tags/user',
-    '/account/tags/user': '/account/tags/mate',
-    '/account/tags/mate': '/account/photoupload',
+    '/account/tags/user': '/account/tags/pref',
+    '/account/tags/pref': '/account/photoupload',
     '/account/photoupload': '/dashboard'
   }
 

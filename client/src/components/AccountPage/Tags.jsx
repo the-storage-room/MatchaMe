@@ -22,7 +22,7 @@ class Tags extends Component {
   }
 
   addToTagArray = (tag) => {
-    const { type, tagsData} = this.props
+    const { type, tagsData } = this.props
     const tagsArray = tagsData[type]
     if (tagsArray.includes(tag)) {
       tagsArray
