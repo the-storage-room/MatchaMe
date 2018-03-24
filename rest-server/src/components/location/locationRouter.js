@@ -1,10 +1,21 @@
 import express from 'express';
 
-import fetchZipCodeController from './locationController';
+import {
+  fetchDistanceController,
+  fetchLonAndLatFromZipCodeController,
+  fetchUserZipcodeController
+} from './locationController';
 
 const router = express.Router();
 
-router.route('/fetchZipCode')
-  .get(fetchZipCodeController)
+
+router.route('/fetchUserZipcode')
+  .get(fetchUserZipcodeController)
+
+// router.route('/fetchLonAndLatFromZipCode')
+//   .get(fetchLonAndLatFromZipCodeController)
+
+// router.route('/fetchDistanceBetweenTwoCoordinate')
+//   .get(fetchDistanceController)
 
 export default router;

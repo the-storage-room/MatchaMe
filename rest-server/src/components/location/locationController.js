@@ -1,13 +1,20 @@
+import axios from 'axios';
+
 import {
-  fetchSingleUserQuery
+  fetchSingleUsersQuery
 } from '../users/userQueries';
 
-//To front end: please send coordinates back as follows...
-/**
- * req.body:
- * { userOne: {longitude, latitude},
- *   userTwo: {longitude, latitude}}
- */
+
+export const fetchUserZipcodeController = async (req, res) => {
+  try {
+    const data = fetchSingleUsersQuery(req.params);
+    console.log('data', data)
+    console.log('Success on fetchUserZipcodeController')
+    res.status(200).send(data)
+  } catch (err) {
+    console.log('Error on fetchUserZipcdoeController', err)
+  }
+}
 
 const convertToRadian = (deg) => {
   return deg * Math.PI/180;
@@ -22,21 +29,28 @@ const distanceBetweenCoordinates = (userOneLon, userOneLat, userTwoLon, userTwoL
   const latTwo = convertToRadian(userTwoLat);
 
   const x = Math.sin(degLat/2) * Math.sin(degLat/2) + 
-    Math.sin(degLon/2) * Math.sin(degLon/2) * Math.cos(userOneLat) * Math.cos(userTwoLat)
+    Math.sin(degLon/2) * Math.sin(degLon/2) * Math.cos(latOne) * Math.cos(latTwo)
   const y = 2 * Math.atan(Math.sqrt(x), Math.sqrt(1-x));
 
   return earthRadius * y;
 
 }
 
-export const fetchDistanceController = async (req, res) => {
-  try {
-    const { userOneLon, userOneLat} = req.body.userOne;
-    const { userTwoLon, userTwoLat } = req.body.userTwo;
-    const data = distanceBetweenCoordinates(userOneLon, userOneLat, userTwoLon, userTwoLat)
-    const roundedData = Math.floor(data)
-    return res.status(200).send(roundedData)
-  } catch (err) {
-    console.log('error on fetchZipCodeController', err)
-  }
-}
+// export const fetchDistanceController = async (req, res) => {
+//   try {
+//     const { userId } = req.params
+//     axios.get(`http://maps.googleapis.com/maps/api/geocode/json?address=${zipcode1}`)
+//       .then(res => {
+//         console.log('res', res)
+//       })
+//     //do a get request with each zip code
+//     //save to a variable geoObj
+//     //geoObj.location.lat & geoObj.location.lng
+//     //get 4 paramaters and plug into array
+//     // const data = distanceBetweenCoordinates(userOneLon, userOneLat, userTwoLon, userTwoLat)
+//     // const roundedData = Math.floor(data)
+//     return res.status(200).send()
+//   } catch (err) {
+//     console.log('error on fetchZipCodeController', err)
+//   }
+// }
