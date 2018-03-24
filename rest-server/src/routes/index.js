@@ -7,6 +7,7 @@ import stageTwoRouter from '../components/stageTwo/stageTwoRouter';
 import outcomesRouter from '../components/outcomes/outcomesRouter';
 import photoRouter from '../components/photos/photoRouter';
 import tagsRouter from '../components/tags/tagsRouter';
+import locationRouter from '../components/location/locationRouter';
 
 const router = express.Router();
 
@@ -17,5 +18,6 @@ router.use('/stageTwo', stageTwoRouter);
 router.use('/outcomes', outcomesRouter);
 router.use('/photos', photoRouter);
 router.use('/tags', tagsRouter);
+router.use('/location', locationRouter);
 
 export default router;
