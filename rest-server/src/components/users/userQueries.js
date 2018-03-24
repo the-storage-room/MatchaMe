@@ -86,15 +86,18 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
   }
 };
 
-export const fetchUsersTagsForRatingQuery = async (body) => {
-  try {
-    const queryString = await fetchUsersTagsForRatingHelper(body);
-    const data = await db.query(queryString);
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-};
+// I don't think this function below is being used anywhere, aka unneeded.
+  // I'll wait a day or two to be sure before deleting it
+
+// export const fetchUsersTagsForRatingQuery = async (body) => {
+//   try {
+//     const queryString = await fetchUsersTagsForRatingHelper(body);
+//     const data = await db.query(queryString);
+//     return data;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 export const fetchSingleUserAttractivenessQuery = async (id) => {
   try {
