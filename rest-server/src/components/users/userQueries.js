@@ -19,10 +19,23 @@ import {
 
 import { fetchAllPhotosQuery } from '../photos/photoQueries';
 
+import { fetchUserAndTheirPreferenceTagsQuery } from '../tags/tagsQueries';
+
 export const fetchAllUsersQuery = async body => {
   try {
+    const { rows } = await db.query(fetchAllUsersHelper());
+    for (let user of rows) {
+      user.tags = (await fetchUserAndTheirPreferenceTagsQuery(user.id, 0)).map(
+        tag => tag.id
+      );
+      user.tagPreferences = (await fetchUserAndTheirPreferenceTagsQuery(
+        user.id,
+        1
+      )).map(tag => tag.id);
+    }
+    return rows;
   } catch (err) {
-    console.log(err);
+    console.log('Error with fetchAllUsersQuery :', err);
   }
 };
 
@@ -67,7 +80,7 @@ export const fetchMultipleUsersQuery = async (id) => {
       for (let z = 0; z < tagRows.length; z++) {
         if (userRows[i].id === tagRows[z].id) {
           if (tagRows[z].type === 0) {
-            tags.push(tagRows[z].tag)
+            tags.push(tagRows[z].tag);
             userRows[i].tags = tags;
           } else {
             continue;
@@ -95,7 +108,7 @@ export const fetchMultipleUsersQuery = async (id) => {
 };
 
 // I don't think this function below is being used anywhere, aka unneeded.
-  // I'll wait a day or two to be sure before deleting it
+// I'll wait a day or two to be sure before deleting it
 
 // export const fetchUsersTagsForRatingQuery = async (body) => {
 //   try {
@@ -107,7 +120,7 @@ export const fetchMultipleUsersQuery = async (id) => {
 //   }
 // };
 
-export const fetchSingleUserAttractivenessQuery = async (id) => {
+export const fetchSingleUserAttractivenessQuery = async id => {
   try {
     const queryString = await fetchSingleUserAttractivenessHelper();
     const data = await db.query(queryString, [id]);
@@ -117,14 +130,12 @@ export const fetchSingleUserAttractivenessQuery = async (id) => {
   }
 };
 
-export const updateRaterRateeRelationshipQuery = async (body) => {
+export const updateRaterRateeRelationshipQuery = async body => {
   try {
     const queryString = await updateRaterRateeRelationshipHelper(body);
     const data = await db.query(queryString);
     return data;
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };
 
 export const updateUserInfoQuery = async body => {
@@ -142,21 +153,20 @@ export const updateUserInfoQuery = async body => {
         ) {
           body[key] = Number(body[key]);
         }
-        let queryString = updateUserInfoHelper(
-          key,
-          body[key],
-          body.id
-        );
+        let queryString = updateUserInfoHelper(key, body[key], body.id);
         data = await db.query(queryString, [key, body[key], body.id]);
-        console.log('success on userInfoQuery')
+        console.log('success on userInfoQuery');
       }
     }
-  } catch (err) { 
+  } catch (err) {
     console.log(err);
   }
-}
+};
 
-export const updateTotalAttractivenessQuery = async ({ attractiveness, ratee }) => {
+export const updateTotalAttractivenessQuery = async ({
+  attractiveness,
+  ratee
+}) => {
   try {
     const queryString = await updateTotalAttractivenessHelper();
     console.log(attractiveness, ratee);
@@ -167,7 +177,7 @@ export const updateTotalAttractivenessQuery = async ({ attractiveness, ratee }) 
   }
 };
 
-export const updateAverageAttractivenessQuery = async (body) => {
+export const updateAverageAttractivenessQuery = async body => {
   try {
     const queryString = await updateAverageAttractivenessHelper(body);
     console.log(queryString)

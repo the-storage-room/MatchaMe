@@ -6,10 +6,25 @@ import {
   inactivateMatchMakingHelper
 } from './matchmakingSQLHelpers';
 
+import { fetchSingleUsersQuery } from '../users/userQueries';
+
+import { fetchCommentsQuery } from '../comments/commentsQueries';
+
 export const fetchPendingMatchmakingQuery = async ({ userId }) => {
   try {
-    const data = await db.query(fetchPendingMatchmakingHelper(), [userId]);
-    return data;
+    const { rows } = await db.query(fetchPendingMatchmakingHelper(), [userId]);
+    for (let match of rows) {
+      match.user1_id = await fetchSingleUsersQuery({ userId: match.user1_id });
+      match.user2_id = await fetchSingleUsersQuery({ userId: match.user2_id });
+      match.comments = await fetchCommentsQuery({ matchId: match.id });
+      await delete match.user1_id.preference;
+      await delete match.user2_id.preference;
+      await delete match.user1_id.powerranking;
+      await delete match.user2_id.powerranking;
+      await delete match.user1_id.signupcomplete;
+      await delete match.user2_id.signupcomplete;
+    }
+    return rows;
   } catch (err) {
     console.log(err);
   }

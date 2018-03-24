@@ -1,9 +1,10 @@
-
 export const fetchCommentsHelper = () => {
   return `
-    SELECT id, comment, userid
+    SELECT comments.id, comment, username, votes
     FROM COMMENTS
+    INNER JOIN users ON comments.userid=users.id
     WHERE comments.matchid = $1
+    ORDER BY comments.id DESC;
   `;
 };
 
@@ -46,5 +47,7 @@ export const fetchTopCommentHelper = () => {
     INNER JOIN comments
     ON users.id=comments.userid
     WHERE matchid=$1
+    ORDER BY votes DESC
+    LIMIT 1;
   `;
 };

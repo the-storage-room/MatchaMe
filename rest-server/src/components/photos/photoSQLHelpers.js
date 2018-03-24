@@ -1,6 +1,6 @@
 export const fetchAllPhotosHelper = () => {
   return `
-  SELECT id, url FROM Photo
+  SELECT id, url, primaryphoto FROM Photo
   WHERE userid=$1
   ORDER BY primaryphoto DESC;
   `;

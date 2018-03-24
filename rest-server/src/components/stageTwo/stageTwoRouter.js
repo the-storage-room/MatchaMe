@@ -9,7 +9,7 @@ import {
 
 const router = express.Router();
 
-router.route('/fetchStageTwo/:id').get(fetchStageTwoController);
+router.route('/fetchStageTwo/:userId').get(fetchStageTwoController);
 
 router.route('/acceptStageTwo/:id/:userId').put(acceptStageTwoController);
 

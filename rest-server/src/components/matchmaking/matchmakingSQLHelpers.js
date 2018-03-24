@@ -1,11 +1,12 @@
 // fetch multiple matches to vote on, based on user params
 export const fetchPendingMatchmakingHelper = () => {
   return `
-  SELECT * FROM MATCH
+  SELECT id, user1_id, user2_id FROM MATCH
   WHERE NOT user1_id=$1
-  AND NOT user2_id=$1;
+  AND NOT user2_id=$1
   AND id NOT IN ((SELECT matchid FROM outcomes WHERE userid=$1))
-  LIMIT 20
+  AND activevoting=1
+  LIMIT 20;
   `;
 };
 

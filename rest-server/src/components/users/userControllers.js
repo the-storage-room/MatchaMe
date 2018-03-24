@@ -14,7 +14,11 @@ import {
 
 export const fetchAllUsersController = async (req, res) => {
   try {
-  } catch (err) {}
+    const data = await fetchAllUsersQuery();
+    res.status(200).send(data);
+  } catch (err) {
+    console.log('Error on fetchAllUsersController', err);
+  }
 };
 
 export const fetchSingleUserController = async (req, res) => {
@@ -40,13 +44,15 @@ export const updateUserAttractivenessController = async (req, res) => {
     const score = {
       attractiveness: req.body.attractiveness,
       ratee: req.body.ratee
-    }
+    };
     let { rows } = await updateTotalAttractivenessQuery(score);
     const newTotalAttractivenessScore = rows[0].totalattractiveness;
-    let newTotalNumOfRatings = (rows[0].totalnumofratings + 1);
-      // change math.floor to reflect proper rounding ...later
-    const newAverageAttractiveness = Math.floor(newTotalAttractivenessScore / (newTotalNumOfRatings));
-    console.log(newAverageAttractiveness)
+    let newTotalNumOfRatings = rows[0].totalnumofratings + 1;
+    // change math.floor to reflect proper rounding ...later
+    const newAverageAttractiveness = Math.floor(
+      newTotalAttractivenessScore / newTotalNumOfRatings
+    );
+    console.log(newAverageAttractiveness);
     const body = {
       ratee: req.body.ratee,
       newAverageAttractiveness: newAverageAttractiveness,
@@ -78,9 +84,9 @@ export const updateUserRankingController = async (req, res) => {
   try {
     const { finalDecision } = req.body;
     const { matchId } = req.params;
-    if(finalDecision ==='success') {
-      updateUserRankingForTrueQuery(matchId)
-    } 
+    if (finalDecision === 'success') {
+      updateUserRankingForTrueQuery(matchId);
+    }
     if (finalDecision === 'fail') {
       updateUserRankingForFalseQuery(matchId);
     }

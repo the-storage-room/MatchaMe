@@ -1,9 +1,8 @@
 export const fetchAllUsersHelper = () => {
   return `
-  SELECT users.id, users.username, users.email, users.lastname, users.firstname,
-    users.age, users.location, users.gender, users.preference, users.bio,
-    users.powerranking, users.signupcomplete
-  FROM users;
+  SELECT id, age, location, gender, preference, averageattractiveness
+  FROM users
+  WHERE signupcomplete='true'
   `;
 };
 
@@ -26,7 +25,8 @@ export const fetchMultipleUsersHelper = () => {
     AND id NOT in
     (SELECT ratee FROM raterratee
       WHERE rater=$3)
-  ` 
+    LIMIT 20;
+  `;
 };
 
 export const fetchUsersTagsForRatingHelper = () => {
@@ -55,8 +55,8 @@ export const fetchSingleUserAttractivenessHelper = () => {
     SELECT averageattractiveness
     FROM users
     WHERE id=$1
-  `
-}
+  `;
+};
 
 export const updateTotalAttractivenessHelper = () => {
   return `
@@ -67,13 +67,17 @@ export const updateTotalAttractivenessHelper = () => {
   `;
 };
 
-export const updateAverageAttractivenessHelper = ({ ratee, newAverageAttractiveness, newTotalNumOfRatings }) => {
+export const updateAverageAttractivenessHelper = ({
+  ratee,
+  newAverageAttractiveness,
+  newTotalNumOfRatings
+}) => {
   return `
     UPDATE users
     SET averageattractiveness=${newAverageAttractiveness},
     totalNumOfRatings=${newTotalNumOfRatings}
     WHERE id=${ratee}
-  `
+  `;
 };
 
 export const updateUserInfoHelper = () => {
@@ -91,7 +95,7 @@ export const updateRaterRateeRelationshipHelper = ({ rater, ratee }) => {
     (rater, ratee)
     VALUES (${rater}, ${ratee})
   `;
-}
+};
 
 export const deleteUserTags = ({ id }) => {
   return `
@@ -102,8 +106,8 @@ export const deleteUserTags = ({ id }) => {
 export const updateUserTags = ({ id }) => {
   return `
   
-  `
-}
+  `;
+};
 
 //increase power ranking by one for matchmakers who voted 'yes' on a successful match
 export const updateAndIncreasePRForTrueAndYesHelper = () => {

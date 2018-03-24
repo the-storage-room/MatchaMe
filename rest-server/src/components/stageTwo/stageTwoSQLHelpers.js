@@ -1,7 +1,10 @@
 export const fetchStageTwoHelper = () => {
   return `
-  SELECT * FROM stagetwo
-  WHERE id=$1;
+  SELECT stagetwo.id, stagetwo.matchid, stagetwo.issuccessful, stagetwo.firstdecision, 
+  match.user1_id, match.user2_id FROM stagetwo
+  INNER JOIN MATCH ON match.id=stagetwo.matchid
+  WHERE user1_id=$1 OR user2_id=$1 AND active=1
+  LIMIT 1;
   `;
 };
 
