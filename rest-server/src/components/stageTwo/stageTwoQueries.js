@@ -10,6 +10,7 @@ import {
 
 import { fetchSingleUsersQuery } from '../users/userQueries';
 import { fetchAllPhotosQuery } from '../photos/photoQueries';
+import { fetchUserAndTheirPreferenceTagsQuery } from '../tags/tagsQueries';
 import { FORMERR } from 'dns';
 
 export const addStageTwoQuery = async ({ matchId }) => {
@@ -27,13 +28,19 @@ export const fetchStageTwoQuery = async ({ userId }) => {
   try {
     const { rows } = await db.query(fetchStageTwoHelper(), [userId]);
     if (rows[0].user1_id === parseInt(userId)) {
-      // rows[0].photos = await fetchAllPhotosQuery(rows[0].user2_id);
+      rows[0].tags = (await fetchUserAndTheirPreferenceTagsQuery(
+        rows[0].user2_id,
+        0
+      )).map(tag => tag.tag);
       rows[0].user2_id = await fetchSingleUsersQuery({
         userId: rows[0].user2_id
       });
     }
     if (rows[0].user2_id === parseInt(userId)) {
-      // rows[0].photos = await fetchAllPhotosQuery(rows[0].user1_id);
+      rows[0].tags = (await fetchUserAndTheirPreferenceTagsQuery(
+        rows[0].user1_id,
+        0
+      )).map(tag => tag.tag);
       rows[0].user1_id = await fetchSingleUsersQuery({
         userId: rows[0].user1_id
       });

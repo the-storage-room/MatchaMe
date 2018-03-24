@@ -8,8 +8,8 @@ import {
 
 export const fetchPendingMatchmakingQuery = async ({ userId }) => {
   try {
-    const data = await db.query(fetchPendingMatchmakingHelper(), [userId]);
-    return data;
+    const { rows } = await db.query(fetchPendingMatchmakingHelper(), [userId]);
+    return rows;
   } catch (err) {
     console.log(err);
   }

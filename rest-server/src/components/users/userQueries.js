@@ -8,7 +8,6 @@ import {
   fetchUsersPhotosHelper,
   fetchSingleUserAttractivenessHelper,
   updateRaterRateeRelationshipHelper,
-  fetchUserTagsAndPreferencesHelper,
   updateTotalAttractivenessHelper,
   updateAverageAttractivenessHelper,
   updateUserInfoHelper,
@@ -20,17 +19,19 @@ import {
 
 import { fetchAllPhotosQuery } from '../photos/photoQueries';
 
+import { fetchUserAndTheirPreferenceTagsQuery } from '../tags/tagsQueries';
+
 export const fetchAllUsersQuery = async body => {
   try {
     const { rows } = await db.query(fetchAllUsersHelper());
     for (let user of rows) {
-      const queryStrings = fetchUserTagsAndPreferencesHelper();
-      user.tags = (await db.query(queryStrings[0], [user.id])).rows.map(
+      user.tags = (await fetchUserAndTheirPreferenceTagsQuery(user.id, 0)).map(
         tag => tag.id
       );
-      user.tagPreferences = (await db.query(queryStrings[1], [
-        user.id
-      ])).rows.map(tag => tag.id);
+      user.tagPreferences = (await fetchUserAndTheirPreferenceTagsQuery(
+        user.id,
+        1
+      )).map(tag => tag.id);
     }
     return rows;
   } catch (err) {

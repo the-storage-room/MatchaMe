@@ -1,6 +1,9 @@
 import db from '../../config/database/index';
 
-import { fetchSingleUsersQuery } from '../users/userQueries';
+import {
+  fetchSingleUsersQuery,
+  fetchMultipleUsersQuery
+} from '../users/userQueries';
 
 import {
   fetchStarredMatchesQuery,
@@ -9,7 +12,9 @@ import {
 
 import { fetchStageTwoQuery } from '../stageTwo/stageTwoQueries';
 
-import { fetchUserTagsAndPreferencesHelper } from '../users/userSQLHelper';
+import { fetchUserAndTheirPreferenceTagsQuery } from '../tags/tagsQueries';
+
+import { fetchPendingMatchmakingQuery } from '../matchmaking/matchmakingQueries';
 
 export const fetchInitializeController = async (req, res) => {
   try {
@@ -31,23 +36,37 @@ export const fetchInitializeController = async (req, res) => {
     } = await fetchSingleUsersQuery(req.params);
 
     data.accountData = { id, username, email, firstname, lastname };
+
     data.bioData = { age, location, gender, preference, bio };
+
     data.tagData = {
-      user: (await db.query(fetchUserTagsAndPreferencesHelper()[0], [
-        req.params.userId
-      ])).rows.map(tag => tag.tag),
-      pref: (await db.query(fetchUserTagsAndPreferencesHelper()[1], [
-        req.params.userId
-      ])).rows.map(tag => tag.tag)
+      user: (await fetchUserAndTheirPreferenceTagsQuery(
+        req.params.userId,
+        0
+      )).map(tag => tag.tag),
+      pref: (await fetchUserAndTheirPreferenceTagsQuery(
+        req.params.userId,
+        1
+      )).map(tag => tag.tag)
     };
+
     data.photoData = { photos };
+
     data.powerRankingData = { totalPoints: powerranking };
+
     data.signupStatusData = signupcomplete;
+
     data.outcomesData = {
       starred: await fetchStarredMatchesQuery(req.params),
       allOthers: await fetchUnstarredMatchesQuery(req.params)
     };
+
     data.currentMatchData = await fetchStageTwoQuery(req.params);
+
+    data.ratingData = await fetchMultipleUsersQuery(req.params);
+
+    data.matchData = await fetchPendingMatchmakingQuery(req.params);
+
     console.log('Success with fetchInitializeController: ');
     res.send(data);
   } catch (err) {

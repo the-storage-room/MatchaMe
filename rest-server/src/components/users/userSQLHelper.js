@@ -168,18 +168,3 @@ export const updateAndIncreasePRForFalseAndYesHelper = () => {
   AND match.id = $1
   `;
 };
-
-export const fetchUserTagsAndPreferencesHelper = () => {
-  return [
-    `
-    SELECT tags.id, tags.tag FROM users_tags
-    INNER JOIN tags ON tags.id=users_tags.tagid
-    WHERE users_tags.userid=$1 AND users_tags.type=0;
-    `,
-    `
-    SELECT tags.id, tags.tag FROM users_tags
-    INNER JOIN tags ON tags.id=users_tags.tagid
-    WHERE users_tags.userid=$1 AND users_tags.type=1;
-    `
-  ];
-};

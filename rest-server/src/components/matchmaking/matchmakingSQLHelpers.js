@@ -3,9 +3,9 @@ export const fetchPendingMatchmakingHelper = () => {
   return `
   SELECT * FROM MATCH
   WHERE NOT user1_id=$1
-  AND NOT user2_id=$1;
+  AND NOT user2_id=$1
   AND id NOT IN ((SELECT matchid FROM outcomes WHERE userid=$1))
-  LIMIT 20
+  LIMIT 20;
   `;
 };
 
