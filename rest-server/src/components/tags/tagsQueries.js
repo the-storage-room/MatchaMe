@@ -31,14 +31,16 @@ export const fetchUserAndTheirPreferenceTagsQuery = async userId => {
 
 export const putUserAndPreferencesTagsQuery = async (userId, tags, type) => {
   try {
+    console.log(userId, tags, type)
     const deleteQueryString = deleteUserTagsHelper();
     await db.query(deleteQueryString, [userId, type]);
     console.log('Success on deleteUserTags');
     const postQueryString = postUserAndPreferenceTagsHelper();
-    await tags.forEach((tag) => {
-      db.query(postQueryString, [userId, tag, type]);
-    })
+    await tags
+      .forEach((tag) => {
+        db.query(postQueryString, [userId, tag, type]);
+      })
   } catch (err) {
-    console.log('Error on postUserTagsQuery', err)
+    console.log('Error on postUserAndPreferencesTagsQuery', err)
   }
 }

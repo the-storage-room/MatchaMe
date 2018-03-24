@@ -28,8 +28,8 @@ export const fetchUserAndTheirPreferenceTagsController = async (req, res) => {
 export const putUserAndPreferenceTagsController = async (req, res) => {
   try {
     const { type, userId } = req.params;
-    const { tags } = req.body;
-    await putUserAndPreferencesTagsQuery(userId, tags, type);
+    const binaryType = ((type === 'user') ? 0 : 1);
+    await putUserAndPreferencesTagsQuery(userId, req.body, binaryType);
     console.log('Success on putUserAndPreferenceTagsController')
     res.status(200).send('Successful deletion')
   } catch (err) {

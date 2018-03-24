@@ -14,15 +14,15 @@ export const fetchUserAndTheirPreferenceTagsHelper = () => {
 } 
 
 export const deleteUserTagsHelper = () => {
-  return [
-  `DELETE FROM users_tags USING tags WHERE userid=$1 
-   AND type=$2 RETURNING *;`
-];
+  return `
+   DELETE FROM users_tags USING tags WHERE userid=$1 
+   AND type=$2 RETURNING *
+   `;
 }
 
 export const postUserAndPreferenceTagsHelper = () => {
-  return [
-  `INSERT INTO users_tags (userid, tagid, type)
-   VALUES ($1, (SELECT id FROM tags WHERE tag=$2), $3);`
-  ];
+  return `
+  INSERT INTO users_tags (userid, tagid, type)
+  VALUES ($1, (SELECT id FROM tags WHERE tag=$2), $3)
+  `;
 }

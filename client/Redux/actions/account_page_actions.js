@@ -41,16 +41,16 @@ export default {
   updateTagsData(type, tags) {
     return async (dispatch, getState) => {
       try {
-        const { tagState } = await getState().tagsData;
-        const { id } = await getState().accountData;
+        const tagState = getState().tags;
+        const { id } = getState().accountData;
+        console.log(tagState, id)
         tagState[type] = tags;
-        tagState.id = id;
+        const newTagState = JSON.parse(JSON.stringify(tagState));
         await axios
-          .put(`${REST_SERVER_URL}/api/users/updateUserInfo`, bioData)
-        delete tagState.id;
+          .put(`${REST_SERVER_URL}/api/tags/userAndPreferenceTags/${type}/${id}`, tags)
         dispatch({
           type: 'USER_TAGS_UPDATED',
-          payload: tagState
+          payload: newTagState
           });
       } catch (err) {
         console.error
