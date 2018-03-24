@@ -11,6 +11,7 @@ import {
 import { fetchSingleUsersQuery } from '../users/userQueries';
 import { fetchAllPhotosQuery } from '../photos/photoQueries';
 import { fetchUserAndTheirPreferenceTagsQuery } from '../tags/tagsQueries';
+import { fetchCommentsQuery } from '../comments/commentsQueries';
 import { FORMERR } from 'dns';
 
 export const addStageTwoQuery = async ({ matchId }) => {
@@ -27,6 +28,7 @@ export const addStageTwoQuery = async ({ matchId }) => {
 export const fetchStageTwoQuery = async ({ userId }) => {
   try {
     const { rows } = await db.query(fetchStageTwoHelper(), [userId]);
+    rows[0].comments = await fetchCommentsQuery({ matchId: rows[0].id });
     if (rows[0].user1_id === parseInt(userId)) {
       rows[0].tags = (await fetchUserAndTheirPreferenceTagsQuery(
         rows[0].user2_id,
@@ -45,7 +47,7 @@ export const fetchStageTwoQuery = async ({ userId }) => {
         userId: rows[0].user1_id
       });
     }
-
+    rows[0];
     return rows[0];
   } catch (err) {
     console.log('Error with fetchStageTwoQuery', err);

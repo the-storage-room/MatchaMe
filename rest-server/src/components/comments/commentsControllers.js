@@ -2,14 +2,14 @@ import {
   fetchCommentsQuery,
   addCommentQuery,
   voteOnCommentQuery,
-  fetchTopCommentQuery,
+  fetchTopCommentQuery
 } from './commentsQueries';
 
 export const fetchCommentsController = async (req, res) => {
   try {
-    const { rows } = await fetchCommentsQuery(req.params);
+    const data = await fetchCommentsQuery(req.params);
     console.log('Success with fetchCommentsController: ');
-    res.send(rows);
+    res.send(data);
   } catch (err) {
     console.log('Error with fetchCommentsController: ', err);
   }
@@ -17,9 +17,9 @@ export const fetchCommentsController = async (req, res) => {
 
 export const addCommentController = async (req, res) => {
   try {
-    const { rows } = await addCommentQuery(req.params, req.body);
+    const data = await addCommentQuery(req.params, req.body);
     console.log('Success with addCommentController: ');
-    res.send(rows);
+    res.send(data);
   } catch (err) {
     console.log('Error with addCommentController: ', err);
   }
@@ -27,9 +27,9 @@ export const addCommentController = async (req, res) => {
 
 export const voteOnCommentController = async (req, res) => {
   try {
-    const { rows } = await voteOnCommentQuery(req.params);
+    const data = await voteOnCommentQuery(req.params);
     console.log('Success with voteOnCommentController: ');
-    res.send(rows);
+    res.send(data);
   } catch (err) {
     console.log('Error with voteOnCommentController: ', err);
   }
@@ -37,9 +37,9 @@ export const voteOnCommentController = async (req, res) => {
 
 export const fetchTopCommentController = async (req, res) => {
   try {
-    const { rows } = await fetchTopCommentQuery(req.params);
+    const data = await fetchTopCommentQuery(req.params);
     console.log('Success with fetchTopCommentController: ');
-    res.send(rows);
+    res.send(data);
   } catch (err) {
     console.log('Error with fetchTopCommentController: ', err);
   }

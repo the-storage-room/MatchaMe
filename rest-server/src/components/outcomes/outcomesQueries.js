@@ -11,6 +11,8 @@ import {
 
 import { fetchSingleUsersQuery } from '../users/userQueries';
 
+import { fetchCommentsQuery } from '../comments/commentsQueries';
+
 export const addOutcomeQuery = async ({
   userId,
   matchId,
@@ -43,6 +45,7 @@ export const fetchStarredMatchesQuery = async ({ userId }) => {
     for (let match of rows) {
       match.user1_id = await fetchSingleUsersQuery({ userId: match.user1_id });
       match.user2_id = await fetchSingleUsersQuery({ userId: match.user2_id });
+      match.comments = await fetchCommentsQuery({ matchId: match.id });
       await delete match.user1_id.age;
       await delete match.user2_id.age;
       await delete match.user1_id.location;

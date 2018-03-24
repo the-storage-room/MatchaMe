@@ -4,22 +4,30 @@ import {
   fetchCommentsHelper,
   addCommentHelper,
   voteOnCommentHelper,
-  fetchTopCommentHelper,
+  fetchTopCommentHelper
 } from './commentsSQLHelpers';
 
 export const fetchCommentsQuery = async ({ matchId }) => {
   try {
-    const data = await db.query(fetchCommentsHelper(), [matchId]);
-    return data;
+    const { rows } = await db.query(fetchCommentsHelper(), [matchId]);
+    return rows;
   } catch (err) {
     console.log(err);
   }
 };
 
-export const addCommentQuery = async ({ matchId, userId}, { comment, type }) => {
+export const addCommentQuery = async (
+  { matchId, userId },
+  { comment, type }
+) => {
   try {
-    const data = await db.query(addCommentHelper(), [userId, matchId, type, comment]);
-    return data;
+    const { rows } = await db.query(addCommentHelper(), [
+      userId,
+      matchId,
+      type,
+      comment
+    ]);
+    return rows;
   } catch (err) {
     console.log(err);
   }
@@ -27,8 +35,8 @@ export const addCommentQuery = async ({ matchId, userId}, { comment, type }) => 
 
 export const voteOnCommentQuery = async ({ matchId, vote }) => {
   try {
-    const data = await db.query(voteOnCommentHelper(vote), [matchId]);
-    return data;
+    const { rows } = await db.query(voteOnCommentHelper(vote), [matchId]);
+    return rows;
   } catch (err) {
     console.log(err);
   }
@@ -36,8 +44,8 @@ export const voteOnCommentQuery = async ({ matchId, vote }) => {
 
 export const fetchTopCommentQuery = async ({ matchId }) => {
   try {
-    const data = await db.query(fetchTopCommentHelper(), [matchId]);
-    return data;
+    const { rows } = await db.query(fetchTopCommentHelper(), [matchId]);
+    return rows;
   } catch (err) {
     console.log(err);
   }
