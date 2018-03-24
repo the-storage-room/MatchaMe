@@ -34,7 +34,6 @@ export const fetchMultipleUsersController = async (req, res) => {
       min: (attractiveness - 3),
       max: (attractiveness + 3)
     }
-    console.log(constraints)
     const users = await fetchMultipleUsersQuery(constraints);
     res.status(200).send(users);
   } catch (err) {
@@ -47,7 +46,7 @@ export const updateUserAttractivenessController = async (req, res) => {
     let { rows } = await updateTotalAttractivenessQuery(req.body);
     const newTotalAttractivenessScore = rows[0].totalattractiveness;
     let newTotalNumOfRatings = (rows[0].totalnumofratings + 1);
-    console.log(rows)
+
     // change math.floor to reflect proper rounding ...later
     const newAverageAttractiveness = Math.floor(newTotalAttractivenessScore / (newTotalNumOfRatings));
 
@@ -65,7 +64,6 @@ export const updateUserAttractivenessController = async (req, res) => {
 
 export const updateUserInfoController = async (req, res) => {
   try {
-    console.log(req.body)
     await updateUserInfoQuery(req.body);
     return res.status(200).send('success');
   } catch (err) {
