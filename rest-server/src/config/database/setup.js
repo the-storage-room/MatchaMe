@@ -304,7 +304,8 @@ const createCommentTable = async () => {
         userId  INT NOT NULL ,
         matchId INT NOT NULL ,
         votes   INT NOT NULL DEFAULT 0 ,
-        type    VARCHAR(50) NOT NULL ,
+        type    INT NOT NULL ,
+        comment VARCHAR(255) NOT NULL ,
         CONSTRAINT PK_comments PRIMARY KEY (id),
         CONSTRAINT FK_User_Comments FOREIGN KEY (userId)
           REFERENCES Users(id),
