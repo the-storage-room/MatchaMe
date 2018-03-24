@@ -47,12 +47,8 @@ export const updateUserAttractivenessController = async (req, res) => {
     };
     let { rows } = await updateTotalAttractivenessQuery(score);
     const newTotalAttractivenessScore = rows[0].totalattractiveness;
-    let newTotalNumOfRatings = rows[0].totalnumofratings + 1;
-    // change math.floor to reflect proper rounding ...later
-    const newAverageAttractiveness = Math.floor(
-      newTotalAttractivenessScore / newTotalNumOfRatings
-    );
-    console.log(newAverageAttractiveness);
+    let newTotalNumOfRatings = (rows[0].totalnumofratings + 1);
+    const newAverageAttractiveness = Math.round(newTotalAttractivenessScore / (newTotalNumOfRatings));
     const body = {
       ratee: req.body.ratee,
       newAverageAttractiveness: newAverageAttractiveness,

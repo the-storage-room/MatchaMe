@@ -25,8 +25,8 @@ export const fetchMultipleUsersHelper = () => {
     AND id NOT in
     (SELECT ratee FROM raterratee
       WHERE rater=$3)
-    LIMIT 20;
-  `;
+    LIMIT 10
+  ` 
 };
 
 export const fetchUsersTagsForRatingHelper = () => {
