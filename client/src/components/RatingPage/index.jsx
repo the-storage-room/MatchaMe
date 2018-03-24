@@ -19,14 +19,19 @@ class Rate extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    this.props.fetchMoreUsersToRate();
+  }
+
   submitUserAttractiveness = () => {
     const body = {
-      id: this.props.userToRate.id,
-      attractiveness: this.state.rating
+      ratee: this.props.userToRate.id,
+      attractiveness: this.state.rating,
+      // hardcoded rater_id for now. get rater_id from store/props next
+      rater: 1
     };
     this.props.submitRating(body);
   }
-
   
   componentWillReceiveProps = (nextProps) => {
     console.log(nextProps)
@@ -39,7 +44,7 @@ class Rate extends React.Component {
       <div className={style.ratingContainer}>
         <div className={style.profileContainer}>
           <Profile 
-            url={this.props.userToRate.url}
+            url={this.props.userToRate.photos[0]}
             firstname={this.props.userToRate.firstname}
             lastname={this.props.userToRate.lastname}
             age={this.props.userToRate.age}
@@ -59,7 +64,7 @@ class Rate extends React.Component {
         <Button 
           onClick={() => this.submitUserAttractiveness()}
           className="next"
-          />
+        />
       </div>
     </div>
     )

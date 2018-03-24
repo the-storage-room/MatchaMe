@@ -38,14 +38,21 @@ export const fetchSingleUsersQuery = async body => {
   }
 };
 
-export const fetchMultipleUsersQuery = async ({ min, max }) => {
+export const fetchMultipleUsersQuery = async (id) => {
   try {
+    const { rows } = await fetchSingleUserAttractivenessQuery(id);
+    
+    const attractiveness = rows[0].averageattractiveness;
+    const min = (attractiveness - 3);
+    const max = (attractiveness + 3);
+    
     const infoQueryString = fetchMultipleUsersHelper();
     const photoQueryString = fetchUsersPhotosHelper();
     const tagQueryString = fetchUsersTagsForRatingHelper();
 
     const userData = await db.query(infoQueryString, [min, max]);
     const userRows = userData.rows;
+    
 
     const photoData = await db.query(photoQueryString, [min, max]);
     const photoRows = photoData.rows;
@@ -81,6 +88,7 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
       }
       photos = [];
     }
+   // console.log('userrows', userRows)
     return userRows;
   } catch (err) {
     console.log(err);
@@ -152,6 +160,7 @@ export const updateUserInfoQuery = async body => {
 export const updateTotalAttractivenessQuery = async ({ attractiveness, ratee }) => {
   try {
     const queryString = await updateTotalAttractivenessHelper();
+    console.log(attractiveness, ratee);
     const data = await db.query(queryString, [attractiveness, ratee]);
     return data;
   } catch (err) {
@@ -162,6 +171,7 @@ export const updateTotalAttractivenessQuery = async ({ attractiveness, ratee }) 
 export const updateAverageAttractivenessQuery = async (body) => {
   try {
     const queryString = await updateAverageAttractivenessHelper(body);
+    console.log(queryString)
     const data = await db.query(queryString);
     return data;
   } catch (err) {

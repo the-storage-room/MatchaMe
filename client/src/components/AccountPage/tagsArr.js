@@ -31,5 +31,22 @@ export default [
     "Outgoing",
     "Adventerous",
     "Shy",
-    "Chill"
+    "Confident",
+    "Athletic",
+    "Not So Athletic",
+    "Morning Person",
+    "Night Owl",
+    "Goal-Driven",
+    "Que Sera Sera",
+    "Family-Oriented",
+    "Nerdy",
+    "Not Nerdy",
+    "Passionate",
+    "Sensitive",
+    "Empathetic",
+    "Penny Pincher",
+    "Big Spender",
+    "Dancefloor Killer",
+    "Wild and Rowdy",
+    "Calm and Patient"
 ]

@@ -8,10 +8,11 @@ export default {
       const { id } = await getState().accountData
       try {
         const data = await axios
-          .get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/${id}`);
+        // hard coded user id in request params for now (will use current client's id)
+          .get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/1`);
         dispatch({
           type: 'ADDITIONAL_USERS_TO_RATE_ADDED',
-          payload: data.data.ratingsData
+          payload: data.data
           });
       } catch (err) {
         console.error
@@ -25,14 +26,19 @@ export default {
       const { ratings } = getState();
       const newRatings = JSON.parse(JSON.stringify(ratings))
       newRatings.pop();
-      // if (ratings.length === 1) { this.fetchMoreUsersToRate(ratings) }
       try {
-      await axios
-        .put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject)
+        await axios.put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject);
         dispatch({
           type: 'RATING_SUBMITTED',
           payload: newRatings
+        });
+        if (newRatings.length === 2) {
+          const data = await axios.get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/1`);
+          dispatch({
+            type: 'ADDITONAL_USERS_TO_RATE_ADDED',
+            payload: data.data
           });
+        }
       } catch (err) {
         console.error
       }
