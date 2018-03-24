@@ -138,10 +138,10 @@ export const updateUserInfoQuery = async body => {
   }
 }
 
-export const updateTotalAttractivenessQuery = async ({ id, attractiveness }) => {
+export const updateTotalAttractivenessQuery = async ({ id }) => {
   try {
     const queryString = await updateTotalAttractivenessHelper();
-    const data = await db.query(queryString, [attractiveness, id]);
+    const data = await db.query(queryString, [id]);
     return data;
   } catch (err) {
     console.log(err);

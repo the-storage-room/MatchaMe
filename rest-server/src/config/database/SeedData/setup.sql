@@ -6,7 +6,7 @@ insert into users (username, password, email, lastname, firstname, age, location
 insert into users (username, password, email, lastname, firstname, age, location, gender, preference, bio, powerRanking, totalAttractiveness, totalNumOfRatings, averageAttractiveness, signupcomplete) values ('abrookson5', '6c12a3cd28b6e5730535c2d926e619137f30f5cc', 'abrookson5@chronoengine.com', 'Brookson', 'Anthony', 1964, 56510, 2, 7, 'Innovative holistic moratorium', 0, 50, 10, 5, false);
 insert into users (username, password, email, lastname, firstname, age, location, gender, preference, bio, powerRanking, totalAttractiveness, totalNumOfRatings, averageAttractiveness, signupcomplete) values ('estonhewer6', '6c12a3cd28b6e5730535c2d926e619137f30f5cc', 'estonhewer6@arizona.edu', 'Stonhewer', 'Eldredge', 1933, 45089, 2, 7, 'Reduced global hardware', 0, 10, 10, 1, false);
 insert into users (username, password, email, lastname, firstname, age, location, gender, preference, bio, powerRanking, totalAttractiveness, totalNumOfRatings, averageAttractiveness, signupcomplete) values ('kmorriss7', '6c12a3cd28b6e5730535c2d926e619137f30f5cc', 'kmorriss7@sciencedaily.com', 'Morriss', 'Kristine', 1961, 84265, 1, 6, 'Quality-focused clear-thinking matrix', 0, 10, 10, 1, false);
-insert into users (username, password, email, lastname, firstname, age, location, gender, preference, bio, powerRanking, totalAttractiveness, totalNumOfRatings, averageAttractiveness, signupcomplete) values ('gbendin8', '6c12a3cd28b6e5730535c2d926e619137f30f5cc', 'gbendin8@scribd.com', 'Bendin', 'Garald', 1959, 63620, 1, 6, 'Monitored multi-state solution', 0, false);
+insert into users (username, password, email, lastname, firstname, age, location, gender, preference, bio, powerRanking, totalAttractiveness, totalNumOfRatings, averageAttractiveness, signupcomplete) values ('gbendin8', '6c12a3cd28b6e5730535c2d926e619137f30f5cc', 'gbendin8@scribd.com', 'Bendin', 'Garald', 1959, 63620, 1, 6, 'Monitored multi-state solution', 0, 70, 10, 7, false);
 insert into users (username, password, email, lastname, firstname, age, location, gender, preference, bio, powerRanking, totalAttractiveness, totalNumOfRatings, averageAttractiveness, signupcomplete) values ('wskentelbery9', '6c12a3cd28b6e5730535c2d926e619137f30f5cc', 'wskentelbery9@seattletimes.com', 'Skentelbery', 'Willem', 1983, 94987, 2, 7, 'Secured stable capacity', 0, 10, 10, 1, true);
 insert into users (username, password, email, lastname, firstname, age, location, gender, preference, bio, powerRanking, totalAttractiveness, totalNumOfRatings, averageAttractiveness, signupcomplete) values ('bhindricha', '6c12a3cd28b6e5730535c2d926e619137f30f5cc', 'bhindricha@wikispaces.com', 'Hindrich', 'Benedetta', 1998, 85749, 2, 6, 'Progressive multimedia definition', 0, 20, 10, 2, true);
 insert into users (username, password, email, lastname, firstname, age, location, gender, preference, bio, powerRanking, totalAttractiveness, totalNumOfRatings, averageAttractiveness, signupcomplete) values ('dmathiasb', '6c12a3cd28b6e5730535c2d926e619137f30f5cc', 'dmathiasb@google.co.uk', 'Mathias', 'Damien', 1961, 62323, 2, 5, 'Right-sized impactful algorithm', 0, 20, 10, 2, true);
@@ -112,6 +112,13 @@ insert into users_tags (tagid, userid, type) values (1, 1, 0);
 insert into users_tags (tagid, userid, type) values (1, 1, 1);
 insert into users_tags (tagid, userid, type) values (2, 1, 1);
 insert into users_tags (tagid, userid, type) values (3, 1, 1);
+insert into users_tags (tagid, userid, type) values (1, 2, 0);
+insert into users_tags (tagid, userid, type) values (2, 2, 0);
+insert into users_tags (tagid, userid, type) values (3, 2, 0);
+insert into users_tags (tagid, userid, type) values (1, 2, 1);
+insert into users_tags (tagid, userid, type) values (2, 2, 1);
+insert into users_tags (tagid, userid, type) values (3, 2, 1);
+
 
 insert into photo (url, userid, primaryphoto) values ('http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg', 1, 1);
 insert into photo (url, userid, primaryphoto) values ('http://quikandslow.com/wp-content/uploads/tom-from-myspace-lg.jpg', 2, 1);

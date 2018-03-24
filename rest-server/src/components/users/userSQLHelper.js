@@ -58,8 +58,8 @@ export const fetchSingleUserAttractivenessHelper = () => {
 export const updateTotalAttractivenessHelper = () => {
   return `
     UPDATE users
-    SET totalattractiveness=(totalattractiveness+$1)
-    WHERE id=$2
+    SET totalattractiveness=(totalattractiveness+1)
+    WHERE id=$1
     RETURNING totalattractiveness, totalNumOfRatings
   `;
 };
