@@ -1,11 +1,27 @@
 import axios from 'axios';
 
-import {distanceBetweenCoordinates} from './locationHelper';
+const convertToRadian = (deg) => {
+  return deg * Math.PI/180;
+}
 
-// ** RoundedData is a sent as a string NOT integer 
-export const fetchDistanceController = async (req, res) => {
+export const distanceBetweenCoordinates = (userOneLon, userOneLat, userTwoLon, userTwoLat) => {
+  const earthRadius = 3959;
+  const degLat = convertToRadian(userTwoLat - userOneLat);
+  const degLon = convertToRadian(userTwoLon - userOneLon);
+
+  const latOne = convertToRadian(userOneLat);
+  const latTwo = convertToRadian(userTwoLat);
+
+  const x = Math.sin(degLat/2) * Math.sin(degLat/2) + 
+    Math.sin(degLon/2) * Math.sin(degLon/2) * Math.cos(latOne) * Math.cos(latTwo)
+  const y = 2 * Math.atan(Math.sqrt(x), Math.sqrt(1-x));
+
+  return earthRadius * y;
+
+}
+
+export const getDistanceBetweenTwoZipcodes = async (user1zipcode, user2zipcode) => {
   try {
-    const { user1zipcode, user2zipcode } = req.params;
     const { API_KEY } = process.env;
     let userOne;
     let userTwo;
@@ -24,8 +40,8 @@ export const fetchDistanceController = async (req, res) => {
       const userTwoLon = userTwoObj.lng;
       const userTwoLat = userTwoObj.lat;
       const data = distanceBetweenCoordinates(userOneLon, userOneLat, userTwoLon, userTwoLat)
-      let roundedData = Math.floor(data).toString()
-    return res.status(200).send(roundedData)
+      let roundedData = Math.floor(data)
+      return roundedData;
   } catch (err) {
     console.log('error on fetchZipCodeController', err)
   }
