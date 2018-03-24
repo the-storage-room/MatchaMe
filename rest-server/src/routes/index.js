@@ -8,6 +8,7 @@ import outcomesRouter from '../components/outcomes/outcomesRouter';
 import photoRouter from '../components/photos/photoRouter';
 import tagsRouter from '../components/tags/tagsRouter';
 import locationRouter from '../components/location/locationRouter';
+import commentsRouter from '../components/comments/commentsRouter';
 
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.use('/outcomes', outcomesRouter);
 router.use('/photos', photoRouter);
 router.use('/tags', tagsRouter);
 router.use('/location', locationRouter);
+router.use('/comments', commentsRouter);
 
 export default router;

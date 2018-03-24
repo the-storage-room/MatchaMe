@@ -11,6 +11,8 @@ router
   .route('/fetchPendingMatchmaking/:userId')
   .get(fetchPendingMatchmakingController);
 
-router.route('/updateMatchmaking').put(updateMatchmakingController);
+router
+  .route('/updateMatchmaking')
+  .put(updateMatchmakingController);
 
 export default router;
