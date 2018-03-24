@@ -58,18 +58,18 @@ export const fetchSingleUserAttractivenessHelper = () => {
 export const updateTotalAttractivenessHelper = () => {
   return `
     UPDATE users
-    SET totalattractiveness=(totalattractiveness+1)
-    WHERE id=$1
+    SET totalattractiveness=(totalattractiveness+$1)
+    WHERE id=$2
     RETURNING totalattractiveness, totalNumOfRatings
   `;
 };
 
-export const updateAverageAttractivenessHelper = ({ id, newAverageAttractiveness, newTotalNumOfRatings }) => {
+export const updateAverageAttractivenessHelper = ({ ratee, newAverageAttractiveness, newTotalNumOfRatings }) => {
   return `
     UPDATE users
     SET averageattractiveness=${newAverageAttractiveness},
     totalNumOfRatings=${newTotalNumOfRatings}
-    WHERE id=${id}
+    WHERE id=${ratee}
   `
 };
 
@@ -81,6 +81,14 @@ export const updateUserInfoHelper = () => {
     RETURNING $1
   `;
 };
+
+export const updateRaterRateeRelationshipHelper = ({ rater, ratee }) => {
+  return `
+    INSERT INTO raterratee
+    (rater, ratee)
+    VALUES (${rater}, ${ratee})
+  `;
+}
 
 export const deleteUserTags = ({ id }) => {
   return `
