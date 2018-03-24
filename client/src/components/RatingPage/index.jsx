@@ -24,13 +24,19 @@ class Rate extends React.Component {
   }
 
   submitUserAttractiveness = () => {
-    const body = {
-      ratee: this.props.userToRate.id,
-      attractiveness: this.state.rating,
-      // hardcoded rater_id for now. get rater_id from store/props next
-      rater: 1
-    };
-    this.props.submitRating(body);
+    
+    if (this.state.rating === null) {
+      alert('please rate this person')
+      // Eventually this alert functionality will be changed so that it prevents users from clicking next. 
+    } else {
+      const body = {
+        ratee: this.props.userToRate.id,
+        attractiveness: this.state.rating,
+        // hardcoded rater_id for now. get rater_id from store/props next
+        rater: 1
+      };
+      this.props.submitRating(body);
+    }
   }
   
   componentWillReceiveProps = (nextProps) => {
