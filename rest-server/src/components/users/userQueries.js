@@ -50,10 +50,9 @@ export const fetchMultipleUsersQuery = async (id) => {
     const photoQueryString = fetchUsersPhotosHelper();
     const tagQueryString = fetchUsersTagsForRatingHelper();
 
-    const userData = await db.query(infoQueryString, [min, max]);
+    const userData = await db.query(infoQueryString, [min, max, id]);
     const userRows = userData.rows;
     
-
     const photoData = await db.query(photoQueryString, [min, max]);
     const photoRows = photoData.rows;
 

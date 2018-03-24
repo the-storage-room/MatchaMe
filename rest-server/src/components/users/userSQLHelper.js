@@ -23,6 +23,9 @@ export const fetchMultipleUsersHelper = () => {
     FROM USERS
     WHERE users.averageattractiveness > $1
     AND users.averageattractiveness < $2
+    AND id NOT in
+    (SELECT ratee FROM raterratee
+      WHERE rater=$3)
   ` 
 };
 
