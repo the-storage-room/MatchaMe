@@ -8,7 +8,10 @@ const entryState =
       lastname: "Simpson",
       tags: ['Fat'],
       age: 36,
-      bio: 'Doh!'
+      bio: 'Doh!',
+      location: 91344,
+      gender: 0,
+      id: 28
     },
     {
       url: "https://www.thewrap.com/wp-content/uploads/2018/01/Apu.jpg",
@@ -16,7 +19,10 @@ const entryState =
       lastname: "Nahasapeemapetilon",
       tags: ['Vegan'],
       age: 32,
-      bio: 'Kwik-E-Mart Owner'
+      bio: 'Kwik-E-Mart Owner',
+      location: 90005,
+      gender: 0,
+      id: 29
     },
     {
       url: "http://www.slate.com/content/dam/slate/blogs/future_tense/2014/12/08/engineer_alex_smolyanitsky_submitted_fake_papers_to_two_for_profit_scientific/edna.jpg.CROP.promo-mediumlarge.jpg",
@@ -24,7 +30,10 @@ const entryState =
       lastname: "Krabappel",
       tags: ['Teacher'],
       age: 33,
-      bio: 'Fourth Grade Teacher'
+      bio: 'Fourth Grade Teacher',
+      location: 91326,
+      gender:1,
+      id: 27
     },
   ]
 

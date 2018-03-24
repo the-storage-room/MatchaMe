@@ -19,14 +19,20 @@ class Rate extends React.Component {
     };
   }
 
-  submitUserAttractiveness = () => {
-    const body = {
-      id: this.props.userToRate.id,
-      attractiveness: this.state.rating
-    };
-    this.props.submitRating(body);
+  componentDidMount = () => {
+    this.props.fetchMoreUsersToRate();
   }
 
+  submitUserAttractiveness = () => {
+    const body = {
+      ratee: this.props.userToRate.id,
+      attractiveness: this.state.rating || this.props.userToRate.averageattractiveness,
+      // hardcoded rater_id for now. get rater_id from store/props next
+      rater: 1
+    };
+    this.props.submitRating(body);
+    console.log(this.state)
+  }
   
   componentWillReceiveProps = (nextProps) => {
     console.log(nextProps)
@@ -59,7 +65,7 @@ class Rate extends React.Component {
         <Button 
           onClick={() => this.submitUserAttractiveness()}
           className="next"
-          />
+        />
       </div>
     </div>
     )

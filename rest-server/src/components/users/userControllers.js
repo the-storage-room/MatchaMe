@@ -30,6 +30,7 @@ export const fetchMultipleUsersController = async (req, res) => {
   try {
     const id = req.params.id;
     const { rows } = await fetchSingleUserAttractivenessQuery(id);
+    console.log(rows)
     const attractiveness = rows[0].averageattractiveness;
     const constraints = {
       min: (attractiveness - 3),
@@ -44,15 +45,19 @@ export const fetchMultipleUsersController = async (req, res) => {
 
 export const updateUserAttractivenessController = async (req, res) => {
   try {
+    
     const score = {
       attractiveness: req.body.attractiveness,
       ratee: req.body.ratee
     }
+    console.log('score is', score)
     let { rows } = await updateTotalAttractivenessQuery(score);
     const newTotalAttractivenessScore = rows[0].totalattractiveness;
     let newTotalNumOfRatings = (rows[0].totalnumofratings + 1);
+    console.log(rows)
       // change math.floor to reflect proper rounding ...later
     const newAverageAttractiveness = Math.floor(newTotalAttractivenessScore / (newTotalNumOfRatings));
+    console.log(newAverageAttractiveness)
     const body = {
       ratee: req.body.ratee,
       newAverageAttractiveness: newAverageAttractiveness,
