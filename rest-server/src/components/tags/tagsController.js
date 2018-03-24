@@ -1,8 +1,7 @@
 import {
   fetchAllTagsQuery,
   fetchUserAndTheirPreferenceTagsQuery,
-  deleteUserAndPreferencesTagsQuery, 
-  postUserAndPreferenceTagsQuery
+  putUserAndPreferencesTagsQuery
 } from './tagsQueries';
 
 export const fetchAllTagsController = async (req, res) => {
@@ -26,26 +25,14 @@ export const fetchUserAndTheirPreferenceTagsController = async (req, res) => {
   }
 }
 
-export const deleteUserAndPreferenceTagsController = async (req, res) => {
+export const putUserAndPreferenceTagsController = async (req, res) => {
   try {
-    const { userId, tagId } = req.params;
-    const { type } = req.body;
-    const data = await deleteUserAndPreferencesTagsQuery(userId, tagId, type);
-    console.log('Success on deleteUserAndPreferenceTagsController')
+    const { type, userId } = req.params;
+    const { tags } = req.body;
+    await putUserAndPreferencesTagsQuery(userId, tags, type);
+    console.log('Success on putUserAndPreferenceTagsController')
     res.status(200).send('Successful deletion')
   } catch (err) {
-    console.log('Error on deleteUserAndPreferenceTagsController', err)
-  }
-}
-
-export const postUserAndPreferenceTagsController = async (req, res) => {
-  try {
-    const { userId, tagId } = req.params;
-    const { type } = req.body;
-    const data = await postUserAndPreferenceTagsQuery(tagId, userId, type);
-    console.log('Success on postUserAndPreferenceTagsController')
-    res.status(200).send('Successful post')
-  } catch (err) {
-    console.log('Error on postUserAndPreferenceTags', err)
+    console.log('Error on putUserAndPreferenceTagsController', err)
   }
 }

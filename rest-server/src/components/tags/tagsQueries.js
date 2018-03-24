@@ -29,36 +29,16 @@ export const fetchUserAndTheirPreferenceTagsQuery = async userId => {
   }
 }
 
-export const deleteUserAndPreferencesTagsQuery = async (userId, tagId, type) => {
+export const putUserAndPreferencesTagsQuery = async (userId, tags, type) => {
   try {
-    let rows;
-    if (type === 'user') {
-      const queryString = deleteUserTagsHelper();
-      rows = await db.query(queryString[0], [userId, tagId, type]);
-    } else {
-      const queryString = deleteUserTagsHelper();
-      rows = await db.query(queryString[1], [userId, tagId, type]);
-    }
+    const deleteQueryString = deleteUserTagsHelper();
+    await db.query(deleteQueryString, [userId, type]);
     console.log('Success on deleteUserTags');
-    return rows;
+    const postQueryString = postUserAndPreferenceTagsHelper();
+    await tags.forEach((tag) => {
+      db.query(postQueryString, [userId, tag, type]);
+    })
   } catch (err) {
-    console.log('Error on deleteUserTagsQuery', err)
-  }
-}
-
-export const postUserAndPreferenceTagsQuery= async (tagId, userId, type) => {
-  try {
-    let rows;
-    if(type === 'user') {
-      const queryString = postUserAndPreferenceTagsHelper();
-      rows = await db.query(queryString[0], [userId, tagId, type]);
-    } else {
-      const queryString = postUserAndPreferenceTagsHelper();
-      rows = await db.query(queryString[1], [tagId, userId, type])
-    }
-    console.log('Success on postUserPreferenceTagsQuery')
-    return rows;
-  } catch (err) {
-    console.log('Error on postUserPreferenceTagsQuery', err)
+    console.log('Error on postUserTagsQuery', err)
   }
 }
