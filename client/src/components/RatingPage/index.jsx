@@ -24,9 +24,10 @@ class Rate extends React.Component {
   }
 
   submitUserAttractiveness = () => {
+    console.log(this.props.userToRate)
     const body = {
       ratee: this.props.userToRate.id,
-      attractiveness: this.state.rating || this.props.userToRate.averageattractiveness,
+      attractiveness: this.state.rating,
       // hardcoded rater_id for now. get rater_id from store/props next
       rater: 1
     };
