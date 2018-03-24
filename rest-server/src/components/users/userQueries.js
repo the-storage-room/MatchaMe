@@ -7,6 +7,7 @@ import {
   fetchUsersTagsForRatingHelper,
   fetchUsersPhotosHelper,
   fetchSingleUserAttractivenessHelper,
+  updateRaterRateeRelationshipHelper,
   updateTotalAttractivenessHelper,
   updateAverageAttractivenessHelper,
   updateUserInfoHelper,
@@ -107,7 +108,17 @@ export const fetchSingleUserAttractivenessQuery = async (id) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
+
+export const updateRaterRateeRelationshipQuery = async (body) => {
+  try {
+    const queryString = await updateRaterRateeRelationshipHelper(body);
+    const data = await db.query(queryString);
+    return data;
+  } catch (err) {
+
+  }
+};
 
 export const updateUserInfoQuery = async body => {
   try {
@@ -138,10 +149,10 @@ export const updateUserInfoQuery = async body => {
   }
 }
 
-export const updateTotalAttractivenessQuery = async ({ id }) => {
+export const updateTotalAttractivenessQuery = async ({ attractiveness, ratee }) => {
   try {
     const queryString = await updateTotalAttractivenessHelper();
-    const data = await db.query(queryString, [id]);
+    const data = await db.query(queryString, [attractiveness, ratee]);
     return data;
   } catch (err) {
     console.log(err);

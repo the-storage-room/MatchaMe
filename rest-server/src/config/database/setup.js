@@ -45,12 +45,12 @@ const dropOutcomesTable = async () => {
   }
 };
 
-const dropRatingTable = async () => {
+const dropRaterRateeTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Rating`);
-    console.log('successfully dropped Rating Table');
+    console.log('successfully dropped RaterRatee Table');
   } catch (err) {
-    console.log('error dropping Rating Table ');
+    console.log('error dropping RaterRatee Table ');
   }
 };
 
@@ -225,26 +225,26 @@ const createOutcomesTable = async () => {
   }
 };
 
-const createRatingTable = async () => {
+const createRaterRateeTable = async () => {
   try {
     await db.query(
       `
-      CREATE TABLE IF NOT EXISTS Rating
+      CREATE TABLE IF NOT EXISTS RaterRatee
       (
         id           SERIAL ,
-        score        INT NOT NULL ,
-        totalRatings INT NOT NULL ,
-        users        INT ARRAY NOT NULL ,
-        userId       INT NOT NULL ,
+        rater        INT NOT NULL ,
+        ratee        INT NOT NULL ,
         CONSTRAINT PK_Rating PRIMARY KEY (id),
-        CONSTRAINT FK_Users_Rating FOREIGN KEY (userId)
+        CONSTRAINT FK_Users_Rater FOREIGN KEY (rater)
+          REFERENCES Users(id),
+        CONSTRAINT FK_Users_Ratee FOREIGN KEY (ratee)
           REFERENCES Users(id)
       )
       `
     );
-    console.log('Successfully Created Rating Table');
+    console.log('Successfully Created RaterRatee Table');
   } catch (err) {
-    console.log('Error creating Rating Table', err);
+    console.log('Error creating RaterRatee Table', err);
   }
 };
 
@@ -325,7 +325,7 @@ const setup = async () => {
   await dropUsersTable();
   await dropPhotoTable();
   await dropStageTwoTable();
-  await dropRatingTable();
+  await dropRaterRateeTable();
   await dropMatchTable();
   await dropOutcomesTable();
   await dropUsersTagsTable();
@@ -337,7 +337,7 @@ const setup = async () => {
   await createUsersTagsTable();
   await createMatchTable();
   await createOutcomesTable();
-  await createRatingTable();
+  await createRaterRateeTable();
   await createPhotoTable();
   await createStageTwoTable();
   await createCommentTable();

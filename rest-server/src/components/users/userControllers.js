@@ -4,6 +4,7 @@ import {
   fetchMultipleUsersQuery,
   fetchUsersTagsForRatingQuery,
   fetchSingleUserAttractivenessQuery,
+  updateRaterRateeRelationshipQuery,
   updateTotalAttractivenessQuery,
   updateAverageAttractivenessQuery,
   updateUserInfoQuery,
@@ -43,19 +44,26 @@ export const fetchMultipleUsersController = async (req, res) => {
 
 export const updateUserAttractivenessController = async (req, res) => {
   try {
-    let { rows } = await updateTotalAttractivenessQuery(req.body);
+    const score = {
+      attractiveness: req.body.attractiveness,
+      ratee: req.body.ratee
+    }
+    let { rows } = await updateTotalAttractivenessQuery(score);
     const newTotalAttractivenessScore = rows[0].totalattractiveness;
     let newTotalNumOfRatings = (rows[0].totalnumofratings + 1);
-
-    // change math.floor to reflect proper rounding ...later
+      // change math.floor to reflect proper rounding ...later
     const newAverageAttractiveness = Math.floor(newTotalAttractivenessScore / (newTotalNumOfRatings));
-
     const body = {
-      id: req.body.id,
+      ratee: req.body.ratee,
       newAverageAttractiveness: newAverageAttractiveness,
       newTotalNumOfRatings: newTotalNumOfRatings
     };
     await updateAverageAttractivenessQuery(body);
+    const raterRatee = {
+      rater: req.body.rater,
+      ratee: req.body.ratee
+    };
+    await updateRaterRateeRelationshipQuery(raterRatee);
     return res.send('user attractiveness updated');
   } catch (err) {
     console.error;
