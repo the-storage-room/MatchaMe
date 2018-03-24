@@ -2,7 +2,8 @@ import {
   fetchAllUsersQuery,
   fetchSingleUsersQuery,
   fetchMultipleUsersQuery,
-  fetchUsersTagsQuery,
+  fetchUsersTagsForRatingQuery,
+  fetchSingleUserAttractivenessQuery,
   updateTotalAttractivenessQuery,
   updateAverageAttractivenessQuery,
   updateUserInfoQuery,
@@ -26,14 +27,15 @@ export const fetchSingleUserController = async (req, res) => {
 
 export const fetchMultipleUsersController = async (req, res) => {
   try {
-    const min = Number(req.params.attractiveness) - 3;
-    const max = Number(req.params.attractiveness) + 3;
+    const id = req.params.id;
+    const { rows } = await fetchSingleUserAttractivenessQuery(id);
+    const attractiveness = rows[0].averageattractiveness;
     const constraints = {
-      min: min,
-      max: max
+      min: (attractiveness - 3),
+      max: (attractiveness + 3)
     }
-    const rows = await fetchMultipleUsersQuery(constraints);
-    res.status(200).send(rows);
+    const users = await fetchMultipleUsersQuery(constraints);
+    res.status(200).send(users);
   } catch (err) {
     console.log(err);
   }
@@ -62,7 +64,6 @@ export const updateUserAttractivenessController = async (req, res) => {
 
 export const updateUserInfoController = async (req, res) => {
   try {
-    console.log(req.body)
     await updateUserInfoQuery(req.body);
     return res.status(200).send('success');
   } catch (err) {

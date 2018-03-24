@@ -4,8 +4,9 @@ import {
   fetchAllUsersHelper,
   fetchSingleUserHelper,
   fetchMultipleUsersHelper,
-  fetchUsersTagsHelper,
+  fetchUsersTagsForRatingHelper,
   fetchUsersPhotosHelper,
+  fetchSingleUserAttractivenessHelper,
   updateTotalAttractivenessHelper,
   updateAverageAttractivenessHelper,
   updateUserInfoHelper,
@@ -32,7 +33,7 @@ export const fetchSingleUsersQuery = async body => {
     rows[0].photos = await fetchAllPhotosQuery(userId);
     return rows[0];
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
 
@@ -40,7 +41,7 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
   try {
     const infoQueryString = fetchMultipleUsersHelper();
     const photoQueryString = fetchUsersPhotosHelper();
-    const tagQueryString = fetchUsersTagsHelper();
+    const tagQueryString = fetchUsersTagsForRatingHelper();
 
     const userData = await db.query(infoQueryString, [min, max]);
     const userRows = userData.rows;
@@ -52,16 +53,22 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
     const tagRows = tagData.rows;
 
     let tags = [];
+    let preferenceTags = [];
     let photos = [];
 
     for (let i = 0; i < userRows.length; i++) {
       for (let z = 0; z < tagRows.length; z++) {
         if (userRows[i].id === tagRows[z].id) {
-          tags.push(tagRows[z].tag);
-          userRows[i].tags = tags;
+          if (tagRows[z].type === 0) {
+            tags.push(tagRows[z].tag)
+            userRows[i].tags = tags;
+          } else {
+            continue;
+          }
         }
       }
       tags = [];
+      preferenceTags = [];
     }
 
     for (let i = 0; i < userRows.length; i++) {
@@ -79,15 +86,28 @@ export const fetchMultipleUsersQuery = async ({ min, max }) => {
   }
 };
 
-export const fetchUsersTagsQuery = async (body) => {
+// I don't think this function below is being used anywhere, aka unneeded.
+  // I'll wait a day or two to be sure before deleting it
+
+// export const fetchUsersTagsForRatingQuery = async (body) => {
+//   try {
+//     const queryString = await fetchUsersTagsForRatingHelper(body);
+//     const data = await db.query(queryString);
+//     return data;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+export const fetchSingleUserAttractivenessQuery = async (id) => {
   try {
-    const queryString = await fetchUsersTagsHelper(body);
-    const data = await db.query(queryString);
+    const queryString = await fetchSingleUserAttractivenessHelper();
+    const data = await db.query(queryString, [id]);
     return data;
   } catch (err) {
     console.log(err);
   }
-};
+}
 
 export const updateUserInfoQuery = async body => {
   try {
@@ -118,10 +138,10 @@ export const updateUserInfoQuery = async body => {
   }
 }
 
-export const updateTotalAttractivenessQuery = async ({ id, attractiveness }) => {
+export const updateTotalAttractivenessQuery = async ({ id }) => {
   try {
     const queryString = await updateTotalAttractivenessHelper();
-    const data = await db.query(queryString, [attractiveness, id]);
+    const data = await db.query(queryString, [id]);
     return data;
   } catch (err) {
     console.log(err);
