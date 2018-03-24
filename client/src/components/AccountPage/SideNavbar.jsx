@@ -19,7 +19,7 @@ const SideNavbar = ({ history }) => {
       </div>
       <div
         className={style.navbutton}
-        onClick={() => history.push('/account/tags/mate')}
+        onClick={() => history.push('/account/tags/pref')}
         >
         Match Tags
       </div>

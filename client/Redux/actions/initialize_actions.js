@@ -3,98 +3,63 @@ import axios from 'axios';
 const { REST_SERVER_URL } = process.env;
 
 export default {
-  initialize() {
+  initialize(history) {
     return async (dispatch, getState) => {
       const { id } = getState().accountData
       try {
         const { data } = await axios
           .get(`${REST_SERVER_URL}/api/initialize/${id}`)
-        const {
-          userData,
-          tagData,
-          userLeaderboardRanking,
-          outcomesData,
-          currentMatchData,
-          ratingsData,
-          matchesData,
-          leaderboardData,
-          } = data.initializeObject
-        const {
-          username,
-          email,
-          lastname,
-          firstname,
-          age,
-          location,
-          gender,
-          preference,
-          bio,
-          powerranking,
-          signupcomplete,
-          photos,
-        } = userData
-        const accountData = {
-          id,
-          username,
-          email,
-          firstname,
-          lastname
-        }
-        const bioData = {
-          age,
-          location,
-          gender,
-          preference,
-          bio,
-        }
-        const powerRankingData = {
-          totalPoints: powerranking,
-          userRanking: userLeaderboardRanking,
-        }
+        console.log(data)
+        
+        // const powerRankingData = {
+        //   totalPoints: powerranking,
+        //   userRanking: userLeaderboardRanking,
+        // }
         dispatch({
           type: 'USER_ACCOUNT_DATA_RECIEVED',
-          payload: accountData
+          payload: data.accountData || null
           });
         dispatch({
           type: 'USER_BIO_DATA_RECIEVED',
-          payload: bioData
+          payload: data.bioData || null
           });
         dispatch({
           type: 'USER_TAGS_RECIEVED',
-          payload: tagData
+          payload: data.tagData || null
           });
         dispatch({
           type: 'USER_PHOTOS_RECIEVED',
-          payload: photos
+          payload: data.photoData.photos || null
           });
         dispatch({
           type: 'USER_POWERRANKING_RECIEVED',
-          payload: powerRankingData
+          payload: data.powerRankingData || null
           });
         dispatch({
           type: 'USER_SIGNUP_STATUS_RECIEVED',
-          payload: signupcomplete
+          payload: data.signupStatusData || false
           });
         dispatch({
           type: 'USER_FOLLOWS_RECIEVED',
-          payload: outcomesData
+          payload: data.outcomesData || null
           });
         dispatch({
           type: 'USER_CURRENT_MATCH_RECIEVED',
-          payload: currentMatchData
+          payload: data.currentMatchData || null
           });
         dispatch({
           type: 'RATINGS_DATA_RECIEVED',
-          payload: ratingsData
+          payload: data.ratingData || null
           });
         dispatch({
           type: 'MATCHES_DATA_RECIEVED',
-          payload: matchesData
+          payload: data.matchData || null
           });
         dispatch({
           type: 'LEADERBOARD_RECIEVED',
-          payload: leaderboardData
+          payload: data.leaderboardData || null
           });
+        history.push('/dashboard')
       } catch (err) {
         console.error
       }
