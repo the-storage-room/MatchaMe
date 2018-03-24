@@ -24,7 +24,6 @@ class Rate extends React.Component {
   }
 
   submitUserAttractiveness = () => {
-    console.log(this.props.userToRate)
     const body = {
       ratee: this.props.userToRate.id,
       attractiveness: this.state.rating,
@@ -32,7 +31,6 @@ class Rate extends React.Component {
       rater: 1
     };
     this.props.submitRating(body);
-    console.log(this.state)
   }
   
   componentWillReceiveProps = (nextProps) => {
@@ -46,7 +44,7 @@ class Rate extends React.Component {
       <div className={style.ratingContainer}>
         <div className={style.profileContainer}>
           <Profile 
-            url={this.props.userToRate.url}
+            url={this.props.userToRate.photos[0]}
             firstname={this.props.userToRate.firstname}
             lastname={this.props.userToRate.lastname}
             age={this.props.userToRate.age}
