@@ -14,7 +14,7 @@ router
   .get(fetchCommentsController);
 
 router
-  .route('/addComment/:matchId')
+  .route('/addComment/:userId/:matchId')
   .post(addCommentController);
 
 router

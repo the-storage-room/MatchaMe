@@ -16,9 +16,9 @@ export const fetchCommentsQuery = async ({ matchId }) => {
   }
 };
 
-export const addCommentQuery = async ({ matchId }, { comment }) => {
+export const addCommentQuery = async ({ matchId, userId}, { comment, type }) => {
   try {
-    const data = await db.query(addCommentHelper(), [matchId, comment]);
+    const data = await db.query(addCommentHelper(), [userId, matchId, type, comment]);
     return data;
   } catch (err) {
     console.log(err);
