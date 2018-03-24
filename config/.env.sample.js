@@ -45,6 +45,16 @@ const envBuild = {
     'REST_SERVER_URL=http://localhost:5000',
     'SOCKET_SERVER_URL=http://localhost:4155',
     'STATIC_SERVER_URL=http://localhost:1337',
+    'LOCAL_USER=root',
+    'LOCAL_HOST=localhost',
+    'LOCAL_DATABASE=MatchMe',
+    'LOCAL_PASSWORD=""',
+    'LOCAL_PORT=5432',
+    'AWS_USER=',
+    'AWS_HOST=',
+    'AWS_DATABASE=',
+    'AWS_PASSWORD=',
+    'AWS_PORT=',
     'API_KEY='
   ],
   's3-server': [
