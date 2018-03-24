@@ -5,6 +5,7 @@ export const fetchPendingMatchmakingHelper = () => {
   WHERE NOT user1_id=$1
   AND NOT user2_id=$1
   AND id NOT IN ((SELECT matchid FROM outcomes WHERE userid=$1))
+  AND active=1
   LIMIT 20;
   `;
 };

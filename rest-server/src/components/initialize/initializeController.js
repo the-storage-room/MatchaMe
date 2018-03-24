@@ -63,7 +63,7 @@ export const fetchInitializeController = async (req, res) => {
 
     data.currentMatchData = await fetchStageTwoQuery(req.params);
 
-    data.ratingData = await fetchMultipleUsersQuery(req.params);
+    data.ratingData = await fetchMultipleUsersQuery(req.params.userId);
 
     data.matchData = await fetchPendingMatchmakingQuery(req.params);
 
