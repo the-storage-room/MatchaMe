@@ -5,13 +5,15 @@ const { REST_SERVER_URL } = process.env;
 export default {
   fetchMoreMatchesToRate() {
     return async (dispatch, getState) => {
-      const { id } = await getState().accountData
+      const { id } = getState().accountData
+      const { matches } = getState();
       try {
         const data = await axios
-          .get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/${id}`);
+          .get(`${REST_SERVER_URL}/api/matchmaking/fetchPendingMatchmaking/${id}`);
+        const newMatches = data.data.concat(matches)
         dispatch({
-          type: 'ADDITIONAL_USERS_TO_RATE_ADDED',
-          payload: data.data.ratingsData
+          type: 'ADDITIONAL_MATCHES_TO_RATE_ADDED',
+          payload: newMatches
           });
       } catch (err) {
         console.error
@@ -20,14 +22,11 @@ export default {
   },
   postRatingOnMatch(ratingObject) {
     return async (dispatch, getState) => {
-      const { ratings } = getState();
-      const newRatings = JSON.parse(JSON.stringify(ratings))
-      newRatings.pop();
       try {
       await axios
-        .put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject)
+        .put(`${REST_SERVER_URL}/api/matchmaking/updateMatchmaking`, ratingObject)
         dispatch({
-          type: 'RATING_SUBMITTED',
+          type: 'MATCHMAKER_RATING_SUBMITTED',
           payload: newRatings
           });
       } catch (err) {
@@ -35,51 +34,51 @@ export default {
       }
     }
   },
-  addCommentOnMatch(ratingObject) {
+  addCommentOnMatch(matchId, comment) {
     return async (dispatch, getState) => {
-      const { ratings } = getState();
-      const newRatings = JSON.parse(JSON.stringify(ratings))
-      newRatings.pop();
+      const { id } = getState().accountData
+      const { comments } = getState()
+      const newComments = JSON.parse(JSON.stringify(comments))
+      const type = 0;
+      const commentObj = { comment, type }
+      newComments.push(commentObj)
       try {
       await axios
-        .put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject)
+        .post(`${REST_SERVER_URL}/api/comments/addComment/${id}/${matchId}`, commentObj)
         dispatch({
-          type: 'RATING_SUBMITTED',
-          payload: newRatings
+          type: 'MATCHMAKER_COMMENT_ADDED',
+          payload: newComments
           });
       } catch (err) {
         console.error
       }
     }
   },
-  fetchCommentsOnMatch(ratingObject) {
-    return async (dispatch, getState) => {
-      const { ratings } = getState();
-      const newRatings = JSON.parse(JSON.stringify(ratings))
-      newRatings.pop();
+  fetchCommentsOnMatch(matchId) {
+    return async (dispatch) => {
       try {
-      await axios
-        .put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject)
+      const data = await axios
+        .get(`${REST_SERVER_URL}/api/comments/fetchComments/${matchId}`)
         dispatch({
-          type: 'RATING_SUBMITTED',
-          payload: newRatings
+          type: 'MATCHMAKER_COMMENTS_RECIEVED',
+          payload: data.data
           });
       } catch (err) {
         console.error
       }
     }
   },
-  voteOnCommentOnMatch(ratingObject) {
+  voteOnCommentOnMatch(commentId, vote, index) {
     return async (dispatch, getState) => {
-      const { ratings } = getState();
-      const newRatings = JSON.parse(JSON.stringify(ratings))
-      newRatings.pop();
       try {
+      const { comments } = getState();
+      const newComments = JSON.parse(JSON.stringify(comments))
+      newComments[index].vote += vote;
       await axios
-        .put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject)
+        .put(`${REST_SERVER_URL}/api/comments/voteOnComment/${commentId}/${vote}`)
         dispatch({
-          type: 'RATING_SUBMITTED',
-          payload: newRatings
+          type: 'MATCHMAKER_COMMENT_VOTED',
+          payload: newComments
           });
       } catch (err) {
         console.error

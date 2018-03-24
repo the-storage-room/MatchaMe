@@ -11,6 +11,7 @@ import powerRanking from './powerRankingReducer';
 import ratings from './ratingsReducer';
 import signupStatus from './signupStatusReducer';
 import tags from './tagsReducer';
+import comments from './commentsReducer';
 
 const rootReducer = combineReducers({
   accountData,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   signupStatus,
   ratings,
   tags,
+  comments,
 });
 
 export default rootReducer;
