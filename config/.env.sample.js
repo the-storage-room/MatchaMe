@@ -26,7 +26,7 @@ const envBuild = {
     'AWS_PASSWORD=',
     'AWS_PORT=',
     'SALT_ROUNDS=10',
-    'TOKEN_SECRET=theStorageRoom'
+    'TOKEN_SECRET=theStorageRoom',
   ],
   'socket-server': [
     'NODE_ENV=DEVELOPMENT',
@@ -44,7 +44,8 @@ const envBuild = {
     'PORT=1147',
     'REST_SERVER_URL=http://localhost:5000',
     'SOCKET_SERVER_URL=http://localhost:4155',
-    'STATIC_SERVER_URL=http://localhost:1337'
+    'STATIC_SERVER_URL=http://localhost:1337',
+    'API_KEY='
   ],
   's3-server': [
     'NODE_ENV=DEVELOPMENT',
