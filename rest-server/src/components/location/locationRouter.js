@@ -2,7 +2,6 @@ import express from 'express';
 
 import {
   fetchDistanceController,
-  fetchLonAndLatFromZipCodeController,
   fetchUserZipcodeController
 } from './locationController';
 
