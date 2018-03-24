@@ -33,10 +33,9 @@ export const fetchPrimaryPhotoQuery = async userId => {
 export const addPhotoQuery = async ({ body }) => {
   try {
     const { url, id } = body;
-    console.log(url, id)
-    const queryString = addPhotoHelper(body)
-    const { rows } = await db.query(queryString, [url,id]);
-    return rows
+    const queryString = addPhotoHelper()
+    const data = await db.query(queryString, [url,id]);
+    return data
   } catch (err) {
     console.error
   }

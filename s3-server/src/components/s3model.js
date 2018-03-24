@@ -9,8 +9,7 @@ module.exports = {
     const url = `https://s3-us-west-1.amazonaws.com/${BUCKET}/${filename}`;
     try {
       await s3service
-        .addPhoto(BUCKET, input.files.file, filename, (data) => {
-          cb(data);
+        .addPhoto(BUCKET, input.files.file, filename, (data) => {;
         })
       await axios
         .post(
@@ -26,7 +25,6 @@ module.exports = {
     const { userId, photoKey, photoId } = req.params;
     try {
       const data = await s3service.deletePhoto(BUCKET, photoKey, (data) => {
-        cb(data)
       })
       await axios
         .delete(`${REST_SERVER_URL}/api/photos/deletePhoto/${userId}/${photoId}`)

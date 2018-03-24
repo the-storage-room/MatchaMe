@@ -16,6 +16,7 @@ class PhotoUpload extends Component {
     this.state = {
         targetPhoto: 0,
         file: null,
+        currentFunc: null,
     };
   }
 
@@ -29,6 +30,9 @@ class PhotoUpload extends Component {
     formData.append('id', this.props.userId);
     formData.append('username', this.props.username);
     this.props.uploadPhoto(formData);
+    this.setState({
+      currentFunc: 'add'
+    })
   }
 
   handleLittlePhotoClick = (photo) => {
@@ -42,19 +46,44 @@ class PhotoUpload extends Component {
     const { url, id } = this.props.userPhotos[index];
     const key = url.slice(46);
     this.props.deletePhoto(key, id, index)
+    this.setState({
+      currentFunc: 'delete'
+    })
   }
 
   handleSetPrimaryPhoto = () => {
     const index = this.state.targetPhoto
     const { id } = this.props.userPhotos[index];
     this.props.updatePrimaryPhoto(id, index)
+    this.setState({
+      currentFunc: 'primary'
+    })
   }
 
   componentDidMount = () => {
+    this.props.renderButton(this.props.userPhotos.length)
   }
 
   componentDidUpdate = () => {
     this.props.renderButton(this.props.userPhotos.length)
+  }
+
+  componentWillReceiveProps = () => {
+    console.log(this.props.userPhotos)
+    if (
+      this.state.currentFunc === 'primary' || 
+      this.state.currentFunc === 'delete'
+    ) {
+      this.setState({
+        targetPhoto: 0
+      })
+    } else if (
+      this.state.currentFunc === 'add'
+    ) {
+      this.setState({
+        targetPhoto: this.props.userPhotos.length - 1
+      })
+    }
   }
 
   render() {
@@ -133,8 +162,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     userPhotos: state.userPhotos,
-    userId: 333 || state.accountData.id,
-    username: 'jack' || state.accountData.username,
+    userId: state.accountData.id,
+    username: state.accountData.username,
   };
 }
 

@@ -12,7 +12,10 @@ export default (state = testState, action) => {
       return (state = action.payload);
     case 'USER_PHOTO_DELETED':
       return (state = action.payload);
+    case 'USER_PRIMARY_PHOTO_UPDATED':
+      return (state = action.payload);
     default:
       return state;
   }
 }
+

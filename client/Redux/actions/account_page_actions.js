@@ -38,39 +38,39 @@ export default {
       }
     }
   },
-  // updateTagsData(type, tags) {
-  //   return async (dispatch, getState) => {
-  //     try {
-  //       const { tagState } = await getState().tagsData;
-  //       const { id } = await getState().accountData;
-  //       tagState[type] = tags;
-  //       tagState.id = id;
-  //       await axios
-  //         .put(`${REST_SERVER_URL}/api/users/updateUserInfo`, bioData)
-  //       delete tagState.id;
-  //       dispatch({
-  //         type: 'USER_TAGS_UPDATED',
-  //         payload: tagState
-  //         });
-  //     } catch (err) {
-  //       console.error
-  //     }
-  //   }
-  // },
+  updateTagsData(type, tags) {
+    return async (dispatch, getState) => {
+      try {
+        const { tagState } = await getState().tagsData;
+        const { id } = await getState().accountData;
+        tagState[type] = tags;
+        tagState.id = id;
+        await axios
+          .put(`${REST_SERVER_URL}/api/users/updateUserInfo`, bioData)
+        delete tagState.id;
+        dispatch({
+          type: 'USER_TAGS_UPDATED',
+          payload: tagState
+          });
+      } catch (err) {
+        console.error
+      }
+    }
+  },
   uploadPhoto(formData) {
     return async (dispatch, getState) => {
-      // const { id } = await getState().accountData;
-      let id = 333;
+      const { id } = await getState().accountData;
       try {
         await axios
           .post(`${S3_SERVER_URL}/api/s3`, formData);
         const photoData = await axios
           .get(`${REST_SERVER_URL}/api/photos/fetchAllPhotos/${id}`)
-        console.log(photoData)
-        dispatch({
-          type: 'USER_PHOTO_ADDED',
-          payload: photoData.data
-          });
+        setTimeout(() => {
+          dispatch({
+            type: 'USER_PHOTO_ADDED',
+            payload: photoData.data
+            });
+        }, 1000)
       } catch (err) {
         console.error
       }
@@ -81,12 +81,13 @@ export default {
       try {
         let { userPhotos, accountData } = getState();
         const { id } = accountData;
+        let newUserPhotos = JSON.parse(JSON.stringify(userPhotos))
         await axios
           .delete(`${S3_SERVER_URL}/api/s3/${id}/${key}/${photoId}`)
-        delete userPhotos[targetPhoto];
+        newUserPhotos.splice(targetPhoto, 1)
         dispatch({
           type: 'USER_PHOTO_DELETED',
-          payload: userPhotos,
+          payload: newUserPhotos,
           });
       } catch (err) {
         console.error
@@ -97,15 +98,16 @@ export default {
     return async (dispatch, getState) => {
       const { id } = getState().accountData;
       const { userPhotos } = getState();
-      const newPrimary = userPhotos[targetPhoto];
-      userPhotos.splice(targetPhoto, 1)
-      userPhotos.unshift(newPrimary)
+      const newUserPhotos = JSON.parse(JSON.stringify(userPhotos))
+      const newPrimary = newUserPhotos[targetPhoto];
+      newUserPhotos.splice(targetPhoto, 1)
+      newUserPhotos.unshift(newPrimary)
       try {
         await axios.
         put(`${REST_SERVER_URL}/api/photos/updatePrimaryPhoto/${id}/${photoId}`)
         dispatch({
           type: 'USER_PRIMARY_PHOTO_UPDATED',
-          payload: userPhotos
+          payload: newUserPhotos
           });
       } catch (err) {
         console.error
