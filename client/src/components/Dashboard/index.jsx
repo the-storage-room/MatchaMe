@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import style from './Dashboard.css';
-
 import Navbar from '../globals/Navbar/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 
@@ -17,7 +18,13 @@ class Dashboard extends Component {
         <Navbar />
         <div className={style.dashboardContainer}>
           <div className={style.profileContainer}>
-            <Profile hasBio={true} />
+          <Profile 
+              url={this.props.photos[0].url}
+              firstname={this.props.firstname}
+              lastname={this.props.lastname}
+              age={this.props.age}
+              bio={this.props.bio}
+              />
           </div>
 
           <div className={style.matchContainer}>
@@ -38,4 +45,21 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+  }, dispatch);
+}
+
+const mapStateToProps = (state) => {
+  return {
+    firstname: state.accountData.firstname,
+    lastname: state.accountData.lastname,
+    age: state.bioData.age,
+    tags: state.tags,
+    photos: state.userPhotos
+
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
