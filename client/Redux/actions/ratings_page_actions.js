@@ -28,13 +28,14 @@ export default {
       const newRatings = JSON.parse(JSON.stringify(ratings))
       newRatings.pop();
       try {
-        await axios.put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject);
+        await axios
+          .put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject);
         dispatch({
           type: 'RATING_SUBMITTED',
           payload: newRatings
         });
         if (newRatings.length === 2) {
-          const data = await axios.get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/1`);
+          const data = await axios.get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/${id}`);
           dispatch({
             type: 'ADDITONAL_USERS_TO_RATE_ADDED',
             payload: data.data

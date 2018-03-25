@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Slider from 'material-ui/Slider';
@@ -10,7 +10,7 @@ import Button from '../globals/Button/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/ratings_page_actions';
 
-class Rate extends React.Component {
+class Rate extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,7 +20,6 @@ class Rate extends React.Component {
   }
 
   componentDidMount = () => {
-    this.props.fetchMoreUsersToRate();
   }
 
   submitUserAttractiveness = () => {
@@ -108,7 +107,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    userToRate: state.ratings[state.ratings && state.ratings.length - 1]
+    userToRate: state.ratings[state.ratings.length - 1]
   };
 }
 
