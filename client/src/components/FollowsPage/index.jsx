@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import style from './FollowsPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
 import FollowsContainer from './FollowsContainer.jsx';
+import actions from '../../../Redux/actions/follows_page_actions';
 
 class Follows extends Component {
   constructor() {
@@ -13,8 +14,10 @@ class Follows extends Component {
     };
   }
 
-  handleStar = () => {
-
+  handleStar = (matchId, starred, index) => {
+    starred ?
+    this.props.unstarFollow(matchId, index) :
+    this.props.starFollow(matchId, index)
   }
   
   render() {
@@ -24,14 +27,12 @@ class Follows extends Component {
         <div className={style.followsContainer}>
           <div className={style.starredContainer}>
             <FollowsContainer
-              type="starred"
               data={this.props.starred}
               handleStar={this.handleStar}
               />
           </div>
           <div className={style.resultsContainer}>
             <FollowsContainer
-              type="allOthers"
               data={this.props.allOthers}
               handleStar={this.handleStar}
               />
@@ -44,13 +45,14 @@ class Follows extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-
+    starFollow: actions.starFollow,
+    unstarFollow: actions.unstarFollow,
   }, dispatch);
 }
 
 const mapStateToProps = ({ follows }) => {
   return {
-    starred: follows.star,
+    starred: follows.starred,
     allOthers: follows.allOthers,
   };
 }

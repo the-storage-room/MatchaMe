@@ -3,21 +3,23 @@ import React from 'react';
 import style from './FollowsPage.css';
 import FollowsItem from './FollowsItem.jsx';
 
-const FollowsContainer = ({ type, data, handleStar }) => {
+const FollowsContainer = ({ data, handleStar }) => {
   console.log(data)
   return (
     <div>
       { data ?
         data
-          .map((match) => {
+          .map((match, index) => {
             return (
               <FollowsItem 
+                index={index}
                 decision={match.decision}
                 starred={match.starred}
                 onClick={handleStar}
                 key={match.id}
                 user1={match.user1_id}
                 user2={match.user2_id}
+                matchId={match.id}
                 />
               )
           }) 
