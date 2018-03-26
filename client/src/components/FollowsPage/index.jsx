@@ -24,7 +24,7 @@ class Follows extends Component {
         <div className={style.followsContainer}>
           <div className={style.starredContainer}>
             <FollowsContainer
-              type="star"
+              type="starred"
               data={this.props.starred}
               handleStar={this.handleStar}
               />
