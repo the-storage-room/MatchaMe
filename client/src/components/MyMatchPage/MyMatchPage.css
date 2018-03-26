@@ -17,3 +17,7 @@
   padding: 65px;
   border-style: solid;
 }
+
+.noMatch {
+  margin: 100px;
+}
