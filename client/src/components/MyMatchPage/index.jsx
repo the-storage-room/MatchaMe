@@ -17,13 +17,15 @@ class MyMatch extends Component {
   }
 
   render() {
+    console.log(this.props.currentMatch)
     return (
       <div>
         <Navbar />
         { 
           this.props.currentMatch ?
           <MatchRoom 
-            currentMatch={this.props.currentMatch}
+            user2={this.props.currentMatch.user2_id}
+            matchId={this.props.currentMatch.matchid}
             /> :
           <NoMatch />
         }

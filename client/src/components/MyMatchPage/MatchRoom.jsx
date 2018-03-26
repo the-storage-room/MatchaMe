@@ -4,16 +4,16 @@ import style from './MyMatchPage.css';
 import Profile from '../globals/Profile/index.jsx';
 import Button from '../globals/Button/index.jsx';
 
-const MyMatch = ({ user2_id, matchId }) => {
+const MyMatch = ({ user2, matchId }) => {
   return (
-    <div>
+    <div className={style.myMatchPage}>
       <div>
         <Profile 
-          url={user2_id.photos[0].url}
-          firstname={user2_id.firstname}
-          lastname={user2_id.lastname}
-          age={user2_id.age}
-          bio={user2_id.bio}
+          url={user2.photos[0].url}
+          firstname={user2.firstname}
+          lastname={user2.lastname}
+          age={user2.age}
+          bio={user2.bio}
           />
         <Button 
           text={'End Match'}

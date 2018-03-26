@@ -32,7 +32,7 @@ class Dashboard extends Component {
               Render My Matches Here!
             </div>
             <div className={style.myFollowingContainer}>
-              Render My Following Matches Here!
+              Render Statistics Here?
             </div>
           </div>
 

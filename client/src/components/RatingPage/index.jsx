@@ -35,6 +35,9 @@ class Rate extends Component {
         rater: 1
       };
       this.props.submitRating(body);
+      this.setState({
+        rating: null
+      })
     }
   }
   
@@ -57,12 +60,12 @@ class Rate extends Component {
             bio={this.props.userToRate.bio}
           />
           <div className={style.ratingScaleContainer}>
-            <Slider 
+            <Slider
               max={10}
               defaultValue={5}
               step={1}
               onChange={(e, val) => this.setState({ rating: val })}
-            />
+              />
             hotness: {this.state.rating}
           </div>
         </div>

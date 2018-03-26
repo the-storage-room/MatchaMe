@@ -21,7 +21,7 @@ const FollowsContainer = ({ type, data, handleStar }) => {
                 />
               )
           }) 
-        : "Nothing to display!"
+        : "No Match to Display!"
         
       }
     </div>
