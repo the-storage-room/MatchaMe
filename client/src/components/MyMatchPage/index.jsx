@@ -1,23 +1,48 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import style from './MyMatchPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import Button from '../globals/Button/index.jsx';
-const MyMatch = props => {
-  return (
-    <div>
-      <Navbar />
-      <div className={style.myMatchPage}>
-        <div>
-          <Profile hasBio={true} />
-          <Button text={'End Match'} />
-        </div>
-        <div className={style.chatroom}>Render Chat Room Here!</div>
-      </div>
-    </div>
-  );
-};
+import MatchRoom from './MatchRoom.jsx';
+import NoMatch from './NoMatch.jsx';
 
-export default withRouter(MyMatch);
+class MyMatch extends Component {
+  constructor() {
+    super();
+    this.state = {
+    };
+  }
+
+  render() {
+    console.log(this.props.currentMatch)
+    return (
+      <div>
+        <Navbar />
+        { 
+          this.props.currentMatch ?
+          <MatchRoom 
+            user2={this.props.currentMatch.user2_id}
+            matchId={this.props.currentMatch.matchid}
+            /> :
+          <NoMatch />
+        }
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+  }, dispatch);
+}
+
+const mapStateToProps = ({ currentMatch }) => {
+  return {
+    currentMatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyMatch);

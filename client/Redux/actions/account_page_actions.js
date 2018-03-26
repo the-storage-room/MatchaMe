@@ -70,7 +70,7 @@ export default {
             type: 'USER_PHOTO_ADDED',
             payload: photoData.data
             });
-        }, 1000)
+        }, 2000)
       } catch (err) {
         console.error
       }

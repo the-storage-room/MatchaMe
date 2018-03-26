@@ -5,7 +5,7 @@ const { REST_SERVER_URL } = process.env;
 export default {
   fetchMoreMatchesToRate() {
     return async (dispatch, getState) => {
-      const { id } = getState().accountData
+      const { id } = getState().accountData;
       const { matches } = getState();
       try {
         const data = await axios
@@ -20,14 +20,21 @@ export default {
       }
     }
   },
-  postRatingOnMatch(ratingObject) {
+  postMatchmakerDecision(voteObject) {
     return async (dispatch, getState) => {
+      const { id } = getState().accountData;
+      const { matches } = getState();
+      console.log(matches)
+      const newMatches = JSON.parse(JSON.stringify(matches));
+      console.log(newMatches)
+      newMatches.pop();
+      voteObject.userid = id;
       try {
       await axios
-        .put(`${REST_SERVER_URL}/api/matchmaking/updateMatchmaking`, ratingObject)
+        .put(`${REST_SERVER_URL}/api/matchmaking/updateMatchmaking`, voteObject)
         dispatch({
           type: 'MATCHMAKER_RATING_SUBMITTED',
-          payload: newRatings
+          payload: newMatches
           });
       } catch (err) {
         console.error

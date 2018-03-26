@@ -14,7 +14,7 @@ const Profile = ({ url, firstname, lastname, age, tags, bio}) => {
         />
       </div>
       <div className={style.userInfoContainer}>
-        <span>Name: {firstname} {lastname && lastname[0]}</span>
+        <span>Name: {firstname} {lastname && lastname[0]}.</span>
         <span>Age: {age}</span>
         <span>Tags: {tags}</span>
         <span>Bio: {bio}</span>
