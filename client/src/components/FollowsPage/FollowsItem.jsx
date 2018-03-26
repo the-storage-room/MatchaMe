@@ -1,8 +1,9 @@
 import React from 'react';
 
 import style from './FollowsPage.css';
+import Button from '../globals/Button/index.jsx';
 
-const FollowsItem = ({ decision, starred, onClick, user1, user2 }) => {
+const FollowsItem = ({ index, matchId, decision, starred, onClick, user1, user2 }) => {
   return (
     <div className={style.followItem}>
       <div className={style.user1}>
@@ -17,6 +18,10 @@ const FollowsItem = ({ decision, starred, onClick, user1, user2 }) => {
       <div className={style.decision}>
         {decision}
       </div>
+      <Button
+        onClick={() => onClick(matchId, starred, index)}
+        className={starred ? "yellowStar" : "greyStar"}
+        />
       <div className={style.user2}>
         <img 
           className={style.avatar}

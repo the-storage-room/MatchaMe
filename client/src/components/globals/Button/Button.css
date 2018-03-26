@@ -99,3 +99,30 @@
   margin: 3px;
   padding: 2px;
 }
+
+.greyStar,
+.yellowStar {
+  float: right;
+  border: 1px black solid;
+  background-color: darkslategrey;
+}
+
+.greyStar:before {
+  width: 20px;
+  content: "\2605";
+  color: lightgrey;
+}
+
+
+.greyStar:hover:before {
+  content: "\2605";
+  color: gold;
+}
+.yellowStar:before {
+  content: "\2605";
+  color: gold;
+}
+
+.yellowStar:hover:before {
+  color: lightgrey;
+}
