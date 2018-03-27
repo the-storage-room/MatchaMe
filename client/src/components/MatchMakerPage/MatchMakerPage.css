@@ -7,9 +7,8 @@
   padding: 65px 65px 0px 65px;
   margin: 30px;
   border: solid rgb(240, 176, 176) 1px;
-  border-radius: 3px;
+  border-radius: 2px;
   background-color:rgba(245, 245, 245, 0.877);
-
 }
 
 .decisionContainer {
@@ -56,11 +55,41 @@
 
 
 .comments {
-  z-index: 3;
+  z-index: 7;
   min-height: 500px;
   min-width: 800px;
   margin: 10px;
   padding: 10px;
-  border: solid rgb(255, 215, 215) 1px;
+  position: absolute;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
   background-color:rgb(245, 245, 245);
+}
+
+.textbox {
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  background-color:rgba(245, 245, 245, 0.877);
+  width: 330px;
+  height: 200px;
+  margin: 20px;
+  float: right;  
+}
+
+textarea:focus {
+  outline:0;
+}
+
+textarea {
+  font-size: 20px;
+}
+
+.commentsFeed {
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  background-color:rgba(245, 245, 245, 0.877);
+  width: 500px;
+  height: 440px;
+  margin: 20px;
+  float: left;
 }

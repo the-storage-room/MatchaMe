@@ -27,6 +27,14 @@ class MatchMaker extends Component {
     }
     this.props.postMatchmakerDecision(voteObject)
   }
+
+  exitComments = () => {
+    console.log('here')
+    const { showComments } = this.state;
+    !!showComments && this.setState({
+      showComments: false
+    })
+  }
   
   render() {
     console.log(this.props)
@@ -65,7 +73,10 @@ class MatchMaker extends Component {
             {
               this.state.showComments
             ?
-              <Comments />
+              <Comments
+                exitComments={() => this.exitComments()}
+                comments={this.props.matchToRate.comments}
+                />
             :
               <div
                 className={style.commentsContainer}

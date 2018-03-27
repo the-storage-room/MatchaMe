@@ -20,7 +20,7 @@
   display: inline-block;
   background-color: rgb(241, 234, 234);
   color: rgb(3, 3, 3);
-  font-size: 10px;
+  font-size: 12px;
   padding: 7px;
   width: 50px;
   border: solid rgb(240, 176, 176) 1px;
@@ -140,4 +140,30 @@
 
 .yellowStar:hover:before {
   color: lightgrey;
+}
+
+.X {
+  position: absolute;
+  top: -65px;
+  right: 10px;
+  background-color: rgb(241, 234, 234);
+  color: rgb(3, 3, 3);
+  font-size: 12px;
+  padding: 7px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.X:hover {
+  background-color: pink;
+  border: solid rgb(3, 3, 3) 1px;
+}
+
+.X:before {
+  content: "\274C"
+}
+
+.X:hover:before {
+  color: black;
 }
