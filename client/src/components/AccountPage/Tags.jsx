@@ -75,8 +75,8 @@ class Tags extends Component {
           Pick 3 Tags to Describe 
           {
             this.props.type === 'user' 
-            ? 'YOURSELF' 
-            : 'YOUR IDEAL MATCH'
+            ? ' YOURSELF' 
+            : ' YOUR IDEAL MATCH'
           }
         </div>
         <div className={style.basicMargin}>

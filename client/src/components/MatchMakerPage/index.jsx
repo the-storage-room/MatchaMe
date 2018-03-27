@@ -3,63 +3,110 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import style from './MatchMakerPage.css';
+import Comments from './Comments.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
 import Button from '../globals/Button/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/matchmaker_page_actions';
 
 class MatchMaker extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       starred: 0,
+      showComments: false,
     };
   }
 
   decideOnMatch = (vote) => {
-    console.log(this.props)
     const voteObject = {
-      matchId: this.props.matchId,
+      matchId: this.props.matchToRate.id,
       starred: 0,
       decision: vote,
     }
     this.props.postMatchmakerDecision(voteObject)
   }
+
+  exitComments = () => {
+    const { showComments } = this.state;
+    !!showComments && this.setState({
+      showComments: false
+    })
+  }
+
+  submitComment = (comment) => {
+    let { id } = this.props.matchToRate;
+    this.props.addCommentOnMatch(id, comment)
+  }
+
+  voteOnComment = (commentId, vote, index) => {
+    this.props.voteOnCommentOnMatch(commentId, vote, index)
+  }
+
+  refreshComments = () => {
+    let { id } = this.props.matchToRate;
+    this.props.fetchCommentsOnMatch(id)
+  }
   
   render() {
-    console.log(this.props)
+    const { comments } = this.props.matchToRate;
+    const sortedComments = comments.sort((a, b) => {
+      return b.votes - a.votes 
+    })
+
+
     return (
       <div>
         <Navbar />
-        <div className={style.matchMakerContainer}>
-          <div className={style.decisionContainer}>
-            <Profile 
-              url={this.props.user1.photos[0].url}
-              firstname={this.props.user1.firstname}
-              lastname={this.props.user1.lastname}
-              age={this.props.user1.age}user2
-              bio={this.props.user1.bio}
-              />
-            <div className={style.approvalContainer}>
-              <Button 
-                text={'Yes'}
-                onClick={()=>this.decideOnMatch(1)}
+        {
+          this.props.matchToRate ?
+          <div className={style.matchMakerContainer}>
+            <div className={style.decisionContainer}>
+              <Profile 
+                url={this.props.matchToRate.user1_id.photos[0].url}
+                firstname={this.props.matchToRate.user1_id.firstname}
+                lastname={this.props.matchToRate.user1_id.lastname}
+                age={this.props.matchToRate.user1_id.age}user2
+                bio={this.props.matchToRate.user1_id.bio}
                 />
-              <Button 
-                text={'No'} 
-                onClick={()=>this.decideOnMatch(0)}
+              <div className={style.approvalContainer}>
+                <Button 
+                  text={'Yes'}
+                  onClick={()=>this.decideOnMatch('approved')}
+                  />
+                <Button 
+                  text={'No'} 
+                  onClick={()=>this.decideOnMatch('rejected')}
+                  />
+              </div>
+              <Profile 
+                url={this.props.matchToRate.user2_id.photos[0].url}
+                firstname={this.props.matchToRate.user2_id.firstname}
+                lastname={this.props.matchToRate.user2_id.lastname}
+                age={this.props.matchToRate.user2_id.age}
+                bio={this.props.matchToRate.user2_id.bio}
                 />
             </div>
-            <Profile 
-              url={this.props.user2.photos[0].url}
-              firstname={this.props.user2.firstname}
-              lastname={this.props.user2.lastname}
-              age={this.props.user2.age}
-              bio={this.props.user2.bio}
-              />
+            {
+              this.state.showComments
+            ?
+              <Comments
+                exitComments={() => this.exitComments()}
+                submitComment={this.submitComment}
+                refreshComments={this.refreshComments}
+                comments={sortedComments}
+                voteOnComment={this.voteOnComment}
+                />
+            :
+              <div
+                className={style.commentsContainer}
+                onClick={() => this.setState({showComments: true})}
+                >View Comments
+              </div>
+            }
           </div>
-          <div className={style.commentsContainer}>View Comments</div>
-        </div>
+          : "Sorry! No more matches to vote on!"
+        }
       </div>
     );
     
@@ -69,16 +116,16 @@ class MatchMaker extends Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     postMatchmakerDecision: actions.postMatchmakerDecision,
+    addCommentOnMatch: actions.addCommentOnMatch,
+    voteOnCommentOnMatch: actions.voteOnCommentOnMatch,
+    fetchCommentsOnMatch: actions.fetchCommentsOnMatch
   }, dispatch);
 }
 
 const mapStateToProps = ({ matches }) => {
   return {
-    user1: matches[matches.length - 1].user1_id,
-    user2: matches[matches.length - 1].user1_id,
-    matchId: matches[matches.length - 1].id,
-    comments: matches[matches.length - 1].comments,
-  };
+    matchToRate: matches[matches.length - 1],
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatchMaker);

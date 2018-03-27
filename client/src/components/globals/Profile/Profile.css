@@ -4,13 +4,19 @@
   justify-content: space-around;
   align-items: center;
   margin: auto;
+  padding: 20px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }
 
 .photoContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 30px;
+  border: solid rgb(240, 176, 176) 1px;
+
 }
 
 .userInfoContainer {
@@ -21,5 +27,6 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
 }

@@ -3,7 +3,7 @@
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
-  padding: 65px 0px 65px 65px;
+  padding: 40px 0px 40px 40px;
   margin: auto;
 }
 
@@ -12,12 +12,17 @@
   flex-flow: column nowrap;
   justify-content: space-around;
   align-items: center;
-  min-height: 500px;
-  min-width: 750px;
-  padding: 65px;
+  height: 530px;
+  width: 600px;
+  padding-left: 40px;
+  margin-bottom: 100px;
   border-style: solid;
+  background-color:whitesmoke;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
 }
 
 .noMatch {
   margin: 100px;
+  background-color:whitesmoke;
 }

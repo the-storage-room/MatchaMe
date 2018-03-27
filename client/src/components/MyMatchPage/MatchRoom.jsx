@@ -17,6 +17,7 @@ const MyMatch = ({ user2, matchId }) => {
           />
         <Button 
           text={'End Match'}
+          className={"endMatch"}
           />
         </div>
       <div 

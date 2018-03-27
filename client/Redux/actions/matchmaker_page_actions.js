@@ -24,11 +24,9 @@ export default {
     return async (dispatch, getState) => {
       const { id } = getState().accountData;
       const { matches } = getState();
-      console.log(matches)
       const newMatches = JSON.parse(JSON.stringify(matches));
-      console.log(newMatches)
       newMatches.pop();
-      voteObject.userid = id;
+      voteObject.userId = id;
       try {
       await axios
         .put(`${REST_SERVER_URL}/api/matchmaking/updateMatchmaking`, voteObject)
@@ -42,19 +40,22 @@ export default {
     }
   },
   addCommentOnMatch(matchId, comment) {
+    console.log(comment)
     return async (dispatch, getState) => {
       const { id } = getState().accountData
-      const { comments } = getState()
-      const newComments = JSON.parse(JSON.stringify(comments))
+      const { matches } = getState();
+      const newMatches = JSON.parse(JSON.stringify(matches))
       const type = 0;
       const commentObj = { comment, type }
-      newComments.push(commentObj)
       try {
       await axios
         .post(`${REST_SERVER_URL}/api/comments/addComment/${id}/${matchId}`, commentObj)
+      const { data } = await axios
+        .get(`${REST_SERVER_URL}/api/comments/fetchComments/${matchId}`)
+      newMatches[newMatches.length - 1].comments = data;
         dispatch({
           type: 'MATCHMAKER_COMMENT_ADDED',
-          payload: newComments
+          payload: newMatches
           });
       } catch (err) {
         console.error
@@ -78,14 +79,14 @@ export default {
   voteOnCommentOnMatch(commentId, vote, index) {
     return async (dispatch, getState) => {
       try {
-      const { comments } = getState();
-      const newComments = JSON.parse(JSON.stringify(comments))
-      newComments[index].vote += vote;
+      const { matches } = getState();
+      const newMatches = JSON.parse(JSON.stringify(matches))
+      newMatches[newMatches.length-1].comments[index].votes += vote;
       await axios
         .put(`${REST_SERVER_URL}/api/comments/voteOnComment/${commentId}/${vote}`)
         dispatch({
           type: 'MATCHMAKER_COMMENT_VOTED',
-          payload: newComments
+          payload: newMatches
           });
       } catch (err) {
         console.error

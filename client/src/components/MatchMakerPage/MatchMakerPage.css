@@ -1,11 +1,14 @@
 .matchMakerContainer {
   display: flex;
-  height: 100%;
+  height: 120%;
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
   padding: 65px 65px 0px 65px;
-  margin: auto;
+  margin: 30px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  background-color:rgba(245, 245, 245, 0.877);
 }
 
 .decisionContainer {
@@ -15,6 +18,7 @@
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
+  background-color:rgb(245, 245, 245);
 }
 
 .approvalContainer {
@@ -24,15 +28,99 @@
   justify-content: space-around;
   align-items: center;
   margin: auto;
+  background-color:rgb(245, 245, 245);
 }
 
 .commentsContainer {
-  display: flex;
-  height: 20%;
-  justify-content: flex-end;
-  position: fixed;
-  bottom: 0px;
-  align-items: center;
-  border-style: solid;
-  margin-bottom: 0px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px; 
+  height: 90px;
+  position: absolute;
+  bottom: 40px;
+  width: 200px;
+  border-radius: 2px;
+  border: solid rgb(240, 176, 176) 1px;  
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  background-color: rgb(241, 234, 234);
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.commentsContainer:hover {
+  background-color: pink;
+  border: solid rgb(17, 17, 17) 1px;
+}
+
+
+.comments {
+  z-index: 7;
+  min-height: 500px;
+  min-width: 800px;
+  margin: 10px;
+  padding: 10px;
+  position: absolute;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  background-color:rgb(189, 86, 86);
+}
+
+.textbox {
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  background-color:rgba(245, 245, 245, 0.877);
+  width: 330px;
+  height: 200px;
+  margin: 20px;
+  float: right;  
+}
+
+textarea:focus {
+  outline:0;
+}
+
+textarea {
+  font-size: 20px;
+}
+
+.commentsFeed {
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  background-color:rgba(245, 245, 245, 0.877);
+  width: 500px;
+  height: 440px;
+  margin: 20px;
+  float: left;
+  overflow-y: scroll;
+}
+
+.commentItem {
+  display: inline-block;
+  width: 100%;
+  border-top: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  border-bottom: solid rgb(240, 176, 176) 1px;
+}
+
+.zero {
+  float: right;
+  padding: 10px;
+  color: black;
+}
+
+.positive {
+  float: right;
+  padding: 10px;
+  color: blue;
+}
+
+.positive:before {
+  content: "+"
+}
+
+.negative {
+  float: right;
+  padding: 10px;
+  color: red;
 }
