@@ -6,5 +6,7 @@
   align-items: center;
   margin: 65px;
   padding: 65px;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }

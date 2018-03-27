@@ -3,9 +3,13 @@
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
-  padding: 65px 0px 65px 65px;
-  margin: auto;
-  margin-left: 140px;
+  padding: 40px 0px 40px 40px;
+  margin-top: 40px;
+  margin-left: 220px;
+  margin-right: 140px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgba(245, 245, 245, 0.877);
 }
 
 .basicMargin {
@@ -55,27 +59,29 @@
 }
 
 .sidenav {
-  width: 130px;
+  width: 150px;
   position: fixed;
   z-index: 1;
-  top: 80px;
-  left: 20px;
-  background: #eee;
+  top: 100px;
+  left: 25px;
   overflow-x: hidden;
   padding: 8px 0;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  background-color:rgba(245, 245, 245, 0.877);
+  font-size: 20px;
 
 }
 
 .navbutton {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 15px;
-  color: yellowgreen;
+  font-size: 16px;
   display: block;
 }
 
 
 .navbutton:hover {
-  color: #064579;
+  color: pink;
   cursor: default;
 }

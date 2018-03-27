@@ -5,6 +5,7 @@
   align-items: center;
   padding: 65px 0px 65px 65px;
   margin: auto;
+  background-color:whitesmoke;
 }
 
 .chatroom {
@@ -16,8 +17,10 @@
   min-width: 750px;
   padding: 65px;
   border-style: solid;
+  background-color:whitesmoke;
 }
 
 .noMatch {
   margin: 100px;
+  background-color:whitesmoke;
 }

@@ -1,7 +1,17 @@
 .logoContainer {
-  padding: 15px;
+  padding-top: 18px;
+  padding-left: 30px;
   width: 20%;
   margin-left: 25px;
   margin-right: auto;
   flex-direction: row;
+  font-weight: normal;
+  font-size: 26px;
+  color: rgb(110, 49, 49);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+} 
+
+.logoContainer:hover {
+  color: rgb(255, 214, 221);
 }

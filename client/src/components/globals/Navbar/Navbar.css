@@ -4,6 +4,7 @@
   padding: 0px;
   /* flex-wrap: nowrap; */
   flex-flow: row nowrap;
+  background-color:rgb(245, 245, 245);
 }
 
 .navContainer {
@@ -14,10 +15,13 @@
 }
 
 .navButton {
-  padding: 15px;
-  flex-direction: row;
-  flex-shrink: 0;
+  padding: 20px;
   margin: auto;
-  border-left-style: solid;
-  border-left-width: 3px;
+  border-left: solid rgb(240, 176, 176) 2px;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.navButton:hover {
+  background-color: pink;
 }

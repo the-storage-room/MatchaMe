@@ -14,7 +14,10 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
+  margin-bottom: 10px;
 }
 .resultsContainer {
   display: flex;
@@ -23,7 +26,9 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }
 
 .avatar {
@@ -38,8 +43,10 @@
   display: inline-block;
   width: 800px;
   height: 100px;
-  border-top: .5px black solid;
-  border-bottom: .5px black solid;
+  border-top: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  border-bottom: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
 }
 
 .h3 {
