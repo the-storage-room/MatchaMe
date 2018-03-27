@@ -26,6 +26,7 @@ class MyMatch extends Component {
           <MatchRoom 
             user2={this.props.currentMatch.user2_id}
             matchId={this.props.currentMatch.matchid}
+            isSuccessful={this.props.currentMatch.isSuccessful}
             /> :
           <NoMatch />
         }

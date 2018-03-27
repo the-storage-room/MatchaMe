@@ -1,6 +1,6 @@
 export const fetchStarredMatchesHelper = () => {
   return `
-  SELECT match.id, user1_id, USER2_id, activevoting, starred, decision FROM MATCH
+  SELECT match.id, user1_id, user2_id, activevoting, starred, decision FROM MATCH
   INNER JOIN outcomes
   ON match.id=outcomes.matchid
   WHERE starred=1
@@ -10,11 +10,18 @@ export const fetchStarredMatchesHelper = () => {
 
 export const fetchUnstarredMatchesHelper = () => {
   return `
-  SELECT match.id, user1_id, USER2_id, activevoting, starred, decision FROM MATCH
+  SELECT match.id, user1_id, user2_id, activevoting, starred, decision FROM MATCH
   INNER JOIN outcomes
   ON match.id=outcomes.matchid
   WHERE starred=0
   AND outcomes.userid=$1
+  `;
+};
+
+export const fetchStageTwoResultsHelper = (matchid) => {
+  return `
+  SELECT firstaccept, secondaccept, firstrejection, isSuccessful, active FROM STAGETWO
+  WHERE matchid=${matchid}
   `;
 };
 
