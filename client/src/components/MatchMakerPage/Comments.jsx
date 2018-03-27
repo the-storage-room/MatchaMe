@@ -18,6 +18,7 @@ class Comments extends Component {
     this.setState({
       textvalue: '',
     })
+    document.getElementById('commentTextarea').value = '';
   }
 
   generateClassNameFromVotes = (voteCount) => {
@@ -41,6 +42,7 @@ class Comments extends Component {
     return (
       <div className={style.comments}>
         <textarea
+          id='commentTextarea'
           className={style.textbox}
           onChange={this.handleTextareaChange}
           />
