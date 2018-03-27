@@ -63,7 +63,7 @@
   position: absolute;
   border: solid rgb(240, 176, 176) 1px;
   border-radius: 2px;
-  background-color:rgb(245, 245, 245);
+  background-color:rgb(189, 86, 86);
 }
 
 .textbox {
@@ -93,3 +93,31 @@ textarea {
   margin: 20px;
   float: left;
 }
+
+.commentItem {
+  display: inline-block;
+  width: 100%;
+  border-top: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  border-bottom: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+}
+
+.zero {
+  float: right;
+  padding: 10px;
+  color: black;
+}
+
+.positive {
+  float: right;
+  padding: 10px;
+  color: blue;
+}
+
+.negative {
+  float: right;
+  padding: 10px;
+  color: red;
+}
+

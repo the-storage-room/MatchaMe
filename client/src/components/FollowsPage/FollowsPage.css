@@ -55,6 +55,8 @@
   height: 20px;
   padding:10px;
   max-width: 130px;
+  font-weight: normal;
+  font-size: 20px;
 }
 
 .user1 {
@@ -66,9 +68,9 @@ float: right;
 }
 
 .decision {
-  font-weight: bold;
   max-width: 130px;
   padding:30px;
   float: right;
-  font-size: 30px;
+  font-weight: normal;
+  font-size: 20px;
 }

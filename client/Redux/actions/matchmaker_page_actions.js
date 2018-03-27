@@ -24,9 +24,7 @@ export default {
     return async (dispatch, getState) => {
       const { id } = getState().accountData;
       const { matches } = getState();
-      console.log(matches)
       const newMatches = JSON.parse(JSON.stringify(matches));
-      console.log(newMatches)
       newMatches.pop();
       voteObject.userId = id;
       try {
