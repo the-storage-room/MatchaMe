@@ -20,6 +20,12 @@ const FollowsContainer = ({ data, handleStar }) => {
                 user1={match.user1_id}
                 user2={match.user2_id}
                 matchId={match.id}
+                activevoting={match.activevoting}
+                firstAccept={match.firstAccept}
+                secondAccept={match.secondAccept}
+                isSuccessful={match.isSuccessful}
+                firstRejection={match.firstRejection}
+                active={match.active}
                 />
               )
           }) 
