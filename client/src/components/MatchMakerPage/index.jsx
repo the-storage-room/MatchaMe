@@ -19,7 +19,6 @@ class MatchMaker extends Component {
   }
 
   decideOnMatch = (vote) => {
-    console.log(this.props)
     const voteObject = {
       matchId: this.props.matchToRate.id,
       starred: 0,
@@ -29,7 +28,6 @@ class MatchMaker extends Component {
   }
 
   exitComments = () => {
-    console.log('here')
     const { showComments } = this.state;
     !!showComments && this.setState({
       showComments: false
@@ -51,7 +49,12 @@ class MatchMaker extends Component {
   }
   
   render() {
-    console.log(this.props)
+    const { comments } = this.props.matchToRate;
+    const sortedComments = comments.sort((a, b) => {
+      return b.votes - a.votes 
+    })
+
+
     return (
       <div>
         <Navbar />
@@ -91,7 +94,7 @@ class MatchMaker extends Component {
                 exitComments={() => this.exitComments()}
                 submitComment={this.submitComment}
                 refreshComments={this.refreshComments}
-                comments={this.props.matchToRate.comments}
+                comments={sortedComments}
                 voteOnComment={this.voteOnComment}
                 />
             :
