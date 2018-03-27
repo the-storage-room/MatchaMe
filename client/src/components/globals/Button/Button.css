@@ -221,3 +221,24 @@
 .downvote:hover:before {
   color: red;
 }
+
+.endMatch {
+  position: absolute;
+  top: 100px;
+  left: 70px;
+  background-color: whitesmoke;
+  color: rgb(3, 3, 3);
+  font-size: 16px;
+  padding: 14px 40px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  margin: 5px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  width: 30px;
+}
+
+.endMatch:hover {
+  background-color: pink;
+  border: solid rgb(3, 3, 3) 1px;
+}
