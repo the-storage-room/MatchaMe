@@ -4,18 +4,31 @@ import style from './MatchMakerPage.css';
 import Button from '../globals/Button/index.jsx';
 import CommentItem from './CommentItem.jsx';
 
-const Comments = ({ comments, matchId }) => {
+const Comments = ({ comments, exitComments }) => {
   return (
     <div className={style.comments}>
-      <div className={style.textbox}>
-      </div>
-      <div>
-        {
+      <textarea className={style.textbox} />
+      <div className={style.commentsFeed}>
+        { comments.length ? 
           comments.map((comment) => {
-            return <CommentItem />
+            return (
+              <CommentItem
+                key={comment.id}
+                />
+              )
           })
+          : "no comments yet..."
         }
       </div>
+      <Button
+        text={"Enter"}
+        className={"tag"}
+        />
+      <Button
+        className={"X"}
+        text={"Close Comments"}
+        onClick={() => exitComments()}
+        />
     </div>
   );
 }
