@@ -6,11 +6,11 @@ const Button = ({ onClick, text, className}) => {
   className = className || 'defaultButton';
 
   return (
-    <div 
+    <button 
       className={style[className]}
       onClick={onClick}>
       {text}
-    </div>
+    </button>
   );
 };
 
