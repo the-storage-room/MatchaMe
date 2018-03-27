@@ -26,16 +26,28 @@ export const addCommentHelper = () => {
 };
 
 export const voteOnCommentHelper = vote => {
-  if (vote === '1') {
+  if (vote === '-2') {
+    return `
+      UPDATE comments
+      SET votes=(votes-2)
+      WHERE id=$1
+    `;
+  } else if (vote === '-1') {
+    return `
+      UPDATE comments
+      SET votes=(votes-1)
+      WHERE id=$1
+    `;
+  } else if (vote === '1') {
     return `
       UPDATE comments
       SET votes=(votes+1)
       WHERE id=$1
     `;
-  } else {
+  } else if (vote === '2') {
     return `
       UPDATE comments
-      SET votes=(votes-1)
+      SET votes=(votes+2)
       WHERE id=$1
     `;
   }

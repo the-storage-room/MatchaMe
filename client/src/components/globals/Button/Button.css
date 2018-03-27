@@ -11,6 +11,10 @@
   width: 30px;
 }
 
+button:focus {
+  outline:0;
+}
+
 .defaultButton:hover {
   background-color: pink;
   border: solid rgb(3, 3, 3) 1px;
@@ -183,13 +187,41 @@
 
 .upvote:hover {
   background-color: rgb(230, 228, 255);
-  border: solid rgb(3, 3, 3) 1px;
+  border: solid rgb(4, 0, 255) 1px;
   color: blue;
 }
+
+.upvoteSelected {
+  background-color: rgb(230, 228, 255);
+  border: solid rgb(4, 0, 255) 1px;
+  color: blue;
+  float: right;
+  top: -20px;
+  right: 10px;
+  font-size: 12px;
+  padding: 7px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+
+.upvoteSelected:active,
+.downvoteSelected:active {
+  background-color: rgb(255, 255, 255);
+  color: rgb(5, 5, 5);
+  border: solid rgb(255, 255, 255) 1px;
+}
+
+
 
 .upvote:before {
   content: "\25b2"
 }
+
+.upvoteSelected:before {
+  content: "\25b2"
+}
+
 
 .upvote:hover:before {
   color: blue;
@@ -210,12 +242,37 @@
 
 .downvote:hover {
   background-color: rgb(241, 189, 189);
-  border: solid rgb(3, 3, 3) 1px;
+  border: solid rgb(255, 0, 0) 1px;
   color: red;
+}
+
+.downvoteSelected {
+  background-color: rgb(241, 189, 189);
+  border: solid rgb(255, 0, 0) 1px;
+  color: red;
+  float: right;
+  top: -20px;
+  right: 10px;
+  font-size: 12px;
+  padding: 7px;
+  border-radius: 2px;
+  margin: 5px;
 }
 
 .downvote:before {
   content: "\25bc"
+}
+
+.downvoteSelected:before {
+  content: "\25bc"
+}
+
+.downvote:active {
+  background-color: rgb(255, 255, 255);
+}
+
+.upvote:active {
+  background-color: rgb(255, 255, 255);
 }
 
 .downvote:hover:before {
