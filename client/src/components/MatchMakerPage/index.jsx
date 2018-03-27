@@ -10,8 +10,8 @@ import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/matchmaker_page_actions';
 
 class MatchMaker extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       starred: 0,
       showComments: false,
@@ -34,6 +34,20 @@ class MatchMaker extends Component {
     !!showComments && this.setState({
       showComments: false
     })
+  }
+
+  submitComment = (comment) => {
+    let { id } = this.props.matchToRate;
+    this.props.addCommentOnMatch(id, comment)
+  }
+
+  voteOnComment = (commentId, vote, index) => {
+    this.props.voteOnCommentOnMatch(commentId, vote, index)
+  }
+
+  refreshComments = () => {
+    let { id } = this.props.matchToRate;
+    this.props.fetchCommentsOnMatch(id)
   }
   
   render() {
@@ -75,7 +89,10 @@ class MatchMaker extends Component {
             ?
               <Comments
                 exitComments={() => this.exitComments()}
+                submitComment={this.submitComment}
+                refreshComments={this.refreshComments}
                 comments={this.props.matchToRate.comments}
+                voteOnComment={this.voteOnComment}
                 />
             :
               <div
@@ -96,6 +113,9 @@ class MatchMaker extends Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     postMatchmakerDecision: actions.postMatchmakerDecision,
+    addCommentOnMatch: actions.addCommentOnMatch,
+    voteOnCommentOnMatch: actions.voteOnCommentOnMatch,
+    fetchCommentsOnMatch: actions.fetchCommentsOnMatch
   }, dispatch);
 }
 

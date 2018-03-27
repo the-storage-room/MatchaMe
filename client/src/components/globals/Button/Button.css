@@ -119,7 +119,7 @@
 .yellowStar {
   float: right;
   border: 1px black solid;
-  background-color: darkslategrey;
+  background-color: rgb(17, 17, 17);
 }
 
 .greyStar:before {
@@ -144,7 +144,7 @@
 
 .X {
   position: absolute;
-  top: -65px;
+  top: -20px;
   right: 10px;
   background-color: rgb(241, 234, 234);
   color: rgb(3, 3, 3);
@@ -166,4 +166,58 @@
 
 .X:hover:before {
   color: black;
+}
+
+.upvote {
+  float: right;
+  top: -20px;
+  right: 10px;
+  background-color: rgb(241, 234, 234);
+  color: rgb(5, 5, 5);
+  font-size: 12px;
+  padding: 7px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.upvote:hover {
+  background-color: rgb(230, 228, 255);
+  border: solid rgb(3, 3, 3) 1px;
+  color: blue;
+}
+
+.upvote:before {
+  content: "\25b2"
+}
+
+.upvote:hover:before {
+  color: blue;
+}
+
+.downvote {
+  float: right;
+  top: -20px;
+  right: 10px;
+  background-color: rgb(241, 234, 234);
+  color: rgb(3, 3, 3);
+  font-size: 12px;
+  padding: 7px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.downvote:hover {
+  background-color: rgb(241, 189, 189);
+  border: solid rgb(3, 3, 3) 1px;
+  color: red;
+}
+
+.downvote:before {
+  content: "\25bc"
+}
+
+.downvote:hover:before {
+  color: red;
 }

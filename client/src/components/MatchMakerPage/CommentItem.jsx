@@ -2,33 +2,26 @@ import React from 'react';
 
 import style from './MatchMakerPage.css';
 import Button from '../globals/Button/index.jsx';
-import CommentItem from './CommentItem.jsx';
 
-const CommentItem = ({ comments, exitComments }) => {
+const CommentItem = ({ voteOnComment, comment, id, username, votes, className}) => {
   return (
-    <div className={style.comments}>
-      <textarea className={style.textbox} />
-      <div className={style.commentsFeed}>
-        { comments.length ? 
-          comments.map((comment) => {
-            return (
-              <CommentItem
-                key={comment.id}
-                />
-              )
-          })
-          : "no comments yet..."
-        }
-      </div>
+    <div className={style.commentItem}>
+      {username}: {comment}
+      <Button
+        className={"downvote"}
+        text={"downvote"}
+        onClick={() => voteOnComment(-1)}
+        />
       <Button
         text={"Upvote"}
-        className={"tag"}
+        className={"upvote"}
+        onClick={() => voteOnComment(1)}
         />
-      <Button
-        className={"X"}
-        text={"Downvote"}
-        onClick={() => exitComments()}
-        />
+        <div
+          className={style[className]}
+          >
+          {votes}
+        </div>
     </div>
   );
 }
