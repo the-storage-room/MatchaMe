@@ -33,9 +33,9 @@ export const addCommentQuery = async (
   }
 };
 
-export const voteOnCommentQuery = async ({ matchId, vote }) => {
+export const voteOnCommentQuery = async ({ commentId, vote }) => {
   try {
-    const { rows } = await db.query(voteOnCommentHelper(vote), [matchId]);
+    const { rows } = await db.query(voteOnCommentHelper(vote), [commentId]);
     return rows;
   } catch (err) {
     console.log(err);

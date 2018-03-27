@@ -12,7 +12,6 @@ export const fetchAllPhotosQuery = async userId => {
   try {
     const queryString = fetchAllPhotosHelper();
     const { rows } = await db.query(queryString, [userId]);
-    console.log('Success on fetchAllPhotosQuery')
     return rows;
   } catch (err) {
     console.log('Error on fetchAllPhotosQuery', err);

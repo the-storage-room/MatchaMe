@@ -5,8 +5,8 @@ import Button from '../globals/Button/index.jsx';
 import CommentItem from './CommentItem.jsx';
 
 class Comments extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       textvalue: '',
     };
@@ -30,14 +30,23 @@ class Comments extends Component {
     }
   }
 
+  handleTextareaChange = (e) => {
+    this.setState({
+      textvalue: e.target.value,
+    })
+  }
+
   render() {
     const { comments, exitComments, voteOnComment } = this.props;
     return (
       <div className={style.comments}>
-        <textarea className={style.textbox} />
+        <textarea
+          className={style.textbox}
+          onChange={this.handleTextareaChange}
+          />
         <div className={style.commentsFeed}>
           { comments.length ? 
-            comments.map((comment) => {
+            comments.map((comment, index) => {
               return (
                 <CommentItem
                   key={comment.id}
@@ -46,6 +55,7 @@ class Comments extends Component {
                   voteOnComment={voteOnComment}
                   id={comment.id}
                   votes={comment.votes}
+                  index={index}
                   className={this.generateClassNameFromVotes(comment.votes)}
                   />
                 )

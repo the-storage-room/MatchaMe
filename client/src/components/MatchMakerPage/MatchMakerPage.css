@@ -92,6 +92,7 @@ textarea {
   height: 440px;
   margin: 20px;
   float: left;
+  overflow-y: scroll;
 }
 
 .commentItem {
@@ -115,9 +116,12 @@ textarea {
   color: blue;
 }
 
+.positive:before {
+  content: "+"
+}
+
 .negative {
   float: right;
   padding: 10px;
   color: red;
 }
-

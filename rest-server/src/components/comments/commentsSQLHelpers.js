@@ -26,7 +26,7 @@ export const addCommentHelper = () => {
 };
 
 export const voteOnCommentHelper = vote => {
-  if (vote === '0') {
+  if (vote === '1') {
     return `
       UPDATE comments
       SET votes=(votes+1)
