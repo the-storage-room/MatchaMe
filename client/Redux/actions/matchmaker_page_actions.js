@@ -28,7 +28,7 @@ export default {
       const newMatches = JSON.parse(JSON.stringify(matches));
       console.log(newMatches)
       newMatches.pop();
-      voteObject.userid = id;
+      voteObject.userId = id;
       try {
       await axios
         .put(`${REST_SERVER_URL}/api/matchmaking/updateMatchmaking`, voteObject)

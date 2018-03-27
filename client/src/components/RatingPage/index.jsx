@@ -40,15 +40,13 @@ class Rate extends Component {
       })
     }
   }
-  
-  componentWillReceiveProps = (nextProps) => {
-    console.log(nextProps)
-  }
 
   render() {
     return (
       <div>
       <Navbar />
+      {
+      this.props.userToRate ?
       <div className={style.ratingContainer}>
         <div className={style.profileContainer}>
           <Profile 
@@ -73,33 +71,13 @@ class Rate extends Component {
           onClick={() => this.submitUserAttractiveness()}
           className="next"
         />
-      </div>
+      </div> :
+      "Sorry! No more users to rate at this time!"
+      }
     </div>
     )
   }
 }
-
-// const Rate = props => {
-  
-//   return (
-//     <div>
-//       <Navbar />
-//       <div className={style.ratingContainer}>
-//         <div className={style.profileContainer}>
-//           <Profile />
-//           <div className={style.ratingScaleContainer}>
-//             <Slider 
-//               max={10}
-//               defaultValue={5}
-              
-//             />
-//           </div>
-//         </div>
-//         <Button className={style.nextBtn} text={'Next Button'} />
-//       </div>
-//     </div>
-//   );
-// };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({

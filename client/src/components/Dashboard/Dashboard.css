@@ -15,7 +15,9 @@
   width: 25%;
   padding: 25px;
   margin: 25px;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }
 
 .photoContainer {
@@ -27,7 +29,9 @@
   align-items: center;
   padding: auto;
   margin: auto;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }
 
 .bioContainer {
@@ -38,7 +42,9 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }
 
 .matchContainer {
@@ -49,7 +55,9 @@
   justify-content: space-between;
   margin: 25px 5px;
   padding: 25px;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }
 
 .myMatchContainer {
@@ -61,7 +69,9 @@
   align-items: center;
   padding: auto;
   margin: auto;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }
 
 .myFollowingContainer {
@@ -73,7 +83,9 @@
   align-items: center;
   padding: auto;
   margin: auto;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }
 
 .leaderboardContainer {
@@ -82,5 +94,7 @@
   margin: 25px;
   justify-content: center;
   align-items: center;
-  border-style: solid;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 3px;
+  background-color:rgb(245, 245, 245);
 }

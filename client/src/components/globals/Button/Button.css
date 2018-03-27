@@ -1,16 +1,18 @@
 .defaultButton {
-  background-color: #555555;
-  color: white;
+  background-color: rgb(241, 234, 234);
+  color: rgb(3, 3, 3);
   font-size: 16px;
-  border-radius: 8px;
   padding: 14px 40px;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  margin: 5px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 
 .defaultButton:hover {
-  background-color: #e7e7e7;
-  color: black;
+  background-color: pink;
+  border: solid rgb(3, 3, 3) 1px;
 }
 
 .tag {
