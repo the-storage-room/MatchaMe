@@ -107,6 +107,7 @@ const createTagsTable = async () => {
       (
         id  SERIAL ,
         tag VARCHAR(50) NOT NULL ,
+        category VARCHAR(200) NOT NULL,
         CONSTRAINT PK_Tags PRIMARY KEY (id)
       )
       `
