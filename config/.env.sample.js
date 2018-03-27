@@ -1,5 +1,5 @@
 const envBuild = {
-  'client': [
+  client: [
     'NODE_ENV=DEVELOPMENT',
     'DEBUG=TRUE',
     'PORT=1337',
@@ -62,6 +62,18 @@ const envBuild = {
     'DEBUG=TRUE',
     'HOST=http://localhost',
     'PORT=8080',
+    'STATIC_SERVER_URL=http://localhost:1337',
+    'REST_SERVER_URL=http://localhost:5000',
+    'AWS_ACCESS_KEY_ID=',
+    'AWS_SECRET_ACCESS_KEY=',
+    'AWS_REGION="us-west-1"',
+    'BUCKET='
+  ],
+  'redis-server': [
+    'NODE_ENV=DEVELOPMENT',
+    'DEBUG=TRUE',
+    'HOST=http://localhost',
+    'PORT=6379',
     'STATIC_SERVER_URL=http://localhost:1337',
     'REST_SERVER_URL=http://localhost:5000',
     'AWS_ACCESS_KEY_ID=',
