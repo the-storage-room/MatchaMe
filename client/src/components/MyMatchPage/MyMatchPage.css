@@ -102,7 +102,6 @@
 
 .chatTextarea {
   width: 80%;
-  border: dotted;
   height: 100%;
   padding: 5px;
 }
@@ -111,5 +110,22 @@
   width: 90%;
   height: 90%;
   padding: 5px;
-  border: dotted;
+}
+
+.textbox {
+  width: 80%;
+  height: 100%;
+  padding: 10px;
+  border: none;
+  float: left;  
+  background-color:whitesmoke;
+  resize: none;
+}
+
+textarea:focus {
+  outline:0;
+}
+
+textarea {
+  font-size: 20px;
 }

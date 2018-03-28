@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import style from './MyMatchPage.css';
-import Profile from '../globals/Profile/index.jsx';
 import Button from '../globals/Button/index.jsx';
 
 class Chatroom extends Component {
@@ -9,21 +8,43 @@ class Chatroom extends Component {
     super();
     this.state = {
       chatFeed: [],
+      message: '',
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     const { socket } = this.props;
     socket.on('connect', () => {
       socket.emit('client.ready');
     });
-    
-    socket.on('server.initialState', (data) => {
-      console.log(data)
-      this.setState({
 
+    socket.on('server.initialState', (data) => {
+      this.setState({
+        chatFeed: data
       });
     });
+
+    socket.on('server.chat', ( newMessage ) => {
+      console.log(newMessage)
+      var temp = newMessage.message
+      this.setState({ chatFeed: [...this.state.chatFeed, temp]});
+    })
+  }
+
+  submitMessage = () => {
+    const { message } = this.state;
+    const { socket } = this.props;
+    socket.emit('client.chat',  {message: message } )
+    this.setState({
+      message: '',
+    })
+    document.getElementById('chatTextarea').value = '';
+  }
+
+  handleTextareaChange = (e) => {
+    this.setState({
+      message: e.target.value,
+    })
   }
 
   render() {
@@ -34,8 +55,16 @@ class Chatroom extends Component {
           </div>
         </div>
         <div className={style.chatBox}>
-          <div className={style.chatTextarea}>
-          </div>
+          <textarea
+            id='chatTextarea'
+            className={style.textbox}
+            onChange={this.handleTextareaChange}
+            />
+          <Button
+            text={"Enter"}
+            className={"tag"}
+            onClick={() => this.submitMessage()}
+            />
         </div>
       </div>
     );

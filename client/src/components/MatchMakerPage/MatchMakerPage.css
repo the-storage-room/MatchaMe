@@ -74,6 +74,7 @@
   height: 200px;
   margin: 20px;
   float: right;  
+  resize: none;
 }
 
 textarea:focus {
