@@ -1,6 +1,11 @@
+dist: trusty
+
 language: 'node_js'
 node_js:
   - '8'
+
+os: 
+  -macosx
 
 script: gulp travis
 
@@ -12,9 +17,12 @@ cache:
   directories:
     - 'node_modules'
 
+install:
+  - npm install 
+
 before_script:
   - sleep 15
-  - npm run test
+  - npm run start:build
   - npm run buildEnv
   - npm run start
   
