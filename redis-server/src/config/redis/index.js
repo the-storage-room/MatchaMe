@@ -19,8 +19,22 @@ client.on('connect', () => {
 const CronJob = cron.CronJob;
 
 const job = new CronJob({
-  cronTime: '* * * * * ',
-  onTick: fetchData,
+  cronTime: '* 0 * * * ',
+  onTick: async () => {
+    try {
+      client.flushall();
+      const { data } = await axios.get(
+        `${REST_SERVER_URL}/api/users/fetchAllUsers/`
+      );
+      for (let user of data) {
+        let rank = await client.rpushAsync('leaderboard', JSON.stringify(user));
+        client.set(`${user.id}`, rank);
+      }
+      console.log('Job Finished!');
+    } catch (err) {
+      console.log('Error with retrieving users', err);
+    }
+  },
   start: true,
   timeZone: 'America/Los_Angeles'
 });
