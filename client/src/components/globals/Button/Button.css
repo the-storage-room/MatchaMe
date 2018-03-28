@@ -64,14 +64,15 @@ button:focus {
 
 .next, .disabled{
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 200px;
   right: 150px;
   width: 0;
 	height: 0;
 	border-top: 25px solid transparent;
 	border-left: 50px solid rgb(236, 61, 149);
-	border-bottom: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  background-color:rgba(245, 245, 245, 0);
 }
 
 .disabled {

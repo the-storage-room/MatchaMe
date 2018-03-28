@@ -6,7 +6,8 @@ import Button from '../globals/Button/index.jsx';
 import PendingMatch from './PendingMatch.jsx';
 import Chatroom from './Chatroom.jsx';
 
-const MyMatch = ({ user2, matchId, isSuccessful, acceptCurrentMatch, rejectCurrentMatch, endCurrentMatch, user1, firstAccept }) => {
+const MyMatch = ({ user2, matchId, isSuccessful, acceptCurrentMatch, rejectOrEndCurrentMatch, user1, firstAccept }) => {
+  console.log(isSuccessful)
   return (
     <div>
     {
@@ -24,7 +25,7 @@ const MyMatch = ({ user2, matchId, isSuccessful, acceptCurrentMatch, rejectCurre
           <Button 
             text={'End Match'}
             className={"endMatch"}
-            onClick={() => {endCurrentMatch()}}
+            onClick={() => {rejectOrEndCurrentMatch()}}
             />
           </div>
         <div className={style.chatroom}>
@@ -42,7 +43,7 @@ const MyMatch = ({ user2, matchId, isSuccessful, acceptCurrentMatch, rejectCurre
       <PendingMatch
         user2={user2}
         accept={acceptCurrentMatch}
-        reject={acceptCurrentMatch}
+        reject={rejectOrEndCurrentMatch}
         user1={user1}
         firstAccept={firstAccept}
         />

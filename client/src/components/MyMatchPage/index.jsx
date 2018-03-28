@@ -18,7 +18,6 @@ class MyMatch extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <Navbar />
@@ -28,10 +27,9 @@ class MyMatch extends Component {
             user1={this.props.currentMatch.user1_id}
             user2={this.props.currentMatch.user2_id}
             matchId={this.props.currentMatch.matchid}
-            isSuccessful={this.props.currentMatch.isSuccessful}
+            isSuccessful={this.props.currentMatch.issuccessful}
             acceptCurrentMatch={this.props.acceptCurrentMatch}
-            rejectCurrentMatch={this.props.rejectCurrentMatch}
-            endCurrentMatch={this.props.endCurrentMatch}
+            rejectOrEndCurrentMatch={this.props.rejectOrEndCurrentMatch}
             firstAccept={this.props.currentMatch.firstaccept}
             /> :
           <NoMatch
@@ -46,8 +44,7 @@ class MyMatch extends Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     acceptCurrentMatch: actions.acceptCurrentMatch,
-    rejectCurrentMatch: actions.rejectCurrentMatch,
-    endCurrentMatch: actions.endCurrentMatch,
+    rejectOrEndCurrentMatch: actions.rejectOrEndCurrentMatch,
     checkForNewMatch: actions.checkForNewMatch,
   }, dispatch);
 }

@@ -4,7 +4,6 @@ import style from './FollowsPage.css';
 import FollowsItem from './FollowsItem.jsx';
 
 const FollowsContainer = ({ data, handleStar }) => {
-  console.log(data)
   return (
     <div>
       { data ?

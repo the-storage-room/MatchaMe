@@ -5,9 +5,7 @@ export default (state = {}, action) => {
       return (state = action.payload);
     case 'CURRENT_MATCH_ACCECPTED':
       return (state = action.payload);
-    case 'CURRENT_MATCH_REJECTED':
-      return (state = action.payload);
-    case 'CURRENT_MATCH_ENDED':
+    case 'CURRENT_MATCH_REJECTED_OR_ENDED':
       return (state = action.payload);
     case 'CURRENT_MATCH_REFRESHED':
       return (state = action.payload);

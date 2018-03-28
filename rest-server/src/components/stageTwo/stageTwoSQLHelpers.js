@@ -10,24 +10,15 @@ export const fetchStageTwoHelper = () => {
 
 export const acceptStageTwoHelper = () => {
   return [
-    `UPDATE stagetwo SET issuccessful=1, secondaccept=$1 WHERE id=$2 AND firstdecision IS NOT NULL RETURNING *;`,
+    `UPDATE stagetwo SET issuccessful=1, secondaccept=$1 WHERE id=$2 AND firstaccept IS NOT NULL RETURNING *;`,
     `UPDATE stagetwo SET firstaccept=$1 WHERE id=$2 RETURNING *;`
   ];
 };
 
-export const rejectStageTwoHelper = () => {
+export const rejectOrEndStageTwoHelper = () => {
   return `
   UPDATE stagetwo
   SET active=0, firstRejection=$2
-  WHERE id=$1
-  RETURNING *;
-  `;
-};
-
-export const endStageTwoHelper = () => {
-  return `
-  UPDATE stagetwo
-  SET active=0
   WHERE id=$1
   RETURNING *;
   `;

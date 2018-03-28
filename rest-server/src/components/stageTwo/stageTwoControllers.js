@@ -1,8 +1,7 @@
 import {
   fetchStageTwoQuery,
   acceptStageTwoQuery,
-  rejectStageTwoQuery,
-  endStageTwoQuery
+  rejectOrEndStageTwoQuery
 } from './stageTwoQueries';
 
 export const fetchStageTwoController = async (req, res) => {
@@ -24,22 +23,12 @@ export const acceptStageTwoController = async (req, res) => {
   }
 };
 
-export const rejectStageTwoController = async (req, res) => {
+export const rejectOrEndStageTwoController = async (req, res) => {
   try {
-    const data = await rejectStageTwoQuery(req.params);
+    const data = await rejectOrEndStageTwoQuery(req.params);
     console.log('Success with rejectStageTwoController');
     res.status(200).send(data);
   } catch (err) {
     console.log('Error with rejectStageTwoController', err);
-  }
-};
-
-export const endStageTwoController = async (req, res) => {
-  try {
-    const data = await endStageTwoQuery(req.params);
-    console.log('Success with rejectStageTwoController');
-    res.status(200).send(data);
-  } catch (err) {
-    console.log('Error with endStageTwoController', err);
   }
 };
