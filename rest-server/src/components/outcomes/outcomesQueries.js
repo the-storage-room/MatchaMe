@@ -59,6 +59,22 @@ export const fetchStarredMatchesQuery = async ({ userId }) => {
       await delete match.user2_id.powerranking;
       await delete match.user1_id.signupcomplete;
       await delete match.user2_id.signupcomplete;
+      const queryString = fetchStageTwoResultsHelper(match.id)
+      const stage2Data = await db.query(queryString)
+      if (stage2Data.rows[0]) {
+        const {
+          firstaccept,
+          secondaccept,
+          firstrejection,
+          issuccessful,
+          active,
+        } = stage2Data.rows[0];
+        match.firstAccept = firstaccept;
+        match.secondAccept = secondaccept;
+        match.isSuccessful = issuccessful;
+        match.firstRejection = firstrejection;
+        match.active = active;
+      }
     }
     console.log('Success on fetchStarredMatchesQuery');
     return rows;
@@ -85,10 +101,10 @@ export const fetchUnstarredMatchesQuery = async ({ userId }) => {
       await delete match.user2_id.powerranking;
       await delete match.user1_id.signupcomplete;
       await delete match.user2_id.signupcomplete;
-      let queryString = fetchStageTwoResultsHelper(match.id)
-      let stage2Data = await db.query(queryString)
+      const queryString = fetchStageTwoResultsHelper(match.id)
+      const stage2Data = await db.query(queryString)
       if (stage2Data.rows[0]) {
-        let {
+        const {
           firstaccept,
           secondaccept,
           firstrejection,
