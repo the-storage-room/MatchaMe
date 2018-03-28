@@ -16,12 +16,15 @@ const generateToken = (id, username) => {
 
 const verifyUserWithJWT = (req, res, next) => {
   try {
-    // verify();
-    // next() ;
+    verify(req.headers.authorization.slice(7), process.env.TOKEN_SECRET);
+    success('token verified');
+    next();
   } catch (e) {
-    console.log(e)
+    error('token not verified');
+    next(e);
   }
 };
+
 
 module.exports.generateToken = generateToken;
 module.exports.verifyUserWithJWT = verifyUserWithJWT;
