@@ -2,7 +2,7 @@ import {
   fetchStageTwoQuery,
   acceptStageTwoQuery,
   rejectStageTwoQuery,
-  ghostStageTwoQuery
+  endStageTwoQuery
 } from './stageTwoQueries';
 
 export const fetchStageTwoController = async (req, res) => {
@@ -34,7 +34,12 @@ export const rejectStageTwoController = async (req, res) => {
   }
 };
 
-export const ghostStageTwoController = async (req, res) => {
+export const endStageTwoController = async (req, res) => {
   try {
-  } catch (err) {}
+    const data = await endStageTwoQuery(req.params);
+    console.log('Success with rejectStageTwoController');
+    res.status(200).send(data);
+  } catch (err) {
+    console.log('Error with endStageTwoController', err);
+  }
 };

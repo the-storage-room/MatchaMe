@@ -4,7 +4,7 @@ import {
   fetchStageTwoHelper,
   acceptStageTwoHelper,
   rejectStageTwoHelper,
-  ghostStageTwoHelper,
+  endStageTwoHelper,
   addStageTwoHelper
 } from './stageTwoSQLHelpers';
 
@@ -59,8 +59,8 @@ export const acceptStageTwoQuery = async ({ id, userId }) => {
     let rows;
     const check = await db.query(fetchStageTwoHelper(), [id]);
     const queryStrings = acceptStageTwoHelper();
-    if (!!check.rows[0].firstdecision) {
-      rows = await db.query(queryStrings[0], [id]);
+    if (!!check.rows[0].firstaccept) {
+      rows = await db.query(queryStrings[0], [userId, id]);
     } else {
       rows = await db.query(queryStrings[1], [userId, id]);
     }
@@ -71,10 +71,10 @@ export const acceptStageTwoQuery = async ({ id, userId }) => {
   }
 };
 
-export const rejectStageTwoQuery = async ({ id }) => {
+export const rejectStageTwoQuery = async ({ id, userId }) => {
   try {
     const queryString = rejectStageTwoHelper();
-    const { rows } = await db.query(queryString, [id]);
+    const { rows } = await db.query(queryString, [id, userId]);
     console.log('Successful with rejectStageTwoQuery');
     return rows;
   } catch (err) {
@@ -82,7 +82,13 @@ export const rejectStageTwoQuery = async ({ id }) => {
   }
 };
 
-export const ghostStageTwoQuery = async body => {
+export const endStageTwoQuery = async ({ id }) => {
   try {
-  } catch (err) {}
+    const queryString = endStageTwoHelper();
+    const { rows } = await db.query(queryString, [id]);
+    console.log('Successful with endStageTwoQuery');
+    return rows;
+  } catch (err) {
+    console.log('Error with endStageTwoQuery', err);
+  }
 };
