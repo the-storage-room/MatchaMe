@@ -165,6 +165,7 @@ const createUsersTagsTable = async () => {
         REFERENCES Tags(id),
         CONSTRAINT FK_UsersTags_Users FOREIGN KEY (userId)
         REFERENCES Users(id)
+      )
       `
     );
     console.log('Successfully Created UsersTags Table');
