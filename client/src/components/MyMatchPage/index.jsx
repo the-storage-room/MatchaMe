@@ -2,32 +2,55 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import style from './MyMatchPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
-import Profile from '../globals/Profile/index.jsx';
-import Button from '../globals/Button/index.jsx';
 import MatchRoom from './MatchRoom.jsx';
 import NoMatch from './NoMatch.jsx';
+import WarningBox from './WarningBox.jsx'
+import actions from '../../../Redux/actions/current_match_actions';
 
 class MyMatch extends Component {
   constructor() {
     super();
     this.state = {
+      showWarningBox: false
     };
   }
 
+  toggleWarningBox = () => {
+    this.setState({
+      showWarningBox: !this.state.showWarningBox
+    });
+  }
+
+  endMatch = () => {
+    this.toggleWarningBox();
+    this.props.rejectOrEndCurrentMatch();
+  }
+
+
   render() {
-    console.log(this.props.currentMatch)
     return (
       <div>
         <Navbar />
+        <WarningBox
+          show={this.state.showWarningBox}
+          onClose={this.toggleWarningBox}
+          endMatch={this.endMatch}>
+        </WarningBox>
         { 
-          this.props.currentMatch ?
+          this.props.currentMatch && this.props.currentMatch.id ?
           <MatchRoom 
+            user1={this.props.currentMatch.user1_id}
             user2={this.props.currentMatch.user2_id}
             matchId={this.props.currentMatch.matchid}
+            isSuccessful={this.props.currentMatch.issuccessful}
+            acceptCurrentMatch={this.props.acceptCurrentMatch}
+            firstAccept={this.props.currentMatch.firstaccept}
+            toggleWarningBox={this.toggleWarningBox}
             /> :
-          <NoMatch />
+          <NoMatch
+            checkForNewMatch={this.props.checkForNewMatch}
+            />
         }
       </div>
     );
@@ -36,6 +59,9 @@ class MyMatch extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    acceptCurrentMatch: actions.acceptCurrentMatch,
+    rejectOrEndCurrentMatch: actions.rejectOrEndCurrentMatch,
+    checkForNewMatch: actions.checkForNewMatch,
   }, dispatch);
 }
 

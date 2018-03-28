@@ -85,7 +85,6 @@ textarea {
 }
 
 .commentsFeed {
-  border: solid rgb(240, 176, 176) 1px;
   border-radius: 2px;
   background-color:rgba(245, 245, 245, 0.877);
   width: 500px;
@@ -123,4 +122,10 @@ textarea {
   float: right;
   padding: 10px;
   color: red;
+}
+
+.commentBox {
+  max-width: 280px;
+  padding: 5px;
+  float: left;
 }

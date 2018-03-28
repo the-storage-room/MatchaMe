@@ -1,19 +1,31 @@
 .defaultButton {
+  display: inline-block;
   background-color: rgb(241, 234, 234);
   color: rgb(3, 3, 3);
   font-size: 16px;
-  padding: 14px 40px;
   border: solid rgb(240, 176, 176) 1px;
   border-radius: 2px;
-  margin: 5px;
+  width: auto;
+  padding: 15px 22px;
+  text-align: center;
+  text-decoration: none;
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  width: 30px;
+  margin: 5px;
+}
+
+button:focus {
+  outline:0;
 }
 
 .defaultButton:hover {
   background-color: pink;
   border: solid rgb(3, 3, 3) 1px;
+}
+
+.defaultButton:active {
+  background-color: rgb(157, 252, 255);
+  border: solid rgb(255, 169, 169) 1px;
 }
 
 .tag {
@@ -60,14 +72,15 @@
 
 .next, .disabled{
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 200px;
   right: 150px;
   width: 0;
 	height: 0;
 	border-top: 25px solid transparent;
 	border-left: 50px solid rgb(236, 61, 149);
-	border-bottom: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  background-color:rgba(245, 245, 245, 0);
 }
 
 .disabled {
@@ -183,13 +196,41 @@
 
 .upvote:hover {
   background-color: rgb(230, 228, 255);
-  border: solid rgb(3, 3, 3) 1px;
+  border: solid rgb(4, 0, 255) 1px;
   color: blue;
 }
+
+.upvoteSelected {
+  background-color: rgb(230, 228, 255);
+  border: solid rgb(4, 0, 255) 1px;
+  color: blue;
+  float: right;
+  top: -20px;
+  right: 10px;
+  font-size: 12px;
+  padding: 7px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+
+.upvoteSelected:active,
+.downvoteSelected:active {
+  background-color: rgb(255, 255, 255);
+  color: rgb(5, 5, 5);
+  border: solid rgb(255, 255, 255) 1px;
+}
+
+
 
 .upvote:before {
   content: "\25b2"
 }
+
+.upvoteSelected:before {
+  content: "\25b2"
+}
+
 
 .upvote:hover:before {
   color: blue;
@@ -210,12 +251,37 @@
 
 .downvote:hover {
   background-color: rgb(241, 189, 189);
-  border: solid rgb(3, 3, 3) 1px;
+  border: solid rgb(255, 0, 0) 1px;
   color: red;
+}
+
+.downvoteSelected {
+  background-color: rgb(241, 189, 189);
+  border: solid rgb(255, 0, 0) 1px;
+  color: red;
+  float: right;
+  top: -20px;
+  right: 10px;
+  font-size: 12px;
+  padding: 7px;
+  border-radius: 2px;
+  margin: 5px;
 }
 
 .downvote:before {
   content: "\25bc"
+}
+
+.downvoteSelected:before {
+  content: "\25bc"
+}
+
+.downvote:active {
+  background-color: rgb(255, 255, 255);
+}
+
+.upvote:active {
+  background-color: rgb(255, 255, 255);
 }
 
 .downvote:hover:before {
@@ -223,9 +289,7 @@
 }
 
 .endMatch {
-  position: absolute;
-  top: 100px;
-  left: 70px;
+  float: left;
   background-color: whitesmoke;
   color: rgb(3, 3, 3);
   font-size: 16px;

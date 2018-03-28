@@ -1,32 +1,26 @@
 export const fetchStageTwoHelper = () => {
   return `
-  SELECT stagetwo.id, stagetwo.matchid, stagetwo.issuccessful, stagetwo.firstdecision, 
-  match.user1_id, match.user2_id FROM stagetwo
+  SELECT stagetwo.id, stagetwo.matchid, stagetwo.issuccessful, stagetwo.firstaccept, 
+  stagetwo.secondaccept, stagetwo.firstrejection, match.user1_id, match.user2_id FROM stagetwo
   INNER JOIN MATCH ON match.id=stagetwo.matchid
-  WHERE user1_id=$1 OR user2_id=$1 AND active=1
+  WHERE user1_id=$1 AND active=1 OR user2_id=$1 AND active=1
   LIMIT 1;
   `;
 };
 
 export const acceptStageTwoHelper = () => {
   return [
-    `UPDATE stagetwo SET issuccessful=1 WHERE id=$1 AND firstdecision IS NOT NULL RETURNING *;`,
-    `UPDATE stagetwo SET firstdecision=$1 WHERE id=$2 RETURNING *;`
+    `UPDATE stagetwo SET issuccessful=1, secondaccept=$1 WHERE id=$2 AND firstaccept IS NOT NULL RETURNING *;`,
+    `UPDATE stagetwo SET firstaccept=$1 WHERE id=$2 RETURNING *;`
   ];
 };
 
-export const rejectStageTwoHelper = () => {
+export const rejectOrEndStageTwoHelper = () => {
   return `
   UPDATE stagetwo
-  SET active=0
+  SET active=0, firstRejection=$2
   WHERE id=$1
   RETURNING *;
-  `;
-};
-
-export const ghostStageTwoHelper = () => {
-  return `
-  
   `;
 };
 

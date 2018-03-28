@@ -3,8 +3,7 @@ import db from '../../config/database/index';
 import {
   fetchStageTwoHelper,
   acceptStageTwoHelper,
-  rejectStageTwoHelper,
-  ghostStageTwoHelper,
+  rejectOrEndStageTwoHelper,
   addStageTwoHelper
 } from './stageTwoSQLHelpers';
 
@@ -47,7 +46,13 @@ export const fetchStageTwoQuery = async ({ userId }) => {
         userId: rows[0].user1_id
       });
     }
-    rows[0];
+    let { user1_id, user2_id } = rows[0]
+    if (user1_id.id) {
+      let newUser2 = user1_id;
+      let newUser1 = user2_id;
+      rows[0].user2_id = newUser2;
+      rows[0].user1_id = newUser1;
+    }
     return rows[0];
   } catch (err) {
     console.log('Error with fetchStageTwoQuery', err);
@@ -57,10 +62,11 @@ export const fetchStageTwoQuery = async ({ userId }) => {
 export const acceptStageTwoQuery = async ({ id, userId }) => {
   try {
     let rows;
-    const check = await db.query(fetchStageTwoHelper(), [id]);
+    const check = await db.query(fetchStageTwoHelper(), [userId]);
     const queryStrings = acceptStageTwoHelper();
-    if (!!check.rows[0].firstdecision) {
-      rows = await db.query(queryStrings[0], [id]);
+    console.log(check.rows[0])
+    if (check.rows[0] && check.rows[0].firstaccept) {
+      rows = await db.query(queryStrings[0], [userId, id]);
     } else {
       rows = await db.query(queryStrings[1], [userId, id]);
     }
@@ -71,18 +77,13 @@ export const acceptStageTwoQuery = async ({ id, userId }) => {
   }
 };
 
-export const rejectStageTwoQuery = async ({ id }) => {
+export const rejectOrEndStageTwoQuery = async ({ id, userId }) => {
   try {
-    const queryString = rejectStageTwoHelper();
-    const { rows } = await db.query(queryString, [id]);
+    const queryString = rejectOrEndStageTwoHelper();
+    const { rows } = await db.query(queryString, [id, userId]);
     console.log('Successful with rejectStageTwoQuery');
     return rows;
   } catch (err) {
     console.log('Error with rejectStageTwoQuery', err);
   }
-};
-
-export const ghostStageTwoQuery = async body => {
-  try {
-  } catch (err) {}
 };
