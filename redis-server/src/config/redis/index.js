@@ -1,36 +1,37 @@
 import redis from 'redis';
 import axios from 'axios';
 import Promise from 'bluebird';
+import cron from 'cron';
 
 const client = Promise.promisifyAll(redis.createClient());
+const CronJob = cron.CronJob;
 
 client.on('connect', () => {
   console.log('Connected to Redis Server');
-  setInterval(getAllRanks, 1000 * 60);
-  getAllRanks();
+  job.start();
 });
 
 const { REST_SERVER_URL } = process.env;
 
-const getAllRanks = async () => {
-  try {
-    let timeLeft = await client.ttlAsync('leaderboard');
-    if (timeLeft < 15) {
-      console.log(timeLeft);
+var job = new CronJob({
+  cronTime: '* 0 * * * ',
+  onTick: async () => {
+    try {
+      client.flushall();
       const { data } = await axios.get(
         `${REST_SERVER_URL}/api/users/fetchAllUsers/`
       );
       for (let user of data) {
         let rank = await client.rpushAsync('leaderboard', JSON.stringify(user));
-        client.setex(`${user.id}`, 60, rank);
+        client.set(`${user.id}`, rank);
       }
-      client.expire('leaderboard', 60);
-    } else {
-      console.log('Already done!');
+      console.log('Job Finished!');
+    } catch (err) {
+      console.log('Error with retrieving users', err);
     }
-  } catch (err) {
-    console.log('Error with retrieving users', err);
-  }
-};
+  },
+  start: true,
+  timeZone: 'America/Los_Angeles'
+});
 
 export default client;
