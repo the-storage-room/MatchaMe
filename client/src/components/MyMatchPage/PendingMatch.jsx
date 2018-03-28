@@ -4,7 +4,7 @@ import style from './MyMatchPage.css';
 import Profile from '../globals/Profile/index.jsx';
 import Button from '../globals/Button/index.jsx';
 
-const Pending = ({ user2, handleClick}) => {
+const Pending = ({ user2, accept, reject }) => {
   return (
     <div className={style.pending}>
       <div className={style.profileHolder}>
@@ -20,11 +20,11 @@ const Pending = ({ user2, handleClick}) => {
         You have a match! Is this a good match for you?
         <Button 
           text={'Yes'}
-          onClick={() => handleClick()}
+          onClick={() => accept()}
           />
         <Button 
           text={'No'}
-          onClick={() => handleClick()}
+          onClick={() => reject()}
           />
       </div>
     </div>

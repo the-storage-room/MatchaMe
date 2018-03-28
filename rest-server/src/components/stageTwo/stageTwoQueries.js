@@ -59,7 +59,7 @@ export const acceptStageTwoQuery = async ({ id, userId }) => {
     let rows;
     const check = await db.query(fetchStageTwoHelper(), [id]);
     const queryStrings = acceptStageTwoHelper();
-    if (!!check.rows[0].firstaccept) {
+    if (!!check.rows[0] && !!check.rows[0].firstaccept) {
       rows = await db.query(queryStrings[0], [userId, id]);
     } else {
       rows = await db.query(queryStrings[1], [userId, id]);
@@ -84,6 +84,7 @@ export const rejectStageTwoQuery = async ({ id, userId }) => {
 
 export const endStageTwoQuery = async ({ id }) => {
   try {
+    console.log(id)
     const queryString = endStageTwoHelper();
     const { rows } = await db.query(queryString, [id]);
     console.log('Successful with endStageTwoQuery');
