@@ -28,8 +28,7 @@ class Signup extends Component {
     }
     try {
       const data = await axios.post(`${REST_SERVER_URL}/api/auth/signup`, body);
-      console.log(data)
-      //data ? this.props.history.push('/login') : alert('taken');
+      data ? this.props.history.push('/login') : alert('taken');
     } catch (err) {
       console.error(err)
     }
@@ -58,7 +57,7 @@ class Signup extends Component {
           /> <br />
           <Input 
             name="password"
-            type="text"
+            type="password"
             placeholder="Enter password"
             onChange={this.handleInputChange}
           /> <br />
