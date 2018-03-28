@@ -12,10 +12,8 @@
   flex-flow: column nowrap;
   justify-content: space-around;
   align-items: center;
-  height: 530px;
-  width: 600px;
-  padding-left: 40px;
-  margin-bottom: 100px;
+  height: 550px;
+  width: 640px;
   background-color:whitesmoke;
   border: solid rgb(240, 176, 176) 1px;
   border-radius: 3px;
@@ -78,4 +76,40 @@
   background-color:whitesmoke;
   border: solid rgb(240, 176, 176) 1px;
   border-radius: 3px;
+}
+
+.chatFeed {
+  width: 100%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.chatBox {
+  width: 100%;
+  height: 15%;
+  border-top: solid rgb(240, 176, 176) 1px;
+  margin: 0;
+  padding: 0;
+}
+
+.chatRoom {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.chatTextarea {
+  width: 80%;
+  border: dotted;
+  height: 100%;
+  padding: 5px;
+}
+
+.chatFeedarea {
+  width: 90%;
+  height: 90%;
+  padding: 5px;
+  border: dotted;
 }
