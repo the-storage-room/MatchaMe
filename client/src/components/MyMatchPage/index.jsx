@@ -2,25 +2,41 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import style from './MyMatchPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
-import Profile from '../globals/Profile/index.jsx';
-import Button from '../globals/Button/index.jsx';
 import MatchRoom from './MatchRoom.jsx';
 import NoMatch from './NoMatch.jsx';
+import WarningBox from './WarningBox.jsx'
 import actions from '../../../Redux/actions/current_match_actions';
 
 class MyMatch extends Component {
   constructor() {
     super();
     this.state = {
+      showWarningBox: false
     };
   }
+
+  toggleWarningBox = () => {
+    this.setState({
+      showWarningBox: !this.state.showWarningBox
+    });
+  }
+
+  endMatch = () => {
+    this.toggleWarningBox();
+    this.props.rejectOrEndCurrentMatch();
+  }
+
 
   render() {
     return (
       <div>
         <Navbar />
+        <WarningBox
+          show={this.state.showWarningBox}
+          onClose={this.toggleWarningBox}
+          endMatch={this.endMatch}>
+        </WarningBox>
         { 
           this.props.currentMatch && this.props.currentMatch.id ?
           <MatchRoom 
@@ -29,8 +45,8 @@ class MyMatch extends Component {
             matchId={this.props.currentMatch.matchid}
             isSuccessful={this.props.currentMatch.issuccessful}
             acceptCurrentMatch={this.props.acceptCurrentMatch}
-            rejectOrEndCurrentMatch={this.props.rejectOrEndCurrentMatch}
             firstAccept={this.props.currentMatch.firstaccept}
+            toggleWarningBox={this.toggleWarningBox}
             /> :
           <NoMatch
             checkForNewMatch={this.props.checkForNewMatch}
