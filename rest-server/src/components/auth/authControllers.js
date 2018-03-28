@@ -13,7 +13,6 @@ import {
 
 
 export const loginController = async (req, res) => {
-  console.log('fuckk  ')
   try {
     const { rows } = await loginQuery(req.body);
     delete rows[0].password;

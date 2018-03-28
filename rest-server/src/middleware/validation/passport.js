@@ -7,8 +7,7 @@ import {
 } from '../../components/auth/authQueries';
 import {
   hashPassword,
-  comparePasswords,
-  comparePW
+  comparePasswords
 } from '../auth/bcrypt';
 
 const JwtStrategy = jwt.Strategy;
@@ -29,15 +28,12 @@ const jwtOptions = {
 
 
 passport.use(new LocalStrategy(localOptions, async (username, password, done) => {
-  console.log('are we here')
   try {
     const { rows } = await loginQuery({ username });
-    console.log(rows);
     if (!rows.length) {
       return done(null, false);
     }
-    const passwordsMatch = await comparePW(rows[0].password, password);
-    console.log(passwordsMatch)
+    const passwordsMatch = await comparePasswords(password, rows[0].password);
     if (!passwordsMatch) {
       return done(null, false);
     }

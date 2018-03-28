@@ -24,14 +24,11 @@ class Login extends Component {
       username,
       password
     };
-    console.log(body)
     try {
       const data = await axios.post(`${REST_SERVER_URL}/api/auth/login`, body);
-      console.log(data)
       localStorage.setItem('id', data.data.id);
       localStorage.setItem('email', data.data.email);
       localStorage.setItem('token', data.data.token);
-      console.log(localStorage);
       if (data) {
         
         this.props.history.push('/dashboard');
