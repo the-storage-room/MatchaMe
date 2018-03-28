@@ -1,8 +1,8 @@
 export const fetchAllUsersHelper = () => {
   return `
-  SELECT id, age, location, gender, preference, averageattractiveness
+  SELECT id, username, powerranking
   FROM users
-  WHERE signupcomplete='true'
+  ORDER BY powerranking DESC;
   `;
 };
 

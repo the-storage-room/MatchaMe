@@ -19,19 +19,13 @@ import {
 
 import { fetchAllPhotosQuery } from '../photos/photoQueries';
 
-import { fetchUserAndTheirPreferenceTagsQuery } from '../tags/tagsQueries';
+import { fetchPrimaryPhotoQuery } from '../photos/photoQueries';
 
 export const fetchAllUsersQuery = async body => {
   try {
     const { rows } = await db.query(fetchAllUsersHelper());
     for (let user of rows) {
-      user.tags = (await fetchUserAndTheirPreferenceTagsQuery(user.id, 0)).map(
-        tag => tag.id
-      );
-      user.tagPreferences = (await fetchUserAndTheirPreferenceTagsQuery(
-        user.id,
-        1
-      )).map(tag => tag.id);
+      user.primaryPhoto = await fetchPrimaryPhotoQuery(user.id);
     }
     return rows;
   } catch (err) {
@@ -51,21 +45,21 @@ export const fetchSingleUsersQuery = async body => {
   }
 };
 
-export const fetchMultipleUsersQuery = async (id) => {
+export const fetchMultipleUsersQuery = async id => {
   try {
     const { rows } = await fetchSingleUserAttractivenessQuery(id);
-    
+
     const attractiveness = rows[0].averageattractiveness;
-    const min = (attractiveness - 3);
-    const max = (attractiveness + 3);
-    
+    const min = attractiveness - 3;
+    const max = attractiveness + 3;
+
     const infoQueryString = fetchMultipleUsersHelper();
     const photoQueryString = fetchUsersPhotosHelper();
     const tagQueryString = fetchUsersTagsForRatingHelper();
 
     const userData = await db.query(infoQueryString, [min, max, id]);
     const userRows = userData.rows;
-    
+
     const photoData = await db.query(photoQueryString, [min, max]);
     const photoRows = photoData.rows;
 
@@ -100,7 +94,7 @@ export const fetchMultipleUsersQuery = async (id) => {
       }
       photos = [];
     }
-   // console.log('userrows', userRows)
+    // console.log('userrows', userRows)
     return userRows;
   } catch (err) {
     console.log(err);
@@ -180,7 +174,7 @@ export const updateTotalAttractivenessQuery = async ({
 export const updateAverageAttractivenessQuery = async body => {
   try {
     const queryString = await updateAverageAttractivenessHelper(body);
-    console.log(queryString)
+    console.log(queryString);
     const data = await db.query(queryString);
     return data;
   } catch (err) {
