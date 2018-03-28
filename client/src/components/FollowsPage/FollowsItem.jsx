@@ -27,8 +27,8 @@ const FollowsItem = ({
     } else if (firstAccept === null && active) {
       return " Waiting for Matchees to Accept"
     } else if (firstAccept === null && !active) {
-      const rejecter = user1.id === firstRejection ? user1.username : user2.username
-      return ` rejected by ${rejecter}`
+      const rejecter = user1.id === firstRejection ? user1.firstname : user2.firstname
+      return ` Rejected by ${rejecter}`
     } else if (firstAccept && secondAccept) {
       if (active) {
         return " Accepted by both and active! :)"
@@ -36,9 +36,9 @@ const FollowsItem = ({
         return " Accept by both but... sadly... inactive..."
       }
     } else if (firstAccept && firstRejection) {
-      const rejecter2 = user1.id === firstRejection ? user1.username : user2.username
-      const accepter = user1.id === firstAccept ? user1.username : user2.username
-      return ` accepted by ${accepter},rejected by ${rejecter2}`
+      const rejecter2 = user1.id === firstRejection ? user1.firstname : user2.firstname
+      const accepter = user1.id === firstAccept ? user1.firstname : user2.firstname
+      return ` Accepted by ${accepter}... and later rejected by ${rejecter2}`
     }
   }
   return (
