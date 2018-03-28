@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { fs } from 'fs';
 
 const convertToRadian = (deg) => {
   return deg * Math.PI/180;
@@ -43,6 +44,15 @@ export const getDistanceBetweenTwoZipcodes = async (user1zipcode, user2zipcode) 
       let roundedData = Math.floor(data)
       return roundedData;
   } catch (err) {
-    console.log('error on fetchZipCodeController', err)
+    console.log('error on getDistanceBetween ZipCodes', err)
   }
 }
+
+fs.readFile('zipcodesAndGeocodes.txt', 'utf-8', (err, data) => {
+  let obj = {};
+  let splitByLine = data.toString().split('\n')
+  for (var i = 0; i < splitByLine.length; i++) {
+
+  } 
+
+})
