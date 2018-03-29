@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import BoardItem from './BoardItem.jsx';
 import style from './LeaderboardPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
 
@@ -14,11 +15,22 @@ class Leaderboard extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <Navbar />
         <div className={style.leaderboardContainer}>
+          {
+            this.props.leaderboard.map((boarditem) => {
+              return (
+                <BoardItem
+                  key={boarditem.id}
+                  username={boarditem.username}
+                  powerranking={boarditem.powerranking}
+                  primaryPhoto={boarditem.primaryPhoto}
+                  />
+              )
+            })
+          }
           <div />
         </div>
       </div>
@@ -33,9 +45,9 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-const mapStateToProps = ({ Leaderboard }) => {
+const mapStateToProps = ({ leaderboard }) => {
   return {
-    Leaderboard,
+    leaderboard,
   }
 }
 
