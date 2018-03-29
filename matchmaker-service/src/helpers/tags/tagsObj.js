@@ -1,4 +1,4 @@
-export const tagsObj = {
+const tagsObj = {
   1: {
     1: 3,
     2: 2,
@@ -960,3 +960,15 @@ export const tagsObj = {
     30: 3,
   },
 }
+
+
+
+// const findWeightOfTags = (tagNumber1, tagNumber2) => {
+//   console.log(tagNumber1)
+//   console.log(tagNumber2)
+//   return tagsObj[tagNumber1][tagNumber2]
+// }
+
+// console.log(findWeightOfTags(27, 28))
+
+// exports.module = tagsObj;
