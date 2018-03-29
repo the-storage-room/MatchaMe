@@ -8,10 +8,8 @@ const io = SocketIo(server);
 
 io.on('connection', (client) => {
   console.log('client connected');
-  const { user1Id, user2Id } = client.handshake.query;
-  const room = [user1Id, user2Id,].sort().join();
-
-  console.log(room)
+  const { matchId } = client.handshake.query;
+  const room = matchId;
   
   client.join(room);
 

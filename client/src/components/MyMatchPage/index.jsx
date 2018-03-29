@@ -34,8 +34,7 @@ class MyMatch extends Component {
   componentWillMount= () => {
       this.socket = io(SOCKET_SERVER_URL, {
         query: {
-          user1Id: this.props.currentMatch.user1_id,
-          user2Id: this.props.currentMatch.user2_id.id,
+          matchId: this.props.currentMatch.matchid
         }
       });
   
@@ -63,6 +62,8 @@ class MyMatch extends Component {
             firstAccept={this.props.currentMatch.firstaccept}
             toggleWarningBox={this.toggleWarningBox}
             socket={this.state.socket}
+            username={this.props.username}
+            firstname={this.props.firstname}
             /> :
           <NoMatch
             checkForNewMatch={this.props.checkForNewMatch}
@@ -81,9 +82,12 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-const mapStateToProps = ({ currentMatch }) => {
+const mapStateToProps = ({ currentMatch, accountData }) => {
   return {
-    currentMatch,
+    currentMatch: currentMatch,
+    username: accountData.username,
+    firstname: accountData.firstname,
+    
   };
 }
 

@@ -2,10 +2,10 @@ import React from 'react';
 
 import style from './MyMatchPage.css';
 
-const ChatItem = ({firstname, text}) => {
+const ChatItem = ({ chat }) => {
   return (
     <div className={style.chatItem}>
-      {firstname}: {text}
+      {chat.firstname} - {chat.message}
     </div>
   );
 }

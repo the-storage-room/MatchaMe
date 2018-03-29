@@ -13,19 +13,6 @@ class MyMatch extends Component {
     }
   }
 
-  componentDidMount() {
-    const { socket, challenge } = this.props;
-    const startChall = typeof challenge === 'string' ? JSON.parse(challenge) : {}
-    socket.on('connect', () => {
-      socket.emit('client.ready', startChall);
-    });
-    
-    socket.on('server.initialState', ({ id, text, challenge }) => {
-      this.setState({
-      });
-    });
-  }
-
   render() {
     const { 
       user2, 
@@ -36,7 +23,9 @@ class MyMatch extends Component {
       user1, 
       firstAccept, 
       toggleWarningBox,
-      socket
+      socket,
+      username,
+      firstname,
     } = this.props;
     return (
       <div>
@@ -64,6 +53,8 @@ class MyMatch extends Component {
               ?
               <Chatroom 
                 socket={socket}
+                username={username}
+                firstname={firstname}
                 />
               :
               "Waiting for your match to Accept..."

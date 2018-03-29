@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import style from './MyMatchPage.css';
 import Button from '../globals/Button/index.jsx';
+import ChatItem from './ChatItem.jsx';
 
 class Chatroom extends Component {
   constructor() {
@@ -20,7 +21,7 @@ class Chatroom extends Component {
 
     socket.on('server.initialState', (data) => {
       this.setState({
-        chatFeed: data
+        chatFeed: data.chatHistory
       });
     });
 
@@ -33,8 +34,16 @@ class Chatroom extends Component {
 
   submitMessage = () => {
     const { message } = this.state;
-    const { socket } = this.props;
-    socket.emit('client.chat',  {message: message } )
+    const { socket, username, firstname } = this.props;
+    const time = Data.now()
+    socket.emit('client.chat',  {
+      message: {
+        message,
+        username,
+        firstname,
+        time
+      }
+    })
     this.setState({
       message: '',
     })
@@ -48,11 +57,21 @@ class Chatroom extends Component {
   }
 
   render() {
+    console.log(this.state.chatFeed)
     return (
       <div className={style.chatRoom}>
         <div className={style.chatFeed}>
-          <div className={style.chatFeedarea}>
-          </div>
+          {
+            this.state.chatFeed
+              .map((chat, i) => {
+                return (
+                  <ChatItem
+                    key={i}
+                    chat={chat}
+                    />
+                )
+              })
+          }
         </div>
         <div className={style.chatBox}>
           <textarea

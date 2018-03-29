@@ -7,7 +7,7 @@ import {
 const clientReady = async ({ client, room }) => {
   console.log('client ready heard');
   try {
-    const chatHistory = ['Doctor: hi']
+    const chatHistory = [{user: 'test-user', message: 'test-message'}]
     serverInitialState({ client, room }, chatHistory);
   } catch(err) {
     console.error
