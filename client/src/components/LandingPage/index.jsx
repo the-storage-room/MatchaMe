@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import './LandingPage.css';
+
+import Bio from './components/Bio/index.jsx';
 
 class LandingPage extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: ''
+      
     };
   }
 
   render() {
-    return <div>Render Landing Page Here!</div>;
+    return (
+      <div>
+        <Switch>
+          <Route path='/' component={Bio} />
+
+        </Switch>
+      </div>
+    );
   }
 }
 
