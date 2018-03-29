@@ -1,9 +1,12 @@
 import db from '../../config/database/index';
 
 import {
-  fetchSingleUsersQuery,
-  fetchMultipleUsersQuery
+  fetchSingleUsersQuery
 } from '../users/userQueries';
+
+import {
+  fetchMultipleUsersQuery
+} from '../ratings/ratingsQueries';
 
 import {
   fetchStarredMatchesQuery,

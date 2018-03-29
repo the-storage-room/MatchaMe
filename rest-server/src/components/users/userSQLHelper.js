@@ -28,7 +28,7 @@ export const updateUserInfoHelper = (key, value, id) => {
 export const updateAndIncreasePRForTrueAndYesHelper = () => {
   return `
   UPDATE users
-  SET powerranking = powerranking + '1'
+  SET powerranking = powerranking + '10'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   INNER JOIN MATCH ON match.id = stageTwo.matchid
@@ -43,7 +43,7 @@ export const updateAndIncreasePRForTrueAndYesHelper = () => {
 export const updateAndDecreasePRForTrueAndNoHelper = () => {
   return `
   UPDATE users
-  SET powerranking = powerranking - '1'
+  SET powerranking = powerranking - '3'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   INNER JOIN MATCH ON match.id = stageTwo.matchid
@@ -58,7 +58,7 @@ export const updateAndDecreasePRForTrueAndNoHelper = () => {
 export const updateAndIncreasePRForFalseAndNoHelper = () => {
   return `
   UPDATE users
-  SET powerranking = powerranking + '1'
+  SET powerranking = powerranking + '10'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   INNER JOIN MATCH ON match.id = stageTwo.matchid
@@ -73,7 +73,7 @@ export const updateAndIncreasePRForFalseAndNoHelper = () => {
 export const updateAndIncreasePRForFalseAndYesHelper = () => {
   return `
   UPDATE users
-  SET powerranking = powerranking - '1'
+  SET powerranking = powerranking - '3'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   INNER JOIN MATCH ON match.id = stageTwo.matchid
