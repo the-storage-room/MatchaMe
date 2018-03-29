@@ -27,6 +27,8 @@ class MyMatch extends Component {
       username,
       firstname,
     } = this.props;
+
+    console.log(user1)
     return (
       <div>
       {
@@ -55,6 +57,8 @@ class MyMatch extends Component {
                 socket={socket}
                 username={username}
                 firstname={firstname}
+                theirPhoto={user2.photos[0].url}
+                yourPhoto={this.props.yourPhoto}
                 />
               :
               "Waiting for your match to Accept..."

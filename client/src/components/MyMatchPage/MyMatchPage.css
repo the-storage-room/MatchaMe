@@ -83,6 +83,7 @@
   height: 80%;
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
 }
 
 .chatBox {
@@ -106,12 +107,6 @@
   padding: 5px;
 }
 
-.chatFeedarea {
-  width: 90%;
-  height: 90%;
-  padding: 5px;
-}
-
 .textbox {
   width: 80%;
   height: 100%;
@@ -128,4 +123,28 @@ textarea:focus {
 
 textarea {
   font-size: 20px;
+}
+
+.chatItem {
+  display: inline-block;
+  width: 90%;
+  height: 35px;
+}
+
+.yourMessage {
+ margin-top: 11px;
+ float: right;
+}
+
+.theirMessage {
+  margin-top: 11px;
+  float: left;
+}
+
+.miniAvatar {
+  float: left;
+  border-radius: 34%;
+  width: 25px;
+  height: 25px;
+  padding:10px;
 }

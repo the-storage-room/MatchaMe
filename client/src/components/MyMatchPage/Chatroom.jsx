@@ -58,16 +58,20 @@ class Chatroom extends Component {
   }
 
   render() {
+    const { chatFeed } = this.state;
     return (
       <div className={style.chatRoom}>
         <div className={style.chatFeed}>
           {
-            this.state.chatFeed
+            chatFeed
               .map((chat, i) => {
                 return (
                   <ChatItem
                     key={i}
-                    chat={chat}
+                    chat={chatFeed[chatFeed.length-i-1]}
+                    username={this.props.username}
+                    theirPhoto={this.props.theirPhoto}
+                    yourPhoto={this.props.yourPhoto}
                     />
                 )
               })

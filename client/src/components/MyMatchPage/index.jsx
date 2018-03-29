@@ -64,6 +64,7 @@ class MyMatch extends Component {
             socket={this.state.socket}
             username={this.props.username}
             firstname={this.props.firstname}
+            yourPhoto={this.props.yourPhoto}
             /> :
           <NoMatch
             checkForNewMatch={this.props.checkForNewMatch}
@@ -82,11 +83,12 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-const mapStateToProps = ({ currentMatch, accountData }) => {
+const mapStateToProps = ({ currentMatch, accountData, userPhotos }) => {
   return {
     currentMatch: currentMatch,
     username: accountData.username,
     firstname: accountData.firstname,
+    yourPhoto: userPhotos[0].url,
     
   };
 }

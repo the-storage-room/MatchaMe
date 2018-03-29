@@ -55,10 +55,10 @@ export default {
           type: 'MATCHES_DATA_RECIEVED',
           payload: data.matchData || null
           });
-        dispatch({
-          type: 'LEADERBOARD_RECIEVED',
-          payload: data.leaderboardData || null
-          });
+        // dispatch({
+        //   type: 'LEADERBOARD_RECIEVED',
+        //   payload: data.leaderboardData || null
+        //   });
         history.push('/dashboard')
       } catch (err) {
         console.error
