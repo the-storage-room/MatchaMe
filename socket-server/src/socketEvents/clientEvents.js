@@ -1,3 +1,4 @@
+import db from '../mongodb/ChatsModel'
 import {
   serverInitialState,
   serverLeave,
@@ -7,8 +8,12 @@ import {
 const clientReady = async ({ client, room }) => {
   console.log('client ready heard');
   try {
-    const chatHistory = [{user: 'test-user', message: 'test-message'}]
-    serverInitialState({ client, room }, chatHistory);
+    const data = await db.fetchChats(room)
+    if (data.length) {
+      serverInitialState({ client, room }, data);
+    } else {
+       db.addChatroom(room);
+    }
   } catch(err) {
     console.error
   }
@@ -17,10 +22,10 @@ const clientReady = async ({ client, room }) => {
 const clientDisconnect = ({ io, room }) => {
   console.log('client disconnected');
   serverLeave({ io, room });
-};
+};  
 
 const clientChat = ({ io, room }, payload) => {
-  console.log('client message received');
+  db.addChatMessage(payload, room)
   serverChat({ io, room }, payload);
 };
 

@@ -1,23 +1,22 @@
 import Chats from './ChatsSchema';
+import db from './index';
+import mongoose from 'mongoose';
 
 module.exports = {
-  addChatroom: (input, callback) => {
+  addChatroom: (room) => {
     const newChatRoom = new Chats({
-      room: input.room,
-      chats: []
+      room: room,
+      messages: []
     });
-    newChatRoom.save(callback());
+    return newChatRoom.save();
   },
-  addChatMessage: (input, callback) => {
+  addChatMessage: (text, room) => {
     Chats.findOneAndUpdate(
-      { room: input.room },
-      { $push: { chats: input.chat } },
-    ).exec((err, data) => {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, data);
-      }
-    });
+      { "room": room },
+      { $push: { messages: text } },
+    ).exec(console.log('help'));
+  },
+  fetchChats: (room) => {
+    return Chats.find({ "room": room }).exec();
   },
 }

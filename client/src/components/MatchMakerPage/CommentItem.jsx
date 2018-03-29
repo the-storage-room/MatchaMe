@@ -11,7 +11,6 @@ class CommentItem extends Component {
     };
   }
 
-
   voteOnComment = (id, vote, index, newState) => {
     this.props.voteOnComment(id, vote, index);
     this.setState({

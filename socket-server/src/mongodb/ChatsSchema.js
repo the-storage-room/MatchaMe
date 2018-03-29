@@ -1,12 +1,14 @@
+
+import db from './index';
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const chatsSchema = new Schema({
-  room: Number,
-  chats: [{}]
+  room: { type: String, unique: true },
+  messages: [{ type: String }],
 });
 
-const Chats = mongoose.model('Comment', chatsSchema);
+const Chats = mongoose.model('Chats', chatsSchema);
 
 module.exports = Chats;

@@ -26,8 +26,7 @@ class Chatroom extends Component {
     });
 
     socket.on('server.chat', ( newMessage ) => {
-      console.log(newMessage)
-      var temp = newMessage.message
+      var temp = JSON.parse(newMessage)
       this.setState({ chatFeed: [...this.state.chatFeed, temp]});
     })
   }
@@ -35,15 +34,14 @@ class Chatroom extends Component {
   submitMessage = () => {
     const { message } = this.state;
     const { socket, username, firstname } = this.props;
-    const time = Data.now()
-    socket.emit('client.chat',  {
-      message: {
+    const time = Date.now()
+    socket.emit('client.chat', JSON.stringify({
         message,
         username,
         firstname,
         time
-      }
-    })
+      })
+    )
     this.setState({
       message: '',
     })
