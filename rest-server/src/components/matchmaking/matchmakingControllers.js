@@ -24,8 +24,14 @@ export const updateMatchmakingController = async (req, res) => {
   try {
     const check = await addOutcomeQuery(req.body);
     if (check) {
+      let increaseAmount;
+      const { powerranking } = req.body;
+
+      powerranking > 1000 ? (increaseAmount = '2') : (increaseAmount = '1');
+
       const { approvedcount, rejectedcount } = await updateMatchmakingQuery(
-        req.body
+        req.body,
+        increaseAmount
       );
       console.log('approved:', approvedcount, ' - rejected:', rejectedcount);
       if (approvedcount + rejectedcount > 15) {

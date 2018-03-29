@@ -15,7 +15,7 @@ export const updateMatchmakingHelper = decision => {
   if (decision === 'approved') {
     return `
     UPDATE MATCH 
-    SET approvedcount = approvedcount + 1
+    SET approvedcount = approvedcount + $2
     WHERE id=$1
     RETURNING *;
     `;
@@ -23,7 +23,7 @@ export const updateMatchmakingHelper = decision => {
   if (decision === 'rejected') {
     return `
     UPDATE MATCH 
-    SET rejectedcount = rejectedcount + 1
+    SET rejectedcount = rejectedcount + $2
     WHERE id=$1
     RETURNING *;
     `;
