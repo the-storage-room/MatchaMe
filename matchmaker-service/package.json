@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "matchmaker-server:run": "nodemon bin/entry.js",
-    "convert": "node src/helpers/location/index.js",
-    "find-tag": "node src/helpers/tags/index.js"
+    "convert": "node src/helpers/location/index.js"
   },
   "author": "",
   "license": "ISC",
