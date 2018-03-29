@@ -22,6 +22,7 @@ class Dashboard extends Component {
               url={this.props.photos[0].url}
               firstname={this.props.firstname}
               lastname={this.props.lastname}
+              tags={this.props.tags}
               age={this.props.age}
               bio={this.props.bio}
               />
@@ -51,14 +52,13 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ accountData , userPhotos, bioData, tags }) => {
   return {
-    firstname: state.accountData.firstname,
-    lastname: state.accountData.lastname,
-    age: state.bioData.age,
-    tags: state.tags,
-    photos: state.userPhotos
-
+    firstname: accountData.firstname,
+    lastname: accountData.lastname,
+    age: bioData.age,
+    tags: tags.user,
+    photos: userPhotos
   };
 }
 
