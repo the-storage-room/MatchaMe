@@ -51,14 +51,14 @@ class Comments extends Component {
             comments.map((comment, index) => {
               return (
                 <CommentItem
+                  className={this.generateClassNameFromVotes(comment.votes)}
+                  id={comment.id}
+                  index={index}
                   key={comment.id}
                   comment={comment.comment}
                   username={comment.username}
                   voteOnComment={voteOnComment}
-                  id={comment.id}
                   votes={comment.votes}
-                  index={index}
-                  className={this.generateClassNameFromVotes(comment.votes)}
                   />
                 )
             })

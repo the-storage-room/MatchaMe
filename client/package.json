@@ -21,6 +21,7 @@
     "webpack-cli": "^2.0.12"
   },
   "dependencies": {
+    "socket.io-client": "^2.0.4",
     "axios": "^0.18.0",
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.11",

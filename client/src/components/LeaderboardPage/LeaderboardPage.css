@@ -10,3 +10,77 @@
   border-radius: 3px;
   background-color:rgb(245, 245, 245);
 }
+
+
+.avatar {
+  float: left;
+  object-fit: cover;
+  border-radius:50%;
+  width: 80px;
+  height: 80px;
+  padding:10px;
+}
+
+.followItem {
+display: inline-block;
+width: 800px;
+height: 100px;
+border-top: solid rgb(240, 176, 176) 1px;
+border-radius: 3px;
+border-bottom: solid rgb(240, 176, 176) 1px;
+border-radius: 3px;
+}
+
+.h3 {
+float: right;
+width: 130px;
+height: 20px;
+padding:10px;
+max-width: 130px;
+font-weight: normal;
+font-size: 20px;
+}
+
+.user1 {
+float: left;
+}
+
+.rank {
+max-width: 130px;
+padding:30px;
+float: left;
+font-weight: normal;
+font-size: 46px;
+}
+
+
+.username {
+  margin-top: 20px;
+  float: left;
+  padding:10px;
+  font-weight: normal;
+  font-size: 30px;
+}
+.powerranking {
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  font-size: 30px;
+}
+
+.powerrankingTitle {
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 23px;
+
+}
+
+.pRC {
+  z-index: 0;
+  float: right;
+  position: relative;
+  width: 20%;
+  height: 100%;
+  margin-right: 30px;
+}

@@ -35,7 +35,8 @@ const envBuild = {
     'PORT=4155',
     'REST_SERVER_URL=http://localhost:5000',
     'TOKEN_SECRET=theStorageRoom',
-    'STATIC_SERVER_URL=http://localhost:1337'
+    'STATIC_SERVER_URL=http://localhost:1337',
+    'MONGODB_URI=mongodb://localhost/matchme'
   ],
   'matchmaker-service': [
     'NODE_ENV=DEVELOPMENT',

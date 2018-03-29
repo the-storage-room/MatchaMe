@@ -100,9 +100,10 @@ class PhotoUpload extends Component {
                 />
               </label>
             </form>
-            <button onClick={this.handleSubmit}>
-              Submit
-            </button>
+            <Button 
+              onClick={this.handleSubmit} 
+              text={"Submit"}
+              />
           </div>
           <div className={style.basicMargin}>
             <TargetPhoto photo={this.props.userPhotos[this.state.targetPhoto]}/>

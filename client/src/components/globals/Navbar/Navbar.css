@@ -6,6 +6,7 @@
   top: 0; /* Position the navbar at the top of the page */
   width: 100%;
   background-color:rgb(245, 245, 245);
+  z-index: 1;
 }
 
 .navContainer {

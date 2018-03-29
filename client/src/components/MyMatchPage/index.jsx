@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import io from 'socket.io-client';
 
 import Navbar from '../globals/Navbar/index.jsx';
 import MatchRoom from './MatchRoom.jsx';
@@ -8,11 +9,14 @@ import NoMatch from './NoMatch.jsx';
 import WarningBox from './WarningBox.jsx'
 import actions from '../../../Redux/actions/current_match_actions';
 
+const { SOCKET_SERVER_URL } = process.env;
+
 class MyMatch extends Component {
   constructor() {
     super();
     this.state = {
-      showWarningBox: false
+      showWarningBox: false,
+      socket: null,
     };
   }
 
@@ -26,6 +30,16 @@ class MyMatch extends Component {
     this.toggleWarningBox();
     this.props.rejectOrEndCurrentMatch();
   }
+
+  componentWillMount= () => {
+      this.socket = io(SOCKET_SERVER_URL, {
+        query: {
+          matchId: this.props.currentMatch.matchid
+        }
+      });
+  
+      this.setState({ socket: this.socket });
+    }
 
 
   render() {
@@ -47,6 +61,9 @@ class MyMatch extends Component {
             acceptCurrentMatch={this.props.acceptCurrentMatch}
             firstAccept={this.props.currentMatch.firstaccept}
             toggleWarningBox={this.toggleWarningBox}
+            socket={this.state.socket}
+            username={this.props.username}
+            firstname={this.props.firstname}
             /> :
           <NoMatch
             checkForNewMatch={this.props.checkForNewMatch}
@@ -65,9 +82,12 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-const mapStateToProps = ({ currentMatch }) => {
+const mapStateToProps = ({ currentMatch, accountData }) => {
   return {
-    currentMatch,
+    currentMatch: currentMatch,
+    username: accountData.username,
+    firstname: accountData.firstname,
+    
   };
 }
 
