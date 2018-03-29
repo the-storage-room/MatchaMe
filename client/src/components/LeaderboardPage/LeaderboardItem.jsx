@@ -17,7 +17,7 @@ const LeaderboardItem = ({ powerranking, primaryPhoto, username, index }) => {
       </div>
       <div className={style.pRC}>
         <div className={style.powerrankingTitle}>
-          POWERRANKING
+          TOTAL POINTS
         </div>
         <div className={style.powerranking}>
           {powerranking}
