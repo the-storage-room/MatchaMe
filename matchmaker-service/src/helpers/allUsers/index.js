@@ -6,10 +6,9 @@ import {
 } from './fetchAllUsersSQLHelper';
 
 //fetches all users
-export const fetchAllUsersQuery = async body => {
+export const fetchAllUsersQuery = async () => {
   try {
     const { rows } = await db.query(fetchAllUsersHelper());
-    console.log('rows herer', rows);
     for (let user of rows) {
       user.tags = (await fetchUserAndTheirPreferenceTagsQuery(user.id, 0)).map(
         tag => tag.id
@@ -29,7 +28,6 @@ export const fetchUserAndTheirPreferenceTagsQuery = async (userId, type) => {
   try {
     const queryString = fetchUserAndTheirPreferenceTagsHelper();
     const { rows } = await db.query(queryString, [userId, type]);
-    console.log('Success on fetchUserAndTheirPreferenceTagsQuery');
     return rows;
   } catch (err) {
     console.log('Error on fetchUserAndTheirPreferenceTagsQuery', err);

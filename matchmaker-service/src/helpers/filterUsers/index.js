@@ -2,6 +2,8 @@ import db from '../../config/database/';
 
 import { filterUsersHelper } from './filteUsersSQLHelper';
 
+import { fetchUserAndTheirPreferenceTagsQuery } from '../allUsers/';
+
 export const filterUsersQuery = async userObj => {
   try {
     const { averageattractiveness, preference, gender, id } = userObj;
@@ -31,7 +33,7 @@ export const filterUsersQuery = async userObj => {
               ? (preferredGenderString = 'gender=1 OR gender=3')
               : preference === 6
                 ? (preferredGenderString = 'gender=2 OR gender=7')
-                : 'gender=gender';
+                : (preferredGenderString = 'gender=gender');
 
     const queryString = filterUsersHelper(
       max,
@@ -40,19 +42,19 @@ export const filterUsersQuery = async userObj => {
       preferenceString,
       id
     );
-    console.log(queryString);
+
     const { rows } = await db.query(queryString);
-    console.log(rows);
+    for (let user of rows) {
+      user.tags = (await fetchUserAndTheirPreferenceTagsQuery(user.id, 0)).map(
+        tag => tag.id
+      );
+      user.tagPreferences = (await fetchUserAndTheirPreferenceTagsQuery(
+        user.id,
+        1
+      )).map(tag => tag.id);
+    }
+    return rows;
   } catch (error) {
     console.log('Error with filterUsersQuery: ', error);
   }
 };
-
-const testObj = {
-  id: 4,
-  gender: 1,
-  preference: 2,
-  averageattractiveness: 5
-};
-
-filterUsersQuery(testObj);

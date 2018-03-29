@@ -6,7 +6,8 @@ export const filterUsersHelper = (
   userId
 ) => {
   return `
-  SELECT * FROM users
+  SELECT id, age, location, gender, preference, averageattractiveness
+  FROM users
   WHERE signupcomplete=true
   AND averageattractiveness < ${max}
   AND averageattractiveness > ${min}
