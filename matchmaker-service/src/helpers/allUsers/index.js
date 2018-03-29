@@ -1,13 +1,15 @@
+import db from '../../config/database/';
+
 import {
-  fetchAllUsersHelper, 
+  fetchAllUsersHelper,
   fetchUserAndTheirPreferenceTagsHelper
 } from './fetchAllUsersSQLHelper';
-import db from '../../../../rest-server/src/config/database/index';
 
 //fetches all users
 export const fetchAllUsersQuery = async body => {
   try {
     const { rows } = await db.query(fetchAllUsersHelper());
+    console.log('rows herer', rows);
     for (let user of rows) {
       user.tags = (await fetchUserAndTheirPreferenceTagsQuery(user.id, 0)).map(
         tag => tag.id

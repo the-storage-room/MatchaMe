@@ -1,5 +1,12 @@
-import fetchAllUsers from '../../../rest-server/src/components/users/userQueries'
+import fetchAllUsersQuery from '../helpers/allUsers/';
 
-const getAllUsers = async () => {
+const matchMakeMe = async () => {
+  try {
+    const allUsers = await fetchAllUsersQuery();
+    console.log(allUsers);
+  } catch (error) {
+    console.log('Error with matchMakeMe Function :', error);
+  }
+};
 
-}
+matchMakeMe();
