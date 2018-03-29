@@ -1,8 +1,14 @@
 import React from 'react';
+import moment from 'moment';
 
 import style from './MyMatchPage.css';
 
 const ChatItem = ({ chat, username, theirPhoto, yourPhoto }) => {
+
+  const timeAgo = () => {
+    return moment(chat.time).fromNow();
+  }
+
   return (
     <div className={style.chatItem}>
       {
@@ -10,19 +16,22 @@ const ChatItem = ({ chat, username, theirPhoto, yourPhoto }) => {
         ?
         <div>
           <img 
-            className={style.miniAvatar}
+            className={style.yourAvatar}
             src={yourPhoto}
             />
           <div 
             className={style.chatMessage + ' ' + style.yourMessage}
             >
-          You: {chat.message}
+          {chat.message}
+          </div>
+          <div className={style.yourTime}>
+            {timeAgo()}
           </div>
         </div>
         :
         <div>
           <img 
-            className={style.miniAvatar}
+            className={style.theirAvatar}
             src={theirPhoto}
             />
           <div
@@ -30,6 +39,9 @@ const ChatItem = ({ chat, username, theirPhoto, yourPhoto }) => {
             >
           {chat.firstname}: {chat.message}
           </div>
+            <div className={style.theirTime}>
+              {timeAgo()}
+            </div>
         </div>
       }
     </div>

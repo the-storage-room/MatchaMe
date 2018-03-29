@@ -13,7 +13,7 @@
   justify-content: space-around;
   align-items: center;
   height: 550px;
-  width: 640px;
+  width: 550px;
   background-color:whitesmoke;
   border: solid rgb(240, 176, 176) 1px;
   border-radius: 3px;
@@ -126,25 +126,58 @@ textarea {
 }
 
 .chatItem {
+  margin-left: 5px;
   display: inline-block;
-  width: 90%;
-  height: 35px;
+  width: 96%;
+  height: 40px;
 }
 
 .yourMessage {
- margin-top: 11px;
+ margin-top: 12px;
  float: right;
 }
 
 .theirMessage {
-  margin-top: 11px;
+  margin-top: 12px;
   float: left;
 }
 
-.miniAvatar {
-  float: left;
-  border-radius: 34%;
+.yourAvatar {
+  float: right;
+  border-radius: 50%;
   width: 25px;
   height: 25px;
   padding:10px;
+}
+
+.theirAvatar {
+  float: left;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding:10px;
+}
+
+.yourTime,
+.theirTime {
+  margin: 17px;
+  font-size: 10px;
+  opacity:0;
+  height: auto;
+  transition:0s 2s;
+}
+
+.theirTime {
+  float: left;
+}
+
+.yourTime {
+  float: right;
+}
+
+
+.theirMessage:hover + .theirTime,
+.yourMessage:hover + .yourTime {
+  opacity:1;
+  transition:0s;
 }
