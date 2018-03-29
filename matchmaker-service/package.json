@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "matchmaker-server:run": "nodemon bin/entry.js",
-    "convert": "node src/helpers/location/index.js"
+    "matchmaker-server:run": "nodemon bin/entry.js"
   },
   "author": "",
   "license": "ISC",
