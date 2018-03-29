@@ -26,13 +26,13 @@ export const updateMatchmakingController = async (req, res) => {
       let increaseAmount;
       const { powerranking } = req.body;
 
-      powerranking >= 1000
+      powerranking >= 10000
         ? (increaseAmount = '2')
-        : powerranking >= 500
+        : powerranking >= 5000
           ? (increaseAmount = '1.75')
-          : powerranking >= 300
+          : powerranking >= 3000
             ? (increaseAmount = '1.5')
-            : powerranking >= 100
+            : powerranking >= 1000
               ? (increaseAmount = '1.25')
               : powerranking >= 0
                 ? (increaseAmount = '1')
