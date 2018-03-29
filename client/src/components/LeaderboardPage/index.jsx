@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import BoardItem from './BoardItem.jsx';
+import LeaderboardItem from './LeaderboardItem.jsx';
 import style from './LeaderboardPage.css';
 import Navbar from '../globals/Navbar/index.jsx';
 
@@ -20,13 +20,14 @@ class Leaderboard extends Component {
         <Navbar />
         <div className={style.leaderboardContainer}>
           {
-            this.props.leaderboard.map((boarditem) => {
+            this.props.leaderboard.map((boarditem, index) => {
               return (
-                <BoardItem
+                <LeaderboardItem
                   key={boarditem.id}
                   username={boarditem.username}
                   powerranking={boarditem.powerranking}
                   primaryPhoto={boarditem.primaryPhoto}
+                  index={index}
                   />
               )
             })

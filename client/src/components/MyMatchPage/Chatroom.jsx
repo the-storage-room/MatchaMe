@@ -58,7 +58,6 @@ class Chatroom extends Component {
   }
 
   render() {
-    console.log(this.state.chatFeed)
     return (
       <div className={style.chatRoom}>
         <div className={style.chatFeed}>
