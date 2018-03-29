@@ -2,6 +2,8 @@ const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 const axios = require('axios');
 
+require('dotenv').config();
+
 const convertToRadian = deg => {
 	return deg * Math.PI / 180;
 };
@@ -23,37 +25,63 @@ const distanceBetweenCoordinates = (userOneLon, userOneLat, userTwoLon, userTwoL
 };
 
 //takes in two zipcodes, if zipcode doesn't exist in local file, it will ping the API
-export const findCoordinatesAndCalculateDistance = async (zipcode1, zipcode2) => {
-	let user1Lat;
-	let user1Lng;
-	let user2Lat;
-	let user2Lng;
-	const { API_KEY } = process.env;
-	const data = await fs.readFileAsync(__dirname + '/zipcodesAndGeocodes.js', 'utf-8');
+// const findCoordinatesAndCalculateDistance = async (zipcode1, zipcode2) => {
+// 	try {
+// 		let user1Lat;
+// 		let user1Lng;
+// 		let user2Lat;
+// 		let user2Lng;
+// 		const { API_KEY } = process.env;
+// 		const data = await fs.readFileAsync(__dirname + '/zipcodesAndGeocodes.json', 'utf-8');
+// 		let parsedData = JSON.parse(data);
+// 		if (!parsedData[zipcode1]) {
+// 			const userOneObj = await axios.get(
+// 				`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode1}&key=${API_KEY}`
+// 			);
+// 			const { lat, lng } = userOneObj.data.results[0].geometry.location;
+// 			const objToSendToLocal = JSON.stringify({ zipcode1: { lat: lat, lng: lng } });
+// 			console.log(objToSendToLocal)
+// 			user1Lat = lat;
+// 			user1Lng = lng;
+// 			await fs.writeFileAsync('zipcodesAndGeocodes.json', 'hi', 'utf-8')
+// 		} else if (!parsedData[zipcode2]) {
+// 			const userTwoObj = await axios.get(
+// 				`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode2}&key=${API_KEY}`
+// 			);
+// 			const { lat, lng } = userTwoObj.data.results[0].geometry.location;
+// 			user2Lat = lat;
+// 			user2Lng = lng;
+// 		} else {
+// 			let geocodeObj1 = parsedData[zipcode1];
+// 			let geocodeObj2 = parsedData[zipcode2];
+// 			user1Lat = geocodeObj1.lat;
+// 			user1Lng = geocodeObj1.lng;
+// 			user2Lat = geocodeObj2.lat;
+// 			user2Lng = geocodeObj2.lng;
+// 		}
+// 		let distanceExact = distanceBetweenCoordinates(user1Lng, user1Lat, user2Lng, user2Lat);
+// 		let finalDistance = Math.floor(distanceExact);
+// 		console.log('success on calculateDistance', finalDistance);
+// 		return finalDistance;
+// 	} catch (err) {
+// 		console.log('error on calculateDistance', err);
+// 	}
+// };
+const findCoordinatesAndCalculateDistance = async (zipcode1, zipcode2) => {
 	try {
+		let user1Lat;
+		let user1Lng;
+		let user2Lat;
+		let user2Lng;
+		const { API_KEY } = process.env;
+		const data = await fs.readFileAsync(__dirname + '/zipcodesAndGeocodes.json', 'utf-8');
 		let parsedData = JSON.parse(data);
-		if (!parsedData[zipcode1]) {
-			const userOneObj = await axios.get(
-				`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode1}&key=${API_KEY}`
-			);
-			const { lat, lng } = userOneObj;
-			user1Lat = lat;
-			user1Lng = lng;
-		} else if (!parsedData[zipcode2]) {
-			const userTwoObj = await axios.get(
-				`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode2}&key=${API_KEY}`
-			);
-			const { lat, lng } = userTwoObj;
-			user2Lat = lat;
-			user2Lng = lng;
-		} else {
-			let geocodeObj1 = parsedData[zipcode1];
-			let geocodeObj2 = parsedData[zipcode2];
-			user1Lat = geocodeObj1.lat;
-			user1Lng = geocodeObj1.lng;
-			user2Lat = geocodeObj2.lat;
-			user2Lng = geocodeObj2.lng;
-		}
+		let geocodeObj1 = parsedData[zipcode1];
+		let geocodeObj2 = parsedData[zipcode2];
+		user1Lat = geocodeObj1.lat;
+		user1Lng = geocodeObj1.lng;
+		user2Lat = geocodeObj2.lat;
+		user2Lng = geocodeObj2.lng;
 		let distanceExact = distanceBetweenCoordinates(user1Lng, user1Lat, user2Lng, user2Lat);
 		let finalDistance = Math.floor(distanceExact);
 		console.log('success on calculateDistance', finalDistance);
@@ -62,3 +90,5 @@ export const findCoordinatesAndCalculateDistance = async (zipcode1, zipcode2) =>
 		console.log('error on calculateDistance', err);
 	}
 };
+
+findCoordinatesAndCalculateDistance(92841, 90045);
