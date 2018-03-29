@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "matchmaker-server:run": "nodemon bin/entry.js"
+    "matchmaker-server:run": "nodemon bin/entry.js",
+    "convert": "node src/helpers/location/index.js",
+    "find-tag": "node src/helpers/tags/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "nodemon": "^1.17.2",
