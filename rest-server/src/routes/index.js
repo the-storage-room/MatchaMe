@@ -9,6 +9,7 @@ import photoRouter from '../components/photos/photoRouter';
 import tagsRouter from '../components/tags/tagsRouter';
 import commentsRouter from '../components/comments/commentsRouter';
 import initializeRouter from '../components/initialize/initializeRouter';
+import ratingsRouter from '../components/ratings/ratingsRouter';
 
 const router = express.Router();
 
@@ -21,5 +22,6 @@ router.use('/photos', photoRouter);
 router.use('/tags', tagsRouter);
 router.use('/comments', commentsRouter);
 router.use('/initialize', initializeRouter)
+router.use('/ratings', ratingsRouter)
 
 export default router;
