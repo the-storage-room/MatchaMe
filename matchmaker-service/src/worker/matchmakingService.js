@@ -12,7 +12,7 @@ const matchMakeMe = async () => {
     if (allUsers.length) {
       for (let user of allUsers) {
         const filteredList = await filterUsersQuery(user);
-        filteredList = filteredList.filter(async possibleMatch => {
+        filteredList = filteredList.filter(possibleMatch => {
           const score = retrieveScore(
             user.tags,
             user.tagPreferences,
