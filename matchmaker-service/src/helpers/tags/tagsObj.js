@@ -1,4 +1,4 @@
-const tagsObj = {
+export const tagsObj = {
   1: {
     1: 3,
     2: 2,

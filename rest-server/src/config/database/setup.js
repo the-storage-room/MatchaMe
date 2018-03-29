@@ -183,8 +183,8 @@ const createMatchTable = async () => {
         id            SERIAL ,
         user1_id      INT NOT NULL ,
         user2_id      INT NOT NULL ,
-        approvedCount INT DEFAULT 0 ,
-        rejectedCount INT DEFAULT 0 ,
+        approvedCount REAL DEFAULT 0 ,
+        rejectedCount REAL DEFAULT 0 ,
         activeVoting  SMALLINT DEFAULT 1 ,
         CONSTRAINT PK_Match PRIMARY KEY (id),
         CONSTRAINT FK_User2_Match FOREIGN KEY (user1_id)

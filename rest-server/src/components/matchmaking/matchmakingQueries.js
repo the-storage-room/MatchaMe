@@ -30,10 +30,14 @@ export const fetchPendingMatchmakingQuery = async ({ userId }) => {
   }
 };
 
-export const updateMatchmakingQuery = async ({ matchId, decision }) => {
+export const updateMatchmakingQuery = async (
+  { matchId, decision },
+  increaseAmount
+) => {
   try {
     const { rows } = await db.query(updateMatchmakingHelper(decision), [
-      matchId
+      matchId,
+      increaseAmount
     ]);
     console.log('Success with updateMatchmakingQuery');
     return rows[0];

@@ -1,11 +1,12 @@
+import db from '../../config/database/';
+
 import {
-  fetchAllUsersHelper, 
+  fetchAllUsersHelper,
   fetchUserAndTheirPreferenceTagsHelper
 } from './fetchAllUsersSQLHelper';
-import db from '../../../../rest-server/src/config/database/index';
 
 //fetches all users
-export const fetchAllUsersQuery = async body => {
+export const fetchAllUsersQuery = async () => {
   try {
     const { rows } = await db.query(fetchAllUsersHelper());
     for (let user of rows) {
@@ -27,7 +28,6 @@ export const fetchUserAndTheirPreferenceTagsQuery = async (userId, type) => {
   try {
     const queryString = fetchUserAndTheirPreferenceTagsHelper();
     const { rows } = await db.query(queryString, [userId, type]);
-    console.log('Success on fetchUserAndTheirPreferenceTagsQuery');
     return rows;
   } catch (err) {
     console.log('Error on fetchUserAndTheirPreferenceTagsQuery', err);
