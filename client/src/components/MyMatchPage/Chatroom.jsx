@@ -20,8 +20,11 @@ class Chatroom extends Component {
     });
 
     socket.on('server.initialState', (data) => {
+      const { messages } = data.chatHistory[0];
+      const oldChats = messages
+        .map(chat => JSON.parse(chat))
       this.setState({
-        chatFeed: data.chatHistory
+        chatFeed: oldChats
       });
     });
 
