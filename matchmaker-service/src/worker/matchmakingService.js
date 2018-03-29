@@ -19,11 +19,16 @@ const matchMakeMe = async () => {
             possibleMatch.tags,
             possibleMatch.tagPreferences
           );
-          // const distanceApart = await findCoordinatesAndCalculateDistance(
-          //   user.location,
-          //   possibleMatch.location
-          // );
-          // if (score >= 36 && distanceApart <= 25) return possibleMatch;
+          /*
+          LOCATION SERVICE FILTER
+
+          const distanceApart = await findCoordinatesAndCalculateDistance(
+            user.location,
+            possibleMatch.location
+          );
+          if (score >= 36 && distanceApart <= 25) return possibleMatch;
+
+          */
           if (score >= 36) return possibleMatch;
         });
         console.log(filteredList);
