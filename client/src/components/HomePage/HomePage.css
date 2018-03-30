@@ -1,0 +1,101 @@
+.header {
+  grid-area: header;
+  position: relative;
+}
+
+.logo {
+  font-size: 40px;
+  background-color: white;
+  color:rgb(4, 185, 95);
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+}
+.column1 {
+  grid-area: column1;
+  background-color: rgb(233, 233, 233);
+  overflow: hidden;
+  position: relative;
+}
+.column2 {
+  grid-area: column2;
+  background-color: rgb(233, 233, 233);
+  overflow: hidden;
+  position: relative;
+}
+.column3 {
+  grid-area: column3;
+  background-color: rgb(233, 233, 233);
+  overflow: hidden;
+  position: relative;
+}
+.footer {
+  margin: 3px;
+  height: 200px;
+  background-color: rgb(233, 233, 233);
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-rows: 50px 1fr 1fr 1fr;
+  height: 100vh;
+  grid-template-areas: 
+    "header"
+    "column1"
+    "column2"
+    "column3";
+}
+
+
+@media (min-width: 700px) {
+  .wrapper {
+    /* margin: 3px; */
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100vh;
+    grid-template-areas: 
+    "header  header header"
+    "column1 column2 column3"
+  }
+  .photo {
+    height: 100%;
+    background-position: 50% 50%;
+  }
+  .photo:hover {opacity: 0.7;}
+}
+
+
+.photo {
+  width: 100%;
+  background-position: 50% 50%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .4s ease;
+  background-color: rgb(4, 185, 95);
+}
+
+.column1:hover .overlay,
+.column2:hover .overlay,
+.column3:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}

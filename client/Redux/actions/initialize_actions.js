@@ -59,7 +59,7 @@ export default {
         //   type: 'LEADERBOARD_RECIEVED',
         //   payload: data.leaderboardData || null
         //   });
-        history.push('/dashboard')
+        history.push('/home')
       } catch (err) {
         console.error
       }

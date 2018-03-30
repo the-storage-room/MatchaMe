@@ -15,6 +15,7 @@ import MyMatch from './components/MyMatchPage/index.jsx';
 import Leaderboard from './components/LeaderboardPage/index.jsx';
 import Account from './components/AccountPage/index.jsx';
 import Initialize from './components/InitializePage/index.jsx';
+import Home from './components/HomePage/index.jsx';
 
 class App extends Component {
   constructor() {
@@ -29,6 +30,7 @@ class App extends Component {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/home" component={Home} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/initialize" component={Initialize} />
             <Route path="/rate" component={Rate} />
