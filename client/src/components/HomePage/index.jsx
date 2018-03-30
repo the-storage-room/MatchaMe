@@ -56,7 +56,9 @@ class HomePage extends Component {
             </div>
           </div>
         </div>
-        <footer className={style.footer}>The footer</footer>
+        <footer className={style.footer}>
+          COPYRIGHT the-storage-room 2018
+        </footer>
       </div>
     )
   }
