@@ -54,7 +54,6 @@ export const findCoordinatesAndCalculateDistance = async (
       const userOneObj = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode1}&key=${API_KEY}`
       );
-      console.log('zipcode1 useroneobj', userOneObj.data)
       const { lat, lng } = userOneObj.data.results[0].geometry.location;
       user1Lat = lat;
       user1Lng = lng;
@@ -71,12 +70,9 @@ export const findCoordinatesAndCalculateDistance = async (
       user1Lng = geocodeObj1.lng;
     }
     if (!parsedData[zipcode2]) {
-      console.log('API', API_KEY)
-      console.log('ZIPCODE2', zipcode2)
       const userTwoObj = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode2}&key=${API_KEY}`
       );
-      console.log('zipcode2 usertwoobj', userTwoObj.data.results[0])
       const { lat, lng } = userTwoObj.data.results[0].geometry.location;
       user2Lat = lat;
       user2Lng = lng;
