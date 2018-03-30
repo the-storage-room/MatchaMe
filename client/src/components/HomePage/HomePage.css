@@ -30,7 +30,6 @@
   position: relative;
 }
 .footer {
-  margin: 3px;
   height: 200px;
   background-color: rgb(233, 233, 233);
   color:rgb(4, 185, 95);
@@ -52,10 +51,10 @@
 }
 
 
-@media (min-width: 700px) {
+@media (min-width: 900px) {
   .wrapper {
-    /* margin: 3px; */
-    grid-template-rows: 60px 1fr;
+    margin: 3px 3px 0px 3px;
+    grid-template-rows: 60px 1fr 3px;
     grid-template-columns: 1fr 1fr 1fr;
     height: 100vh;
     grid-template-areas: 
