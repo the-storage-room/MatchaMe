@@ -58,7 +58,6 @@ class Dashboard extends Component {
   }
 }
 
-
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
   }, dispatch);
