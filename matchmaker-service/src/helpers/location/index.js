@@ -3,14 +3,14 @@ import axios from 'axios';
 
 const fs = Promise.promisifyAll(require('fs'));
 
-
 require('dotenv').config();
+const { API_KEY } = process.env;
 
 const convertToRadian = deg => {
   return deg * Math.PI / 180;
 };
 
-const distanceBetweenCoordinates = (
+const distanceBetweenCoordinates = async (
   userOneLon,
   userOneLat,
   userTwoLon,
@@ -44,7 +44,6 @@ export const findCoordinatesAndCalculateDistance = async (
     let user1Lng;
     let user2Lat;
     let user2Lng;
-    const { API_KEY } = process.env;
     const data = await fs.readFileAsync(
       __dirname + '/zipcodesAndGeocodes.json',
       'utf-8'
@@ -58,39 +57,39 @@ export const findCoordinatesAndCalculateDistance = async (
       const { lat, lng } = userOneObj.data.results[0].geometry.location;
       user1Lat = lat;
       user1Lng = lng;
-      parsedData[`${zipcode1}`] = { lat: lat, lng: lng };
+      parsedData[`${zipcode1}`] = { lat: lat, lng: lng, message: 'from API' };
       let newData = JSON.stringify(parsedData);
       await fs.writeFileAsync(
         __dirname + '/zipcodesAndGeocodes.json',
         newData,
         'utf-8'
       );
-    } else if (!parsedData[zipcode2]) {
-      const userTwoObj = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode2}&key=${API_KEY}`
-      );
-      const { lat, lng } = userOneObj.data.results[0].geometry.location;
-      user2Lat = lat;
-      user2Lng = lng;
-      parsedData[`${zipcode1}`] = { lat: lat, lng: lng };
-      let newData = JSON.stringify(parsedData);
-      await fs.writeFileAsync(
-        __dirname + '/zipcodesAndGeocodes.json',
-        newData,
-        'utf-8'
-      );
-    }
-    if (parsedData[zipcode1]) {
-      let geocodeObj1 = parsedData[zipcode1];
+    } else if (parsedData[zipcode1]) {
+      let geocodeObj1 = parsedData[zipcode1]; 
       user1Lat = geocodeObj1.lat;
       user1Lng = geocodeObj1.lng;
     }
-    if (parsedData[zipcode2]) {
+    if (!parsedData[zipcode2]) {
+      const userTwoObj = await axios.get(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode2}&key=${API_KEY}`
+			);
+      const { lat, lng } = userTwoObj.data.results[0].geometry.location;
+      user2Lat = lat;
+      user2Lng = lng;
+      parsedData[`${zipcode2}`] = { lat: lat, lng: lng , message: 'from API'};
+      let newData = JSON.stringify(parsedData);
+      await fs.writeFileAsync(
+        __dirname + '/zipcodesAndGeocodes.json',
+        newData,
+        'utf-8'
+      );
+    } else if (parsedData[zipcode2]) {
       let geocodeObj2 = parsedData[zipcode2];
       user2Lat = geocodeObj2.lat;
       user2Lng = geocodeObj2.lng;
     }
-    let distanceExact = distanceBetweenCoordinates(
+    console.log(user1Lng, user1Lat, user2Lng, user2Lat)
+    let distanceExact = await distanceBetweenCoordinates(
       user1Lng,
       user1Lat,
       user2Lng,
@@ -101,5 +100,8 @@ export const findCoordinatesAndCalculateDistance = async (
     return finalDistance;
   } catch (err) {
     console.log('error on calculateDistance', err);
+    if (err) throw err;
   }
 };
+
+findCoordinatesAndCalculateDistance(12344, 11111)
