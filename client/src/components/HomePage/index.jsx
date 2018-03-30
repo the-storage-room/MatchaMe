@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import style from './HomePage.css';
@@ -20,7 +21,12 @@ class HomePage extends Component {
         <header className={style.header}>
           <div className={style.logo}>
             MatchaMe
-          </div>
+            <img
+              className={style.avatar}
+              src={this.props.photos[0].url}
+              onClick={() => this.props.history.push('/dashboard')}
+            />  
+          </div>  
         </header>
         <div 
           className={style.column1}
@@ -62,18 +68,17 @@ class HomePage extends Component {
       </div>
     )
   }
-
 }
 
-const mapDispatchToProps = (dispatch) => {
+{/* const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
   }, dispatch);
-}
+} */}
 
 const mapStateToProps = (state) => {
   return {
-
+    photos: state.userPhotos
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default withRouter(connect(mapStateToProps)(HomePage));
