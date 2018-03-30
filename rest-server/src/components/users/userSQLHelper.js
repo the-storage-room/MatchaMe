@@ -80,12 +80,11 @@ export const updateAverageAttractivenessHelper = ({
   `;
 };
 
-export const updateUserInfoHelper = () => {
+export const updateUserInfoHelper = (key, value, id) => {
   return `
     UPDATE users 
-    SET $1=$2
-    WHERE id=$3
-    RETURNING $1
+    SET ${key}=$1
+    WHERE id=${id}
   `;
 };
 
