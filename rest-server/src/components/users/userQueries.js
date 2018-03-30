@@ -72,7 +72,6 @@ export const updateUserInfoQuery = async body => {
           body[key] = Number(body[key]);
         }
         let queryString = updateUserInfoHelper(key, body[key], body.id);
-        console.log(queryString)
         data = await db.query(queryString, [body[key]]);
         console.log('success on userInfoQuery');
       }
@@ -82,6 +81,33 @@ export const updateUserInfoQuery = async body => {
   }
 };
 
+<<<<<<< HEAD
+=======
+export const updateTotalAttractivenessQuery = async ({
+  attractiveness,
+  ratee
+}) => {
+  try {
+    const queryString = await updateTotalAttractivenessHelper();
+    const data = await db.query(queryString, [attractiveness, ratee]);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updateAverageAttractivenessQuery = async body => {
+  try {
+    const queryString = await updateAverageAttractivenessHelper(body);
+    console.log(queryString);
+    const data = await db.query(queryString);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+>>>>>>> navbar refactor
 export const updateUserRankingForTrueQuery = async matchId => {
   try {
     let dataObj = {};
