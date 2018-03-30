@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import style from './HomePage.css';
 import Navbar from '../globals/Navbar/index.jsx';
+import Avatar from '../globals/Avatar/index.jsx';
 // import image1 from '../../../public/images/matchame1.jpg'
 
 class HomePage extends Component {
@@ -21,11 +22,7 @@ class HomePage extends Component {
         <header className={style.header}>
           <div className={style.logo}>
             MatchaMe
-            <img
-              className={style.avatar}
-              src={this.props.photos[0].url}
-              onClick={() => this.props.history.push('/dashboard')}
-            />  
+            <Avatar />
           </div>  
         </header>
         <div 
