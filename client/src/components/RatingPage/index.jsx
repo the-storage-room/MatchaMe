@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Slider from 'material-ui/Slider';
@@ -10,7 +10,7 @@ import Button from '../globals/Button/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/ratings_page_actions';
 
-class Rate extends Component {
+class Rate extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -20,6 +20,7 @@ class Rate extends Component {
   }
 
   componentDidMount = () => {
+    this.props.fetchMoreUsersToRate();
   }
 
   submitUserAttractiveness = () => {
@@ -35,18 +36,17 @@ class Rate extends Component {
         rater: 1
       };
       this.props.submitRating(body);
-      this.setState({
-        rating: null
-      })
     }
+  }
+  
+  componentWillReceiveProps = (nextProps) => {
+    console.log(nextProps)
   }
 
   render() {
     return (
       <div>
       <Navbar />
-      {
-      this.props.userToRate ?
       <div className={style.ratingContainer}>
         <div className={style.profileContainer}>
           <Profile 
@@ -58,12 +58,12 @@ class Rate extends Component {
             bio={this.props.userToRate.bio}
           />
           <div className={style.ratingScaleContainer}>
-            <Slider
+            <Slider 
               max={10}
               defaultValue={5}
               step={1}
               onChange={(e, val) => this.setState({ rating: val })}
-              />
+            />
             hotness: {this.state.rating}
           </div>
         </div>
@@ -71,13 +71,33 @@ class Rate extends Component {
           onClick={() => this.submitUserAttractiveness()}
           className="next"
         />
-      </div> :
-      "Sorry! No more users to rate at this time!"
-      }
+      </div>
     </div>
     )
   }
 }
+
+// const Rate = props => {
+  
+//   return (
+//     <div>
+//       <Navbar />
+//       <div className={style.ratingContainer}>
+//         <div className={style.profileContainer}>
+//           <Profile />
+//           <div className={style.ratingScaleContainer}>
+//             <Slider 
+//               max={10}
+//               defaultValue={5}
+              
+//             />
+//           </div>
+//         </div>
+//         <Button className={style.nextBtn} text={'Next Button'} />
+//       </div>
+//     </div>
+//   );
+// };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -88,8 +108,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    userToRate: state.ratings[state.ratings.length - 1]
+    userToRate: state.ratings[state.ratings && state.ratings.length - 1]
   };
-}
+} 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rate);
