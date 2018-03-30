@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "matchmaker-server:run": "nodemon bin/entry.js",
-    "worker": "babel-node src/worker/matchmakingService.js",
-    "zip": "babel-node src/helpers/location/index.js"
+    "worker": "babel-node src/worker/matchmakingService.js"
   },
   "author": "",
   "license": "ISC",

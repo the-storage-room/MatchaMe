@@ -103,5 +103,3 @@ export const findCoordinatesAndCalculateDistance = async (
     console.log('error on calculateDistance', err);
   }
 };
-
-findCoordinatesAndCalculateDistance(92841, 90045)
