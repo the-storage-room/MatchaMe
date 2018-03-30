@@ -29,11 +29,11 @@ class Login extends Component {
       localStorage.setItem('id', data.data.id);
       localStorage.setItem('email', data.data.email);
       localStorage.setItem('token', data.data.token);
-      console.log(localStorage);
       if (data) {
-        
         this.props.history.push('/dashboard');
       } else {
+        this.setState({ username: '' });
+        this.setState({ password: '' });
         this.props.history.push('/login');
       }
     } catch (err) {
@@ -54,12 +54,14 @@ class Login extends Component {
             name="username"
             type="text"
             placeholder="Enter username"
+            value={this.state.username}
             onChange={this.handleInputChange}
           /> <br />
-          <Input 
+          <Input className={style.passwordForm}
             name="password"
-            type="text"
+            type="password"
             placeholder="Enter password"
+            value={this.state.password}
             onChange={this.handleInputChange}
           /> <br />
           <Button

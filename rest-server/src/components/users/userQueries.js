@@ -134,6 +134,7 @@ export const updateRaterRateeRelationshipQuery = async body => {
 
 export const updateUserInfoQuery = async body => {
   try {
+   
     let data;
     for (let key in body) {
       if (key === 'id' || key === 'username') {
@@ -148,7 +149,8 @@ export const updateUserInfoQuery = async body => {
           body[key] = Number(body[key]);
         }
         let queryString = updateUserInfoHelper(key, body[key], body.id);
-        data = await db.query(queryString, [key, body[key], body.id]);
+        console.log(queryString)
+        data = await db.query(queryString, [body[key]]);
         console.log('success on userInfoQuery');
       }
     }

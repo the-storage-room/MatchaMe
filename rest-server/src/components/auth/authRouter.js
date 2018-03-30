@@ -1,4 +1,5 @@
 import express from 'express';
+import passport from 'passport';
 
 import {
   loginController,
@@ -6,12 +7,12 @@ import {
   logoutController
 } from './authControllers';
 
-import passport from '../../middleware/validation/passport';
+import '../../middleware/validation/passport';
 
 const router = express.Router();
 
 router.route('/login')
-  .post(passport.authenticate('local'), loginController);
+  .post(passport.authenticate('local', { session: false }), loginController);
 
 router.route('/signup')
   .post(signupController);

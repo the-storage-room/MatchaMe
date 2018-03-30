@@ -7,8 +7,7 @@ import {
 } from '../../components/auth/authQueries';
 import {
   hashPassword,
-  comparePasswords,
-  comparePW
+  comparePasswords
 } from '../auth/bcrypt';
 
 const JwtStrategy = jwt.Strategy;
@@ -20,7 +19,7 @@ const localOptions = {
 };
 
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromHeader('Authorization'),
+  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: process.env.TOKEN_SECRET
 };
 
@@ -29,19 +28,31 @@ const jwtOptions = {
 
 
 passport.use(new LocalStrategy(localOptions, async (username, password, done) => {
-  
   try {
     const { rows } = await loginQuery({ username });
     if (!rows.length) {
       return done(null, false);
     }
-    const passwordsMatch = await comparePW(rows[0].password, password);
+    const passwordsMatch = await comparePasswords(password, rows[0].password);
     if (!passwordsMatch) {
       return done(null, false);
     }
     return done(null, rows);
   } catch (err) {
     return done(err);
+  }
+}));
+
+passport.use(new JwtStrategy(jwtOptions, async (jwt_payload, done) => {
+  try {
+    const user = await loginHelper(jwt_payload.sub);
+    if (user.length) {
+      return done(null, user);
+    } else {
+      return done(null, false);
+    }
+  } catch(e) {
+    return done(e);
   }
 }));
 
