@@ -55,11 +55,11 @@ export default {
           type: 'MATCHES_DATA_RECIEVED',
           payload: data.matchData || null
           });
-        dispatch({
-          type: 'LEADERBOARD_RECIEVED',
-          payload: data.leaderboardData || null
-          });
-        history.push('/dashboard')
+        // dispatch({
+        //   type: 'LEADERBOARD_RECIEVED',
+        //   payload: data.leaderboardData || null
+        //   });
+        history.push('/home')
       } catch (err) {
         console.error
       }

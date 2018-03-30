@@ -12,6 +12,11 @@ class Comments extends Component {
     };
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.submitComment();
+  }
+
   submitComment = () => {
     const { textvalue } = this.state;
     this.props.submitComment(textvalue)
@@ -41,11 +46,15 @@ class Comments extends Component {
     const { comments, exitComments, voteOnComment } = this.props;
     return (
       <div className={style.comments}>
-        <textarea
-          id='commentTextarea'
-          className={style.textbox}
-          onChange={this.handleTextareaChange}
-          />
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            id="chatTextarea"
+            autoComplete="off"
+            className={style.textbox}
+            onChange={this.handleTextareaChange}
+            />
+        </form>
         <div className={style.commentsFeed}>
           { comments.length ? 
             comments.map((comment, index) => {

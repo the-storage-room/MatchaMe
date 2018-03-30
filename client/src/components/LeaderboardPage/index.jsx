@@ -23,7 +23,7 @@ class Leaderboard extends Component {
             this.props.leaderboard.map((boarditem, index) => {
               return (
                 <LeaderboardItem
-                  key={boarditem.id}
+                  key={index}
                   username={boarditem.username}
                   powerranking={boarditem.powerranking}
                   primaryPhoto={boarditem.primaryPhoto}

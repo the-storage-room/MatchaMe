@@ -15,7 +15,18 @@ const Profile = ({ url, firstname, lastname, age, tags, bio}) => {
       <div className={style.userInfoContainer}>
         <span>Name: {firstname} {lastname && lastname[0]}.</span>
         <span>Age: {age}</span>
-        <span>Tags: {tags}</span>
+        <span>{tags && 'Tags: '}
+        {
+          tags &&  
+          tags
+            .map((tag, i) => {
+              return (i < tags.length - 1)
+              ? tag + ' - '
+              : tag
+            })
+          
+        }
+        </span>
         <span>Bio: {bio}</span>
       </div>
   </div>

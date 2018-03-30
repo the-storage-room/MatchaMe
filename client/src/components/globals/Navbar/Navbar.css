@@ -27,3 +27,14 @@
 .navButton:hover {
   background-color: pink;
 }
+/* 
+nav ul {
+  display: flex;
+  justify-content: space-between;
+} */
+/* 
+@media (min-width: 700px) {
+   nav ul {
+     flex-direction: column;
+   }
+} */

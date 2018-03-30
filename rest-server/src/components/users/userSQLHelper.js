@@ -16,70 +16,6 @@ export const fetchSingleUserHelper = () => {
   `;
 };
 
-export const fetchMultipleUsersHelper = () => {
-  return `
-    SELECT id, firstname, lastname, age, location, bio, gender
-    FROM USERS
-    WHERE users.averageattractiveness > $1
-    AND users.averageattractiveness < $2
-    AND id NOT in
-    (SELECT ratee FROM raterratee
-      WHERE rater=$3)
-    LIMIT 10
-  ` 
-};
-
-export const fetchUsersTagsForRatingHelper = () => {
-  return `
-    SELECT tag, type, users.id
-    FROM TAGS
-    INNER JOIN USERS_TAGS on TAGS.id=USERS_TAGS.tagid
-    INNER JOIN USERS on USERS_TAGS.userid=USERS.id
-    WHERE users.averageattractiveness > $1
-    AND users.averageattractiveness < $2
-  `;
-};
-
-export const fetchUsersPhotosHelper = () => {
-  return `
-    SELECT url, users.id 
-    FROM PHOTO
-    INNER JOIN USERS on USERS.id=PHOTO.userid
-    WHERE users.averageattractiveness > $1
-    AND users.averageattractiveness < $2
-  `;
-};
-
-export const fetchSingleUserAttractivenessHelper = () => {
-  return `
-    SELECT averageattractiveness
-    FROM users
-    WHERE id=$1
-  `;
-};
-
-export const updateTotalAttractivenessHelper = () => {
-  return `
-    UPDATE users
-    SET totalattractiveness=(totalattractiveness+$1)
-    WHERE id=$2
-    RETURNING totalattractiveness, totalNumOfRatings
-  `;
-};
-
-export const updateAverageAttractivenessHelper = ({
-  ratee,
-  newAverageAttractiveness,
-  newTotalNumOfRatings
-}) => {
-  return `
-    UPDATE users
-    SET averageattractiveness=${newAverageAttractiveness},
-    totalNumOfRatings=${newTotalNumOfRatings}
-    WHERE id=${ratee}
-  `;
-};
-
 export const updateUserInfoHelper = (key, value, id) => {
   return `
     UPDATE users 
@@ -88,31 +24,11 @@ export const updateUserInfoHelper = (key, value, id) => {
   `;
 };
 
-export const updateRaterRateeRelationshipHelper = ({ rater, ratee }) => {
-  return `
-    INSERT INTO raterratee
-    (rater, ratee)
-    VALUES (${rater}, ${ratee})
-  `;
-};
-
-export const deleteUserTags = ({ id }) => {
-  return `
-    
-  `;
-};
-
-export const updateUserTags = ({ id }) => {
-  return `
-  
-  `;
-};
-
 //increase power ranking by one for matchmakers who voted 'yes' on a successful match
 export const updateAndIncreasePRForTrueAndYesHelper = () => {
   return `
   UPDATE users
-  SET powerranking = powerranking + '1'
+  SET powerranking = powerranking + '10'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   INNER JOIN MATCH ON match.id = stageTwo.matchid
@@ -127,7 +43,7 @@ export const updateAndIncreasePRForTrueAndYesHelper = () => {
 export const updateAndDecreasePRForTrueAndNoHelper = () => {
   return `
   UPDATE users
-  SET powerranking = powerranking - '1'
+  SET powerranking = powerranking - '3'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   INNER JOIN MATCH ON match.id = stageTwo.matchid
@@ -142,7 +58,7 @@ export const updateAndDecreasePRForTrueAndNoHelper = () => {
 export const updateAndIncreasePRForFalseAndNoHelper = () => {
   return `
   UPDATE users
-  SET powerranking = powerranking + '1'
+  SET powerranking = powerranking + '10'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   INNER JOIN MATCH ON match.id = stageTwo.matchid
@@ -157,7 +73,7 @@ export const updateAndIncreasePRForFalseAndNoHelper = () => {
 export const updateAndIncreasePRForFalseAndYesHelper = () => {
   return `
   UPDATE users
-  SET powerranking = powerranking - '1'
+  SET powerranking = powerranking - '3'
   FROM outcomes
   INNER JOIN stageTwo ON outcomes.matchid = stageTwo.matchid
   INNER JOIN MATCH ON match.id = stageTwo.matchid

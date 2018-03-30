@@ -9,8 +9,7 @@ export default {
       console.log(id)
       try {
         const data = await axios
-        // hard coded user id in request params for now (will use current client's id)
-          .get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/${id}`);
+          .get(`${REST_SERVER_URL}/api/ratings/fetchMultipleUsers/${id}`);
         dispatch({
           type: 'ADDITIONAL_USERS_TO_RATE_ADDED',
           payload: data.data
@@ -20,8 +19,6 @@ export default {
       }
     }
   },
-  // THIS NEEDS TO TAKE IN THE USER WHO RATED 
-  // ALSO SO THAT YOU CAN'T RATE SAME USER MULTIPLE TIMES
   submitRating(ratingObject) {
     return async (dispatch, getState) => {
       const { ratings } = getState();
@@ -29,13 +26,13 @@ export default {
       newRatings.pop();
       try {
         await axios
-          .put(`${REST_SERVER_URL}/api/users/updateUserRating`, ratingObject);
+          .put(`${REST_SERVER_URL}/api/ratings/updateUserRating`, ratingObject);
         dispatch({
           type: 'RATING_SUBMITTED',
           payload: newRatings
         });
         if (newRatings.length === 2) {
-          const data = await axios.get(`${REST_SERVER_URL}/api/users/fetchMultipleUsers/${id}`);
+          const data = await axios.get(`${REST_SERVER_URL}/api/ratings/fetchMultipleUsers/${id}`);
           dispatch({
             type: 'ADDITONAL_USERS_TO_RATE_ADDED',
             payload: data.data
