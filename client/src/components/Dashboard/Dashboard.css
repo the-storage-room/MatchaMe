@@ -1,6 +1,6 @@
 .column { 
   float: left;
-  width: 33.33%;
+  width: 32.2%;
   margin-left: 8px;
 }
 .row:after {
@@ -44,9 +44,8 @@
 }
 
 .stats {
-  float: right;
-  width: 48%;
-  min-height: 100px;
+  width: 100%;
+  min-height: 600px;
   font-weight: normal;
   font-size: 1vw;
   text-align: center;

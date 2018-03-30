@@ -45,13 +45,13 @@ class Dashboard extends Component {
               <div className={style.stats}>
                 Total Points: 103
               </div>
-              <div className={style.stats}>
-                You need X pts to rank up!
-              </div>
             </div>
           </div>
         </div>
         <div className={style.column}>
+          <div className={style.stats}>
+            You need X pts to rank up!
+          </div>
         </div>
       </div>
     );
