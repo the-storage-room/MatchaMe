@@ -102,3 +102,5 @@ export const findCoordinatesAndCalculateDistance = async (
     if (err) throw err;
   }
 };
+
+findCoordinatesAndCalculateDistance(92841, 90045)
