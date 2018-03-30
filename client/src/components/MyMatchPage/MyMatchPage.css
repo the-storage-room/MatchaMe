@@ -87,7 +87,7 @@
 }
 
 .chatBox {
-  width: 100%;
+  display: flex;
   height: 15%;
   border-top: solid rgb(240, 176, 176) 1px;
   margin: 0;
@@ -102,9 +102,11 @@
 }
 
 .chatTextarea {
+  flex: 1;
+}
+
+form {
   width: 80%;
-  height: 100%;
-  padding: 5px;
 }
 
 .textbox {
@@ -117,11 +119,11 @@
   resize: none;
 }
 
-textarea:focus {
+.textbox:focus {
   outline:0;
 }
 
-textarea {
+.textbox {
   font-size: 20px;
 }
 
@@ -164,7 +166,7 @@ textarea {
   font-size: 10px;
   opacity:0;
   height: auto;
-  transition:0s 2s;
+  transition:0s 3s;
 }
 
 .theirTime {

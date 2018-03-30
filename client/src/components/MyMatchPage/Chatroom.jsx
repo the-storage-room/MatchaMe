@@ -34,6 +34,11 @@ class Chatroom extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.submitMessage();
+  }
+
   submitMessage = () => {
     const { message } = this.state;
     const { socket, username, firstname } = this.props;
@@ -65,6 +70,7 @@ class Chatroom extends Component {
           {
             chatFeed
               .map((chat, i) => {
+                while (i < 100 && i < chatFeed.length - 1) {
                 return (
                   <ChatItem
                     key={i}
@@ -73,16 +79,21 @@ class Chatroom extends Component {
                     theirPhoto={this.props.theirPhoto}
                     yourPhoto={this.props.yourPhoto}
                     />
-                )
+                  )
+                }
               })
           }
         </div>
         <div className={style.chatBox}>
-          <textarea
-            id='chatTextarea'
+          <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            id="chatTextarea"
+            autoComplete="off"
             className={style.textbox}
             onChange={this.handleTextareaChange}
             />
+          </form>
           <Button
             text={"Enter"}
             className={"tag"}

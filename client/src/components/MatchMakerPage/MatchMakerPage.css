@@ -70,18 +70,18 @@
   border: solid rgb(240, 176, 176) 1px;
   border-radius: 2px;
   background-color:rgba(245, 245, 245, 0.877);
-  width: 330px;
-  height: 200px;
+  width: 200px;
+  height: 100px;
   margin: 20px;
   float: right;  
   resize: none;
 }
 
-textarea:focus {
+.textbox:focus {
   outline:0;
 }
 
-textarea {
+.textbox {
   font-size: 20px;
 }
 
