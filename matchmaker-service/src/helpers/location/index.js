@@ -1,6 +1,8 @@
-const Promise = require('bluebird');
+import Promise from 'bluebird';
+import axios from 'axios';
+
 const fs = Promise.promisifyAll(require('fs'));
-const axios = require('axios');
+
 
 require('dotenv').config();
 
@@ -101,3 +103,5 @@ export const findCoordinatesAndCalculateDistance = async (
     console.log('error on calculateDistance', err);
   }
 };
+
+findCoordinatesAndCalculateDistance(92841, 90045)
