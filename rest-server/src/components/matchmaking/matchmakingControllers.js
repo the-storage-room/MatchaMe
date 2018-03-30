@@ -17,8 +17,7 @@ export const fetchPendingMatchmakingController = async (req, res) => {
   }
 };
 
-// approve or disapprove a match  **WORK IN PROGRESS TALK TO JUSTIN**
-// req.body { userId, matchId, decision }
+// req.body { userId, matchId, starred, decision, powerranking }
 export const updateMatchmakingController = async (req, res) => {
   try {
     const check = await addOutcomeQuery(req.body);
