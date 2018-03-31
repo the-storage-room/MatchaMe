@@ -84,7 +84,7 @@
   width: 100%;
   opacity: 0;
   transition: .4s ease;
-  background-color: rgb(4, 185, 95);
+  background-color: rgba(4, 185, 94, 0.651);
 }
 
 .column1:hover .overlay,

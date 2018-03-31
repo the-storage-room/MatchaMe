@@ -62,25 +62,24 @@ class Chatroom extends Component {
     })
   }
 
+
   render() {
-    const { chatFeed } = this.state;
+    const chatFeed = this.state.chatFeed.slice(-100);
     return (
       <div className={style.chatRoom}>
         <div className={style.chatFeed}>
           {
             chatFeed
               .map((chat, i) => {
-                while (i < 100 && i < chatFeed.length - 1) {
                 return (
                   <ChatItem
                     key={i}
-                    chat={chatFeed[chatFeed.length-i-1]}
+                    chat={chat}
                     username={this.props.username}
                     theirPhoto={this.props.theirPhoto}
                     yourPhoto={this.props.yourPhoto}
                     />
                   )
-                }
               })
           }
         </div>

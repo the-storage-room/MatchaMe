@@ -24,9 +24,9 @@ export default {
   postMatchmakerDecision(voteObject) {
     return async (dispatch, getState) => {
       const { id } = getState().accountData;
-      const { totalPoints } = getState().powerranking;
+      const { totalPoints } = getState().powerRanking;
       const { matches } = getState();
-      const newMatches = JSON.parse(JSON.stringify(matches));
+      let newMatches = JSON.parse(JSON.stringify(matches));
       newMatches.pop();
       voteObject.userId = id;
       voteObject.powerranking = totalPoints;
@@ -35,6 +35,10 @@ export default {
           `${REST_SERVER_URL}/api/matchmaking/updateMatchmaking`,
           voteObject
         );
+        if (newMatches.length === 2) {
+          const data = await axios.get(`${REST_SERVER_URL}/api/matchmaking/fetchPendingMatchmaking/${id}`);
+          newMatches = data.data.concat(newMatches)
+        }
         dispatch({
           type: 'MATCHMAKER_RATING_SUBMITTED',
           payload: newMatches

@@ -1,16 +1,21 @@
 import axios from 'axios';
 
 const { REST_SERVER_URL } = process.env;
+const { REDIS_SERVER_URL } = process.env;
+
+console.log()
 
 export default {
   initialize(history) {
     return async (dispatch, getState) => {
-      const { id } = getState().accountData
       try {
+        const { id } = await getState().accountData
         const { data } = await axios
           .get(`${REST_SERVER_URL}/api/initialize/${id}`)
-        console.log(data)
-        
+        const redisData = await axios
+          .get(`${REDIS_SERVER_URL}/redis/leaderboard/fetchLeaderboardAndRank/${id}`)
+
+          console.log(redisData.data)
         // const powerRankingData = {
         //   totalPoints: powerranking,
         //   userRanking: userLeaderboardRanking,
@@ -33,7 +38,10 @@ export default {
           });
         dispatch({
           type: 'USER_POWERRANKING_RECIEVED',
-          payload: data.powerRankingData || null
+          payload: {
+            totalPoints: data.powerRankingData.totalPoints, 
+            rank: redisData.data.rank 
+            } || null
           });
         dispatch({
           type: 'USER_SIGNUP_STATUS_RECIEVED',
@@ -55,10 +63,10 @@ export default {
           type: 'MATCHES_DATA_RECIEVED',
           payload: data.matchData || null
           });
-        // dispatch({
-        //   type: 'LEADERBOARD_RECIEVED',
-        //   payload: data.leaderboardData || null
-        //   });
+        dispatch({
+          type: 'LEADERBOARD_RECIEVED',
+          payload: redisData.data.leaderboard || null
+          });
         history.push('/home')
       } catch (err) {
         console.error

@@ -21,23 +21,22 @@ export default {
   },
   submitRating(ratingObject) {
     return async (dispatch, getState) => {
+      const { id } = getState().accountData;
       const { ratings } = getState();
-      const newRatings = JSON.parse(JSON.stringify(ratings))
+      let newRatings = JSON.parse(JSON.stringify(ratings))
       newRatings.pop();
       try {
         await axios
           .put(`${REST_SERVER_URL}/api/ratings/updateUserRating`, ratingObject);
-        dispatch({
+          if (newRatings.length === 2) {
+            const data = await axios.get(`${REST_SERVER_URL}/api/ratings/fetchMultipleUsers/${id}`);
+            console.log(data.data)
+            newRatings = data.data.concat(newRatings)
+          }
+      dispatch({
           type: 'RATING_SUBMITTED',
           payload: newRatings
         });
-        if (newRatings.length === 2) {
-          const data = await axios.get(`${REST_SERVER_URL}/api/ratings/fetchMultipleUsers/${id}`);
-          dispatch({
-            type: 'ADDITONAL_USERS_TO_RATE_ADDED',
-            payload: data.data
-          });
-        }
       } catch (err) {
         console.error
       }
