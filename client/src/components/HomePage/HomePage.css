@@ -11,6 +11,7 @@
   vertical-align: middle;
   line-height: 60px;
 }
+
 .column1 {
   grid-area: column1;
   background-color: rgb(233, 233, 233);
