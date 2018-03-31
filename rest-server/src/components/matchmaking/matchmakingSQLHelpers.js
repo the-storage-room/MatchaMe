@@ -6,6 +6,7 @@ export const fetchPendingMatchmakingHelper = () => {
   AND NOT user2_id=$1
   AND id NOT IN ((SELECT matchid FROM outcomes WHERE userid=$1))
   AND activevoting=1
+  ORDER BY RANDOM()
   LIMIT 20;
   `;
 };

@@ -7,8 +7,9 @@ export const fetchMultipleUsersHelper = () => {
     AND id NOT in
     (SELECT ratee FROM raterratee
       WHERE rater=$3)
+    ORDER BY RANDOM()
     LIMIT 10
-  ` 
+  `;
 };
 
 export const fetchUsersTagsForRatingHelper = () => {
@@ -31,7 +32,6 @@ export const fetchUsersPhotosHelper = () => {
     AND users.averageattractiveness < $2
   `;
 };
-
 
 export const fetchSingleUserAttractivenessHelper = () => {
   return `
