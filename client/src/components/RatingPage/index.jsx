@@ -89,17 +89,19 @@ class Rate extends Component {
             <div className={style.age}>
             {realAge} years old
             </div>
-            <div className={style.tag}>
-            {this.props.userToRate.tags[0]}
-            </div>
-            <div className={style.tag}>
-            {this.props.userToRate.tags[1]}
-            </div>
-            <div className={style.tag}>
-            {this.props.userToRate.tags[2]}
-            </div>
+              <div className={style.tags}>
+                <div className={style.tag}>
+                {this.props.userToRate.tags[0]}
+                </div>
+                <div className={style.tag}>
+                {this.props.userToRate.tags[1]}
+                </div>
+                <div className={style.tag}>
+                {this.props.userToRate.tags[2]}
+                </div>
+              </div>
             <div className={style.biography}>
-            {this.props.userToRate.bio}
+              {this.props.userToRate.bio}
             </div>
           </div>
           <div className={style.slider}>
