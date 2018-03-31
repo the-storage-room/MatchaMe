@@ -32,14 +32,15 @@ class MyMatch extends Component {
   }
 
   componentWillMount= () => {
+    if (this.props.currentMatch) {
       this.socket = io(SOCKET_SERVER_URL, {
         query: {
           matchId: this.props.currentMatch.matchid
         }
       });
-  
       this.setState({ socket: this.socket });
     }
+  }
 
 
   render() {

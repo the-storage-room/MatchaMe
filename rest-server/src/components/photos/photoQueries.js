@@ -22,7 +22,6 @@ export const fetchPrimaryPhotoQuery = async userId => {
   try {
     const queryString = fetchPrimaryPhotoHelper();
     const { rows } = await db.query(queryString, [userId]);
-    console.log('Successfully used fetchPrimaryPhotoQuery');
     return rows[0];
   } catch (err) {
     console.log('Error with fetchPrimaryPhotoQuery', err);

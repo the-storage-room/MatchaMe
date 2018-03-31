@@ -47,14 +47,16 @@ class MatchMaker extends Component {
     let { id } = this.props.matchToRate;
     this.props.fetchCommentsOnMatch(id)
   }
+
   
   render() {
-    const { comments } = this.props.matchToRate;
-    const sortedComments = comments.sort((a, b) => {
-      return b.votes - a.votes 
-    })
-
-
+    let sortedComments;
+    if (this.props.matchToRate) {
+      const { comments } = this.props.matchToRate;
+      sortedComments = comments.sort((a, b) => {
+        return b.votes - a.votes 
+      })
+    }
     return (
       <div>
         <Navbar />

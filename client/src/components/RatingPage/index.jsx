@@ -26,13 +26,11 @@ class Rate extends Component {
     
     if (this.state.rating === null) {
       alert('please rate this person')
-      // Eventually this alert functionality will be changed so that it prevents users from clicking next. 
     } else {
       const body = {
         ratee: this.props.userToRate.id,
         attractiveness: this.state.rating,
-        // hardcoded rater_id for now. get rater_id from store/props next
-        rater: 1
+        rater: this.props.id,
       };
       this.props.submitRating(body);
       this.setState({
@@ -88,7 +86,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    userToRate: state.ratings[state.ratings.length - 1]
+    userToRate: state.ratings[state.ratings.length - 1],
+    id: state.accountData.id
   };
 }
 
