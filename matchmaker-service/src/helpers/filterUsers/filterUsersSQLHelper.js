@@ -21,6 +21,13 @@ export const filterUsersHelper = (
       (SELECT match.user1_id FROM MATCH
       WHERE match.user2_id=${userId})
   )
-  AND NOT id=${userId}
+  AND NOT id=${userId};
   `;
+};
+
+export const insertIntoMatchHelper = (user1_id, user2_id) => {
+  return `
+  INSERT INTO match (user1_id, user2_id) 
+  VALUES(${user1_id}, ${user2_id});
+  `
 };

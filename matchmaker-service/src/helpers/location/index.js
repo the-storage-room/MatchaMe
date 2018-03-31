@@ -4,6 +4,7 @@ import axios from 'axios';
 const fs = Promise.promisifyAll(require('fs'));
 
 require('dotenv').config();
+
 const { API_KEY } = process.env;
 
 const convertToRadian = deg => {

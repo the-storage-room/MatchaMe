@@ -1,6 +1,9 @@
 import db from '../../config/database/';
 
-import { filterUsersHelper } from './filteUsersSQLHelper';
+import { 
+  filterUsersHelper,
+  insertIntoMatchHelper 
+} from './filterUsersSQLHelper';
 
 import { fetchUserAndTheirPreferenceTagsQuery } from '../allUsers/';
 
@@ -58,3 +61,13 @@ export const filterUsersQuery = async userObj => {
     console.log('Error with filterUsersQuery: ', error);
   }
 };
+
+export const insertIntoMatchQuery = async(user1_id, user2_id) => {
+  try {
+    let queryString = insertIntoMatchHelper(user1_id, user2_id);
+    await db.query(queryString)
+    console.log('success on insertIntoMatchQuery')
+  } catch (err) {
+    console.log('err on insertIntoMatchQuery', err)
+  }
+}
