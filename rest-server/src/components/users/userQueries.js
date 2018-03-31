@@ -72,7 +72,6 @@ export const updateUserInfoQuery = async body => {
           body[key] = Number(body[key]);
         }
         let queryString = updateUserInfoHelper(key, body[key], body.id);
-        console.log(queryString)
         data = await db.query(queryString, [body[key]]);
         console.log('success on userInfoQuery');
       }
