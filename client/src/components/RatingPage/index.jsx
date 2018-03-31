@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Slider from 'material-ui/Slider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import style from './RatingPage.css';
+import style from './Rating.css';
 import Navbar from '../globals/Navbar/index.jsx';
 import Button from '../globals/Button/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/ratings_page_actions';
+import Footer from '../globals/Footer/index.jsx';
 
 class Rate extends Component {
   constructor() {
@@ -35,41 +34,55 @@ class Rate extends Component {
       })
     }
   }
+  // <Profile 
+  //   url={this.props.userToRate.photos[0]}
+  //   firstname={this.props.userToRate.firstname}
+  //   lastname={this.props.userToRate.lastname}
+  //   age={this.props.userToRate.age}
+  //   tags={this.props.userToRate.tags}
+  //   bio={this.props.userToRate.bio}
+  // />
 
   render() {
     return (
       <div>
-      <Navbar />
-      {
-      this.props.userToRate ?
-      <div className={style.ratingContainer}>
-        <div className={style.profileContainer}>
-          <Profile 
-            url={this.props.userToRate.photos[0]}
-            firstname={this.props.userToRate.firstname}
-            lastname={this.props.userToRate.lastname}
-            age={this.props.userToRate.age}
-            tags={this.props.userToRate.tags}
-            bio={this.props.userToRate.bio}
-          />
-          <div className={style.ratingScaleContainer}>
-            <Slider
-              max={10}
-              defaultValue={5}
-              step={1}
-              onChange={(e, val) => this.setState({ rating: val })}
+        <div className={style.wrapper}>
+          <div className={style.header}>
+            <Navbar />
+          </div>
+          <div className={style.mainphoto}>
+            <img 
+              className={style.mainimg}
+              src={this.props.userToRate.photos[0]}
               />
-            hotness: {this.state.rating}
+          </div>
+          <div className={style.smallerphotos}>
+            <img 
+              className={style.img2}
+              src={this.props.userToRate.photos[2]}
+              />
+            <img 
+              className={style.img3}
+              src={this.props.userToRate.photos[3]}
+              />
+            <img 
+              className={style.img4}
+              src={this.props.userToRate.photos[4]}
+              />
+            <img 
+              className={style.img5}
+              src={this.props.userToRate.photos[1]}
+              />
+          </div>
+          <div className={style.bio}>
+            Bio
+          </div>
+          <div className={style.slider}>
+            slider
           </div>
         </div>
-        <Button 
-          onClick={() => this.submitUserAttractiveness()}
-          className="next"
-        />
-      </div> :
-      "Sorry! No more users to rate at this time!"
-      }
-    </div>
+        <Footer />
+      </div>
     )
   }
 }

@@ -8,9 +8,13 @@
 
 @media (min-width: 600px) {
   .avatar {
-  margin-top: 10%;
-  width: 80%;
-  height: 80%;
+  margin-top: 14%;
+  width: 72%;
+  height: 72%;
   border-radius: 50%;
+  } 
+
+  .avatar:hover {
+    opacity: .5;
   } 
 }
