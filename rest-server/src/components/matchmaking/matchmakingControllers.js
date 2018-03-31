@@ -10,8 +10,8 @@ import { addStageTwoQuery } from '../stageTwo/stageTwoQueries';
 
 export const fetchPendingMatchmakingController = async (req, res) => {
   try {
-    const { rows } = await fetchPendingMatchmakingQuery(req.params);
-    res.send(rows);
+    const data = await fetchPendingMatchmakingQuery(req.params);
+    res.send(data);
   } catch (err) {
     console.log('Error with fetchPendingMatchmakingController: ', err);
   }
