@@ -8,6 +8,7 @@ import Button from '../globals/Button/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/ratings_page_actions';
 import Footer from '../globals/Footer/index.jsx';
+import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
 
 class Rate extends Component {
   constructor() {
@@ -46,6 +47,7 @@ class Rate extends Component {
   // />
 
   render() {
+    let realAge = turnBirthdayIntoAge(this.props.userToRate.age)
     return (
       <div>
         <div className={style.wrapper}>
@@ -57,6 +59,8 @@ class Rate extends Component {
               className={style.mainimg}
               src={this.props.userToRate.photos[0]}
               />
+          </div>
+          <div>
           </div>
           <div className={style.smallerphotos}>
             <div className={style.smallerphotosgrid}>
@@ -83,9 +87,20 @@ class Rate extends Component {
             {this.props.userToRate.firstname} {this.props.userToRate.lastname[0]}.
             </div>
             <div className={style.age}>
+            {realAge} years old
             </div>
-            {this.props.userToRate.tags}
+            <div className={style.tag}>
+            {this.props.userToRate.tags[0]}
+            </div>
+            <div className={style.tag}>
+            {this.props.userToRate.tags[1]}
+            </div>
+            <div className={style.tag}>
+            {this.props.userToRate.tags[2]}
+            </div>
+            <div className={style.biography}>
             {this.props.userToRate.bio}
+            </div>
           </div>
           <div className={style.slider}>
           <input 
