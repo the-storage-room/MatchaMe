@@ -15,7 +15,7 @@
       "cd rest-server && babel-node src/config/database/setup.js",
     "buildEnv": "node bin/buildEnv.js",
     "start":
-      "npm-run-all -p start:static-server start:rest-server start:socket-server start:matchmaker-service start:s3-server start:redis-server",
+      "(npm-run-all -p start:static-server start:rest-server start:socket-server start:s3-server) & (npm-run-all -p start:redis-server start:matchmaker-service)",
     "i:rest-server": "cd rest-server && npm install",
     "i:socket-server": "cd socket-server && npm install",
     "i:static-server": "cd client/server && npm install",

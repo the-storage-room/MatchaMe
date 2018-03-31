@@ -10,15 +10,14 @@ import { addStageTwoQuery } from '../stageTwo/stageTwoQueries';
 
 export const fetchPendingMatchmakingController = async (req, res) => {
   try {
-    const { rows } = await fetchPendingMatchmakingQuery(req.params);
-    res.send(rows);
+    const data = await fetchPendingMatchmakingQuery(req.params);
+    res.send(data);
   } catch (err) {
     console.log('Error with fetchPendingMatchmakingController: ', err);
   }
 };
 
-// approve or disapprove a match  **WORK IN PROGRESS TALK TO JUSTIN**
-// req.body { userId, matchId, decision }
+// req.body { userId, matchId, starred, decision, powerranking }
 export const updateMatchmakingController = async (req, res) => {
   try {
     const check = await addOutcomeQuery(req.body);
@@ -26,13 +25,13 @@ export const updateMatchmakingController = async (req, res) => {
       let increaseAmount;
       const { powerranking } = req.body;
 
-      powerranking >= 1000
+      powerranking >= 10000
         ? (increaseAmount = '2')
-        : powerranking >= 500
+        : powerranking >= 5000
           ? (increaseAmount = '1.75')
-          : powerranking >= 300
+          : powerranking >= 3000
             ? (increaseAmount = '1.5')
-            : powerranking >= 100
+            : powerranking >= 1000
               ? (increaseAmount = '1.25')
               : powerranking >= 0
                 ? (increaseAmount = '1')
