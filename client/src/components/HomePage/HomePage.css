@@ -10,33 +10,26 @@
   text-align: center;
   vertical-align: middle;
   line-height: 60px;
+  
 }
 
 .column1 {
   grid-area: column1;
   background-color: rgb(233, 233, 233);
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 .column2 {
   grid-area: column2;
   background-color: rgb(233, 233, 233);
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 .column3 {
   grid-area: column3;
   background-color: rgb(233, 233, 233);
-  overflow: hidden;
   position: relative;
-}
-.footer {
-  height: 200px;
-  background-color: rgb(233, 233, 233);
-  color:rgb(4, 185, 95);
-  text-align: center;
-  vertical-align: middle;
-  line-height: 200px;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -45,12 +38,17 @@
   grid-template-rows: 50px 1fr 1fr 1fr;
   height: 100vh;
   grid-template-areas: 
-    "header"
-    "column1"
-    "column2"
-    "column3";
+  "header"
+  "column1"
+  "column2"
+  "column3";
 }
 
+
+.photo {
+  width: 100%;
+  background-position: 50% 50%;
+}
 
 @media (min-width: 900px) {
   .wrapper {
@@ -67,13 +65,14 @@
     background-position: 50% 50%;
   }
   .photo:hover {opacity: 0.7;}
+
+  .photo {
+    height: 100%;
+    background-position: 50% 50%;
+  }
+  .photo:hover {opacity: 0.7;}
 }
 
-
-.photo {
-  width: 100%;
-  background-position: 50% 50%;
-}
 
 .overlay {
   position: absolute;
@@ -85,13 +84,7 @@
   width: 100%;
   opacity: 0;
   transition: .4s ease;
-  background-color: rgba(4, 185, 94, 0.651);
-}
-
-.column1:hover .overlay,
-.column2:hover .overlay,
-.column3:hover .overlay {
-  opacity: 1;
+  background-color: rgba(4, 185, 94, 0.705);
 }
 
 .text {
@@ -102,4 +95,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.column1:hover .overlay,
+.column2:hover .overlay,
+.column3:hover .overlay {
+  opacity: 1;
 }

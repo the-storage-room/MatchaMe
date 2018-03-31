@@ -1,6 +1,6 @@
 
 const testState = [
-    {url: 'https://s3-us-west-1.amazonaws.com/ajjjthesis/Bentley+Bentayga++.jpg1521649326452', id: 12334234124},
+    {url: 'https://samepageteam.files.wordpress.com/2014/04/elaine-benes-picture.jpg?w=470', id: 33},
   ]
 
 

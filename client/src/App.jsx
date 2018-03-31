@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './index.css';
 
@@ -26,7 +25,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MuiThemeProvider>
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
@@ -42,7 +40,6 @@ class App extends Component {
             <Route path="/account/:page(bio|photoupload)" component={Account} />
             <Route path="/" component={LandingPage} />
           </Switch>
-        </MuiThemeProvider>
         </div>
     );
   }

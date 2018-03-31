@@ -1,0 +1,95 @@
+.header {
+  grid-area: header;
+  position: relative;
+}
+
+.mainphoto {
+  grid-area: mainphoto;
+  position: relative;
+  margin-left: 3px;
+}
+
+.smallerphotos {
+  grid-area: smallerphotos;
+  position: relative;
+}
+
+.bio {
+  grid-area: bio;
+  position: relative;
+}
+
+.slider {
+  grid-area: slider;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.mainimg {
+  height: 100%;
+  width: 100%;
+}
+
+.img5,
+.img2,
+.img3,
+.img4 {
+  max-width: 22%;
+  max-height: 100%;
+  margin: 0 1.5px 1.5px 1.5px;
+}
+
+/* .mainphoto,
+.smallerphotos,
+.bio,
+.slider, {
+} */
+
+.footer {
+  height: 200px;
+  background-color: rgb(233, 233, 233);
+  color:rgb(4, 185, 95);
+  text-align: center;
+  vertical-align: middle;
+  line-height: 200px;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-rows: auto 1fr 1fr 1fr 1fr;
+  height: 100vh;
+  grid-template-areas: 
+  "header"
+  "mainphoto"
+  "smallerphotos"
+  "bio"
+  "slider";
+}
+
+
+@media (min-width: 600px) {
+  .wrapper {
+    grid-template-rows: auto 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    grid-template-areas: 
+    "header header"
+    "mainphoto bio"
+    "mainphoto bio"
+    "smallerphotos slider"
+  }
+
+  .smallerphotos {
+    margin-top: 20px;
+  }
+
+  .mainphoto {
+    margin: 20px 5px 5px 20px; 
+  }
+
+  .slider {
+    margin-left: 20px;
+  }
+}
