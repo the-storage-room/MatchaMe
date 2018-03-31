@@ -12,8 +12,8 @@ export default {
           .get(`${REST_SERVER_URL}/api/initialize/${id}`)
         const redisData = await axios
           .get(`${REDIS_SERVER_URL}/redis/leaderboard/fetchLeaderboardAndRank/${id}`)
+        turnBirthdayIntoAge(data.bioData)
 
-          console.log(redisData.data)
         dispatch({
           type: 'USER_ACCOUNT_DATA_RECIEVED',
           payload: data.accountData || null
@@ -67,4 +67,33 @@ export default {
       }
     }
   },
+}
+
+const turnBirthdayIntoAge = (bioDataObj) => {
+  const today = new Date();
+  const year = today.getFullYear().toString();
+  const month = addZeroToSingleDate(today.getMonth().toString());
+  const day = addZeroToSingleDate(today.getDate().toString());
+
+
+
+
+  const date = Number(year + month + day);
+
+
+
+  const age = date - bioDataObj.age
+  
+  console.log(date, bioDataObj.age, age.toString().slice(0,2))
+  
+  
+  // bioDataObj.realage = fullDate
+  // return bioDataObj;
+}
+
+const addZeroToSingleDate = (dateString) => {
+  if (dateString.length === 1) {
+    dateString = '0' + dateString
+  }
+  return dateString;
 }

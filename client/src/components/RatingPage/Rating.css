@@ -14,6 +14,36 @@
   position: relative;
 }
 
+.smallerphotosgrid {
+  display: grid;
+  grid-gap: 6px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100px;
+  grid-template-areas: 
+  "img1 img2 img3 img4";
+}
+
+.img1 {
+  grid-area: img1;
+  position: relative;
+  overflow: hidden;
+}
+.img2 {
+  grid-area: img2;
+  position: relative;
+  overflow: hidden;
+}
+.img3 {
+  grid-area: img3;
+  position: relative;
+  overflow: hidden;
+}
+.img4 {
+  grid-area: img4;
+  position: relative;
+  overflow: hidden;
+}
+
 .bio {
   grid-area: bio;
   position: relative;
@@ -26,25 +56,32 @@
   position: relative;
 }
 
+/* box-shadow: 0 4px 6px 0 hsla(0, 0%,0% .2); */
+
 .mainimg {
   height: 100%;
   width: 100%;
 }
 
-.img5,
+.img1,
 .img2,
 .img3,
 .img4 {
-  max-width: 22%;
-  max-height: 100%;
-  margin: 0 1.5px 1.5px 1.5px;
+  height: 120px;
+  width: 100%;
 }
+
+
 
 /* .mainphoto,
 .smallerphotos,
 .bio,
 .slider, {
 } */
+
+.sliderinput {
+  width: 80%;
+}
 
 .footer {
   height: 200px;
@@ -82,14 +119,23 @@
   }
 
   .smallerphotos {
-    margin-top: 20px;
+    margin: 2px 5px 20px 20px;
   }
 
   .mainphoto {
     margin: 20px 5px 5px 20px; 
   }
 
+  .bio {
+    margin: 20px 20px 5px 5px; 
+  }
+
   .slider {
     margin-left: 20px;
+  }
+
+  .name {
+    font-size: 60px;
+    font-weight: 60;
   }
 }

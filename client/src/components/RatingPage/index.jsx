@@ -34,6 +34,8 @@ class Rate extends Component {
       })
     }
   }
+
+
   // <Profile 
   //   url={this.props.userToRate.photos[0]}
   //   firstname={this.props.userToRate.firstname}
@@ -57,28 +59,41 @@ class Rate extends Component {
               />
           </div>
           <div className={style.smallerphotos}>
-            <img 
-              className={style.img2}
-              src={this.props.userToRate.photos[2]}
-              />
-            <img 
-              className={style.img3}
-              src={this.props.userToRate.photos[3]}
-              />
-            <img 
-              className={style.img4}
-              src={this.props.userToRate.photos[4]}
-              />
-            <img 
-              className={style.img5}
-              src={this.props.userToRate.photos[1]}
-              />
+            <div className={style.smallerphotosgrid}>
+              <img 
+                className={style.img1}
+                src={this.props.userToRate.photos[2]}
+                />
+              <img 
+                className={style.img2}
+                src={this.props.userToRate.photos[3]}
+                />
+              <img 
+                className={style.img3}
+                src={this.props.userToRate.photos[4]}
+                />
+              <img 
+                className={style.img4}
+                src={this.props.userToRate.photos[1]}
+                />
+            </div>
           </div>
           <div className={style.bio}>
-            Bio
+            <div className={style.name}>
+            {this.props.userToRate.firstname} {this.props.userToRate.lastname[0]}.
+            </div>
+            <div className={style.age}>
+            </div>
+            {this.props.userToRate.tags}
+            {this.props.userToRate.bio}
           </div>
           <div className={style.slider}>
-            slider
+          <input 
+            className={style.sliderinput}
+            type="range" 
+            min="0" 
+            max="10">
+            </input>
           </div>
         </div>
         <Footer />
