@@ -75,28 +75,6 @@ class Rate extends React.Component {
   }
 }
 
-// const Rate = props => {
-  
-//   return (
-//     <div>
-//       <Navbar />
-//       <div className={style.ratingContainer}>
-//         <div className={style.profileContainer}>
-//           <Profile />
-//           <div className={style.ratingScaleContainer}>
-//             <Slider 
-//               max={10}
-//               defaultValue={5}
-              
-//             />
-//           </div>
-//         </div>
-//         <Button className={style.nextBtn} text={'Next Button'} />
-//       </div>
-//     </div>
-//   );
-// };
-
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchMoreUsersToRate: actions.fetchMoreUsersToRate,
