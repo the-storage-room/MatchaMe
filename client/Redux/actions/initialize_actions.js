@@ -3,8 +3,6 @@ import axios from 'axios';
 const { REST_SERVER_URL } = process.env;
 const { REDIS_SERVER_URL } = process.env;
 
-console.log()
-
 export default {
   initialize(history) {
     return async (dispatch, getState) => {
@@ -16,10 +14,6 @@ export default {
           .get(`${REDIS_SERVER_URL}/redis/leaderboard/fetchLeaderboardAndRank/${id}`)
 
           console.log(redisData.data)
-        // const powerRankingData = {
-        //   totalPoints: powerranking,
-        //   userRanking: userLeaderboardRanking,
-        // }
         dispatch({
           type: 'USER_ACCOUNT_DATA_RECIEVED',
           payload: data.accountData || null

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Slider from 'material-ui/Slider';
@@ -10,17 +10,13 @@ import Button from '../globals/Button/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/ratings_page_actions';
 
-class Rate extends React.Component {
+class Rate extends Component {
   constructor() {
     super();
     this.state = {
       rating: null,
       users: [],
     };
-  }
-
-  componentDidMount = () => {
-    this.props.fetchMoreUsersToRate();
   }
 
   submitUserAttractiveness = () => {
@@ -34,17 +30,18 @@ class Rate extends React.Component {
         rater: this.props.id,
       };
       this.props.submitRating(body);
+      this.setState({
+        rating: null
+      })
     }
-  }
-  
-  componentWillReceiveProps = (nextProps) => {
-    console.log(nextProps)
   }
 
   render() {
     return (
       <div>
       <Navbar />
+      {
+      this.props.userToRate ?
       <div className={style.ratingContainer}>
         <div className={style.profileContainer}>
           <Profile 
@@ -56,12 +53,12 @@ class Rate extends React.Component {
             bio={this.props.userToRate.bio}
           />
           <div className={style.ratingScaleContainer}>
-            <Slider 
+            <Slider
               max={10}
               defaultValue={5}
               step={1}
               onChange={(e, val) => this.setState({ rating: val })}
-            />
+              />
             hotness: {this.state.rating}
           </div>
         </div>
@@ -69,7 +66,9 @@ class Rate extends React.Component {
           onClick={() => this.submitUserAttractiveness()}
           className="next"
         />
-      </div>
+      </div> :
+      "Sorry! No more users to rate at this time!"
+      }
     </div>
     )
   }
@@ -87,6 +86,6 @@ const mapStateToProps = (state) => {
     userToRate: state.ratings[state.ratings.length - 1],
     id: state.accountData.id
   };
-} 
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rate);

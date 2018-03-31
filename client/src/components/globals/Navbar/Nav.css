@@ -1,0 +1,76 @@
+.wrapper {
+  display:grid;
+  grid-template-areas: 
+  "side"
+  "column1"
+  "column2"
+  "logo"
+  "column3"
+  "column4"
+  "avatar";
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7,hover, 1fr);
+}
+
+@media (min-width: 600px) {
+  .wrapper {
+    display:grid;
+    grid-template-areas: 
+    "side column1 column2 logo column3 column4 avatar";
+    grid-template-columns: 80px 1fr 1fr 1fr 1fr 1fr 80px;
+    grid-template-rows: 80px;
+  }
+}
+
+
+.side {
+  grid-area: side;
+}
+.column1 {
+  grid-area: column1;
+}
+.column2 {
+  grid-area: column2;
+}
+
+
+.column3 {
+  grid-area: column3;
+}
+
+.column4 {
+  grid-area: column4;
+}
+.avatar {
+  grid-area: avatar;
+}
+
+.side,
+.column1,
+.column2,
+.logo,
+.column3,
+.column4,
+.avatar {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 80px;
+  font-size: 12px;
+  background-color: rgb(255, 255, 255);
+}
+
+.logo {
+  grid-area: logo;
+  font-size: 50px;
+  color:rgb(4, 185, 95);
+}
+.side:hover,
+.column1:hover,
+.column2:hover,
+.logo:hover,
+.column3:hover,
+.column4:hover,
+.avatar {
+  color: rgb(167, 255, 2);
+}
+
