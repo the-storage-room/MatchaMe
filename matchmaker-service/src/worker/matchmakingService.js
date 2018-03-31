@@ -9,7 +9,7 @@ import { retrieveScore } from '../helpers/tags/';
 
 import { findCoordinatesAndCalculateDistance } from '../helpers/location/';
 
-const matchMakeMe = async () => {
+export const matchaMe = async () => {
   try {
     const allUsers = await fetchAllUsersQuery();
     if (allUsers.length) {
@@ -39,4 +39,4 @@ const matchMakeMe = async () => {
   }
 };
 
-matchMakeMe();
+matchaMe();
