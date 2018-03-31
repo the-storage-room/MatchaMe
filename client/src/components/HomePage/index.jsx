@@ -22,7 +22,6 @@ class HomePage extends Component {
         <header className={style.header}>
           <div className={style.logo}>
             MatchaMe
-            <Avatar />
           </div>  
         </header>
         <div 
