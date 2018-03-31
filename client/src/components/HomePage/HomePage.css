@@ -88,14 +88,6 @@
   background-color: rgba(4, 185, 94, 0.705);
 }
 
-
-.column1:hover .overlay,
-.column2:hover .overlay,
-.column3:hover .overlay {
-  opacity: 1;
-  overflow: visible;
-}
-
 .text {
   color: white;
   font-size: 30px;
@@ -104,4 +96,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.column1:hover .overlay,
+.column2:hover .overlay,
+.column3:hover .overlay {
+  opacity: 1;
 }

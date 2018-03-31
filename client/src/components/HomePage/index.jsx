@@ -33,8 +33,8 @@ class HomePage extends Component {
             className={style.photo}
             src={window.location.origin + '/images/matchame-romance.jpg'}/>
           <div className={style.overlay}>
-            <div className={style.text}>See your Match!</div>
           </div>
+            <div className={style.text}>See Your Match!</div>
         </div>
         <div 
           className={style.column2}
@@ -44,20 +44,20 @@ class HomePage extends Component {
             className={style.photo}
             src={window.location.origin + '/images/matchame-matchmaker.jpg'}/>
           <div className={style.overlay}>
+          </div>
             <div className={style.text}>Matchmaker!</div>
-          </div>
         </div>
-          <div 
-            className={style.column3}
-            onClick={() => this.props.history.push('/rate')}
-            >
-            <img 
-              className={style.photo}
-              src={window.location.origin + '/images/matchame-judge.jpg'}/>
-            <div className={style.overlay}>
-              <div className={style.text}>Rate others!</div>
-            </div>
+        <div 
+          className={style.column3}
+          onClick={() => this.props.history.push('/rate')}
+          >
+          <img 
+            className={style.photo}
+            src={window.location.origin + '/images/matchame-judge.jpg'}/>
+          <div className={style.overlay}>
           </div>
+            <div className={style.text}>Rate Others!</div>
+        </div>
         </div>
         <footer className={style.footer}>
           COPYRIGHT the-storage-room 2018
