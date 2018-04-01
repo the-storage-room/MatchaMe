@@ -1,17 +1,19 @@
 .defaultButton {
-  display: inline-block;
-  background-color: rgb(241, 234, 234);
-  color: rgb(3, 3, 3);
-  font-size: 16px;
-  border: solid rgb(240, 176, 176) 1px;
-  border-radius: 2px;
-  width: auto;
-  padding: 15px 22px;
+  background-color: rgb(188, 209, 197);
+  border: none;
+  color: rgba(0, 0, 0, 0.705);
+  padding: 15px;
   text-align: center;
   text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
   margin: 5px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 80;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 button:focus {
@@ -19,13 +21,7 @@ button:focus {
 }
 
 .defaultButton:hover {
-  background-color: pink;
-  border: solid rgb(3, 3, 3) 1px;
-}
-
-.defaultButton:active {
-  background-color: rgb(157, 252, 255);
-  border: solid rgb(255, 169, 169) 1px;
+  color: rgb(255, 255, 255);
 }
 
 .tag {

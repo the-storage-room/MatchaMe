@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import style from './Rating.css';
 import Navbar from '../globals/Navbar/index.jsx';
 import Button from '../globals/Button/index.jsx';
-import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/ratings_page_actions';
 import Footer from '../globals/Footer/index.jsx';
 import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
@@ -14,13 +13,12 @@ class Rate extends Component {
   constructor() {
     super();
     this.state = {
-      rating: null,
+      rating: 5,
       users: [],
     };
   }
 
   submitUserAttractiveness = () => {
-    
     if (this.state.rating === null) {
       alert('please rate this person')
     } else {
@@ -34,6 +32,12 @@ class Rate extends Component {
         rating: null
       })
     }
+  }
+
+  handleSliderChange = (e) => {
+    this.setState({
+      rating: e.target.value
+    })
   }
 
 
@@ -101,16 +105,28 @@ class Rate extends Component {
                 </div>
               </div>
             <div className={style.biography}>
-              {this.props.userToRate.bio}
+              {`"${this.props.userToRate.bio}"`}
             </div>
           </div>
           <div className={style.slider}>
-          <input 
-            className={style.sliderinput}
-            type="range" 
-            min="0" 
-            max="10">
-            </input>
+            <input 
+              type="range"
+              min="0" 
+              max="10"
+              defaultValue="5"
+              className={style.sliderinput}
+              onChange={this.handleSliderChange}
+              />
+          </div>
+          <div className={style.buttons}>
+            <div className={style.rating}>
+              {this.state.rating}
+            </div>
+            <div className={style.next}>
+              <Button
+                text={"See Next Person!"}
+                />
+            </div>
           </div>
         </div>
         <Footer />
