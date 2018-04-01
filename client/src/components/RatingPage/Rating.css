@@ -197,7 +197,7 @@
 
 }
 
-@media (min-width: 650px) {
+@media (min-width: 600px) {
   .smallerphotosgrid {
     grid-gap: 6px;
   }  
