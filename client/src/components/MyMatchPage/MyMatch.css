@@ -3,13 +3,7 @@
   position: relative;
 }
 
-.mainphoto {
-  grid-area: mainphoto;
-  position: relative;
-  overflow: hidden;
-}
-
-.smallerphotos {
+.smalluser1photos {
   grid-area: smallerphotos;
   position: relative;
 }
@@ -61,22 +55,6 @@
   position: relative;
 }
 
-.slider {
-  grid-area: slider;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.sliderinput {
-  position: absolute;
-  bottom: 20px;
-  width: 75%
-}
-
 .mainimg {
   margin-left: 50%;
   width: 100%;
@@ -93,6 +71,15 @@
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
+.footer {
+  height: 200px;
+  background-color: rgb(233, 233, 233);
+  color:rgb(4, 185, 95);
+  text-align: center;
+  vertical-align: middle;
+  line-height: 200px;
+}
+
 .wrapper {
   display: grid;
   grid-gap: 3px;
@@ -103,7 +90,6 @@
   "mainphoto"
   "smallerphotos"
   "bio"
-  "slider"
   "buttons";
 }
 
@@ -145,21 +131,6 @@
   font-weight: 120;
   margin: 5px;
   min-width: 200px;
-}
-
-.rating {
-  font-size: 30px;
-  position: absolute;
-  top:10px;
-  font-weight: 120;
-  color: rgb(19, 37, 27);
-  z-index: -1;
-}
-
-.sliderinput {
-  position: absolute;
-  bottom: 30px;
-  width: 75%
 }
 
 @media (min-width:450px) {
@@ -261,22 +232,10 @@
     font-weight: 120;
     color: rgb(19, 37, 27);
   }
-
-  .sliderinput {
-    position: absolute;
-    bottom: 50px;
-    width: 75%
-  }
-
 }
 
 @media (min-width: 900px) {
 
-  .sliderinput {
-    position: absolute;
-    bottom: 20px;
-    width: 75%
-  }
 
   .buttons {
     margin: 30px;
@@ -331,36 +290,3 @@
   }
   
 }
-
-
-
-input[type=range]{
-  -webkit-appearance: none;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100px;
-  height: 5px;
-  background: #ddd;
-  border: none;
-  border-radius: 3px;
-}
-
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: rgb(188, 209, 197);
-  margin-top: -4px;
-}
-
-input[type=range]:active::-webkit-slider-thumb {
-  background: rgb(110, 145, 125);
-}
-
-input[type=range]:focus {
-  outline: none;
-}
-

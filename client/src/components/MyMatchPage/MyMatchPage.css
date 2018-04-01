@@ -22,8 +22,16 @@
 
 .noMatch {
   margin: 100px;
+  padding: 100px;
   background-color:whitesmoke;
-  
+  text-align: center;
+}
+
+.noMatchText {
+  padding: 30px;
+  font-size: 30px;
+  font-weight: 70;
+
 }
 
 .pendingContainer {

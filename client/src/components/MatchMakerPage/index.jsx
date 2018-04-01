@@ -15,8 +15,8 @@ class MatchMaker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      starred: 0,
-      showComments: false,
+      user1target: 0,
+      user2target: 0,
     };
   }
 
@@ -50,31 +50,109 @@ class MatchMaker extends Component {
     this.props.fetchCommentsOnMatch(id)
   }
 
+  handlePhotoClick = (photo, user) => {
+    if (user === 1) {
+      this.setState({
+        user1target: photo
+      })
+    } else {
+      this.setState({
+        user2target: photo
+      })
+    }
+  }
+
   
   render() {
     let sortedComments;
-    if (this.props.matchToRate) {
-      const { comments } = this.props.matchToRate;
-      sortedComments = comments.sort((a, b) => {
+    if (this.props.comments) {
+      sortedComments = this.props.comments.sort((a, b) => {
         return b.votes - a.votes 
       })
     }
+
+    console.log(this.props)
     return (
       <div>
-        <Navbar />
-          <div className={style.matchMakerContainer}>
-            <div className={style.decisionContainer}>
+        <div className={style.wrapper}>
+          <div className={style.header}>
+            <Navbar />
+          </div>
+          <div className={style.user1main}>
+            <img 
+              className={style.mainimg}
+              src={this.props.user1.photos[this.state.user1target]}
+              />
+          </div>
+          <div className={style.user2main}>
+            <img 
+              className={style.mainimg}
+              src={this.props.user2.photos[this.state.user2target]}
+              />
+          </div>
+          <div className={style.user1bio}>
+            bio1
+          </div>
+          <div className={style.user2bio}>
+            bio2
+          </div>
+          <div className={style.user1small}>
+            <div className={style.smallerphotosgrid}>
+              <img 
+                className={style.img1}
+                src={this.props.user1.photos[0]}
+                onClick={() => this.handlePhotoClick(0, 1)}
+                />
+              <img 
+                className={style.img2}
+                src={this.props.user1.photos[1]}
+                onClick={() => this.handlePhotoClick(1, 1)}
+                />
+              <img 
+                className={style.img3}
+                src={this.props.user1.photos[2]}
+                onClick={() => this.handlePhotoClick(2, 1)}
+                />
+              <img 
+                className={style.img4}
+                src={this.props.user1.photos[3]}
+                onClick={() => this.handlePhotoClick(3, 1)}
+                />
             </div>
-          <Comments
-            exitComments={() => this.exitComments()}
-            submitComment={this.submitComment}
-            refreshComments={this.refreshComments}
-            comments={sortedComments}
-            voteOnComment={this.voteOnComment}
-            />
+          </div>
+          <div className={style.user2small}>
+          <div className={style.smallerphotosgrid}>
+              <img 
+                className={style.img1}
+                src={this.props.user2.photos[0]}
+                onClick={() => this.handlePhotoClick(0)}
+                />
+              <img 
+                className={style.img2}
+                src={this.props.user2.photos[1]}
+                onClick={() => this.handlePhotoClick(1)}
+                />
+              <img 
+                className={style.img3}
+                src={this.props.user2.photos[2]}
+                onClick={() => this.handlePhotoClick(2)}
+                />
+              <img 
+                className={style.img4}
+                src={this.props.user2.photos[3]}
+                onClick={() => this.handlePhotoClick(3)}
+                />
+            </div>
+          </div>
+          <div className={style.decision}>
+            decision
+          </div>
+          <div className={style.chatroom}>
+            Chatroom
+          </div>
+        </div>
         <Footer/>
       </div>
-    </div>
     );
     
   }
@@ -91,7 +169,10 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = ({ matches }) => {
   return {
-    matchToRate: matches[matches.length - 1],
+    matchid: matches[matches.length - 1] && matches[matches.length - 1].id,
+    user1: matches[matches.length - 1] && matches[matches.length - 1].user1_id,
+    user2: matches[matches.length - 1] && matches[matches.length - 1].user2_id,
+    comments: matches[matches.length - 1] && matches[matches.length - 1].comments,
   }
 }
 

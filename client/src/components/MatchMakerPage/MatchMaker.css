@@ -1,22 +1,39 @@
-header {
+.header {
   grid-area: header;
   position: relative;
 }
 
-.smallerphotos {
-  grid-area: smallerphotos;
+.user1main {
+  grid-area: user1main;
+  position: relative;
+  overflow: hidden;
+  margin-top: 15px
+}
+
+.user1bio {
+  grid-area: user1bio;
   position: relative;
 }
 
-.smallerphotosgrid {
-  display: grid;
-  grid-gap: 3px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 100%;
-  grid-template-areas: 
-  "img1 img2 img3 img4";
+.user2main {
+  grid-area: user2main;
+  position: relative;
+  overflow: hidden;
+  margin: 6px 0 15px 0;
 }
 
+.user2bio {
+  grid-area: user2bio;
+  position: relative;
+}
+.decision {
+  grid-area: decision;
+  position: relative;
+}
+.chatroom {
+  grid-area: chatroom;
+  position: relative;
+}
 .next {
   position: relative;
   display:flex;
@@ -24,73 +41,29 @@ header {
   align-items:center;
 }
 
-.img1 {
-  grid-area: img1;
-  position: relative;
-  overflow: hidden;
-}
-.img2 {
-  grid-area: img2;
-  position: relative;
-  overflow: hidden;
-}
-.img3 {
-  grid-area: img3;
-  position: relative;
-  overflow: hidden;
-}
-.img4 {
-  grid-area: img4;
-  position: relative;
-  overflow: hidden;
-}
-
-.bio {
-  grid-area: bio;
-  position: relative;
-}
-
-.buttons {
-  grid-area: buttons;
-  position: relative;
-}
-
 .mainimg {
+  min-width: 85%;
+  max-width: 130%;
+  min-height: 100%;
   margin-left: 50%;
-  width: 100%;
   transform: translateX(-50%);
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-.img1,
-.img2,
-.img3,
-.img4 {
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-}
-
-.footer {
-  height: 200px;
-  background-color: rgb(233, 233, 233);
-  color:rgb(4, 185, 95);
-  text-align: center;
-  vertical-align: middle;
-  line-height: 200px;
-}
 
 .wrapper {
   display: grid;
   grid-gap: 3px;
-  grid-template-rows: auto 5fr .5fr 2fr 2fr 2fr;
-  height: 100vh;
+  grid-template-rows: auto 2fr 50px 2fr 50px 1fr 100vh;
+  height: 300vh;
   grid-template-areas: 
   "header"
-  "mainphoto"
-  "smallerphotos"
-  "bio"
-  "buttons";
+  "user1main"
+  "user1bio"
+  "user2main"
+  "user2bio"
+  "decision"
+  "chatroom";
 }
 
 .tags {
@@ -107,10 +80,6 @@ header {
   background-color: rgb(188, 209, 197);
   border-radius: 2px;
   font-size: 10px;
-}
-
-.smallerphotos {
-  margin: 0px;
 }
 
 .name {
@@ -133,66 +102,88 @@ header {
   min-width: 200px;
 }
 
-@media (min-width:450px) {
+@media (min-width:600px) {
+  
+  .smallerphotosgrid {
+    display: grid;
+    grid-gap: 3px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 100%;
+    height: 100%;
+    grid-template-areas: 
+    "img1"
+    "img2"
+    "img3"
+    "img4";
+  }
+
+  .img1,
+  .img2,
+  .img3,
+  .img4 {
+    width: 100%;
+    height: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  }
+  
+  .img1 {
+    grid-area: img1;
+    position: relative;
+    overflow: hidden;
+  }
+  .img2 {
+    grid-area: img2;
+    position: relative;
+    overflow: hidden;
+  }
+  .img3 {
+    grid-area: img3;
+    position: relative;
+    overflow: hidden;
+  }
+  .img4 {
+    grid-area: img4;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+
+  .user1small {
+    grid-area: user1small;
+    position: relative;
+    margin: 15px 0 0 15px;
+    overflow: hidden;
+  }
+
+  .user2small {
+    overflow: hidden;
+    grid-area: user2small;
+    position: relative;
+    margin: 6px 0 15px 15px;
+  }
 
   .rating {
     font-size: 20px;
   }
 
-  .mainimg {
-    min-height: 100%;
-    width: auto;
-  }
   .wrapper {
     display: grid;
     grid-gap: 3px;
-    grid-template-rows: 60px 370px 1fr 2fr 2fr;
-    grid-template-columns: 1fr 1fr;
-    height: 100vh;
+    grid-template-rows: auto 370px 1fr 1fr 1fr 3fr;
+    grid-template-columns: 50vw 50vw;
+    height: 150vh;
     grid-template-areas: 
     "header header"
-    "mainphoto mainphoto"
-    "smallerphotos smallerphotos"
-    "bio slider"
-    "bio buttons";
+    "user1main user2main"
+    "user1small user2small"
+    "user1bio user2bio"
+    "decision decision"
+    "chatroom chatroom";
   }
 
-}
-
-@media (min-width: 600px) {
-  .smallerphotosgrid {
-    grid-gap: 6px;
-  }  
-
-  .wrapper {
-    grid-template-rows: auto 2fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    height: 100vh;
-    grid-template-areas: 
-    "header header"
-    "mainphoto bio"
-    "mainphoto slider"
-    "smallerphotos buttons"
-  }
-
-  .smallerphotos {
-    margin: 0px 5px 40px 20px;
-  }
-
-  .mainimg {
-    min-width: 100%;
-    height: 100%;
-    width: auto;
-  }
-
-  .smallerphotos {
-    margin: 0px 5px 40px 20px;
-  }
-  
-  .mainphoto {
-    margin: 20px 5px 4px 20px; 
-  }
-  
   .bio {
     margin: 20px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.089);
@@ -235,20 +226,27 @@ header {
 }
 
 @media (min-width: 900px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 3px;
+    grid-template-rows: auto 2fr 1fr 3fr;
+    grid-template-columns: 1fr 3fr 2fr 4fr;
+    height: 100vh;
+    grid-template-areas: 
+    "header header header header"
+    "user1small user1main user1bio decision"
+    "user1small user1main user1bio chatroom"
+    "user2small user2main user2bio chatroom"
+  }
 
 
-  .buttons {
+  .decision {
     margin: 30px;
   }
+  
+  .mainimg {
+  }
 
-  .smallerphotos {
-    margin: 0px 5px 40px 20px;
-  }
-  
-  .mainphoto {
-    margin: 20px 5px 4px 20px; 
-  }
-  
   .bio {
     margin: 20px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.089);

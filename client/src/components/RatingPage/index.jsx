@@ -20,6 +20,7 @@ class Rate extends Component {
       img2: 2,
       img3: 3,
       img4: 4,
+      img5: 5,
       trigger: false,
       selected: false,
     };

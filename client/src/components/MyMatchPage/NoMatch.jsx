@@ -7,7 +7,9 @@ import Button from '../globals/Button/index.jsx';
 const NoMatch = ({ checkForNewMatch }) => {
   return (
     <div className={style.noMatch}>
-      You have no match!
+      <div className={style.noMatchText}>
+        You have no match!
+      </div>
       <Button 
         text={"Refresh"}
         onClick={() => checkForNewMatch()}
