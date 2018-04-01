@@ -22,13 +22,18 @@ class Rate extends Component {
       img2: 2,
       img3: 3,
       img4: 4,
+      trigger: false,
+      selected: false,
     };
   }
 
   componentWillReceiveProps = () => {
-    this.setState({
-      rating: `${this.props.onDeck} is a...`
-    })
+    if (this.state.trigger) {
+      this.setState({
+        rating: `${this.props.onDeck} is a...`,
+        trigger: false,
+      })
+    }
   }
 
   componentDidMount = () => {
@@ -47,7 +52,7 @@ class Rate extends Component {
 
 
   submitUserAttractiveness = () => {
-    if (this.state.rating === null) {
+    if (!this.state.selected) {
       alert('please rate this person')
     } else {
       const body = {
@@ -57,11 +62,16 @@ class Rate extends Component {
       };
       this.props.submitRating(body);
     }
+    this.setState({
+      trigger: true,
+      selected: false,
+    })
   }
 
   handleSliderChange = (e) => {
     this.setState({
-      rating: ` ${e.target.value}`
+      rating: ` ${e.target.value}`,
+      selected: true,
     })
   }
 
