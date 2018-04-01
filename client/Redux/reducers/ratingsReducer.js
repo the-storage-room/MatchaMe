@@ -20,14 +20,12 @@ let testState = {
   id: 73,
   lastname: "Costanza",
   location:90051,
-  photos: [
-    "http://www.themost10.com/wp-content/uploads/2012/05/George-Costanza-8.jpg",
-    "http://www.themost10.com/wp-content/uploads/2012/05/George-Costanza-7.jpg",
-    "http://www.themost10.com/wp-content/uploads/2012/05/George-Costanza-6.jpg",
-    "http://www.themost10.com/wp-content/uploads/2012/05/George-Costanza-4.jpg",
-    "http://www.themost10.com/wp-content/uploads/2012/05/George-Costanza-3.jpg",
-    "http://www.themost10.com/wp-content/uploads/2012/05/George-Costanza-2.jpg",
-  ],
+  photos:[
+  "https://i.ytimg.com/vi/RAVsU1Y_OMs/maxresdefault.jpg",
+  "https://parade.com/wp-content/uploads/2017/12/Seinfeld-George-Costanza-FTR.jpg",
+  "http://costanzastyle.weebly.com/uploads/2/6/6/0/26604544/5600718_orig.png",
+  "https://fashionista.com/.image/t_share/MTE5NTU2MzIyNTU2MDg1Nzcx/george-fur-hatjpg.jpg"
+],
   tags: [
     "Awkward Turtle",
     "Ambitious",

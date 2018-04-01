@@ -64,6 +64,9 @@ class MatchMaker extends Component {
 
   
   render() {
+    let user1Age = turnBirthdayIntoAge(this.props.user1.age)
+    let user2Age = turnBirthdayIntoAge(this.props.user2.age)
+
     let sortedComments;
     if (this.props.comments) {
       sortedComments = this.props.comments.sort((a, b) => {
@@ -91,11 +94,49 @@ class MatchMaker extends Component {
               />
           </div>
           <div className={style.user1bio}>
-            bio1
+            <div className={style.name}>
+              {this.props.user1.firstname} {this.props.user1.lastname[0]}.
+            </div>
+            <div className={style.age}>
+            {user1Age} years old
+            </div>
+              <div className={style.tags}>
+                <div className={style.tag}>
+                {this.props.user1.tags[0]}
+                </div>
+                <div className={style.tag}>
+                {this.props.user1.tags[1]}
+                </div>
+                <div className={style.tag}>
+                {this.props.user1.tags[2]}
+                </div>
+              </div>
+            <div className={style.biography}>
+              {`"${this.props.user1.bio}"`}
+            </div>
           </div>
           <div className={style.user2bio}>
-            bio2
-          </div>
+            <div className={style.name}>
+                {this.props.user2.firstname} {this.props.user2.lastname[0]}.
+              </div>
+              <div className={style.age}>
+              {user2Age} years old
+              </div>
+                <div className={style.tags}>
+                  <div className={style.tag}>
+                  {this.props.user2.tags[0]}
+                  </div>
+                  <div className={style.tag}>
+                  {this.props.user2.tags[1]}
+                  </div>
+                  <div className={style.tag}>
+                  {this.props.user2.tags[2]}
+                  </div>
+                </div>
+              <div className={style.biography}>
+                {`"${this.props.user2.bio}"`}
+              </div>
+            </div>
           <div className={style.user1small}>
             <div className={style.smallerphotosgrid}>
               <img 
