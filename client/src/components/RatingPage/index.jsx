@@ -9,14 +9,42 @@ import actions from '../../../Redux/actions/ratings_page_actions';
 import Footer from '../globals/Footer/index.jsx';
 import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
 
+const Omega = '\u03A9';
+
 class Rate extends Component {
   constructor() {
     super();
     this.state = {
-      rating: 5,
+      rating: '',
       users: [],
+      target: 0,
+      img1: 1,
+      img2: 2,
+      img3: 3,
+      img4: 4,
     };
   }
+
+  componentWillReceiveProps = () => {
+    this.setState({
+      rating: `${this.props.onDeck} is a...`
+    })
+  }
+
+  componentDidMount = () => {
+    this.setState({
+      rating: `${this.props.userToRate.firstname} is a...`
+    })
+  }
+
+  handlePhotoClick = (imgState) => {
+      let tempTarget = this.state.target;
+      const newState = {target: this.state[imgState]};
+      newState[imgState] = tempTarget;
+      this.setState(newState)
+  }
+
+
 
   submitUserAttractiveness = () => {
     if (this.state.rating === null) {
@@ -28,27 +56,14 @@ class Rate extends Component {
         rater: this.props.id,
       };
       this.props.submitRating(body);
-      this.setState({
-        rating: null
-      })
     }
   }
 
   handleSliderChange = (e) => {
     this.setState({
-      rating: e.target.value
+      rating: ` ${e.target.value}`
     })
   }
-
-
-  // <Profile 
-  //   url={this.props.userToRate.photos[0]}
-  //   firstname={this.props.userToRate.firstname}
-  //   lastname={this.props.userToRate.lastname}
-  //   age={this.props.userToRate.age}
-  //   tags={this.props.userToRate.tags}
-  //   bio={this.props.userToRate.bio}
-  // />
 
   render() {
     let realAge = turnBirthdayIntoAge(this.props.userToRate.age)
@@ -61,7 +76,7 @@ class Rate extends Component {
           <div className={style.mainphoto}>
             <img 
               className={style.mainimg}
-              src={this.props.userToRate.photos[0]}
+              src={this.props.userToRate.photos[this.state.target]}
               />
           </div>
           <div>
@@ -70,19 +85,23 @@ class Rate extends Component {
             <div className={style.smallerphotosgrid}>
               <img 
                 className={style.img1}
-                src={this.props.userToRate.photos[2]}
+                src={this.props.userToRate.photos[this.state.img1]}
+                onClick={() => this.handlePhotoClick('img1')}
                 />
               <img 
                 className={style.img2}
-                src={this.props.userToRate.photos[3]}
+                src={this.props.userToRate.photos[this.state.img2]}
+                onClick={() => this.handlePhotoClick('img2')}
                 />
               <img 
                 className={style.img3}
-                src={this.props.userToRate.photos[4]}
+                src={this.props.userToRate.photos[this.state.img3]}
+                onClick={() => this.handlePhotoClick('img3')}
                 />
               <img 
                 className={style.img4}
-                src={this.props.userToRate.photos[1]}
+                src={this.props.userToRate.photos[this.state.img4]}
+                onClick={() => this.handlePhotoClick('img4')}
                 />
             </div>
           </div>
@@ -117,14 +136,15 @@ class Rate extends Component {
               className={style.sliderinput}
               onChange={this.handleSliderChange}
               />
+            <div className={style.rating}>
+            {this.state.rating}
+            </div>
           </div>
           <div className={style.buttons}>
-            <div className={style.rating}>
-              {this.state.rating}
-            </div>
             <div className={style.next}>
               <Button
-                text={"See Next Person!"}
+                text={`Rate ${this.props.userToRate.firstname} to See Next Person!`}
+                onClick={this.submitUserAttractiveness}
                 />
             </div>
           </div>
@@ -145,6 +165,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     userToRate: state.ratings[state.ratings.length - 1],
+    onDeck: state.ratings[state.ratings.length - 2] && state.ratings[state.ratings.length - 2].firstname,
     id: state.accountData.id
   };
 }
