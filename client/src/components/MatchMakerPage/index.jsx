@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import style from './MatchMakerPage.css';
+import style from './MatchMaker.css';
 import Comments from './Comments.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
 import Button from '../globals/Button/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/matchmaker_page_actions';
+import Footer from '../globals/Footer/index.jsx';
+import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
 
 class MatchMaker extends Component {
   constructor(props) {
@@ -60,56 +62,19 @@ class MatchMaker extends Component {
     return (
       <div>
         <Navbar />
-        {
-          this.props.matchToRate ?
           <div className={style.matchMakerContainer}>
             <div className={style.decisionContainer}>
-              <Profile 
-                url={this.props.matchToRate.user1_id.photos[0].url}
-                firstname={this.props.matchToRate.user1_id.firstname}
-                lastname={this.props.matchToRate.user1_id.lastname}
-                age={this.props.matchToRate.user1_id.age}user2
-                bio={this.props.matchToRate.user1_id.bio}
-                />
-              <div className={style.approvalContainer}>
-                <Button 
-                  text={'Yes'}
-                  onClick={()=>this.decideOnMatch('approved')}
-                  />
-                <Button 
-                  text={'No'} 
-                  onClick={()=>this.decideOnMatch('rejected')}
-                  />
-              </div>
-              <Profile 
-                url={this.props.matchToRate.user2_id.photos[0].url}
-                firstname={this.props.matchToRate.user2_id.firstname}
-                lastname={this.props.matchToRate.user2_id.lastname}
-                age={this.props.matchToRate.user2_id.age}
-                bio={this.props.matchToRate.user2_id.bio}
-                />
             </div>
-            {
-              this.state.showComments
-            ?
-              <Comments
-                exitComments={() => this.exitComments()}
-                submitComment={this.submitComment}
-                refreshComments={this.refreshComments}
-                comments={sortedComments}
-                voteOnComment={this.voteOnComment}
-                />
-            :
-              <div
-                className={style.commentsContainer}
-                onClick={() => this.setState({showComments: true})}
-                >View Comments
-              </div>
-            }
-          </div>
-          : "Sorry! No more matches to vote on!"
-        }
+          <Comments
+            exitComments={() => this.exitComments()}
+            submitComment={this.submitComment}
+            refreshComments={this.refreshComments}
+            comments={sortedComments}
+            voteOnComment={this.voteOnComment}
+            />
+        <Footer/>
       </div>
+    </div>
     );
     
   }

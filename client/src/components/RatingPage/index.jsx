@@ -9,8 +9,6 @@ import actions from '../../../Redux/actions/ratings_page_actions';
 import Footer from '../globals/Footer/index.jsx';
 import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
 
-const Omega = '\u03A9';
-
 class Rate extends Component {
   constructor() {
     super();
