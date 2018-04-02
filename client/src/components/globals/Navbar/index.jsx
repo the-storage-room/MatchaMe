@@ -31,7 +31,7 @@ class Navbar extends React.Component {
 					<div className={style.column3} onClick={() => this.props.history.push('/mymatch')}>
 						My Match
 					</div>
-					<div className={style.column4} onClick={() => this.props.history.push('/leaderboard')}>
+					<div className={style.column4} onClick={() => this.props.history.push('/dashboard')}>
 						Dashboard
 					</div>
 					<div
