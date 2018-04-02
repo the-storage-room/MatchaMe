@@ -1,3 +1,17 @@
+.column {
+	font-weight: lighter;
+	text-align: center;
+}
+
+.photo {
+	margin: 25px;
+	padding: 5px 5px 5px 5px;
+	border-style: solid;
+	border-radius: 50%;
+	width: 325px;
+	height: 325px;
+}
+
 .leaderboardContainer {
 	display: grid;
 	min-height: 500px;
@@ -77,13 +91,4 @@
 
 .powerranking {
 	padding-top: 5px;
-}
-
-.photo {
-	margin: 25px;
-	padding: 5px 5px 5px 5px;
-	border-style: solid;
-	border-radius: 50%;
-	width: 325px;
-	height: 325px;
 }
