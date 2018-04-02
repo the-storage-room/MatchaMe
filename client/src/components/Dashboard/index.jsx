@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import style from './Dashboard.css';
+import Button from '../globals/Button/index.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
 import LeaderboardItem from './LeaderboardItem.jsx';
 
@@ -26,25 +27,28 @@ class Dashboard extends Component {
 				<Navbar />
 				<div className={style.wrapper}>
 					<div className={style.column}>
+						<div className={style.welcome}>Welcome back, user</div>
 						<img className={style.photo} src={this.props.photos[0].url} />
-						<div className={style.userinfo}>Info here</div>
+						<div className={style.info}>
+							<div className={style.userranking}>Power Ranking Score</div>
+							<div className={style.countdown}>You have X more points to rank up</div>
+							<div className={style.bar}>Bar here</div>
+						</div>
 					</div>
 					<div className={style.column}>
 						<div className={style.choice}>
-							<button
+							<Button
 								onClick={() => {
 									this.setState({ show: false });
 								}}
-							>
-								Follows
-							</button>
-							<button
+								text="Follow"
+							/>
+							<Button
 								onClick={() => {
 									this.setState({ show: true });
 								}}
-							>
-								Leaderboard
-							</button>
+								text="Leaderboard"
+							/>
 						</div>
 						{this.state.show ? (
 							<div className={style.leaderboardContainer}>
@@ -64,26 +68,6 @@ class Dashboard extends Component {
 							<div className={style.follows}>Follows</div>
 						)}
 					</div>
-
-					{/* <div className={style.column}>
-					<h1 className={style.welcome}>Welcome back {this.props.firstname}!</h1>
-					<img className={style.photo} src={this.props.photos[0].url} />
-				</div>
-				<div className={style.column}>
-					<div>
-						<div className={style.rank}>You are...</div>
-						<div>
-							<img
-								className={style.rankPhoto}
-								src="https://ravishly-9ac9.kxcdn.com/cdn/farfuture/RNwjBX_Bk9SPEIwwCW2JPhjhBapVt4kU-CSyg2z1GA4/mtime:1432435666/sites/default/files/field/image/matchmaking.jpg"
-							/>
-							<div className={style.stats}>Total Points: 103</div>
-						</div>
-					</div>
-				</div>
-				<div className={style.column}>
-					<div className={style.stats}>You need X pts to rank up!</div>
-				</div> */}
 				</div>
 			</div>
 		);
