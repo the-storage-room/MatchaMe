@@ -45,14 +45,21 @@ class MatchMaker extends Component {
   }
 
 
-  handlePhotoClick = (photo, user) => {
+  handlePhotoClick = (user) => {
     if (user === 1) {
+      let newPhoto = this.state.user1target;
+      newPhoto += 1;
+      if (newPhoto === this.props.user1.photos.length) { newPhoto = 0 }
       this.setState({
-        user1target: photo
+        user1target: newPhoto
       })
-    } else {
+    }
+     else {
+      let newPhoto = this.state.user2target;
+      newPhoto += 1;
+      if (newPhoto === this.props.user2.photos.length) { console.log('hi'); newPhoto = 0 }
       this.setState({
-        user2target: photo
+        user2target: newPhoto
       })
     }
   }
@@ -66,12 +73,12 @@ class MatchMaker extends Component {
     let user1Age = this.props.user1 && turnBirthdayIntoAge(this.props.user1.age)
     let user2Age = this.props.user2 && turnBirthdayIntoAge(this.props.user2.age)
 
-    // let sortedComments;
-    // if (this.props.comments) {
-    //   sortedComments = this.props.comments.sort((a, b) => {
-    //     return b.votes - a.votes 
-    //   })
-    // }
+    let sortedComments;
+    if (this.props.comments) {
+      sortedComments = this.props.comments.sort((a, b) => {
+        return b.votes - a.votes 
+      })
+    }
     if (this.props.matchid) {
       return (
         <div>
@@ -83,12 +90,14 @@ class MatchMaker extends Component {
               <img 
                 className={style.mainimg}
                 src={this.props.user1.photos[this.state.user1target]}
+                onClick={() => this.handlePhotoClick(1)}
                 />
             </div>
             <div className={style.user2main}>
               <img 
                 className={style.mainimg}
                 src={this.props.user2.photos[this.state.user2target]}
+                onClick={() => this.handlePhotoClick()}
                 />
             </div>
             <div className={style.user1bio}>
@@ -135,70 +144,6 @@ class MatchMaker extends Component {
                   {`"${this.props.user2.bio}"`}
                 </div>
               </div>
-            <div className={style.user1small}>
-              <div className={style.smallerphotosgrid}>
-                <div className={style.img1}>
-                  <img 
-                    className={style.img1photo}
-                    src={this.props.user1.photos[0]}
-                    onClick={() => this.handlePhotoClick(0, 1)}
-                    />
-                </div>
-                <div className={style.img2}>
-                  <img 
-                    className={style.img2photo}
-                    src={this.props.user1.photos[1]}
-                    onClick={() => this.handlePhotoClick(1, 1)}
-                    />
-                </div>
-                <div className={style.img3}>
-                  <img 
-                    className={style.img3photo}
-                  src={this.props.user1.photos[2]}
-                  onClick={() => this.handlePhotoClick(2, 1)}
-                  />
-                </div>
-                <div className={style.img4}>
-                  <img 
-                    className={style.img4photo}
-                    src={this.props.user1.photos[3]}
-                    onClick={() => this.handlePhotoClick(3, 1)}
-                    />
-                </div>
-              </div>
-            </div>
-            <div className={style.user2small}>
-              <div className={style.smallerphotosgrid}>
-                <div className={style.img1}>
-                  <img 
-                    className={style.img1photo}
-                    src={this.props.user2.photos[0]}
-                    onClick={() => this.handlePhotoClick(0)}
-                    />
-                </div>
-                <div className={style.img2}>
-                  <img 
-                    className={style.img2photo}
-                    src={this.props.user2.photos[1]}
-                    onClick={() => this.handlePhotoClick(1)}
-                    />
-                </div>
-                <div className={style.img3}>
-                  <img 
-                    className={style.img3photo}
-                  src={this.props.user2.photos[2]}
-                  onClick={() => this.handlePhotoClick(2)}
-                  />
-                </div>
-                <div className={style.img4}>
-                  <img 
-                    className={style.img4photo}
-                    src={this.props.user2.photos[3]}
-                    onClick={() => this.handlePhotoClick(3)}
-                    />
-                </div>
-              </div>
-            </div>
             <div className={style.decision}>
               {`${this.props.user1.firstname} and ${this.props.user2.firstname} are a...`}
               <div className={style.decidebuttons}>
@@ -216,7 +161,7 @@ class MatchMaker extends Component {
             <div className={style.chatroom}>
               <Comments
                 submitComment={this.submitComment}
-                comments={this.props.comments}
+                comments={sortedComments}
                 voteOnComment={this.voteOnComment}
                 />
             </div>
