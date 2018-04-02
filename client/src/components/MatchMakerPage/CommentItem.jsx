@@ -30,7 +30,7 @@ class CommentItem extends Component {
     } = this.state;
     return (
       <div className={style.commentItem}>
-        <div>
+        <div className={style.voteDiv}>
           {
             voteButtonState === 'neutral' &&
               <div className={style.voteholder}>

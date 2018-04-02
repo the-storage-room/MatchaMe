@@ -46,16 +46,26 @@ class Comments extends Component {
     const { comments, exitComments, voteOnComment } = this.props;
     return (
       <div className={style.comments}>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            id="chatTextarea"
-            autoComplete="off"
-            placeholder="test"
-            className={style.textbox}
-            onChange={this.handleTextareaChange}
+        <div className={style.submit}>
+          
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              id="chatTextarea"
+              autoComplete="off"
+              placeholder="Say something..."
+              className={style.textbox}
+              onChange={this.handleTextareaChange}
+              />
+          </form>
+          <div className={style.small}>
+          <Button
+            text={"Enter"}
+            className={"small"}
+            onClick={() => this.submitComment()}
             />
-        </form>
+          </div>
+        </div>
         <div className={style.commentsFeed}>
           { comments.length ? 
             comments.map((comment, index) => {
@@ -75,10 +85,6 @@ class Comments extends Component {
             : "no comments yet..."
           }
         </div>
-        <Button
-          text={"Enter"}
-          onClick={() => this.submitComment()}
-          />
       </div>
     );
   }

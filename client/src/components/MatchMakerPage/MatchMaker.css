@@ -7,44 +7,50 @@
   grid-area: user1main;
   position: relative;
   overflow: hidden;
-  margin-top: 15px
+  margin: 30px 15px 0 0;
 }
 
 .user1bio {
   grid-area: user1bio;
   position: relative;
-  margin-top: 15px
+  margin-top: 30px;
+  height: auto;
+}
+
+.small{
+  padding-top: 8px;
 }
 
 .user2main {
   grid-area: user2main;
   position: relative;
   overflow: hidden;
-  margin: 6px 0 15px 0;
+  margin: 6px 15px 30px 0;
 }
 
 .user2bio {
   grid-area: user2bio;
   position: relative;
-  margin: 6px 0 15px 0;
+  margin: 6px 0 30px 0;
 }
+
 .decision {
   grid-area: decision;
   width: auto;
   height: 100%;
   font-size: 50px;
   color: rgb(19, 37, 27);
-  padding: 15px;
+  padding: 30px 15px 0px 6px;
   font-weight: 300;
 }
 .chatroom {
   grid-area: chatroom;
   position: relative;
-  margin: 0 30px 30px 0;
   overflow-y: scroll;
+  margin: 0 30px 30px 0;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-
 }
+
 .next {
   position: relative;
   display:flex;
@@ -60,6 +66,12 @@
   transform: translateX(-50%);
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
+
+.submit {
+  position: inline-block;
+  padding: 15px 0 0 5px;;
+}
+
 
 
 .wrapper {
@@ -119,34 +131,38 @@
   width: 100%;
   background-color:rgba(248, 244, 244, 0.404);
 }
+
 .textbox {
-  background-color:rgba(245, 245, 245, 0.877);
-  margin: 20px;
-  float: right;  
+  width: 90%;
+  height: 100%;
+  padding: 20px;
+  border: none;
+  float: left;  
+  background-color:rgba(248, 244, 244, 0.404);
   resize: none;
+  font-weight: 80;
+  font-size: 17px;
 }
 
 .textbox:focus {
   outline:0;
 }
 
-.textbox {
-  font-size: 20px;
-}
 
 .commentsFeed {
-  border-radius: 2px;
-  margin: 20px;
-  width:90%;
+  height: 42px;
+  line-height: 42px;
+  width:100%;
+  height: 100%;
   overflow-y: scroll;
 }
 
 .commentItem {
+  border-bottom: solid 1px rgba(107, 107, 107, 0.075);
   display: inline-block;
   width: 100%;
   font-size: 15px;
   font-weight: 80;
-  margin: 5px 0;
   min-width: 90%
 }
 
@@ -171,11 +187,18 @@
   padding: 10px;
   color: red;
 }
+.voteDiv {
+  position: relative;
+}
 
 .commentBox {
-  position: relative;
-  width: auto;
-  padding: 18px 0 0 45px;
+  padding: 10px;
+  max-width: 80%;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  text-align: left;
 }
 
 .voteholder {
@@ -245,7 +268,7 @@
   .user1small {
     grid-area: user1small;
     position: relative;
-    margin: 15px 0 0 15px;
+    margin: 30px 0 0 30px;
     overflow: hidden;
   }
 
@@ -253,7 +276,7 @@
     overflow: hidden;
     grid-area: user2small;
     position: relative;
-    margin: 6px 0 15px 15px;
+    margin: 6px 0 30px 30px;
   }
 
   .rating {
@@ -311,7 +334,7 @@
   .wrapper {
     display: grid;
     grid-gap: 3px;
-    grid-template-rows: auto 2fr 1fr 3fr;
+    grid-template-rows: auto 4fr 1fr 5fr;
     grid-template-columns: 1fr 4fr 2fr 4fr;
     height: 100vh;
     grid-template-areas: 

@@ -1,3 +1,7 @@
+button:focus {
+  outline:0;
+}
+
 .defaultButton {
   background-color: rgb(188, 209, 197);
   border: none;
@@ -16,11 +20,28 @@
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-button:focus {
-  outline:0;
+.small {
+  background-color: rgb(188, 209, 197);
+  border: none;
+  color: rgba(0, 0, 0, 0.705);
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin: 5px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 80;
 }
 
 .defaultButton:hover {
+  color: rgb(255, 255, 255);
+}
+
+.small:hover {
   color: rgb(255, 255, 255);
 }
 
@@ -205,7 +226,7 @@ button:focus {
   top: -20px;
   right: 10px;
   color: rgba(136, 136, 136, 0.356);
-  margin: 4px 4px 2px 4px;
+  margin: 1px;
   padding:  4px 4px 2px 4px;
   box-shadow: none;
   background: none;
@@ -220,7 +241,7 @@ button:focus {
   float: right;
   top: -20px;
   right: 10px;
-  margin: 4px 4px 2px 4px;
+  margin: 1px;
   padding:  4px 4px 2px 4px;
 }
 
@@ -232,6 +253,13 @@ button:focus {
   content: "\25b2"
 }
 
+.upvote:hover {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.upvote:active {
+  background-color: whitesmoke;
+}
 
 .upvote:hover:before {
   color: rgba(44, 184, 74, 0.356);
@@ -244,7 +272,7 @@ button:focus {
   top: -20px;
   right: 10px;
   color: rgba(136, 136, 136, 0.356);
-  margin: 4px 4px 2px 4px;
+  margin: 1px;
   padding:  4px 4px 2px 4px;
   box-shadow: none;
 }
@@ -253,14 +281,12 @@ button:focus {
 .downvoteSelected {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   background-color: transparent;
-
   color: rgba(255, 0, 0, 0.342);
   border: none;
   float: right;
   top: -20px;
   right: 10px;
- 
-  margin: 4px 4px 2px 4px;
+  margin: 1px;
   padding:  4px 4px 2px 4px;
 }
 
@@ -268,8 +294,16 @@ button:focus {
   content: "\25bc"
 }
 
+.downvote:active {
+  background-color: whitesmoke;
+}
+
 .downvoteSelected:before {
   content: "\25bc"
+}
+
+.downvote:hover {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .downvote:hover:before {

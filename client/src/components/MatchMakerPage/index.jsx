@@ -66,12 +66,12 @@ class MatchMaker extends Component {
     let user1Age = this.props.user1 && turnBirthdayIntoAge(this.props.user1.age)
     let user2Age = this.props.user2 && turnBirthdayIntoAge(this.props.user2.age)
 
-    let sortedComments;
-    if (this.props.comments) {
-      sortedComments = this.props.comments.sort((a, b) => {
-        return b.votes - a.votes 
-      })
-    }
+    // let sortedComments;
+    // if (this.props.comments) {
+    //   sortedComments = this.props.comments.sort((a, b) => {
+    //     return b.votes - a.votes 
+    //   })
+    // }
 
     console.log(this.props)
     return (
@@ -217,7 +217,7 @@ class MatchMaker extends Component {
           <div className={style.chatroom}>
             <Comments
               submitComment={this.submitComment}
-              comments={sortedComments}
+              comments={this.props.comments}
               voteOnComment={this.voteOnComment}
               />
           </div>
