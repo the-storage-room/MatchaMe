@@ -39,3 +39,14 @@ export const inactivateMatchMakingHelper = () => {
   RETURNING *;
   `;
 };
+
+export const fetchSingleUsersTagsForMatchmakingHelper = (id) => {
+  return `
+    SELECT tag
+    FROM TAGS
+    INNER JOIN USERS_TAGS on TAGS.id=USERS_TAGS.tagid
+    INNER JOIN USERS on USERS_TAGS.userid=USERS.id
+    WHERE users.id=${id}
+    and type='0'
+  `;
+};

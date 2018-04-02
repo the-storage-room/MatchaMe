@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import turnBirthdayIntoAge from '../../src/utils/turnBirthdayIntoAge';
+
 const { REST_SERVER_URL } = process.env;
 const { REDIS_SERVER_URL } = process.env;
 
@@ -12,8 +14,7 @@ export default {
           .get(`${REST_SERVER_URL}/api/initialize/${id}`)
         const redisData = await axios
           .get(`${REDIS_SERVER_URL}/redis/leaderboard/fetchLeaderboardAndRank/${id}`)
-
-          console.log(redisData.data)
+        data.bioData.realage = turnBirthdayIntoAge(data.bioData.age)
         dispatch({
           type: 'USER_ACCOUNT_DATA_RECIEVED',
           payload: data.accountData || null

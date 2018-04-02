@@ -6,7 +6,7 @@
 .mainphoto {
   grid-area: mainphoto;
   position: relative;
-  margin-left: 3px;
+  overflow: hidden;
 }
 
 .smallerphotos {
@@ -14,8 +14,54 @@
   position: relative;
 }
 
+.biography{
+  font-size: 10px;
+}
+
+.smallerphotosgrid {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100%;
+  grid-template-areas: 
+  "img1 img2 img3 img4";
+}
+
+.next {
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.img1 {
+  grid-area: img1;
+  position: relative;
+  overflow: hidden;
+}
+.img2 {
+  grid-area: img2;
+  position: relative;
+  overflow: hidden;
+}
+.img3 {
+  grid-area: img3;
+  position: relative;
+  overflow: hidden;
+}
+.img4 {
+  grid-area: img4;
+  position: relative;
+  overflow: hidden;
+}
+
 .bio {
   grid-area: bio;
+  position: relative;
+}
+
+.buttons {
+  grid-area: buttons;
   position: relative;
 }
 
@@ -24,52 +70,161 @@
   width: 100%;
   height: 100%;
   position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.sliderinput {
+  position: absolute;
+  bottom: 20px;
+  width: 75%
 }
 
 .mainimg {
+  margin-left: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+  max-width: 120%;
+  max-height: 100%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  min-width: 100%;
   height: 100%;
-  width: 100%;
+  width: auto;
 }
 
-.img5,
+.img1,
 .img2,
 .img3,
 .img4 {
-  max-width: 22%;
-  max-height: 100%;
-  margin: 0 1.5px 1.5px 1.5px;
-}
-
-/* .mainphoto,
-.smallerphotos,
-.bio,
-.slider, {
-} */
-
-.footer {
-  height: 200px;
-  background-color: rgb(233, 233, 233);
-  color:rgb(4, 185, 95);
-  text-align: center;
-  vertical-align: middle;
-  line-height: 200px;
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .wrapper {
   display: grid;
   grid-gap: 3px;
-  grid-template-rows: auto 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 10fr .5fr 2fr 4fr 2fr;
   height: 100vh;
   grid-template-areas: 
   "header"
   "mainphoto"
   "smallerphotos"
   "bio"
-  "slider";
+  "slider"
+  "buttons";
+}
+
+.tags {
+  display: inline-block;
+}
+
+.tag {
+  font-size: 13px;
+  font-weight: 80;
+  margin: 5px;
+  padding: 5px;
+  width: auto;
+  float: left;
+  background-color: rgb(188, 209, 197);
+  border-radius: 2px;
+  font-size: 10px;
+}
+
+.smallerphotos {
+  margin: 0px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 90;
+  margin: 5px;
+}
+
+.age {
+  font-size: 13px;
+  font-weight: 80;
+  margin-left:5px;
 }
 
 
+.biography {
+  font-size: 10px;
+  font-weight: 120;
+  margin: 5px;
+  min-width: 200px;
+}
+
+.rating {
+  font-size: 30px;
+  position: absolute;
+  top:10px;
+  font-weight: 120;
+  color: rgb(19, 37, 27);
+  z-index: -1;
+}
+
+.sliderinput {
+  position: absolute;
+  bottom: 30px;
+  width: 75%
+}
+
+.nomatchwrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  grid-template-areas: 
+  "header"
+  "nomatch";
+  text-align: center;
+}
+
+.noMatch {
+  grid-area: nomatch;
+  margin: 100px;
+  padding: 100px;
+  background-color: whitesmoke;
+}
+
+.noMatchText {
+  padding: 30px;
+  font-size: 30px;
+  font-weight: 70;
+}
+
+@media (min-width:450px) {
+
+  .rating {
+    font-size: 20px;
+  }
+  .wrapper {
+    display: grid;
+    grid-gap: 3px;
+    grid-template-rows: 60px 370px 1fr 2fr 2fr;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    grid-template-areas: 
+    "header header"
+    "mainphoto mainphoto"
+    "smallerphotos smallerphotos"
+    "bio slider"
+    "bio buttons";
+  }
+
+}
+
 @media (min-width: 600px) {
+  .smallerphotosgrid {
+    grid-gap: 6px;
+  }  
+
   .wrapper {
     grid-template-rows: auto 2fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -77,19 +232,223 @@
     grid-template-areas: 
     "header header"
     "mainphoto bio"
-    "mainphoto bio"
-    "smallerphotos slider"
+    "mainphoto slider"
+    "smallerphotos buttons"
   }
 
   .smallerphotos {
-    margin-top: 20px;
+    margin: 0px 5px 40px 20px;
   }
 
+  .smallerphotos {
+    margin: 0px 5px 40px 20px;
+  }
+  
   .mainphoto {
-    margin: 20px 5px 5px 20px; 
+    margin: 20px 5px 4px 20px; 
+  }
+  
+  .bio {
+    margin: 20px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.089);
   }
 
-  .slider {
-    margin-left: 20px;
+  .name {
+    font-size: 40px;
+    font-weight: 90;
+    margin: 0px 25px 10px 15px;
   }
+
+  .age {
+    font-size: 15px;
+    font-weight: 80;
+    margin: 20px;
+  }
+
+  .tag {
+    font-size: 15px;
+    font-weight: 80;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .biography {
+    font-size: 15px;
+    font-weight: 120;
+    margin: 20px;
+    min-width: 200px;
+  }
+
+  .rating {
+    font-size: 30px;
+    position: absolute;
+    padding-bottom: 15px;
+    top: 20px;
+    font-weight: 120;
+    color: rgb(19, 37, 27);
+  }
+
+  .sliderinput {
+    position: absolute;
+    bottom: 50px;
+    width: 75%
+  }
+
 }
+
+@media (min-width: 900px) {
+
+  .sliderinput {
+    position: absolute;
+    bottom: 20px;
+    width: 75%
+  }
+
+  .buttons {
+    margin: 30px;
+  }
+
+  .smallerphotos {
+    margin: 0px 5px 40px 20px;
+  }
+  
+  .mainphoto {
+    margin: 20px 5px 4px 20px; 
+  }
+  
+  .bio {
+    margin: 20px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.089);
+  }
+
+  .name {
+    font-size: 60px;
+    font-weight: 90;
+    margin: 0px 25px 10px 15px;
+  }
+
+  .age {
+    font-size: 20px;
+    font-weight: 80;
+    margin: 20px;
+  }
+
+  .tag {
+    font-size: 15px;
+    font-weight: 80;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .biography {
+    font-size: 20px;
+    font-weight: 120;
+    margin: 20px;
+    min-width: 400px;
+  }
+
+  .rating {
+    font-size: 60px;
+    position: absolute;
+    padding-bottom: 10px;
+    top: 20px;
+    font-weight: 120;
+    color: rgb(19, 37, 27);
+  }
+  
+}
+
+@media (min-width: 1200px) {
+
+  .sliderinput {
+    position: absolute;
+    bottom: 20px;
+    width: 75%
+  }
+
+  .buttons {
+    margin: 60px;
+  }
+
+  .smallerphotos {
+    margin: 0px 5px 40px 60px;
+  }
+  
+  .mainphoto {
+    margin: 20px 5px 4px 60px; 
+  }
+  
+  .bio {
+    margin-right: 60px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.089);
+  }
+
+  .name {
+    font-size: 60px;
+    font-weight: 90;
+    margin: 0px 25px 10px 15px;
+  }
+
+  .age {
+    font-size: 20px;
+    font-weight: 80;
+    margin: 20px;
+  }
+
+  .tag {
+    font-size: 15px;
+    font-weight: 80;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .biography {
+    font-size: 20px;
+    font-weight: 120;
+    margin: 20px;
+    min-width: 400px;
+  }
+
+  .rating {
+    font-size: 60px;
+    position: absolute;
+    padding-bottom: 10px;
+    top: 20px;
+    font-weight: 120;
+    color: rgb(19, 37, 27);
+  }
+  
+}
+
+
+
+input[type=range]{
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: rgb(188, 209, 197);
+  margin-top: -4px;
+}
+
+input[type=range]:active::-webkit-slider-thumb {
+  background: rgb(110, 145, 125);
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+

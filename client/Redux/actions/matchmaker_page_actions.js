@@ -49,7 +49,7 @@ export default {
     };
   },
   addCommentOnMatch(matchId, comment) {
-    console.log(comment);
+    console.log(comment, 'hi');
     return async (dispatch, getState) => {
       const { id } = getState().accountData;
       const { matches } = getState();
@@ -64,10 +64,9 @@ export default {
         const { data } = await axios.get(
           `${REST_SERVER_URL}/api/comments/fetchComments/${matchId}`
         );
-        newMatches[newMatches.length - 1].comments = data;
         dispatch({
           type: 'MATCHMAKER_COMMENT_ADDED',
-          payload: newMatches
+          payload: data
         });
       } catch (err) {
         console.error;
@@ -75,11 +74,13 @@ export default {
     };
   },
   fetchCommentsOnMatch(matchId) {
+    console.log('helllp')
     return async dispatch => {
       try {
         const data = await axios.get(
           `${REST_SERVER_URL}/api/comments/fetchComments/${matchId}`
         );
+        console.log(data, 'help')
         dispatch({
           type: 'MATCHMAKER_COMMENTS_RECIEVED',
           payload: data.data

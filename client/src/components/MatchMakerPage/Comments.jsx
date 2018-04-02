@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import style from './MatchMakerPage.css';
+import style from './MatchMaker.css';
 import Button from '../globals/Button/index.jsx';
 import CommentItem from './CommentItem.jsx';
 
@@ -23,7 +23,7 @@ class Comments extends Component {
     this.setState({
       textvalue: '',
     })
-    document.getElementById('commentTextarea').value = '';
+    document.getElementById('chatTextarea').value = '';
   }
 
   generateClassNameFromVotes = (voteCount) => {
@@ -46,15 +46,26 @@ class Comments extends Component {
     const { comments, exitComments, voteOnComment } = this.props;
     return (
       <div className={style.comments}>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            id="chatTextarea"
-            autoComplete="off"
-            className={style.textbox}
-            onChange={this.handleTextareaChange}
+        <div className={style.submit}>
+          
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              id="chatTextarea"
+              autoComplete="off"
+              placeholder="Say something..."
+              className={style.textbox}
+              onChange={this.handleTextareaChange}
+              />
+          </form>
+          <div className={style.small}>
+          <Button
+            text={"Enter"}
+            className={"small"}
+            onClick={() => this.submitComment()}
             />
-        </form>
+          </div>
+        </div>
         <div className={style.commentsFeed}>
           { comments.length ? 
             comments.map((comment, index) => {
@@ -74,16 +85,6 @@ class Comments extends Component {
             : "no comments yet..."
           }
         </div>
-        <Button
-          text={"Enter"}
-          className={"tag"}
-          onClick={() => this.submitComment()}
-          />
-        <Button
-          className={"X"}
-          text={"Close Comments"}
-          onClick={() => exitComments()}
-          />
       </div>
     );
   }

@@ -2,41 +2,37 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import style from './MatchMakerPage.css';
+import style from './MatchMaker.css';
 import Comments from './Comments.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
 import Button from '../globals/Button/index.jsx';
 import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/matchmaker_page_actions';
+import Footer from '../globals/Footer/index.jsx';
+import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
 
 class MatchMaker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      starred: 0,
-      showComments: false,
+      user1target: 0,
+      user2target: 0,
     };
   }
 
   decideOnMatch = (vote) => {
     const voteObject = {
-      matchId: this.props.matchToRate.id,
+      matchId: this.props.matchid,
       starred: 0,
       decision: vote,
     }
     this.props.postMatchmakerDecision(voteObject)
   }
 
-  exitComments = () => {
-    const { showComments } = this.state;
-    !!showComments && this.setState({
-      showComments: false
-    })
-  }
-
   submitComment = (comment) => {
-    let { id } = this.props.matchToRate;
-    this.props.addCommentOnMatch(id, comment)
+    console.log('in Submit Comment')
+    let { matchid } = this.props;
+    this.props.addCommentOnMatch(matchid, comment)
   }
 
   voteOnComment = (commentId, vote, index) => {
@@ -44,76 +40,157 @@ class MatchMaker extends Component {
   }
 
   refreshComments = () => {
-    let { id } = this.props.matchToRate;
-    this.props.fetchCommentsOnMatch(id)
+    let { matchid } = this.props;
+    this.props.fetchCommentsOnMatch(matchid)
+  }
+
+
+  handlePhotoClick = (user) => {
+    if (user === 1) {
+      let newPhoto = this.state.user1target;
+      newPhoto += 1;
+      if (newPhoto === this.props.user1.photos.length) { newPhoto = 0 }
+      this.setState({
+        user1target: newPhoto
+      })
+    }
+     else {
+      let newPhoto = this.state.user2target;
+      newPhoto += 1;
+      if (newPhoto === this.props.user2.photos.length) { console.log('hi'); newPhoto = 0 }
+      this.setState({
+        user2target: newPhoto
+      })
+    }
+  }
+
+  componentDidMount = () => {
+    this.refreshComments()
   }
 
   
   render() {
+    let user1Age = this.props.user1 && turnBirthdayIntoAge(this.props.user1.age)
+    let user2Age = this.props.user2 && turnBirthdayIntoAge(this.props.user2.age)
+
     let sortedComments;
-    if (this.props.matchToRate) {
-      const { comments } = this.props.matchToRate;
-      sortedComments = comments.sort((a, b) => {
+    if (this.props.comments) {
+      sortedComments = this.props.comments.sort((a, b) => {
         return b.votes - a.votes 
       })
     }
-    return (
-      <div>
-        <Navbar />
-        {
-          this.props.matchToRate ?
-          <div className={style.matchMakerContainer}>
-            <div className={style.decisionContainer}>
-              <Profile 
-                url={this.props.matchToRate.user1_id.photos[0].url}
-                firstname={this.props.matchToRate.user1_id.firstname}
-                lastname={this.props.matchToRate.user1_id.lastname}
-                age={this.props.matchToRate.user1_id.age}user2
-                bio={this.props.matchToRate.user1_id.bio}
-                />
-              <div className={style.approvalContainer}>
-                <Button 
-                  text={'Yes'}
-                  onClick={()=>this.decideOnMatch('approved')}
-                  />
-                <Button 
-                  text={'No'} 
-                  onClick={()=>this.decideOnMatch('rejected')}
-                  />
-              </div>
-              <Profile 
-                url={this.props.matchToRate.user2_id.photos[0].url}
-                firstname={this.props.matchToRate.user2_id.firstname}
-                lastname={this.props.matchToRate.user2_id.lastname}
-                age={this.props.matchToRate.user2_id.age}
-                bio={this.props.matchToRate.user2_id.bio}
+    if (this.props.matchid) {
+      return (
+        <div>
+          <div className={style.wrapper}>
+            <div className={style.header}>
+              <Navbar />
+            </div>
+            <div className={style.user1main}>
+              <img 
+                className={style.mainimg}
+                src={this.props.user1.photos[this.state.user1target]}
+                onClick={() => this.handlePhotoClick(1)}
                 />
             </div>
-            {
-              this.state.showComments
-            ?
+            <div className={style.user2main}>
+              <img 
+                className={style.mainimg}
+                src={this.props.user2.photos[this.state.user2target]}
+                onClick={() => this.handlePhotoClick()}
+                />
+            </div>
+            <div className={style.user1bio}>
+              <div className={style.name}>
+                {this.props.user1.firstname} {this.props.user1.lastname[0]}.
+              </div>
+              <div className={style.age}>
+              {user1Age} years old
+              </div>
+                <div className={style.tags}>
+                  <div className={style.tag}>
+                  {this.props.user1.tags[0]}
+                  </div>
+                  <div className={style.tag}>
+                  {this.props.user1.tags[1]}
+                  </div>
+                  <div className={style.tag}>
+                  {this.props.user1.tags[2]}
+                  </div>
+                </div>
+              <div className={style.biography}>
+                {`"${this.props.user1.bio}"`}
+              </div>
+            </div>
+            <div className={style.user2bio}>
+              <div className={style.name}>
+                  {this.props.user2.firstname} {this.props.user2.lastname[0]}.
+                </div>
+                <div className={style.age}>
+                {user2Age} years old
+                </div>
+                  <div className={style.tags}>
+                    <div className={style.tag}>
+                    {this.props.user2.tags[0]}
+                    </div>
+                    <div className={style.tag}>
+                    {this.props.user2.tags[1]}
+                    </div>
+                    <div className={style.tag}>
+                    {this.props.user2.tags[2]}
+                    </div>
+                  </div>
+                <div className={style.biography}>
+                  {`"${this.props.user2.bio}"`}
+                </div>
+              </div>
+            <div className={style.decision}>
+              {`${this.props.user1.firstname} and ${this.props.user2.firstname} are a...`}
+              <div className={style.decidebuttons}>
+                <Button
+                    text={`Good Couple`}
+                    onClick={()=>this.decideOnMatch('approved')}
+                    />
+                <Button
+                    text={`Bad Couple`}
+                    onClick={()=>this.decideOnMatch('rejected')}
+                    className={'red'}
+                    />
+              </div>
+            </div>
+            <div className={style.chatroom}>
               <Comments
-                exitComments={() => this.exitComments()}
                 submitComment={this.submitComment}
-                refreshComments={this.refreshComments}
                 comments={sortedComments}
                 voteOnComment={this.voteOnComment}
                 />
-            :
-              <div
-                className={style.commentsContainer}
-                onClick={() => this.setState({showComments: true})}
-                >View Comments
-              </div>
-            }
+            </div>
           </div>
-          : "Sorry! No more matches to vote on!"
-        }
-      </div>
-    );
-    
+          <Footer/>
+        </div>
+      );
+    } else {
+      return (
+      <div>
+        <div className={style.nomatchwrapper}>
+          <div className={style.header}>
+          <Navbar />
+          </div>
+          <div className={style.noMatch}>
+            <div className={style.noMatchText}>
+              No Matches left to rate!
+            </div>
+            <Button 
+              text={"Refresh"}
+              />
+            </div>
+          </div>
+          <Footer />
+        </div>
+      )
+    }
   }
-};
+}
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -124,9 +201,12 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-const mapStateToProps = ({ matches }) => {
+const mapStateToProps = ({ matches, comments }) => {
   return {
-    matchToRate: matches[matches.length - 1],
+    matchid: matches[matches.length - 1] && matches[matches.length - 1].id,
+    user1: matches[matches.length - 1] && matches[matches.length - 1].user1,
+    user2: matches[matches.length - 1] && matches[matches.length - 1].user2,
+    comments: comments,
   }
 }
 
