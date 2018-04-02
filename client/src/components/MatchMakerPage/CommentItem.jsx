@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import style from './MatchMaker.css';
 import Button from '../globals/Button/index.jsx';
+import style from './MatchMaker.css';
 
 class CommentItem extends Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class CommentItem extends Component {
       comment, 
       id, 
       username, 
-      votes, 
       className, 
       index } = this.props;
     const { 
@@ -31,60 +30,55 @@ class CommentItem extends Component {
     } = this.state;
     return (
       <div className={style.commentItem}>
-        <div className={style.commentBox}>
-          {username}: {comment}
-        </div>
         <div>
           {
             voteButtonState === 'neutral' &&
-              <div>
+              <div className={style.voteholder}>
               <Button
-                className={"downvote"}
-                text={"Downvote"}
-                onClick={() => this.voteOnComment(id, -1, index, 'negative')}
-                />
-              <Button
-                text={"Upvote"}
+                text={""}
                 className={"upvote"}
                 onClick={() => this.voteOnComment(id, 1, index, 'positive')}
+                />
+              <Button
+                className={"downvote"}
+                text={""}
+                onClick={() => this.voteOnComment(id, -1, index, 'negative')}
                 />
               </div>
           }
           {
             voteButtonState === 'positive' &&
-              <div>
-              <Button
-                className={"downvote"}
-                text={"Downvote"}
-                onClick={() => this.voteOnComment(id, -2, index, 'negative')}
-                />
-              <Button
-                text={"Upvote"}
-                className={"upvoteSelected"}
-                onClick={() => this.voteOnComment(id, -1, index, 'neutral')}
-                />
+              <div className={style.voteholder}>
+                <Button
+                  text={""}
+                  className={"upvoteSelected"}
+                  onClick={() => this.voteOnComment(id, -1, index, 'neutral')}
+                  />
+                <Button
+                  className={"downvote"}
+                  text={""}
+                  onClick={() => this.voteOnComment(id, -2, index, 'negative')}
+                  />
               </div>
           }
           {
             voteButtonState === 'negative' &&
-              <div>
-              <Button
-                className={"downvoteSelected"}
-                text={"Downvote"}
-                onClick={() => this.voteOnComment(id, 1, index, 'neutral')}
-                />
-              <Button
-                text={"Upvote"}
-                className={"upvote"}
-                onClick={() => this.voteOnComment(id, 2, index, 'positive')}
-                />
+              <div className={style.voteholder}>
+                <Button
+                  text={""}
+                  className={"upvote"}
+                  onClick={() => this.voteOnComment(id, 2, index, 'positive')}
+                  />
+                <Button
+                  className={"downvoteSelected"}
+                  text={""}
+                  onClick={() => this.voteOnComment(id, 1, index, 'neutral')}
+                  />
               </div>
           }
-          <div
-            className={style[className]}
-            >
-            {votes}
-            </div>
+        </div>
+          <div className={style.commentBox}>
+            {username}: {comment}
           </div>
       </div>
     );

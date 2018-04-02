@@ -23,7 +23,7 @@ class Comments extends Component {
     this.setState({
       textvalue: '',
     })
-    document.getElementById('commentTextarea').value = '';
+    document.getElementById('chatTextarea').value = '';
   }
 
   generateClassNameFromVotes = (voteCount) => {
@@ -51,6 +51,7 @@ class Comments extends Component {
             type="text"
             id="chatTextarea"
             autoComplete="off"
+            placeholder="test"
             className={style.textbox}
             onChange={this.handleTextareaChange}
             />
@@ -76,13 +77,7 @@ class Comments extends Component {
         </div>
         <Button
           text={"Enter"}
-          className={"tag"}
           onClick={() => this.submitComment()}
-          />
-        <Button
-          className={"X"}
-          text={"Close Comments"}
-          onClick={() => exitComments()}
           />
       </div>
     );

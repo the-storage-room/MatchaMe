@@ -5,7 +5,7 @@ import style from './Footer.css';
 const Logo = () => {
   return (
     <footer className={style.footer}>
-      COPYRIGHT the-storage-room 2018
+    © the-storage-room 2018
     </footer>
   )
 };

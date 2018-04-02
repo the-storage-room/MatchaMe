@@ -35,10 +35,15 @@
   font-size: 50px;
   color: rgb(19, 37, 27);
   padding: 15px;
+  font-weight: 300;
 }
 .chatroom {
   grid-area: chatroom;
   position: relative;
+  margin: 0 30px 30px 0;
+  overflow-y: scroll;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+
 }
 .next {
   position: relative;
@@ -97,7 +102,7 @@
 .age {
   font-size: 13px;
   font-weight: 80;
-  margin-left:5px;
+  margin-left:20px;
 }
 
 
@@ -106,6 +111,76 @@
   font-weight: 120;
   margin: 5px;
   min-width: 200px;
+}
+
+.comments {
+  z-index: 7;
+  height: 100%;
+  width: 100%;
+  background-color:rgba(248, 244, 244, 0.404);
+}
+.textbox {
+  background-color:rgba(245, 245, 245, 0.877);
+  margin: 20px;
+  float: right;  
+  resize: none;
+}
+
+.textbox:focus {
+  outline:0;
+}
+
+.textbox {
+  font-size: 20px;
+}
+
+.commentsFeed {
+  border-radius: 2px;
+  margin: 20px;
+  width:90%;
+  overflow-y: scroll;
+}
+
+.commentItem {
+  display: inline-block;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 80;
+  margin: 5px 0;
+  min-width: 90%
+}
+
+.zero {
+  float: right;
+  padding: 10px;
+  color: black;
+}
+
+.positive {
+  float: right;
+  padding: 10px;
+  color: blue;
+}
+
+.positive:before {
+  content: "+"
+}
+
+.negative {
+  float: right;
+  padding: 10px;
+  color: red;
+}
+
+.commentBox {
+  position: relative;
+  width: auto;
+  padding: 18px 0 0 45px;
+}
+
+.voteholder {
+  width: 30px; height: auto;
+  float: left;
 }
 
 @media (min-width:600px) {
@@ -214,7 +289,7 @@
   .age {
     font-size: 15px;
     font-weight: 80;
-    margin: 10px;
+    margin-left: 20px;
   }
 
   .tag {
@@ -246,9 +321,6 @@
     "user2small user2main user2bio chatroom"
   }
 
-  
-  .mainimg {
-  }
 
 }
   @media (min-width: 1200px) {
@@ -258,26 +330,28 @@
   }
 
   .name {
-    font-size: 60px;
+    font-size: 40px;
     font-weight: 90;
-    margin: 0px 25px 10px 15px;
+    margin: 0px 25px 10px 20px;
   }
 
   .age {
     font-size: 20px;
     font-weight: 80;
-    margin: 10px;
   }
 
   .tag {
-    font-size: 15px;
-    font-weight: 80;
-    margin: 20px;
-    padding: 10px;
+    font-size: 12px;
+    font-weight: 60;
+    padding: 7px;
+  }
+
+  .tags {
+    margin: 5px 10px;
   }
 
   .biography {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 120;
     margin: 20px;
     min-width: 250px;
@@ -293,3 +367,4 @@
   }
   
 }
+

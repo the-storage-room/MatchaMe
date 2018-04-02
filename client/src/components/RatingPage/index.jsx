@@ -46,7 +46,7 @@ class Rate extends Component {
 
   submitUserAttractiveness = () => {
     if (!this.state.selected) {
-      alert('please rate this person')
+      alert(`Please rate ${this.props.userToRate.firstname}!`)
     } else {
       const body = {
         ratee: this.props.userToRate.id,

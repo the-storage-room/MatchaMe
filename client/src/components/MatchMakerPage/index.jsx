@@ -22,23 +22,17 @@ class MatchMaker extends Component {
 
   decideOnMatch = (vote) => {
     const voteObject = {
-      matchId: this.props.matchToRate.id,
+      matchId: this.props.matchid,
       starred: 0,
       decision: vote,
     }
     this.props.postMatchmakerDecision(voteObject)
   }
 
-  exitComments = () => {
-    const { showComments } = this.state;
-    !!showComments && this.setState({
-      showComments: false
-    })
-  }
-
   submitComment = (comment) => {
-    let { id } = this.props.matchToRate;
-    this.props.addCommentOnMatch(id, comment)
+    console.log('in Submit Comment')
+    let { matchid } = this.props;
+    this.props.addCommentOnMatch(matchid, comment)
   }
 
   voteOnComment = (commentId, vote, index) => {
@@ -46,9 +40,10 @@ class MatchMaker extends Component {
   }
 
   refreshComments = () => {
-    let { id } = this.props.matchToRate;
-    this.props.fetchCommentsOnMatch(id)
+    let { matchid } = this.props;
+    this.props.fetchCommentsOnMatch(matchid)
   }
+
 
   handlePhotoClick = (photo, user) => {
     if (user === 1) {
@@ -62,10 +57,14 @@ class MatchMaker extends Component {
     }
   }
 
+  componentDidMount = () => {
+    this.refreshComments()
+  }
+
   
   render() {
-    let user1Age = turnBirthdayIntoAge(this.props.user1.age)
-    let user2Age = turnBirthdayIntoAge(this.props.user2.age)
+    let user1Age = this.props.user1 && turnBirthdayIntoAge(this.props.user1.age)
+    let user2Age = this.props.user2 && turnBirthdayIntoAge(this.props.user2.age)
 
     let sortedComments;
     if (this.props.comments) {
@@ -203,15 +202,17 @@ class MatchMaker extends Component {
           </div>
           <div className={style.decision}>
             {`${this.props.user1.firstname} and ${this.props.user2.firstname} are a...`}
-            <Button
-                text={`Good Couple`}
-                onClick={this.submitUserAttractiveness}
-                />
-            <Button
-                text={`Bad Couple`}
-                onClick={this.submitUserAttractiveness}
-                className={'red'}
-                />
+            <div>
+              <Button
+                  text={`Good Couple`}
+                  onClick={this.submitUserAttractiveness}
+                  />
+              <Button
+                  text={`Bad Couple`}
+                  onClick={this.submitUserAttractiveness}
+                  className={'red'}
+                  />
+            </div>
           </div>
           <div className={style.chatroom}>
             <Comments
@@ -226,7 +227,7 @@ class MatchMaker extends Component {
     );
     
   }
-};
+}
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -237,12 +238,12 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-const mapStateToProps = ({ matches }) => {
+const mapStateToProps = ({ matches, comments }) => {
   return {
     matchid: matches[matches.length - 1] && matches[matches.length - 1].id,
     user1: matches[matches.length - 1] && matches[matches.length - 1].user1,
     user2: matches[matches.length - 1] && matches[matches.length - 1].user2,
-    comments: matches[matches.length - 1] && matches[matches.length - 1].comments,
+    comments: comments,
   }
 }
 

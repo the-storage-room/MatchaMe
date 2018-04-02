@@ -200,46 +200,29 @@ button:focus {
 }
 
 .upvote {
+  border: none;
   float: right;
   top: -20px;
   right: 10px;
-  background-color: rgb(241, 234, 234);
-  color: rgb(5, 5, 5);
-  font-size: 12px;
-  padding: 7px;
-  border: solid rgb(240, 176, 176) 1px;
-  border-radius: 2px;
-  margin: 5px;
-}
-
-.upvote:hover {
-  background-color: rgb(230, 228, 255);
-  border: solid rgb(4, 0, 255) 1px;
-  color: blue;
+  color: rgba(136, 136, 136, 0.356);
+  margin: 4px 4px 2px 4px;
+  padding:  4px 4px 2px 4px;
+  box-shadow: none;
+  background: none;
 }
 
 .upvoteSelected {
-  background-color: rgb(230, 228, 255);
-  border: solid rgb(4, 0, 255) 1px;
-  color: blue;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background-color: transparent;
+
+  color: rgba(44, 184, 74, 0.356);
+  border: none;
   float: right;
   top: -20px;
   right: 10px;
-  font-size: 12px;
-  padding: 7px;
-  border-radius: 2px;
-  margin: 5px;
+  margin: 4px 4px 2px 4px;
+  padding:  4px 4px 2px 4px;
 }
-
-
-.upvoteSelected:active,
-.downvoteSelected:active {
-  background-color: rgb(255, 255, 255);
-  color: rgb(5, 5, 5);
-  border: solid rgb(255, 255, 255) 1px;
-}
-
-
 
 .upvote:before {
   content: "\25b2"
@@ -251,39 +234,34 @@ button:focus {
 
 
 .upvote:hover:before {
-  color: blue;
+  color: rgba(44, 184, 74, 0.356);
 }
 
 .downvote {
+  background-color: transparent;
+  border: none;
   float: right;
   top: -20px;
   right: 10px;
-  background-color: rgb(241, 234, 234);
-  color: rgb(3, 3, 3);
-  font-size: 12px;
-  padding: 7px;
-  border: solid rgb(240, 176, 176) 1px;
-  border-radius: 2px;
-  margin: 5px;
+  color: rgba(136, 136, 136, 0.356);
+  margin: 4px 4px 2px 4px;
+  padding:  4px 4px 2px 4px;
+  box-shadow: none;
 }
 
-.downvote:hover {
-  background-color: rgb(241, 189, 189);
-  border: solid rgb(255, 0, 0) 1px;
-  color: red;
-}
 
 .downvoteSelected {
-  background-color: rgb(241, 189, 189);
-  border: solid rgb(255, 0, 0) 1px;
-  color: red;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background-color: transparent;
+
+  color: rgba(255, 0, 0, 0.342);
+  border: none;
   float: right;
   top: -20px;
   right: 10px;
-  font-size: 12px;
-  padding: 7px;
-  border-radius: 2px;
-  margin: 5px;
+ 
+  margin: 4px 4px 2px 4px;
+  padding:  4px 4px 2px 4px;
 }
 
 .downvote:before {
@@ -294,16 +272,8 @@ button:focus {
   content: "\25bc"
 }
 
-.downvote:active {
-  background-color: rgb(255, 255, 255);
-}
-
-.upvote:active {
-  background-color: rgb(255, 255, 255);
-}
-
 .downvote:hover:before {
-  color: red;
+  color: rgba(255, 0, 0, 0.342);
 }
 
 .endMatch {

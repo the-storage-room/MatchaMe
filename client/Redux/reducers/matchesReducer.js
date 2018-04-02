@@ -7,19 +7,13 @@ export default (state = fakeData, action) => {
       return (state = action.payload);
     case 'MATCHMAKER_RATING_SUBMITTED':
       return (state = action.payload);
-    case 'MATCHMAKER_COMMENTS_RECIEVED':
-      return (state = action.payload);
-    case 'MATCHMAKER_COMMENT_ADDED':
-      return (state = action.payload);
-    case 'MATCHMAKER_COMMENT_VOTED':
-      return (state = action.payload);
     default:
       return state;
   }
 }
 
 const fakeData = [{
-  id: 77,
+  id: 9,
   user1:{
     age: 19780101,
     bio: "Jerry, just remember, it’s not a lie if you believe it.",
