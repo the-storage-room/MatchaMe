@@ -20,7 +20,7 @@ export default (state = fakeData, action) => {
 
 const fakeData = [{
   id: 77,
-  user1_id:{
+  user1:{
     age: 19780101,
     bio: "Jerry, just remember, it’s not a lie if you believe it.",
     firstname: "George",
@@ -41,7 +41,7 @@ const fakeData = [{
       "Nerdy",
     ],
   },
-  user2_id:{
+  user2:{
     age: 19770101,
     bio: "You know the message you're sending out to the world with these sweatpants? You're telling the world, 'I give up. I can't compete in normal society. I'm miserable, so I might as well be comfortable.'",
     firstname: "Jerry",

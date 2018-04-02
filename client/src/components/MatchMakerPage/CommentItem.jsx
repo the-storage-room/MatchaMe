@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import style from './MatchMakerPage.css';
+import style from './MatchMaker.css';
 import Button from '../globals/Button/index.jsx';
 
 class CommentItem extends Component {

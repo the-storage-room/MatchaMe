@@ -139,57 +139,86 @@ class MatchMaker extends Component {
             </div>
           <div className={style.user1small}>
             <div className={style.smallerphotosgrid}>
-              <img 
-                className={style.img1}
-                src={this.props.user1.photos[0]}
-                onClick={() => this.handlePhotoClick(0, 1)}
-                />
-              <img 
-                className={style.img2}
-                src={this.props.user1.photos[1]}
-                onClick={() => this.handlePhotoClick(1, 1)}
-                />
-              <img 
-                className={style.img3}
+              <div className={style.img1}>
+                <img 
+                  className={style.img1photo}
+                  src={this.props.user1.photos[0]}
+                  onClick={() => this.handlePhotoClick(0, 1)}
+                  />
+              </div>
+              <div className={style.img2}>
+                <img 
+                  className={style.img2photo}
+                  src={this.props.user1.photos[1]}
+                  onClick={() => this.handlePhotoClick(1, 1)}
+                  />
+              </div>
+              <div className={style.img3}>
+                <img 
+                  className={style.img3photo}
                 src={this.props.user1.photos[2]}
                 onClick={() => this.handlePhotoClick(2, 1)}
                 />
-              <img 
-                className={style.img4}
-                src={this.props.user1.photos[3]}
-                onClick={() => this.handlePhotoClick(3, 1)}
-                />
+              </div>
+              <div className={style.img4}>
+                <img 
+                  className={style.img4photo}
+                  src={this.props.user1.photos[3]}
+                  onClick={() => this.handlePhotoClick(3, 1)}
+                  />
+              </div>
             </div>
           </div>
           <div className={style.user2small}>
-          <div className={style.smallerphotosgrid}>
-              <img 
-                className={style.img1}
-                src={this.props.user2.photos[0]}
-                onClick={() => this.handlePhotoClick(0)}
-                />
-              <img 
-                className={style.img2}
-                src={this.props.user2.photos[1]}
-                onClick={() => this.handlePhotoClick(1)}
-                />
-              <img 
-                className={style.img3}
+            <div className={style.smallerphotosgrid}>
+              <div className={style.img1}>
+                <img 
+                  className={style.img1photo}
+                  src={this.props.user2.photos[0]}
+                  onClick={() => this.handlePhotoClick(0)}
+                  />
+              </div>
+              <div className={style.img2}>
+                <img 
+                  className={style.img2photo}
+                  src={this.props.user2.photos[1]}
+                  onClick={() => this.handlePhotoClick(1)}
+                  />
+              </div>
+              <div className={style.img3}>
+                <img 
+                  className={style.img3photo}
                 src={this.props.user2.photos[2]}
                 onClick={() => this.handlePhotoClick(2)}
                 />
-              <img 
-                className={style.img4}
-                src={this.props.user2.photos[3]}
-                onClick={() => this.handlePhotoClick(3)}
-                />
+              </div>
+              <div className={style.img4}>
+                <img 
+                  className={style.img4photo}
+                  src={this.props.user2.photos[3]}
+                  onClick={() => this.handlePhotoClick(3)}
+                  />
+              </div>
             </div>
           </div>
           <div className={style.decision}>
-            decision
+            {`${this.props.user1.firstname} and ${this.props.user2.firstname} are a...`}
+            <Button
+                text={`Good Couple`}
+                onClick={this.submitUserAttractiveness}
+                />
+            <Button
+                text={`Bad Couple`}
+                onClick={this.submitUserAttractiveness}
+                className={'red'}
+                />
           </div>
           <div className={style.chatroom}>
-            Chatroom
+            <Comments
+              submitComment={this.submitComment}
+              comments={sortedComments}
+              voteOnComment={this.voteOnComment}
+              />
           </div>
         </div>
         <Footer/>
@@ -211,8 +240,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = ({ matches }) => {
   return {
     matchid: matches[matches.length - 1] && matches[matches.length - 1].id,
-    user1: matches[matches.length - 1] && matches[matches.length - 1].user1_id,
-    user2: matches[matches.length - 1] && matches[matches.length - 1].user2_id,
+    user1: matches[matches.length - 1] && matches[matches.length - 1].user1,
+    user2: matches[matches.length - 1] && matches[matches.length - 1].user2,
     comments: matches[matches.length - 1] && matches[matches.length - 1].comments,
   }
 }

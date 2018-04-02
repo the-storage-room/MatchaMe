@@ -16,11 +16,6 @@ class Rate extends Component {
       rating: '',
       users: [],
       target: 0,
-      img1: 1,
-      img2: 2,
-      img3: 3,
-      img4: 4,
-      img5: 5,
       trigger: false,
       selected: false,
     };
@@ -41,11 +36,10 @@ class Rate extends Component {
     })
   }
 
-  handlePhotoClick = (imgState) => {
-      let tempTarget = this.state.target;
-      const newState = {target: this.state[imgState]};
-      newState[imgState] = tempTarget;
-      this.setState(newState)
+  handlePhotoClick = (photo) => {
+    this.setState({
+      target: photo
+    })
   }
 
 
@@ -94,23 +88,23 @@ class Rate extends Component {
             <div className={style.smallerphotosgrid}>
               <img 
                 className={style.img1}
-                src={this.props.userToRate.photos[this.state.img1]}
-                onClick={() => this.handlePhotoClick('img1')}
+                src={this.props.userToRate.photos[0]}
+                onClick={() => this.handlePhotoClick(0)}
                 />
               <img 
                 className={style.img2}
-                src={this.props.userToRate.photos[this.state.img2]}
-                onClick={() => this.handlePhotoClick('img2')}
+                src={this.props.userToRate.photos[1]}
+                onClick={() => this.handlePhotoClick(1)}
                 />
               <img 
                 className={style.img3}
-                src={this.props.userToRate.photos[this.state.img3]}
-                onClick={() => this.handlePhotoClick('img3')}
+                src={this.props.userToRate.photos[2]}
+                onClick={() => this.handlePhotoClick(2)}
                 />
               <img 
                 className={style.img4}
-                src={this.props.userToRate.photos[this.state.img4]}
-                onClick={() => this.handlePhotoClick('img4')}
+                src={this.props.userToRate.photos[3]}
+                onClick={() => this.handlePhotoClick(3)}
                 />
             </div>
           </div>
