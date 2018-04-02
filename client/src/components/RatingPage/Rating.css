@@ -187,19 +187,24 @@
 }
 
 .noMatch {
-  grid-area: nomatch;
-  margin: 100px;
-  padding: 100px;
-  background-color: whitesmoke;
+  margin: 30px;
+  padding: 30px;
+  background-color:whitesmoke;
+  text-align: center;
 }
 
 .noMatchText {
   padding: 30px;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 70;
 }
 
 @media (min-width:450px) {
+
+  .noMatch {
+    margin: 70px;
+    padding: 70px;
+  }
 
   .rating {
     font-size: 20px;
@@ -221,6 +226,18 @@
 }
 
 @media (min-width: 600px) {
+
+  .noMatch {
+    margin: 100px;
+    padding: 100px;
+  }
+  
+  .noMatchText {
+    padding: 30px;
+    font-size: 30px;
+    font-weight: 70;
+  }
+
   .smallerphotosgrid {
     grid-gap: 6px;
   }  

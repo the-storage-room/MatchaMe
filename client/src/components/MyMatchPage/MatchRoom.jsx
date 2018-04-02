@@ -5,6 +5,7 @@ import Profile from '../globals/Profile/index.jsx';
 import Button from '../globals/Button/index.jsx';
 import PendingMatch from './PendingMatch.jsx';
 import Chatroom from './Chatroom.jsx';
+import Navbar from '../globals/Navbar/index.jsx';
 
 class MyMatch extends Component {
   constructor() {
@@ -35,6 +36,9 @@ class MyMatch extends Component {
         isSuccessful === 1 || firstAccept === user1
         ?
         <div className={style.myMatchPage}>
+        <div className={style.header}>
+          <Navbar />
+        </div>
           <div>
             <Profile 
               url={user2.photos[0].url}

@@ -31,6 +31,9 @@
   padding: 30px;
   font-size: 30px;
   font-weight: 70;
+}
+
+@media (min-width: 500px) {
 
 }
 
@@ -71,6 +74,10 @@
   height: 100%;
   z-index: 9998;
   background: rgba(0, 0, 0, 0.3);
+}
+
+.warningText {
+  padding-top: 20px;
 }
 
 .warningBox {

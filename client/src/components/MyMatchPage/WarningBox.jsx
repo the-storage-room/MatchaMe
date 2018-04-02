@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import style from './MyMatchPage.css';
-import Profile from '../globals/Profile/index.jsx';
+import style from './MyMatch.css';
 import Button from '../globals/Button/index.jsx';
 
 class WarningBox extends Component {
@@ -13,8 +12,9 @@ class WarningBox extends Component {
     return (
       <div className={style.warningBackdrop}>
         <div className={style.warningBox}>
-          <div>
+          <div className={style.warningText}>
             Are you sure? You will NEVER see this person again!
+          </div>
             <Button 
               onClick={() => this.props.endMatch()}
               text={"Yes. END MATCH"}
@@ -22,8 +22,8 @@ class WarningBox extends Component {
             <Button 
               onClick={this.props.onClose}
               text={"NO. Go Back!"}
+              className={'red'}
               />
-          </div>
         </div>
       </div>
     );
