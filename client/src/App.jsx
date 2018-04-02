@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './index.css';
 
@@ -15,7 +16,7 @@ import Leaderboard from './components/LeaderboardPage/index.jsx';
 import Account from './components/AccountPage/index.jsx';
 import Initialize from './components/InitializePage/index.jsx';
 import Home from './components/HomePage/index.jsx';
-import Protected from '../src/components/globals/Protected/index.js';
+import Protected from '../src/components/globals/Protected/index';
 
 class App extends Component {
   constructor() {
@@ -26,14 +27,18 @@ class App extends Component {
   render() {
     return (
       <div>
+        <MuiThemeProvider>
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/home" component={Home}/>
+            <Route path="/home" component={(props) => (
+              <Protected component={Home} {...props} />
+            )}/>
             <Route path="/dashboard" component={(props) => (
               <Protected component={Dashboard} {...props} />
             )} />
             <Route path="/initialize" component={Initialize} />
+
             <Route path="/rate" component={(props) => (
               <Protected component={Rate} {...props} />
             )} />
@@ -57,6 +62,7 @@ class App extends Component {
             )} />
             <Route path="/" component={LandingPage} />
           </Switch>
+        </MuiThemeProvider>
         </div>
     );
   }
