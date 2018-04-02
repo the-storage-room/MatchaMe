@@ -1,7 +1,29 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: 60px 300px 150px 300px 150px 150px 100vh;
+  height: 300vh;
+  grid-template-areas: 
+  "header"
+  "user1main"
+  "user1bio"
+  "user2main"
+  "user2bio"
+  "decision"
+  "chatroom";
+}
 .header {
   grid-area: header;
   position: relative;
 }
+
+.decidebuttons > * {
+    margin: 13px;
+}
+
+.chatroom {
+  margin: 10px;
+}
+
 
 .user1main {
   grid-area: user1main;
@@ -9,15 +31,13 @@
   -o-object-fit: cover;
   object-fit: cover;
   overflow: hidden;
-  margin: 6px 3px 3px 10px;
 }
 
 .user1bio {
   grid-area: user1bio;
   position: relative;
-  margin-top: 6px;
+  margin: 3px;
   height:auto;
-  padding-right: 30px;
 }
 
 .small{
@@ -30,23 +50,24 @@
   -o-object-fit: cover;
   object-fit: cover;
   overflow: hidden;
-  margin: 6px 10px 3px 3px;
 }
 
 .user2bio {
   grid-area: user2bio;
   position: relative;
-  margin: 6px 0 30px 0;
-  padding-right: 30px;
+  margin: 3px;
+  height:auto;
+  max-height: 200px;
 }
 
 .decision {
   grid-area: decision;
   width: auto;
   height: 100%;
-  font-size: 50px;
+  font-size: 28px;
+  text-align: center;
   color: rgb(19, 37, 27);
-  padding: 30px 15px 0px 6px;
+  padding: 50px 15px 0px 6px;
   font-weight: 300;
 }
 .chatroom {
@@ -64,7 +85,7 @@
 }
 
 .mainimg {
-  max-width: 160%;
+  max-width: 300%;
   max-height: 300px;
   -o-object-fit: cover;
   object-fit: cover;
@@ -102,22 +123,6 @@
   padding: 15px 0 0 5px;;
 }
 
-
-
-.wrapper {
-  display: grid;
-  grid-gap: 3px;
-  grid-template-rows: auto 2fr 50px 2fr 100px 1fr 100vh;
-  height: 300vh;
-  grid-template-areas: 
-  "header"
-  "user1main"
-  "user1bio"
-  "user2main"
-  "user2bio"
-  "decision"
-  "chatroom";
-}
 
 .tags {
   padding-left: 8px;
@@ -186,6 +191,7 @@
   width:100%;
   height: 100%;
   overflow-y: scroll;
+  margin-right: 60px;
 }
 
 .commentItem {
@@ -239,74 +245,11 @@
 
 @media (min-width:450px) {
 
-  .smallerphotosgrid {
-    position: relative;
-    display: grid;
-    grid-gap: 3px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100%;
-    height: width;
-    grid-template-areas: 
-    "img1 img2 img3 img4";
-  }
-
   .biography {
-    margin: 20px;
-    font-size: 13px;
+    margin: 5px 0 0 15px;
+    font-size: 12px;
     min-width: 150px;
   }
-  .img1 {
-    grid-area: img1;
-    position: relative;
-    overflow: hidden;
-  }
-  .img2 {
-    grid-area: img2;
-    position: relative;
-    overflow: hidden;
-  }
-  .img3 {
-    grid-area: img3;
-    position: relative;
-    overflow: hidden;
-  }
-  .img4 {
-    grid-area: img4;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* .img1,
-  .img2,
-  .img3,
-  .img4 {
-    max-width: 100%;
-    height: auto;
-  } */
-
-  .img1photo,
-  .img2photo,
-  .img3photo,
-  .img4photo {
-    max-width: 100%;
-    height: auto;
-    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-  }
-
-  .user1small {
-    grid-area: user1small;
-    position: relative;
-    overflow: hidden;
-    margin: 0 3px 0 10px;
-  }
-
-  .user2small {
-    overflow: hidden;
-    grid-area: user2small;
-    position: relative;
-    margin: 0 10px 0 3px;
-  }
-
   .rating {
     font-size: 20px;
   }
@@ -314,13 +257,12 @@
   .wrapper {
     display: grid;
     grid-gap: 3px;
-    grid-template-rows: auto 370px 1fr 1fr 1fr 3fr;
+    grid-template-rows: 60px 300px 200px 100px 600px;
     grid-template-columns: 50vw 50vw;
-    height: 150vh;
+    height: 200vh;
     grid-template-areas: 
     "header header"
     "user1main user2main"
-    "user1small user2small"
     "user1bio user2bio"
     "decision decision"
     "chatroom chatroom";
@@ -332,15 +274,15 @@
   }
 
   .name {
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 90;
-    margin: 0px 25px 10px 15px;
+    margin: 0px 25px 2px 15px;
   }
 
   .age {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 80;
-    margin-left: 20px;
+    margin-left: 15px;
   }
 
   .tag {
@@ -349,9 +291,16 @@
     margin: 7px;
     padding: 7px;
   }
+
+  .decision{
+    margin: 0 15px;
+    padding-top: 20px;
+    font-size: 30px;
+  }
 }
 
-@media (min-width: 900px) {
+
+@media (min-width: 768px) {
   .wrapper {
     display: grid;
     grid-gap: 3px;
@@ -367,6 +316,7 @@
 
   .mainimg { 
     max-height: 150%;
+    max-width: 150%;
   }
 
   .user1main {
@@ -388,54 +338,19 @@
   .user2bio {
     margin: 6px 0 30px 0;
   }
-
-  .user1small {
-    margin: 30px 0 0 30px;
-  }
-
-  .user2small {
-    margin: 6px 0 30px 30px;
-  }
   
   .decision {
     width: auto;
     height: 100%;
-    font-size: 50px;
+    font-size: 40px;
     color: rgb(19, 37, 27);
     padding: 30px 15px 0px 6px;
     font-weight: 300;
   }
   .chatroom {
-    position: relative;
-    overflow-y: scroll;
     margin: 0 30px 30px 0;
   }
 
-  .smallerphotosgrid {
-    position: relative;
-    display: grid;
-    grid-gap: 3px;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 100%;
-    height: 100%;
-    grid-template-areas: 
-    "img1"
-    "img2"
-    "img3"
-    "img4";
-  }
-
-  .img1photo,
-  .img2photo,
-  .img3photo,
-  .img4photo {
-    max-width: 200%;
-    max-height: 200%;
-    width: auto;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-  }
 }
   @media (min-width: 1200px) {
   .bio {
@@ -488,12 +403,16 @@
   }
 
   .decision {
-    margin-right: 30px;
+    margin-right: 60px;
   }
   .comments {
     margin-right: 60px;
     margin-bottom: 30px;
   }
+  .chatroom {
+    margin: 0 60px 30px 0;
+  }
+
 }
 
 

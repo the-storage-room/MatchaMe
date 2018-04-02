@@ -67,6 +67,14 @@ button:focus {
   color: rgb(255, 255, 255);
 }
 
+@media (max-width: 767px) {
+  .defaultButton,
+  .red {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
 .tag {
   display: inline-block;
   background-color: rgb(241, 234, 234);
