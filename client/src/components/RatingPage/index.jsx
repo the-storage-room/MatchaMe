@@ -31,7 +31,7 @@ class Rate extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({
+    this.props.userToRate && this.setState({
       rating: `${this.props.userToRate.firstname} is a...`
     })
   }
@@ -69,7 +69,8 @@ class Rate extends Component {
   }
 
   render() {
-    let realAge = turnBirthdayIntoAge(this.props.userToRate.age)
+    if(this.props.userToRate) {
+      let realAge = turnBirthdayIntoAge(this.props.userToRate.age)
     return (
       <div>
         <div className={style.wrapper}>
@@ -155,6 +156,26 @@ class Rate extends Component {
         <Footer />
       </div>
     )
+      } else {
+      return (
+      <div>
+        <div className={style.nomatchwrapper}>
+          <div className={style.header}>
+          <Navbar />
+          </div>
+          <div className={style.noMatch}>
+            <div className={style.noMatchText}>
+              No Matches left to rate!
+            </div>
+            <Button 
+              text={"Refresh"}
+              />
+            </div>
+          </div>
+          <Footer />
+        </div>
+      )
+    }
   }
 }
 

@@ -6,6 +6,8 @@
 .user1main {
   grid-area: user1main;
   position: relative;
+  -o-object-fit: cover;
+  object-fit: cover;
   overflow: hidden;
   margin: 6px 3px 3px 10px;
 }
@@ -25,6 +27,8 @@
 .user2main {
   grid-area: user2main;
   position: relative;
+  -o-object-fit: cover;
+  object-fit: cover;
   overflow: hidden;
   margin: 6px 10px 3px 3px;
 }
@@ -49,8 +53,8 @@
   grid-area: chatroom;
   position: relative;
   overflow-y: scroll;
-  margin: 0 30px 30px 0;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  height: 100%;
+  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
 }
 
 .next {
@@ -61,12 +65,37 @@
 }
 
 .mainimg {
-  min-width: 85%;
-  max-width: 130%;
-  min-height: 100%;
+  max-width: 160%;
+  max-height: 300px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
   margin-left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.nomatchwrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  grid-template-areas: 
+  "header"
+  "nomatch";
+  text-align: center;
+}
+
+.noMatch {
+  grid-area: nomatch;
+  margin: 100px;
+  padding: 100px;
+  background-color: whitesmoke;
+}
+
+.noMatchText {
+  padding: 30px;
+  font-size: 30px;
+  font-weight: 70;
 }
 
 .submit {
@@ -141,7 +170,7 @@
   padding: 20px;
   border: none;
   float: left;  
-  background-color:rgba(248, 244, 244, 0.404);
+  background-color:rgba(248, 244, 244, 0.479);
   resize: none;
   font-weight: 80;
   font-size: 17px;
@@ -328,7 +357,7 @@
     display: grid;
     grid-gap: 3px;
     grid-template-rows: auto 4fr 1fr 5fr;
-    grid-template-columns: 1fr 4fr 2fr 4fr;
+    grid-template-columns: 1fr 4fr 5fr 5fr;
     height: 100vh;
     grid-template-areas: 
     "header header header header"
@@ -336,6 +365,11 @@
     "user1small user1main user1bio chatroom"
     "user2small user2main user2bio chatroom"
   }
+
+  .mainimg { 
+    max-height: 150%;
+  }
+
 
   .user1main {
     margin: 30px 15px 0 0;
@@ -377,7 +411,6 @@
     position: relative;
     overflow-y: scroll;
     margin: 0 30px 30px 0;
-    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   }
 
   .smallerphotosgrid {

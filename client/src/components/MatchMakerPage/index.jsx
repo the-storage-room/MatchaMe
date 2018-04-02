@@ -72,160 +72,178 @@ class MatchMaker extends Component {
     //     return b.votes - a.votes 
     //   })
     // }
-
-    console.log(this.props)
-    return (
-      <div>
-        <div className={style.wrapper}>
-          <div className={style.header}>
-            <Navbar />
-          </div>
-          <div className={style.user1main}>
-            <img 
-              className={style.mainimg}
-              src={this.props.user1.photos[this.state.user1target]}
-              />
-          </div>
-          <div className={style.user2main}>
-            <img 
-              className={style.mainimg}
-              src={this.props.user2.photos[this.state.user2target]}
-              />
-          </div>
-          <div className={style.user1bio}>
-            <div className={style.name}>
-              {this.props.user1.firstname} {this.props.user1.lastname[0]}.
+    if (this.props.matchid) {
+      return (
+        <div>
+          <div className={style.wrapper}>
+            <div className={style.header}>
+              <Navbar />
             </div>
-            <div className={style.age}>
-            {user1Age} years old
+            <div className={style.user1main}>
+              <img 
+                className={style.mainimg}
+                src={this.props.user1.photos[this.state.user1target]}
+                />
             </div>
-              <div className={style.tags}>
-                <div className={style.tag}>
-                {this.props.user1.tags[0]}
-                </div>
-                <div className={style.tag}>
-                {this.props.user1.tags[1]}
-                </div>
-                <div className={style.tag}>
-                {this.props.user1.tags[2]}
-                </div>
-              </div>
-            <div className={style.biography}>
-              {`"${this.props.user1.bio}"`}
+            <div className={style.user2main}>
+              <img 
+                className={style.mainimg}
+                src={this.props.user2.photos[this.state.user2target]}
+                />
             </div>
-          </div>
-          <div className={style.user2bio}>
-            <div className={style.name}>
-                {this.props.user2.firstname} {this.props.user2.lastname[0]}.
+            <div className={style.user1bio}>
+              <div className={style.name}>
+                {this.props.user1.firstname} {this.props.user1.lastname[0]}.
               </div>
               <div className={style.age}>
-              {user2Age} years old
+              {user1Age} years old
               </div>
                 <div className={style.tags}>
                   <div className={style.tag}>
-                  {this.props.user2.tags[0]}
+                  {this.props.user1.tags[0]}
                   </div>
                   <div className={style.tag}>
-                  {this.props.user2.tags[1]}
+                  {this.props.user1.tags[1]}
                   </div>
                   <div className={style.tag}>
-                  {this.props.user2.tags[2]}
+                  {this.props.user1.tags[2]}
                   </div>
                 </div>
               <div className={style.biography}>
-                {`"${this.props.user2.bio}"`}
+                {`"${this.props.user1.bio}"`}
               </div>
             </div>
-          <div className={style.user1small}>
-            <div className={style.smallerphotosgrid}>
-              <div className={style.img1}>
-                <img 
-                  className={style.img1photo}
-                  src={this.props.user1.photos[0]}
-                  onClick={() => this.handlePhotoClick(0, 1)}
-                  />
+            <div className={style.user2bio}>
+              <div className={style.name}>
+                  {this.props.user2.firstname} {this.props.user2.lastname[0]}.
+                </div>
+                <div className={style.age}>
+                {user2Age} years old
+                </div>
+                  <div className={style.tags}>
+                    <div className={style.tag}>
+                    {this.props.user2.tags[0]}
+                    </div>
+                    <div className={style.tag}>
+                    {this.props.user2.tags[1]}
+                    </div>
+                    <div className={style.tag}>
+                    {this.props.user2.tags[2]}
+                    </div>
+                  </div>
+                <div className={style.biography}>
+                  {`"${this.props.user2.bio}"`}
+                </div>
               </div>
-              <div className={style.img2}>
-                <img 
-                  className={style.img2photo}
-                  src={this.props.user1.photos[1]}
-                  onClick={() => this.handlePhotoClick(1, 1)}
+            <div className={style.user1small}>
+              <div className={style.smallerphotosgrid}>
+                <div className={style.img1}>
+                  <img 
+                    className={style.img1photo}
+                    src={this.props.user1.photos[0]}
+                    onClick={() => this.handlePhotoClick(0, 1)}
+                    />
+                </div>
+                <div className={style.img2}>
+                  <img 
+                    className={style.img2photo}
+                    src={this.props.user1.photos[1]}
+                    onClick={() => this.handlePhotoClick(1, 1)}
+                    />
+                </div>
+                <div className={style.img3}>
+                  <img 
+                    className={style.img3photo}
+                  src={this.props.user1.photos[2]}
+                  onClick={() => this.handlePhotoClick(2, 1)}
                   />
+                </div>
+                <div className={style.img4}>
+                  <img 
+                    className={style.img4photo}
+                    src={this.props.user1.photos[3]}
+                    onClick={() => this.handlePhotoClick(3, 1)}
+                    />
+                </div>
               </div>
-              <div className={style.img3}>
-                <img 
-                  className={style.img3photo}
-                src={this.props.user1.photos[2]}
-                onClick={() => this.handlePhotoClick(2, 1)}
+            </div>
+            <div className={style.user2small}>
+              <div className={style.smallerphotosgrid}>
+                <div className={style.img1}>
+                  <img 
+                    className={style.img1photo}
+                    src={this.props.user2.photos[0]}
+                    onClick={() => this.handlePhotoClick(0)}
+                    />
+                </div>
+                <div className={style.img2}>
+                  <img 
+                    className={style.img2photo}
+                    src={this.props.user2.photos[1]}
+                    onClick={() => this.handlePhotoClick(1)}
+                    />
+                </div>
+                <div className={style.img3}>
+                  <img 
+                    className={style.img3photo}
+                  src={this.props.user2.photos[2]}
+                  onClick={() => this.handlePhotoClick(2)}
+                  />
+                </div>
+                <div className={style.img4}>
+                  <img 
+                    className={style.img4photo}
+                    src={this.props.user2.photos[3]}
+                    onClick={() => this.handlePhotoClick(3)}
+                    />
+                </div>
+              </div>
+            </div>
+            <div className={style.decision}>
+              {`${this.props.user1.firstname} and ${this.props.user2.firstname} are a...`}
+              <div className={style.decidebuttons}>
+                <Button
+                    text={`Good Couple`}
+                    onClick={()=>this.decideOnMatch('approved')}
+                    />
+                <Button
+                    text={`Bad Couple`}
+                    onClick={()=>this.decideOnMatch('rejected')}
+                    className={'red'}
+                    />
+              </div>
+            </div>
+            <div className={style.chatroom}>
+              <Comments
+                submitComment={this.submitComment}
+                comments={this.props.comments}
+                voteOnComment={this.voteOnComment}
                 />
-              </div>
-              <div className={style.img4}>
-                <img 
-                  className={style.img4photo}
-                  src={this.props.user1.photos[3]}
-                  onClick={() => this.handlePhotoClick(3, 1)}
-                  />
-              </div>
             </div>
           </div>
-          <div className={style.user2small}>
-            <div className={style.smallerphotosgrid}>
-              <div className={style.img1}>
-                <img 
-                  className={style.img1photo}
-                  src={this.props.user2.photos[0]}
-                  onClick={() => this.handlePhotoClick(0)}
-                  />
-              </div>
-              <div className={style.img2}>
-                <img 
-                  className={style.img2photo}
-                  src={this.props.user2.photos[1]}
-                  onClick={() => this.handlePhotoClick(1)}
-                  />
-              </div>
-              <div className={style.img3}>
-                <img 
-                  className={style.img3photo}
-                src={this.props.user2.photos[2]}
-                onClick={() => this.handlePhotoClick(2)}
-                />
-              </div>
-              <div className={style.img4}>
-                <img 
-                  className={style.img4photo}
-                  src={this.props.user2.photos[3]}
-                  onClick={() => this.handlePhotoClick(3)}
-                  />
-              </div>
-            </div>
-          </div>
-          <div className={style.decision}>
-            {`${this.props.user1.firstname} and ${this.props.user2.firstname} are a...`}
-            <div className={style.decidebuttons}>
-              <Button
-                  text={`Good Couple`}
-                  onClick={this.submitUserAttractiveness}
-                  />
-              <Button
-                  text={`Bad Couple`}
-                  onClick={this.submitUserAttractiveness}
-                  className={'red'}
-                  />
-            </div>
-          </div>
-          <div className={style.chatroom}>
-            <Comments
-              submitComment={this.submitComment}
-              comments={this.props.comments}
-              voteOnComment={this.voteOnComment}
-              />
-          </div>
+          <Footer/>
         </div>
-        <Footer/>
-      </div>
-    );
-    
+      );
+    } else {
+      return (
+      <div>
+        <div className={style.nomatchwrapper}>
+          <div className={style.header}>
+          <Navbar />
+          </div>
+          <div className={style.noMatch}>
+            <div className={style.noMatchText}>
+              No Matches left to rate!
+            </div>
+            <Button 
+              text={"Refresh"}
+              />
+            </div>
+          </div>
+          <Footer />
+        </div>
+      )
+    }
   }
 }
 
