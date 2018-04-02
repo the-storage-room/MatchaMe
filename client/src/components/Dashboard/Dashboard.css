@@ -4,9 +4,11 @@
 	flex-flow: column nowrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: 65px;
-	padding: 65px;
+	margin: 25px;
+	padding: 15px;
 	background-color: rgb(245, 245, 245);
+	font-family: inherit;
+	font-weight: lighter;
 }
 
 .avatar {
@@ -26,24 +28,62 @@
 	border-radius: 3px;
 	border-bottom: solid rgb(240, 176, 176) 1px;
 	border-radius: 3px;
+	margin: auto;
+	padding: auto;
 }
 
 .rank {
-	max-width: 130px;
-	padding: 30px;
+	max-width: 100px;
+	padding: 15px;
 	float: left;
 	font-weight: normal;
-	font-size: 12px;
+	font-size: 35px;
+	margin: auto;
 }
 
+.avatar {
+	margin: auto;
+}
 .boardwrapper {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 100px;
-	grid-template-areas: 'rank, username, ';
+	grid-template-areas: 'rank, avatar, username, pRC';
 }
 
-.col2 {
+.col1 {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	padding-right: 5px;
+}
+
+.pRC {
+	font-size: 12px;
+	float: right;
+	margin: auto;
+	padding: 5px 10px 5px 5px;
+	text-align: center;
+}
+
+.username {
+	margin: auto;
+	padding: 5px 5px 5px 5px;
+	font-size: 14px;
+}
+
+.powerrankingTitle {
+	padding-bottom: 5px;
+}
+
+.powerranking {
+	padding-top: 5px;
+}
+
+.photo {
+	margin: 25px;
+	padding: 5px 5px 5px 5px;
+	border-style: solid;
+	border-radius: 50%;
+	width: 325px;
+	height: 325px;
 }
