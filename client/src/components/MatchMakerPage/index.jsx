@@ -202,7 +202,7 @@ class MatchMaker extends Component {
           </div>
           <div className={style.decision}>
             {`${this.props.user1.firstname} and ${this.props.user2.firstname} are a...`}
-            <div>
+            <div className={style.decidebuttons}>
               <Button
                   text={`Good Couple`}
                   onClick={this.submitUserAttractiveness}
