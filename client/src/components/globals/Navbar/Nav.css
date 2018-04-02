@@ -62,7 +62,38 @@
 	border-bottom: 1px solid rgb(150, 150, 150);
 }
 
-@media (min-width: 768px) {
+.dropdown-container {
+	position: absolute;
+	top: 60px;
+	right: 0;
+}
+
+.dropdown-menu {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.dropdown-menu-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	height: 50px;
+	width: 100px;
+	right: 0;
+	z-index: 5;
+	background-color: rgb(46, 46, 46);
+	color: gray;
+	font-size: 12px;
+}
+
+li:hover {
+	cursor: pointer;
+	color: rgb(167, 255, 2);
+}
+
+@media (min-width: 600px) {
 	.wrapper {
 		display: grid;
 		grid-template-areas: 'side column1 column2 logo column3 column4 avatar';
