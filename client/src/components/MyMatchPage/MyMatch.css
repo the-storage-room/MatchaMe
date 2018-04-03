@@ -5,6 +5,54 @@
   align-items:center;
 }
 
+.smallimg {
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.smallerphotosgrid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 60px 60px 60px 60px;
+  grid-template-rows: 60px;
+  grid-template-areas: 
+  "img1 img2 img3 img4";
+}
+
+.img1,
+.img2,
+.img3,
+.img4 {
+  max-width: 170%;
+  max-height: 170%;
+  min-width: 100%;
+  min-height: 100%;
+  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
+}
+
+.img1 {
+  grid-area: img1;
+  position: relative;
+  overflow: hidden;
+}
+.img2 {
+  grid-area: img2;
+  position: relative;
+  overflow: hidden;
+}
+.img3 {
+  grid-area: img3;
+  position: relative;
+  overflow: hidden;
+}
+.img4 {
+  grid-area: img4;
+  position: relative;
+  overflow: hidden;
+}
+
+
 .buttons > * {
   margin: 15px;
 }
@@ -103,16 +151,22 @@
   max-width: 120%;
   max-height: 100%;
   transform: translateX(-50%);
-  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   min-width: 100%;
   height: 100%;
   width: auto;
 }
 
+.mainphoto {
+  grid-area: mainphoto;
+  position: relative;
+  overflow: hidden;
+}
+
 .pendingwrapper {
   overflow-x: hidden;
   display: grid;
-  grid-template-rows: 60px 80px 250px 90px 200px;
+  grid-template-rows: 60px 80px 300px auto 200px;
   grid-template-columns: 100vw;
   height: auto;
   width: auto;
@@ -161,13 +215,74 @@
 }
 
 @media (min-width:450px) {
+
+  .warningBox {
+    width: 400px;
+    height: 270px;
+    margin-top: -200px;
+    margin-left: -200px;
+    font-size: 25px;
+  }
+  
+  .warningText {
+    padding: 40px;
+  }
   .noMatch {
     margin: 70px;
     padding: 70px;
   }
+  .pendingwrapper {
+    overflow-x: hidden;
+    display: grid;
+    grid-template-rows: 60px 80px 400px 90px 200px;
+    grid-template-columns: 100vw;
+    height: auto;
+    width: auto;
+    grid-template-areas: 
+    "header"
+    "message"
+    "mainphoto"
+    "bio"
+    "buttons";
+  }
 }
 
 @media (min-width: 600px) {
+
+  .smallerphotosgrid {
+    grid-template-columns: 60px 60px 60px 60px;
+    grid-template-rows: 60px;
+  }
+
+  .message {
+    padding: 15px;
+    font-size: 35px;
+  }
+
+  .mainphoto {
+    margin: 0px 5px 4px 20px; 
+  }
+
+
+  .smallphotos {
+    grid-area: smallphotos;
+    position: relative;
+    margin: 0 30px;
+  }
+
+  .pendingwrapper {
+    display: grid;
+    grid-template-rows: auto 100px 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    width: auto;
+    grid-template-areas: 
+    "header header"
+    "message message"
+    "mainphoto smallphotos"
+    "mainphoto bio"
+    "buttons buttons";
+  }
 
   .noMatch {
     margin: 100px;
@@ -179,8 +294,42 @@
     font-size: 30px;
     font-weight: 70;
   }
+  .bio {
+    margin: 20px;
+  }
+
+  .name {
+    font-size: 40px;
+    font-weight: 90;
+    margin: 0px 25px 10px 15px;
+  }
+
+  .age {
+    font-size: 15px;
+    font-weight: 80;
+    margin: 20px;
+  }
+
+  .tag {
+    font-size: 15px;
+    font-weight: 80;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .biography {
+    font-size: 15px;
+    font-weight: 120;
+    margin: 20px;
+    min-width: 200px;
+  }
 }
 
 @media (min-width: 900px) {
+  .smallerphotosgrid {
+    grid-gap: 30px;
+    grid-template-columns: 90px 90px 90px 90px;
+    grid-template-rows: 90px;
+  }
   
 }

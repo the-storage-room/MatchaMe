@@ -87,26 +87,34 @@ class Rate extends Component {
           </div>
           <div className={style.smallerphotos}>
             <div className={style.smallerphotosgrid}>
-              <img 
-                className={style.img1}
-                src={this.props.userToRate.photos[0]}
-                onClick={() => this.handlePhotoClick(0)}
-                />
-              <img 
-                className={style.img2}
-                src={this.props.userToRate.photos[1]}
-                onClick={() => this.handlePhotoClick(1)}
-                />
-              <img 
-                className={style.img3}
-                src={this.props.userToRate.photos[2]}
-                onClick={() => this.handlePhotoClick(2)}
-                />
-              <img 
-                className={style.img4}
-                src={this.props.userToRate.photos[3]}
-                onClick={() => this.handlePhotoClick(3)}
-                />
+              <div className={style.smallimg}>
+                <img 
+                  className={style.img1}
+                  src={this.props.userToRate.photos[0]}
+                  onClick={() => this.handlePhotoClick(0)}
+                  />
+              </div>
+              <div className={style.smallimg}>
+                <img 
+                  className={style.img2}
+                  src={this.props.userToRate.photos[1]}
+                  onClick={() => this.handlePhotoClick(1)}
+                  />
+              </div>
+              <div className={style.smallimg}>
+                <img 
+                  className={style.img3}
+                  src={this.props.userToRate.photos[2]}
+                  onClick={() => this.handlePhotoClick(2)}
+                  />
+                </div>
+                <div className={style.smallimg}>
+                <img 
+                  className={style.img4}
+                  src={this.props.userToRate.photos[3]}
+                  onClick={() => this.handlePhotoClick(3)}
+                  />
+                </div>
             </div>
           </div>
           <div className={style.bio}>
