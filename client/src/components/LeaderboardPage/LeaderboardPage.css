@@ -76,3 +76,28 @@
 	flex-direction: row;
 	padding-right: 5px;
 }
+
+@media (min-width: 800px) {
+	.leaderboardContainer {
+		display: grid;
+		min-height: 500px;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		align-items: center;
+		margin: 25px 0px 25px 15px;
+		padding: 15px 0px 0px 29px;
+		background-color: rgb(245, 245, 245);
+		font-family: inherit;
+		font-weight: lighter;
+		float: right;
+		width: 79%;
+	}
+
+	.boardwrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 100px;
+		grid-template-areas: 'rank, avatar, username, pRC';
+		padding: -4px;
+	}
+}
