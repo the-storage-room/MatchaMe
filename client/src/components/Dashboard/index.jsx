@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux';
 import style from './Dashboard.css';
 import Button from '../globals/Button/index.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
-import LeaderboardItem from './LeaderboardItem.jsx';
+import Leaderboard from '../LeaderboardPage/index.jsx';
+import FollowsContainer from '../FollowsPage/FollowsContainer.jsx';
 
 class Dashboard extends Component {
 	constructor() {
@@ -55,7 +56,7 @@ class Dashboard extends Component {
 						</div>
 						{this.state.show ? (
 							<div className={style.leaderboardContainer}>
-								{this.props.leaderboard.map((boarditem, index) => {
+								{/* {this.props.leaderboard.map((boarditem, index) => {
 									return (
 										<LeaderboardItem
 											key={index}
@@ -63,12 +64,11 @@ class Dashboard extends Component {
 											powerranking={boarditem.powerranking}
 											primaryPhoto={boarditem.primaryPhoto}
 											index={index}
-										/>
-									);
-								})}
+                    /> */}
+								<Leaderboard />
 							</div>
 						) : (
-							<div className={style.follows}>Follows</div>
+							<FollowsContainer />
 						)}
 					</div>
 				</div>

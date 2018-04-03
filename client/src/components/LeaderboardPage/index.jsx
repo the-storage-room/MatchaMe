@@ -13,10 +13,8 @@ class Leaderboard extends Component {
 	}
 
 	render() {
-		console.log('leaderboard', this.props.leaderboard);
 		return (
 			<div>
-				<Navbar />
 				<div className={style.leaderboardContainer}>
 					{this.props.leaderboard.map((boarditem, index) => {
 						return (
