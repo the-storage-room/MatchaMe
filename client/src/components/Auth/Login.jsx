@@ -30,7 +30,7 @@ class Login extends Component {
       localStorage.setItem('email', data.data.email);
       localStorage.setItem('token', data.data.token);
       if (data) {
-        this.props.history.push('/dashboard');
+        this.props.history.push('/initialize');
       } else {
         this.setState({ username: '' });
         this.setState({ password: '' });
