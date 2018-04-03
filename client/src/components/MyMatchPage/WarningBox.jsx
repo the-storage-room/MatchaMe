@@ -17,11 +17,11 @@ class WarningBox extends Component {
           </div>
             <Button 
               onClick={() => this.props.endMatch()}
-              text={"Yes. END MATCH"}
+              text={"Yes. END MATCH!"}
               />
             <Button 
               onClick={this.props.onClose}
-              text={"NO. Go Back!"}
+              text={"NO. Go Back."}
               className={'red'}
               />
         </div>

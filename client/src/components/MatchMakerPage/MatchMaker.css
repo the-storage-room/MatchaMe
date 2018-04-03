@@ -262,7 +262,7 @@
   .wrapper {
     display: grid;
     grid-gap: 3px;
-    grid-template-rows: 60px 300px 200px 100px 600px;
+    grid-template-rows: 60px 300px 150px 100px 600px;
     grid-template-columns: 50vw 50vw;
     height: 200vh;
     grid-template-areas: 

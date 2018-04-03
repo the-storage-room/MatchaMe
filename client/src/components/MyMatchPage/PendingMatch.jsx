@@ -11,7 +11,6 @@ class Pending extends Component {
     super();
     this.state = {
       target: 0,
-      width: window.innerWidth,
     };
   }
 
@@ -27,13 +26,13 @@ class Pending extends Component {
     } else {
       this.setState({
         target: photo,
-        width: window.innerWidth,
       })
     }
   }
 
 
   render() {
+    
     const { user2, accept, reject } = this.props;
     let photos = user2.photos.map((photo) => {
       return photo.url
@@ -44,10 +43,9 @@ class Pending extends Component {
     }
 
     window.onresize = () => {
-      this.setState({
-        width: window.innerWidth,
-      })
+      this.forceUpdate();
     }
+
     return (
       <div>
         <div className={style.pendingwrapper}>
@@ -66,7 +64,7 @@ class Pending extends Component {
             />
           </div>
           {
-            (this.state.width > 599) &&
+            (window.innerWidth > 599) &&
           <div className={style.smallphotos}>
           <div className={style.smallerphotosgrid}>
             <div className={style.smallimg}>

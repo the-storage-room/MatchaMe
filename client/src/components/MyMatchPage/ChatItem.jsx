@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import style from './MyMatchPage.css';
+import style from './MyMatch.css';
 
 const ChatItem = ({ chat, username, theirPhoto, yourPhoto }) => {
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import style from './MyMatchPage.css';
+import style from './MyMatch.css';
 import Button from '../globals/Button/index.jsx';
 import ChatItem from './ChatItem.jsx';
 
@@ -40,20 +40,22 @@ class Chatroom extends Component {
   }
 
   submitMessage = () => {
-    const { message } = this.state;
-    const { socket, username, firstname } = this.props;
-    const time = Date.now()
-    socket.emit('client.chat', JSON.stringify({
-        message,
-        username,
-        firstname,
-        time
+    if (this.state.message.length > 0) {
+      const { message } = this.state;
+      const { socket, username, firstname } = this.props;
+      const time = Date.now()
+      socket.emit('client.chat', JSON.stringify({
+          message,
+          username,
+          firstname,
+          time
+        })
+      )
+      this.setState({
+        message: '',
       })
-    )
-    this.setState({
-      message: '',
-    })
-    document.getElementById('chatTextarea').value = '';
+      document.getElementById('chatTextarea').value = '';
+    }
   }
 
   handleTextareaChange = (e) => {
@@ -67,14 +69,28 @@ class Chatroom extends Component {
     const chatFeed = this.state.chatFeed.slice(-100);
     return (
       <div className={style.chatRoom}>
+        <div className={style.chatHeader}>
+          <div 
+            onClick={() => this.props.toggleProfile()}
+            >
+          <img 
+            className={style.theirAvatarHeader}
+            src={this.props.theirPhoto}
+            />
+            {this.props.user2firstname}
+          </div>
+        </div>
         <div className={style.chatFeed}>
+          { !this.props.isSuccessful &&
+              <div className={style.waiting}>waiting for your match to accept...</div>
+          }
           {
             chatFeed
               .map((chat, i) => {
                 return (
                   <ChatItem
                     key={i}
-                    chat={chat}
+                    chat={chatFeed[chatFeed.length - 1 - i]}
                     username={this.props.username}
                     theirPhoto={this.props.theirPhoto}
                     yourPhoto={this.props.yourPhoto}
@@ -89,15 +105,18 @@ class Chatroom extends Component {
             type="text"
             id="chatTextarea"
             autoComplete="off"
+            placeholder="Say something!"
             className={style.textbox}
             onChange={this.handleTextareaChange}
             />
           </form>
-          <Button
-            text={"Enter"}
-            className={"tag"}
-            onClick={() => this.submitMessage()}
-            />
+          <div className={style.enter}>
+            <Button
+              text={"Enter"}
+              className={"small"}
+              onClick={() => this.submitMessage()}
+              />
+          </div>
         </div>
       </div>
     );

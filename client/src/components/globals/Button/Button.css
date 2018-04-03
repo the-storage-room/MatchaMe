@@ -24,7 +24,6 @@ button:focus {
   background-color: rgb(188, 209, 197);
   border: none;
   color: rgba(0, 0, 0, 0.705);
-  padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -35,6 +34,7 @@ button:focus {
   border-radius: 2px;
   font-size: 10px;
   font-weight: 80;
+  height: 25px;
 }
 
 .defaultButton:hover {
@@ -61,6 +61,27 @@ button:focus {
   font-size: 15px;
   font-weight: 80;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.red:hover {
+  color: rgb(255, 255, 255);
+}
+
+.redsmall {
+  background-color: rgb(218, 172, 172);
+  border: none;
+  color: rgba(0, 0, 0, 0.705);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin: 5px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 80;
+  height: 25px;
 }
 
 .red:hover {

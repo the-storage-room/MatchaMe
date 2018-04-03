@@ -1,3 +1,177 @@
+.chatroom {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.endMatch {
+  overflow: hidden;
+  z-index: 5;
+  position: fixed;
+  top:62px;
+  right: 7px;
+}
+
+.toggleProfile {
+  overflow: hidden;
+  z-index: 5;
+  position: fixed;
+  top:62px;
+  left: 7px;
+}
+
+.chatMessage {
+  max-width: 80%;
+  padding-top:3px;
+}
+
+.waiting {
+  text-align: center;
+  font-weight: 100;
+}
+
+.enter {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+}
+
+
+
+.chatHeader {
+  border-bottom: solid rgba(0, 0, 0, 0.089) 1px;
+  height: 40px;
+  background-color: white;
+  text-align: center;
+  line-height: 40px;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 60px;
+}
+
+.chatProfile {
+  margin-top: 100px;
+}
+
+.theirAvatarHeader {
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding:3px 5px;
+}
+
+.textbox {
+  margin: 0 10px;
+  width: 80%;
+  height: 95%;
+  border: none;
+  float: left;  
+  font-size: 15px;
+  font-weight: 120;
+  padding: 30px 10px;
+}
+
+.textbox:focus {
+  outline:0;
+}
+
+.chatItem {
+  margin-left: 5px;
+  display: inline-block;
+  width: 96%;
+  height: 40px;
+}
+
+.yourMessage {
+ margin-top: 12px;
+ float: right;
+}
+
+.theirMessage {
+  margin-top: 12px;
+  float: left;
+}
+
+.yourAvatar {
+  float: right;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding:10px;
+}
+
+.theirAvatar {
+  float: left;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding:10px;
+}
+
+.yourTime,
+.theirTime {
+  margin: 17px;
+  font-size: 10px;
+  opacity:0;
+  height: auto;
+  transition:0s 3s;
+}
+
+.theirTime {
+  float: left;
+}
+
+.yourTime {
+  float: right;
+}
+
+
+.theirMessage:hover + .theirTime,
+.yourMessage:hover + .yourTime {
+  opacity:1;
+  transition:0s;
+}
+
+
+.chatFeed {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+.chatBox {
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  height: 80px;
+  border-top: solid rgba(0, 0, 0, 0.089) 1px;
+  bottom: 0;
+}
+
+.chatRoom {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.chatTextarea {
+  flex: 1;
+}
+
+form {
+  width: 80%;
+}
+
 .next {
   position: relative;
   display:flex;
@@ -67,11 +241,6 @@
   padding: 30px;
   font-size: 20px;
   font-weight: 70;
-}
-
-.header {
-  grid-area: header;
-  position: relative;
 }
 
 .message {
@@ -163,6 +332,15 @@
   min-width: 200px;
 }
 
+
+.header{
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  top: 0;
+}
+
 @media (min-width:450px) {
 
   .smallimg {
@@ -250,6 +428,18 @@
 
 @media (min-width: 600px) {
 
+
+  .chatRoom {
+    width: 100%;
+    margin-top: -60px;
+    padding: 0;
+  }
+
+.header {
+  grid-area: header;
+  position: relative;
+}
+
   .smallerphotosgrid {
     grid-template-rows: 70px;
   }
@@ -322,6 +512,22 @@
     font-weight: 120;
     margin: 20px;
     min-width: 200px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .chatHeader {
+    height: 40px;
+    top: 75px;
+  }
+  
+  .endMatch {
+    top:80px;
+  }
+  
+  .toggleProfile {
+    top: 80px;
   }
 }
 

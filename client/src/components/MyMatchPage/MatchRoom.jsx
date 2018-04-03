@@ -8,11 +8,13 @@ import Navbar from '../globals/Navbar/index.jsx';
 import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
 
 
-class MyMatch extends Component {
+class MatchRoom extends Component {
   constructor() {
     super();
     this.state = {
       target: 0,
+      showProfile: false,
+      showChatroom: true,
     }
   }
 
@@ -29,6 +31,17 @@ class MyMatch extends Component {
         target: photo
       })
     }
+  }
+
+  toggleButtonText = () => {
+    return (this.state.showProfile) ? "Hide Profile" : "Show Profile"
+  }
+
+  toggleProfile = () => {
+    let { showProfile } = this.state;
+    this.setState({
+      showProfile: !showProfile
+    })
   }
 
   render() {
@@ -55,6 +68,10 @@ class MyMatch extends Component {
       return photo.url
     })
 
+    window.onresize = () => {
+      this.forceUpdate();
+    }
+
     return (
       <div>
       {
@@ -62,47 +79,32 @@ class MyMatch extends Component {
         ?
         <div className={style.mymatchwrapper}>
           <div className={style.header}>
-            <Navbar />
+            <Navbar/>
           </div>
-            <div className={style.profile}>
+            <div className={style.endMatch}>
+              <Button 
+                text={'End Match'}
+                className={"redsmall"}
+                onClick={() => {this.props.toggleWarningBox()}}
+                />
+            </div>
+            <div className={style.toggleProfile}>
+              <Button 
+                text={this.toggleButtonText()}
+                className={"small"}
+                onClick={() => {this.toggleProfile()}}
+                />
+            </div>
+
+            {
+              this.state.showProfile &&
+            <div className= {style.chatProfile}>
               <div className={style.mainphoto}>
               <img 
                 className={style.mainimg}
-                src={user2.photos[this.target]}
+                src={photos[this.state.target]}
                 onClick={() => this.handlePhotoClick('main')}
                 />
-              </div>
-              <div className={style.smallphotos}>
-              <div className={style.smallerphotosgrid}>
-                <div className={style.smallimg}>
-                  <img 
-                    className={style.img1}
-                    src={photos[0]}
-                    onClick={() => this.handlePhotoClick(0)}
-                    />
-                </div>
-                <div className={style.smallimg}>
-                  <img 
-                    className={style.img2}
-                    src={photos[1]}
-                    onClick={() => this.handlePhotoClick(1)}
-                    />
-                </div>
-                <div className={style.smallimg}>
-                  <img 
-                    className={style.img3}
-                    src={photos[2]}
-                    onClick={() => this.handlePhotoClick(2)}
-                    />
-                  </div>
-                  <div className={style.smallimg}>
-                  <img 
-                    className={style.img4}
-                    src={photos[3]}
-                    onClick={() => this.handlePhotoClick(3)}
-                    />
-                  </div>
-                </div>
               </div>
               <div className={style.bio}>
                 <div className={style.name}>
@@ -127,33 +129,57 @@ class MyMatch extends Component {
                 </div>
               </div>
             </div>
-            <div className={style.endMatch}>
-              <Button 
-                text={'End Match'}
-                className={"red"}
-                onClick={() => {toggleWarningBox()}}
-                />
+            }
+            {
+              (window.innerWidth > 599 && this.state.showProfile ) &&
+            <div className={style.smallphotos}>
+            <div className={style.smallerphotosgrid}>
+              <div className={style.smallimg}>
+                <img 
+                  className={style.img1}
+                  src={photos[0]}
+                  onClick={() => this.handlePhotoClick(0)}
+                  />
+              </div>
+              <div className={style.smallimg}>
+                <img 
+                  className={style.img2}
+                  src={photos[1]}
+                  onClick={() => this.handlePhotoClick(1)}
+                  />
+              </div>
+              <div className={style.smallimg}>
+                <img 
+                  className={style.img3}
+                  src={photos[2]}
+                  onClick={() => this.handlePhotoClick(2)}
+                  />
+                </div>
+                <div className={style.smallimg}>
+                <img 
+                  className={style.img4}
+                  src={photos[3]}
+                  onClick={() => this.handlePhotoClick(3)}
+                  />
+                </div>
+              </div>
             </div>
-            <div className={style.showprofile}>
-              <Button 
-                text={'Show Profile'}
-                />
-            </div>
-            <div className={style.chatroom}>
-              {
-                isSuccessful
-                ?
+            }
+            { this.state.showChatroom && 
+              <div className={style.chatroom}>
                 <Chatroom 
                   socket={socket}
+                  user2firstname={user2.firstname}
                   username={username}
                   firstname={firstname}
                   theirPhoto={user2.photos[0].url}
                   yourPhoto={this.props.yourPhoto}
+                  toggleWarningBox={toggleWarningBox}
+                  isSuccessful={isSuccessful}
+                  toggleProfile={() => this.toggleProfile()}
                   />
-                :
-                "Waiting for your match to Accept..."
-              }
-            </div>
+              </div>
+            }
         </div>
         :
         <PendingMatch
@@ -169,4 +195,4 @@ class MyMatch extends Component {
   }
 }
 
-export default MyMatch;
+export default MatchRoom;
