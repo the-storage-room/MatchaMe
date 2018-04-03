@@ -32,7 +32,10 @@ class Dashboard extends Component {
 						<div className={style.info}>
 							<div className={style.userranking}>Power Ranking Score</div>
 							<div className={style.countdown}>You have X more points to rank up</div>
-							<div className={style.bar}>Bar here</div>
+
+							<progress max="100" value="25">
+								Hi
+							</progress>
 						</div>
 					</div>
 					<div className={style.column}>
