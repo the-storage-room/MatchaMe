@@ -274,6 +274,14 @@ form {
   max-height: 120%;
   transform: translateX(-50%);
 }
+.mainimgforchat {
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+  max-width: 120%;
+  max-height: 120%;
+  transform: translateX(-50%);
+}
 
 .mainphoto {
   grid-area: mainphoto;
@@ -342,6 +350,10 @@ form {
 }
 
 @media (min-width:450px) {
+
+  .chatProfile {
+    text-align: center;
+  }
 
   .smallimg {
     -o-object-fit: cover;
@@ -428,6 +440,13 @@ form {
 
 @media (min-width: 600px) {
 
+  .mainphotoforchat {
+    margin: 0;
+  }
+  .mainimgforchat {
+    right: auto;
+  }
+
 
   .chatRoom {
     width: 100%;
@@ -435,10 +454,10 @@ form {
     padding: 0;
   }
 
-.header {
-  grid-area: header;
-  position: relative;
-}
+  .header {
+    grid-area: header;
+    position: relative;
+  }
 
   .smallerphotosgrid {
     grid-template-rows: 70px;
@@ -491,7 +510,7 @@ form {
   .name {
     font-size: 40px;
     font-weight: 90;
-    margin: 0px 25px 10px 15px;
+    margin: 0px 25px 10px 25px;
   }
 
   .age {
@@ -519,7 +538,7 @@ form {
 
   .chatHeader {
     height: 40px;
-    top: 75px;
+    top: 80px;
   }
   
   .endMatch {
@@ -532,11 +551,22 @@ form {
 }
 
 @media (min-width: 900px) {
+
+  .chatProfile {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    width: 50%;
+  }
+
   .mainphoto {
     margin-left: 30px;
   }
 
   .bio {
+    display: block;
     margin-right: 60px;
   }
 
@@ -548,12 +578,64 @@ form {
   .smallphotos {
     margin: 0 60px 0 30px;
   }
+
+  .chatroom {
+    width: 50%;
+  }
+
+.chatRoom {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+  }
+  
+  .toggleProfile {
+    visibility: hidden;
+    position: fixed;
+    top:62px;
+    left: 7px;
+  }
+  
+  .chatMessage {
+    max-width: 80%;
+    padding-top:3px;
+  }
+  
+  .waiting {
+    text-align: center;
+    font-weight: 100;
+  }
+  
+  .enter {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+  }
+
+  .chatHeader {
+    height: 40px;
+    top: 80px;
+    width: 50%;
+  }
+
+.chatBox {
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  width: 50%;
+  z-index: 5;
+  height: 80px;
+  border-top: solid rgba(0, 0, 0, 0.089) 1px;
+  bottom: 0;
+}
 }
 
 
 @media (min-width: 1000px) {
   .smallerphotosgrid {
     grid-gap: 20px;
-    grid-template-rows: 120px;
+    grid-template-rows: 100px;
   }
 }

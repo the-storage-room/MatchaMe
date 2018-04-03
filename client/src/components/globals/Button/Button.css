@@ -83,7 +83,7 @@ button:focus {
   font-weight: 80;
   height: 25px;
 }
-
+.redsmall:hover,
 .red:hover {
   color: rgb(255, 255, 255);
 }

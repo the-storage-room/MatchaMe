@@ -78,7 +78,7 @@ class MatchRoom extends Component {
         isSuccessful === 1 || firstAccept === user1
         ?
         <div className={style.mymatchwrapper}>
-          <div className={style.header}>
+          <div className={style.chatheader}>
             <Navbar/>
           </div>
             <div className={style.endMatch}>
@@ -95,13 +95,13 @@ class MatchRoom extends Component {
                 onClick={() => {this.toggleProfile()}}
                 />
             </div>
-
-            {
-              this.state.showProfile &&
             <div className= {style.chatProfile}>
-              <div className={style.mainphoto}>
+            {
+              (this.state.showProfile || window.innerWidth > 899) &&
+            <div>
+              <div className={style.mainphotoforchat}>
               <img 
-                className={style.mainimg}
+                className={style.mainimgforchat}
                 src={photos[this.state.target]}
                 onClick={() => this.handlePhotoClick('main')}
                 />
@@ -131,7 +131,8 @@ class MatchRoom extends Component {
             </div>
             }
             {
-              (window.innerWidth > 599 && this.state.showProfile ) &&
+              (window.innerWidth > 599 && this.state.showProfile || window.innerWidth > 899) &&
+            <div className={style.smallphotosforchat}>
             <div className={style.smallphotos}>
             <div className={style.smallerphotosgrid}>
               <div className={style.smallimg}>
@@ -164,7 +165,9 @@ class MatchRoom extends Component {
                 </div>
               </div>
             </div>
+            </div>
             }
+            </div>
             { this.state.showChatroom && 
               <div className={style.chatroom}>
                 <Chatroom 
