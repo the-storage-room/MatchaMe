@@ -14,7 +14,38 @@ class Dashboard extends Component {
 		this.state = {
 			show: true,
 			pointsToGo: 0,
+			width: 50,
 		};
+	}
+
+	componentDidMount() {
+		const { totalPoints } = this.props.powerRanking;
+		if (totalPoints <= 0) {
+			this.setState({ width: 0 });
+		} else if (
+			0 < totalPoints <= 250 ||
+			1000 < totalPoints <= 1500 ||
+			3000 < totalPoints <= 3500 ||
+			5000 < totalPoints <= 6250
+		) {
+			this.setState({ width: 25 });
+		} else if (
+			250 < totalPoints <= 500 ||
+			1500 < totalPoints <= 2000 ||
+			3500 < totalPoints <= 4000 ||
+			6250 < totalPoints <= 7500
+		) {
+			this.setState({ width: 50 });
+		} else if (
+			500 < totalPoints <= 750 ||
+			2000 < totalPoints <= 2500 ||
+			4000 < totalPoints <= 4500 ||
+			7500 < totalPoints <= 8750
+		) {
+			this.setState({ width: 75 });
+		} else {
+			this.setState({ width: 100 });
+		}
 	}
 
 	onClickHandlerFollowButton = () => {
@@ -38,7 +69,7 @@ class Dashboard extends Component {
 							<div className={style.userranking}>Points: {powerRanking.totalPoints} </div>
 							<div className={style.countdown}>You have X more points to rank up</div>
 
-							<progress max="100" value="25">
+							<progress max="100" value={this.state.width}>
 								Hi
 							</progress>
 						</div>
