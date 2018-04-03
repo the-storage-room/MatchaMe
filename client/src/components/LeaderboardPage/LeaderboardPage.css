@@ -4,7 +4,7 @@
 	flex-flow: column nowrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: 25px;
+	margin: 25px 15px 25px 25px;
 	padding: 15px;
 	background-color: rgb(245, 245, 245);
 	font-family: inherit;
@@ -18,7 +18,6 @@
 	border-top: solid rgb(240, 176, 176) 1px;
 	border-radius: 3px;
 	border-bottom: solid rgb(240, 176, 176) 1px;
-	border-radius: 3px;
 	margin: auto;
 	padding: auto;
 }

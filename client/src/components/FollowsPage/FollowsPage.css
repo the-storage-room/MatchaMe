@@ -1,76 +1,87 @@
 .followsContainer {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  align-items: center;
-  padding: 75px;
-  margin: auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 176px 177px;
+	grid-template-areas: 'followItemsContainer' 'followItemsContainer';
+	flex-flow: column nowrap;
+	padding: 15px;
+	margin: 25px 15px 25px 25px;
+	background-color: rgb(245, 245, 245);
+	justify-content: space-between;
+	align-items: center;
+	border: solid rgb(188, 209, 197) 1px;
+	height: 100%;
+	width: 87%;
+	position: relative;
 }
 
 .starredContainer {
-  display: flex;
-  width: 800px;
-  min-height: 150px;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  border: solid rgb(240, 176, 176) 1px;
-  border-radius: 3px;
-  background-color:rgb(245, 245, 245);
-  margin-bottom: 10px;
+	display: flex;
+	width: 91%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	margin: 0px -9px 165px 0px;
 }
 .resultsContainer {
-  display: flex;
-  width: 800px;
-  min-height: 350px;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  border: solid rgb(240, 176, 176) 1px;
-  border-radius: 3px;
-  background-color:rgb(245, 245, 245);
+	display: flex;
+	width: 350px;
+	height: 176px;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 28px 28px -14px;
 }
 
 .avatar {
-    object-fit: cover;
-    border-radius:50%;
-    width: 80px;
-    height: 80px;
-    padding:10px;
+	object-fit: cover;
+	border-radius: 50%;
+	width: 20%;
+	height: 81%;
+}
+
+.followItemsContainer {
+	margin: auto;
+	padding: 10px 10px 10px 10px;
+	width: 350px;
+	height: 0px;
+	font-weight: lighter;
+	font-family: inherit;
 }
 
 .followItem {
-  display: inline-block;
-  width: 800px;
-  height: 100px;
-  border-top: solid rgb(240, 176, 176) 1px;
-  border-radius: 3px;
-  border-bottom: solid rgb(240, 176, 176) 1px;
-  border-radius: 3px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 50px;
+	grid-template-areas: 'user1, decision, yellowstar, user2';
+	width: 350px;
+	height: 100px;
+	border-bottom: solid rgb(240, 176, 176) 1px;
+	border-radius: 3px;
+	padding: 0px 0px 0px 0px;
 }
 
 .h3 {
-  float: right;
-  width: 130px;
-  height: 20px;
-  padding:10px;
-  max-width: 130px;
-  font-weight: normal;
-  font-size: 20px;
+	float: right;
+	width: 130px;
+	height: 20px;
+	padding: 10px;
+	max-width: 130px;
+	font-weight: normal;
+	font-size: 12px;
 }
 
 .user1 {
-float: left;
+	float: left;
 }
 
 .user2 {
-float: right;
+	float: right;
 }
 
 .decision {
-  max-width: 130px;
-  padding:30px;
-  float: right;
-  font-weight: normal;
-  font-size: 16px;
+	max-width: 130px;
+	padding: 14px;
+	float: right;
+	font-weight: normal;
+	font-size: 12px;
 }
