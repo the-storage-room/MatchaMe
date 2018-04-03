@@ -18,6 +18,7 @@ class Follows extends Component {
 	};
 
 	render() {
+		console.log('starred', this.props.starred);
 		return (
 			<div className={style.followsContainer}>
 				<div className={style.starredContainer}>

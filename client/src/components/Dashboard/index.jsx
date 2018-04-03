@@ -27,9 +27,8 @@ class Dashboard extends Component {
 
 	render() {
 		const { firstname, photos, powerRanking, follows } = this.props;
-		console.log('follows', follows);
 		return (
-			<div className="row">
+			<div className={style.row}>
 				<Navbar />
 				<div className={style.wrapper}>
 					<div className={style.column}>
