@@ -10,13 +10,7 @@ class Avatar extends React.Component {
 	}
 
 	render() {
-		return (
-			<img
-				className={style.avatar}
-				src={this.props.photo}
-				// onClick={() => this.props.history.push('/account/bio')}
-			/>
-		);
+		return <img className={style.avatar} src={this.props.photo} />;
 	}
 }
 

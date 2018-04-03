@@ -45,3 +45,7 @@ progress::-webkit-progress-value {
 	background-color: rgb(188, 209, 197);
 	border-radius: 8px;
 }
+
+.choice {
+	padding-bottom: 15px;
+}

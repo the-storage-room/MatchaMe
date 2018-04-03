@@ -53,7 +53,7 @@ class App extends Component {
 							path="/account/:page(bio|photoupload)"
 							component={props => <Protected component={Account} {...props} />}
 						/>
-						<Route path="/" component={LandingPage} />
+						<Route exact path="/" component={LandingPage} />
 					</Switch>
 				</MuiThemeProvider>
 			</div>
