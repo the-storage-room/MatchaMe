@@ -70,12 +70,6 @@ export default {
       } catch (err) {
         console.error;
       }
-<<<<<<< HEAD
-    }
-  },
-}
-=======
     };
   }
 };
->>>>>>> [Auth] Sure take you to initialized page
