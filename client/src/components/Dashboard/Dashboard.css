@@ -47,7 +47,11 @@ progress::-webkit-progress-value {
 }
 
 .choice {
-	padding-bottom: 15px;
+	width: 60%;
+	padding-left: 100px;
+	justify-content: center;
+	display: flex;
+	flex-direction: row;
 }
 
 .row {
@@ -61,10 +65,11 @@ progress::-webkit-progress-value {
 
 	.column2 {
 		float: right;
+		padding-right: 85px;
+		width: 50%;
 	}
 
 	.choice {
-		padding-bottom: 0px;
 		padding-top: 30px;
 		margin-top: 30px;
 		margin-right: 49px;
@@ -85,5 +90,11 @@ progress::-webkit-progress-value {
 
 	.countdown {
 		padding: 5px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.column {
+		padding-left: 115px;
 	}
 }
