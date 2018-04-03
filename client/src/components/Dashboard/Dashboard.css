@@ -53,3 +53,37 @@ progress::-webkit-progress-value {
 .row {
 	min-height: 100%;
 }
+
+@media (min-width: 800px) {
+	.column {
+		float: left;
+	}
+
+	.column2 {
+		float: right;
+	}
+
+	.choice {
+		padding-bottom: 0px;
+		padding-top: 30px;
+		margin-top: 30px;
+		margin-right: 49px;
+		width: 72%;
+	}
+
+	.welcome {
+		padding-top: 60px;
+	}
+
+	.status {
+		padding: 5px;
+	}
+
+	.userBoardPlace {
+		padding: 5px;
+	}
+
+	.countdown {
+		padding: 5px;
+	}
+}

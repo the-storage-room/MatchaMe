@@ -69,3 +69,21 @@
 	padding: 14px;
 	float: right;
 }
+
+@media (min-width: 800px) {
+	.followsContainer {
+		display: flex;
+		flex-flow: column nowrap;
+		padding: 17px 4px 10px 0px;
+		margin: 25px 69px 25px 70px;
+		background-color: rgb(245, 245, 245);
+		justify-content: space-between;
+		align-items: center;
+		min-height: 500px;
+		width: 83%;
+		position: static;
+		font-weight: lighter;
+		font-family: inherit;
+		font-size: 12px;
+	}
+}
