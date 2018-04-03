@@ -37,9 +37,18 @@ class Rate extends Component {
   }
 
   handlePhotoClick = (photo) => {
-    this.setState({
-      target: photo
-    })
+    if (photo === 'main') {
+      let newPhoto = this.state.target;
+      newPhoto += 1;
+      if (newPhoto === this.props.userToRate.photos.length) { newPhoto = 0 }
+      this.setState({
+        target: newPhoto
+      })
+    } else {
+      this.setState({
+        target: photo
+      })
+    }
   }
 
 
@@ -80,6 +89,7 @@ class Rate extends Component {
           <div className={style.mainphoto}>
             <img 
               className={style.mainimg}
+              onClick={() => this.handlePhotoClick('main')}
               src={this.props.userToRate.photos[this.state.target]}
               />
           </div>

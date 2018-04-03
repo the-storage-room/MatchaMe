@@ -7,11 +7,46 @@ import Footer from '../globals/Footer/index.jsx';
 import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
 
 class Pending extends Component {
+  constructor() {
+    super();
+    this.state = {
+      target: 0,
+      width: window.innerWidth,
+    };
+  }
+
+
+  handlePhotoClick = (photo) => {
+    if (photo === 'main') {
+      let newPhoto = this.state.target;
+      newPhoto += 1;
+      if (newPhoto === this.props.user2.photos.length) { newPhoto = 0 }
+      this.setState({
+        target: newPhoto
+      })
+    } else {
+      this.setState({
+        target: photo,
+        width: window.innerWidth,
+      })
+    }
+  }
+
+
   render() {
     const { user2, accept, reject } = this.props;
+    let photos = user2.photos.map((photo) => {
+      return photo.url
+    })
     let realAge;
     if (user2) {
       realAge = turnBirthdayIntoAge(user2.age)
+    }
+
+    window.onresize = () => {
+      this.setState({
+        width: window.innerWidth,
+      })
     }
     return (
       <div>
@@ -26,41 +61,45 @@ class Pending extends Component {
           <div className={style.mainphoto}>
           <img 
             className={style.mainimg}
-            src={user2.photos[0].url}
+            src={photos[this.state.target]}
+            onClick={() => this.handlePhotoClick('main')}
             />
           </div>
+          {
+            (this.state.width > 599) &&
           <div className={style.smallphotos}>
           <div className={style.smallerphotosgrid}>
             <div className={style.smallimg}>
               <img 
                 className={style.img1}
-                src={user2.photos[0].url}
+                src={photos[0]}
                 onClick={() => this.handlePhotoClick(0)}
                 />
             </div>
             <div className={style.smallimg}>
               <img 
                 className={style.img2}
-                src={user2.photos[1].url}
+                src={photos[1]}
                 onClick={() => this.handlePhotoClick(1)}
                 />
             </div>
             <div className={style.smallimg}>
               <img 
                 className={style.img3}
-                src={user2.photos[2].url}
+                src={photos[2]}
                 onClick={() => this.handlePhotoClick(2)}
                 />
               </div>
               <div className={style.smallimg}>
               <img 
                 className={style.img4}
-                src={user2.photos[3].url}
+                src={photos[3]}
                 onClick={() => this.handlePhotoClick(3)}
                 />
               </div>
             </div>
           </div>
+          }
           <div className={style.bio}>
             <div className={style.name}>
             {user2.firstname} {user2.lastname[0]}.
