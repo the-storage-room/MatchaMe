@@ -134,7 +134,7 @@ const createUsersTable = async () => {
         gender       INT ,
         preference   INT ,
         bio          VARCHAR(255) ,
-        powerranking INT ,
+        powerranking INT DEFAULT 0,
         totalAttractiveness INT DEFAULT 0,
         totalNumOfRatings INT DEFAULT 0, 
         averageAttractiveness INT DEFAULT 5 ,
