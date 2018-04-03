@@ -2,9 +2,9 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 176px 177px;
-	grid-template-areas: 'followItemsContainer' 'followItemsContainer';
+	grid-template-areas: 'starredContainer' 'resultsContainer';
 	flex-flow: column nowrap;
-	padding: 15px;
+	padding: 17px 4px 3px 4px;
 	margin: 25px 15px 25px 25px;
 	background-color: rgb(245, 245, 245);
 	justify-content: space-between;
@@ -16,12 +16,12 @@
 }
 
 .starredContainer {
-	display: flex;
-	width: 91%;
-	height: 100%;
-	justify-content: center;
-	align-items: center;
-	margin: 0px -9px 165px 0px;
+	margin: 0px 0px 0 0px;
+	padding: 1px 0px 0px -1px;
+	width: 350px;
+	height: 175px;
+	font-weight: lighter;
+	font-family: inherit;
 }
 .resultsContainer {
 	display: flex;
@@ -34,18 +34,10 @@
 
 .avatar {
 	object-fit: cover;
-	border-radius: 50%;
-	width: 20%;
+	border-radius: 77%;
+	width: 55%;
 	height: 81%;
-}
-
-.followItemsContainer {
-	margin: auto;
-	padding: 10px 10px 10px 10px;
-	width: 350px;
-	height: 0px;
-	font-weight: lighter;
-	font-family: inherit;
+	padding-top: 5px;
 }
 
 .followItem {
@@ -53,17 +45,16 @@
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 50px;
 	grid-template-areas: 'user1, decision, yellowstar, user2';
-	width: 350px;
-	height: 100px;
-	border-bottom: solid rgb(240, 176, 176) 1px;
-	border-radius: 3px;
-	padding: 0px 0px 0px 0px;
+	width: 320px;
+	height: 93px;
+	/* border-bottom: solid rgb(240, 176, 176) 1px;
+	border-radius: 3px; */
 }
 
 .h3 {
 	float: right;
-	width: 130px;
-	height: 20px;
+	width: 55px;
+	height: 13px;
 	padding: 10px;
 	max-width: 130px;
 	font-weight: normal;
