@@ -3,6 +3,11 @@
 	text-align: center;
 }
 
+.welcome {
+	padding-top: 15px;
+	text-align: center;
+}
+
 .photo {
 	margin: 25px;
 	padding: 5px 5px 5px 5px;
@@ -10,6 +15,33 @@
 	border-radius: 50%;
 	width: 325px;
 	height: 325px;
+}
+
+.userranking {
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.countdown {
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+progress {
+	height: 1em;
+	width: 15em;
+	vertical-align: 0.8em;
+	border-radius: 8px;
+}
+
+progress::-webkit-progress-bar {
+	background-color: #b8b8b8;
+	border-radius: 8px;
+}
+
+progress::-webkit-progress-value {
+	background-color: rgb(188, 209, 197);
+	border-radius: 8px;
 }
 
 .leaderboardContainer {
@@ -23,15 +55,6 @@
 	background-color: rgb(245, 245, 245);
 	font-family: inherit;
 	font-weight: lighter;
-}
-
-.avatar {
-	float: left;
-	object-fit: cover;
-	border-radius: 50%;
-	width: 50px;
-	height: 50px;
-	padding: 10px;
 }
 
 .leaderboardItems {
@@ -56,8 +79,37 @@
 }
 
 .avatar {
+	float: left;
+	object-fit: cover;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	padding: 10px;
 	margin: auto;
 }
+
+.username {
+	margin: auto;
+	padding: 5px 5px 5px 5px;
+	font-size: 14px;
+}
+
+.pRC {
+	font-size: 12px;
+	float: right;
+	margin: auto;
+	padding: 5px 10px 5px 5px;
+	text-align: center;
+}
+
+.powerrankingTitle {
+	padding-bottom: 5px;
+}
+
+.powerranking {
+	padding-top: 5px;
+}
+
 .boardwrapper {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -69,26 +121,4 @@
 	display: flex;
 	flex-direction: row;
 	padding-right: 5px;
-}
-
-.pRC {
-	font-size: 12px;
-	float: right;
-	margin: auto;
-	padding: 5px 10px 5px 5px;
-	text-align: center;
-}
-
-.username {
-	margin: auto;
-	padding: 5px 5px 5px 5px;
-	font-size: 14px;
-}
-
-.powerrankingTitle {
-	padding-bottom: 5px;
-}
-
-.powerranking {
-	padding-top: 5px;
 }
