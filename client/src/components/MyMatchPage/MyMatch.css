@@ -1,8 +1,83 @@
+.smallimg {
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.smallphotosforchat {
+  width: 80%;
+  margin: auto;
+}
+
+
+.smallerphotosgrid {
+  grid-gap: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 50px;
+  grid-template-areas: 
+  "img1 img2 img3 img4";
+}
+
+.img1,
+.img2,
+.img3,
+.img4 {
+  max-width: 130%;
+  max-height: 130%;
+  min-width: 100%;
+  min-height: 100%;
+  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
+}
+
+.img1 {
+  grid-area: img1;
+  position: relative;
+  overflow: hidden;
+}
+.img2 {
+  grid-area: img2;
+  position: relative;
+  overflow: hidden;
+}
+.img3 {
+  grid-area: img3;
+  position: relative;
+  overflow: hidden;
+}
+.img4 {
+  grid-area: img4;
+  position: relative;
+  overflow: hidden;
+}
 .chatroom {
+  margin-top: -150px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
   align-items: center;
+}
+
+.mainimgforchat {
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+  max-width: 200%;
+  max-height: 200%;
+}
+
+.mainphotoforchat {
+  height: 300px;
+  width: 300px;
+  margin: -60px auto 0 auto;
+}
+
+.chatRoom {
+  width: 100%;
+}
+
+.chatProfile {
+  margin: 0 auto;
 }
 
 .endMatch {
@@ -157,13 +232,6 @@
   bottom: 0;
 }
 
-.chatRoom {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 .chatTextarea {
   flex: 1;
 }
@@ -274,14 +342,6 @@ form {
   max-height: 120%;
   transform: translateX(-50%);
 }
-.mainimgforchat {
-  -o-object-fit: cover;
-  object-fit: cover;
-  overflow: hidden;
-  max-width: 120%;
-  max-height: 120%;
-  transform: translateX(-50%);
-}
 
 .mainphoto {
   grid-area: mainphoto;
@@ -349,59 +409,15 @@ form {
   top: 0;
 }
 
+.smallphotosforchat {
+  max-width: 600px;
+}
+
 @media (min-width:450px) {
 
-  .chatProfile {
-    text-align: center;
-  }
 
-  .smallimg {
-    -o-object-fit: cover;
-    object-fit: cover;
-    overflow: hidden;
-  }
-  
 
-  .smallerphotosgrid {
-    grid-gap: 5px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 50px;
-    grid-template-areas: 
-    "img1 img2 img3 img4";
-  }
   
-  .img1,
-  .img2,
-  .img3,
-  .img4 {
-    max-width: 130%;
-    max-height: 130%;
-    min-width: 100%;
-    min-height: 100%;
-    /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
-  }
-  
-  .img1 {
-    grid-area: img1;
-    position: relative;
-    overflow: hidden;
-  }
-  .img2 {
-    grid-area: img2;
-    position: relative;
-    overflow: hidden;
-  }
-  .img3 {
-    grid-area: img3;
-    position: relative;
-    overflow: hidden;
-  }
-  .img4 {
-    grid-area: img4;
-    position: relative;
-    overflow: hidden;
-  }
 
   .bio {
     margin: 0 16px;
@@ -440,19 +456,8 @@ form {
 
 @media (min-width: 600px) {
 
-  .mainphotoforchat {
-    margin: 0;
-  }
-  .mainimgforchat {
-    right: auto;
-  }
 
 
-  .chatRoom {
-    width: 100%;
-    margin-top: -60px;
-    padding: 0;
-  }
 
   .header {
     grid-area: header;
@@ -552,6 +557,10 @@ form {
 
 @media (min-width: 900px) {
 
+  .chatroom {
+    margin-top: -60px;
+  }
+
   .chatProfile {
     align-content: center;
     justify-content: center;
@@ -581,14 +590,6 @@ form {
 
   .chatroom {
     width: 50%;
-  }
-
-.chatRoom {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-
   }
   
   .toggleProfile {

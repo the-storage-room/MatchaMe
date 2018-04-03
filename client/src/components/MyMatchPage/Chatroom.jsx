@@ -70,9 +70,7 @@ class Chatroom extends Component {
     return (
       <div className={style.chatRoom}>
         <div className={style.chatHeader}>
-          <div 
-            onClick={() => this.props.toggleProfile()}
-            >
+          <div>
           <img 
             className={style.theirAvatarHeader}
             src={this.props.theirPhoto}

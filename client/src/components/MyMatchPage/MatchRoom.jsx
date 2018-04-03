@@ -38,9 +38,10 @@ class MatchRoom extends Component {
   }
 
   toggleProfile = () => {
-    let { showProfile } = this.state;
+    let { showProfile, showChatroom } = this.state;
     this.setState({
-      showProfile: !showProfile
+      showProfile: !showProfile,
+      showChatroom: !showChatroom
     })
   }
 
@@ -84,7 +85,7 @@ class MatchRoom extends Component {
             <div className={style.endMatch}>
               <Button 
                 text={'End Match'}
-                className={"redsmall"}
+                className={window.innerWidth < 899 ? "redsmall" : "red"}
                 onClick={() => {this.props.toggleWarningBox()}}
                 />
             </div>
@@ -131,7 +132,7 @@ class MatchRoom extends Component {
             </div>
             }
             {
-              (window.innerWidth > 599 && this.state.showProfile || window.innerWidth > 899) &&
+              (this.state.showProfile || window.innerWidth > 899) &&
             <div className={style.smallphotosforchat}>
             <div className={style.smallphotos}>
             <div className={style.smallerphotosgrid}>
