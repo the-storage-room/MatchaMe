@@ -1,3 +1,5 @@
+/* Dashboard CSS */
+
 .column {
 	font-weight: lighter;
 	text-align: center;
@@ -42,83 +44,4 @@ progress::-webkit-progress-bar {
 progress::-webkit-progress-value {
 	background-color: rgb(188, 209, 197);
 	border-radius: 8px;
-}
-
-.leaderboardContainer {
-	display: grid;
-	min-height: 500px;
-	flex-flow: column nowrap;
-	justify-content: space-between;
-	align-items: center;
-	margin: 25px;
-	padding: 15px;
-	background-color: rgb(245, 245, 245);
-	font-family: inherit;
-	font-weight: lighter;
-}
-
-.leaderboardItems {
-	display: flex;
-	width: 500px;
-	height: 100px;
-	border-top: solid rgb(240, 176, 176) 1px;
-	border-radius: 3px;
-	border-bottom: solid rgb(240, 176, 176) 1px;
-	border-radius: 3px;
-	margin: auto;
-	padding: auto;
-}
-
-.rank {
-	max-width: 100px;
-	padding: 15px;
-	float: left;
-	font-weight: normal;
-	font-size: 35px;
-	margin: auto;
-}
-
-.avatar {
-	float: left;
-	object-fit: cover;
-	border-radius: 50%;
-	width: 50px;
-	height: 50px;
-	padding: 10px;
-	margin: auto;
-}
-
-.username {
-	margin: auto;
-	padding: 5px 5px 5px 5px;
-	font-size: 14px;
-}
-
-.pRC {
-	font-size: 12px;
-	float: right;
-	margin: auto;
-	padding: 5px 10px 5px 5px;
-	text-align: center;
-}
-
-.powerrankingTitle {
-	padding-bottom: 5px;
-}
-
-.powerranking {
-	padding-top: 5px;
-}
-
-.boardwrapper {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: 100px;
-	grid-template-areas: 'rank, avatar, username, pRC';
-}
-
-.col1 {
-	display: flex;
-	flex-direction: row;
-	padding-right: 5px;
 }
