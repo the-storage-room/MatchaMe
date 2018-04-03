@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 
 import './LandingPage.css';
 
-import Home from './components/Home/index.jsx';
+import Main from './components/Main/index.jsx';
 import Bio from './components/Bio/index.jsx';
 
 
@@ -20,7 +20,7 @@ class LandingPage extends Component {
     return (
       <div>
         <Switch>
-          <Route path='/' component={Home} />
+          <Route path='/' component={Main} />
           <Route path='/bio' component={Bio} />
         </Switch>
       </div>
