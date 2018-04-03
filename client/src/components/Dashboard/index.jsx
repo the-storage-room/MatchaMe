@@ -12,16 +12,18 @@ class Dashboard extends Component {
 	constructor() {
 		super();
 		this.state = {
-			show: true,
+			show: false,
 			pointsToGo: 0,
 			width: 50,
+			status: '',
 		};
 	}
 
 	componentDidMount() {
 		const { totalPoints } = this.props.powerRanking;
 		if (totalPoints <= 0) {
-			this.setState({ width: 0 });
+			const pointsLeft = 0 - totalPoints;
+			this.setState({ pointsToGo: pointsLeft, width: 0 });
 		} else if (
 			0 < totalPoints <= 250 ||
 			1000 < totalPoints <= 1500 ||
@@ -43,8 +45,21 @@ class Dashboard extends Component {
 			7500 < totalPoints <= 8750
 		) {
 			this.setState({ width: 75 });
-		} else {
+		} else if (totalPoints === 1000 || totalPoints === 3000 || totalPoints === 5000 || totalPoints === 10000) {
 			this.setState({ width: 100 });
+		}
+		if (0 < totalPoints <= 1000) {
+			const pointsLeft = 1000 - totalPoints;
+			this.setState({ pointsToGo: pointsLeft, status: 'Matchmaker' });
+		} else if (1000 < totalPoints <= 3000) {
+			const pointsLeft = 3000 - totalPoints;
+			this.setState({ pointsToGo: pointsLeft, status: 'Cupid' });
+		} else if (3000 < totalPoints <= 5000) {
+			const pointsLeft = 5000 - totalPoints;
+			this.setState({ pointsToGo: pointsLeft, status: 'Love Doctor' });
+		} else {
+			const pointsLeft = 10000 - totalPoints;
+			this.setState({ pointsToGo: pointsLeft, status: 'Love Guru' });
 		}
 	}
 
@@ -58,6 +73,7 @@ class Dashboard extends Component {
 
 	render() {
 		const { firstname, photos, powerRanking, follows } = this.props;
+		const { totalPoints } = powerRanking;
 		return (
 			<div className={style.row}>
 				<Navbar />
@@ -66,12 +82,14 @@ class Dashboard extends Component {
 						<div className={style.welcome}>Welcome back, {firstname}</div>
 						<img className={style.photo} src={photos[0].url} />
 						<div className={style.info}>
-							<div className={style.userranking}>Points: {powerRanking.totalPoints} </div>
-							<div className={style.countdown}>You have X more points to rank up</div>
+							<div className={style.userranking}>Points: {totalPoints} </div>
+							<div className={style.status}>You are currently a {this.state.status}</div>
+							<div className={style.userBoardPlace}>Leaderboard Ranking: {powerRanking.rank} </div>
+							<div className={style.countdown}>
+								You have {this.state.pointsToGo} more points to rank up
+							</div>
 
-							<progress max="100" value={this.state.width}>
-								Hi
-							</progress>
+							<progress max="100" value={this.state.width} />
 						</div>
 					</div>
 					<div className={style.column}>
