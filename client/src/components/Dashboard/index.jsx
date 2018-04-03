@@ -92,7 +92,7 @@ class Dashboard extends Component {
 							<progress max="100" value={this.state.width} />
 						</div>
 					</div>
-					<div className={style.column}>
+					<div className={style.column2}>
 						<div className={style.choice}>
 							<Button onClick={this.onClickHandlerFollowButton} text="Follow" />
 							<Button onClick={this.onClickHandlerLeaderboardButton} text="Leaderboard" />

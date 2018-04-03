@@ -1,5 +1,5 @@
 .leaderboardContainer {
-	display: grid;
+	display: flex;
 	min-height: 500px;
 	flex-flow: column nowrap;
 	justify-content: space-between;
@@ -77,6 +77,12 @@
 	padding-right: 5px;
 }
 
+/* @media (min-width: 700px) {
+	.boardwrapper {
+		margin: 0px 35px 0 105px;
+	}
+} */
+
 @media (min-width: 800px) {
 	.leaderboardContainer {
 		display: grid;
@@ -99,5 +105,12 @@
 		grid-template-rows: 100px;
 		grid-template-areas: 'rank, avatar, username, pRC';
 		padding: -4px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.leaderboardContainer {
+		margin: 25px 0px 25px 0px;
+		padding: 15px 0px 0px 8px;
 	}
 }
