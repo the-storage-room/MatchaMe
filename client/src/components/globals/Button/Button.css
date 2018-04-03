@@ -182,8 +182,7 @@ button:focus {
 .greyStar,
 .yellowStar {
 	display: flex;
-	border: 1px black solid;
-	background-color: rgb(17, 17, 17);
+	background-color: grey;
 	height: 50%;
 	width: 40%;
 	align-items: center;

@@ -1,35 +1,32 @@
 .followsContainer {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 176px 177px;
-	grid-template-areas: 'starredContainer' 'resultsContainer';
+	display: flex;
 	flex-flow: column nowrap;
 	padding: 17px 4px 3px 4px;
 	margin: 25px 15px 25px 25px;
 	background-color: rgb(245, 245, 245);
 	justify-content: space-between;
 	align-items: center;
-	border: solid rgb(188, 209, 197) 1px;
-	height: 100%;
+	min-height: 500px;
 	width: 87%;
-	position: relative;
+	position: static;
+	font-weight: lighter;
+	font-family: inherit;
+	font-size: 12px;
 }
 
 .starredContainer {
+	display: grid;
 	margin: 0px 0px 0 0px;
 	padding: 1px 0px 0px -1px;
 	width: 350px;
-	height: 175px;
-	font-weight: lighter;
-	font-family: inherit;
+	height: 100%;
 }
 .resultsContainer {
-	display: flex;
+	display: grid;
+	margin: 0px 0px 0 0px;
+	padding: 1px 0px 0px -1px;
 	width: 350px;
-	height: 176px;
-	justify-content: center;
-	align-items: center;
-	margin: 0px 28px 28px -14px;
+	height: 100%;
 }
 
 .avatar {
@@ -44,11 +41,10 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 50px;
-	grid-template-areas: 'user1, decision, yellowstar, user2';
+	grid-template-areas: 'user1, decision, user2, starred';
 	width: 320px;
 	height: 93px;
-	/* border-bottom: solid rgb(240, 176, 176) 1px;
-	border-radius: 3px; */
+	padding: 20px 0px 0px 18px;
 }
 
 .h3 {
@@ -57,7 +53,6 @@
 	height: 13px;
 	padding: 10px;
 	max-width: 130px;
-	font-weight: normal;
 	font-size: 12px;
 }
 
@@ -73,6 +68,4 @@
 	max-width: 130px;
 	padding: 14px;
 	float: right;
-	font-weight: normal;
-	font-size: 12px;
 }

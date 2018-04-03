@@ -1,8 +1,7 @@
-/* Dashboard CSS */
-
 .column {
 	font-weight: lighter;
 	text-align: center;
+	height: 460px;
 }
 
 .welcome {
@@ -15,8 +14,8 @@
 	padding: 5px 5px 5px 5px;
 	border-style: solid;
 	border-radius: 50%;
-	width: 325px;
-	height: 325px;
+	width: 250px;
+	height: 250;
 }
 
 .userranking {
@@ -48,4 +47,8 @@ progress::-webkit-progress-value {
 
 .choice {
 	padding-bottom: 15px;
+}
+
+.row {
+	min-height: 100%;
 }
