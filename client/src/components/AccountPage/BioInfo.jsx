@@ -52,37 +52,40 @@ class BioInfo extends Component {
       <div>
         <div className={style.basicMargin}>
           Date of Birth: 
+          <div>
           <Input 
-            placeholder="XX" 
+            placeholder="MM" 
             onChange={this.handleInputChange} 
             name="month"
             maxLength='2'
             type="text"
             />
           <Input 
-            placeholder="XX" 
+            placeholder="DD" 
             onChange={this.handleInputChange} 
             name="month"
             maxLength='2'
             />
           <Input 
-            placeholder="XXXX" 
+            placeholder="YYYY" 
             onChange={this.handleInputChange} 
             name="year"
             maxLength='4'
             />
-            Example: 07 31 1988
+          </div>
         </div>
         <div className={style.basicMargin}>
-          ZIP Code 
-          <Input 
-            type="text"
-            placeholder="XXXXX"
-            onChange={this.handleInputChange} 
-            name="location"
-            maxLength='5'
-            value={this.props.location}
-            />
+          ZIP Code:
+          <div>
+            <Input 
+              type="text"
+              placeholder="XXXXX"
+              onChange={this.handleInputChange} 
+              name="location"
+              maxLength='5'
+              value={this.props.location}
+              />
+          </div>
         </div>
         <div className={style.basicMargin}>
           Gender: 
@@ -91,7 +94,7 @@ class BioInfo extends Component {
             handleGenderChange={this.handleGenderChange}
             />
         </div>
-        <div>
+        <div className={style.basicMargin}>
           Gender preferences:
           <Gender
             type='pref'
@@ -100,18 +103,15 @@ class BioInfo extends Component {
         </div>
         <div className={style.basicMargin}>
           Bio: 
+          <div>
           <textarea 
-            placeholder="Bio goes HERE"
+            placeholder="Who are you?"
             onChange={this.handleInputChange} 
             name="bio"
-
             >
           </textarea>
+          </div>
         </div>
-        <Button
-          onClick={this.handleClick}
-          text="Save"
-        />
       </div>
     )
   }

@@ -63,18 +63,18 @@
 .decision {
   grid-area: decision;
   width: auto;
-  height: 100%;
   font-size: 28px;
   text-align: center;
   color: rgb(19, 37, 27);
-  padding: 50px 15px 0px 6px;
+  padding: 40px 15px 10px 6px;
   font-weight: 300;
+  background-color: whitesmoke;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 .chatroom {
   grid-area: chatroom;
   position: relative;
-  overflow-y: scroll;
-  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
+  overflow: hidden;
 }
 
 .next {
@@ -162,10 +162,11 @@
 }
 
 .comments {
+  border-left: rgba(255, 0, 0, 0.253) solid 5px;
   z-index: 7;
   height: 100%;
   width: 100%;
-  background-color:rgba(248, 244, 244, 0.404);
+  background-color: whitesmoke;
 }
 
 .textbox {
@@ -298,8 +299,7 @@
   }
 
   .decision{
-    margin: 0 15px;
-    padding-top: 20px;
+    margin-right: 15px;
     font-size: 30px;
   }
 }
@@ -322,7 +322,7 @@
     display: grid;
     grid-gap: 3px;
     grid-template-rows: auto 4fr 1fr 5fr;
-    grid-template-columns: 5fr 5fr 5fr;
+    grid-template-columns: 3fr 3fr 4fr;
     height: 100vh;
     grid-template-areas: 
     "header header header"
@@ -358,14 +358,15 @@
   
   .decision {
     width: auto;
-    height: 100%;
+    height: 70%;
     font-size: 40px;
     color: rgb(19, 37, 27);
-    padding: 30px 15px 0px 6px;
+    padding: 40px 15px 0px 6px;
+    margin: 30px 30px 30px 0;
     font-weight: 300;
   }
   .chatroom {
-    margin: 0 30px 30px 0;
+    margin: 30px 30px 0px 0;
   }
 
 }
@@ -427,7 +428,7 @@
     margin-bottom: 30px;
   }
   .chatroom {
-    margin: 0 60px 30px 0;
+    margin: 30px 60px 0 0;
   }
 
 }

@@ -1,26 +1,43 @@
 .body {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: 30px auto;
-  padding: 30px;
-  width: 500px;
-  height: 400px;
-  font-size: 20px;
-  font-weight: 100;
+  height: 100vh;
+  background-color: whitesmoke;
+  width: 100vw;
+  position: relative;
 }
 
-input,
-textarea {
+.holder {
+  z-index: 0;
+  overflow-y: scroll;
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  padding: 40px 50px;
+  background-color: white;  
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.save {
+  float: right;
+}
+
+input[name=month],
+input[name=year],
+textarea[name=bio],
+input[name=location] {
   font-size: 12px;
-  padding: 15px;
-  margin: 5px 5px 22px 5px;
+  padding: 10px 15px;
+  margin: 5px 5px 0px 0px;
   display: inline-block;
   border: none;
   background: #f1f1f1;
   resize: none;
 }
+
+textarea[name=bio] {
+  width: 300px;
+  height: 70px;
+}
+
 
 input[name=month]{
   width: 20px;
@@ -36,14 +53,16 @@ input[name=location]{
 }
 
 
-input:focus,
-textarea:focus {
+input[name=month]:focus,
+input[name=year]:focus,
+textarea[name=bio]:focus,
+input[name=location]:focus {
   background-color: #ddd;
   outline: none;
 }
 
 .basicMargin {
-  margin: 10px;
+  margin: 15px;
 }
 
 .targetBox {
@@ -64,8 +83,6 @@ textarea:focus {
   height:75px;
   float: left;
   overflow: hidden;
-  border: solid rgb(240, 176, 176) 1px;
-  border-radius: 3px;
   margin: 5px;
 }
 
@@ -88,19 +105,20 @@ textarea:focus {
 }
 
 .sidenav {
-  width: 150px;
+  width: 120px;
   position: fixed;
   z-index: 1;
-  top: 200px;
-  left: 25px;
+  top: 230px;
+  left: 30px;
   overflow-x: hidden;
   padding: 8px 0;
-  background-color: rgba(152, 173, 133, 0.61);
+  background-color: rgb(188, 209, 197);
   font-size: 20px;
   font-weight: 100;
 }
 
-.navbutton {
+.navbutton,
+.activenavbutton {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 16px;
@@ -108,7 +126,14 @@ textarea:focus {
 }
 
 
-.navbutton:hover {
+
+.navbutton:hover,
+.activenavbutton {
   color: rgb(255, 255, 255);
   cursor: default;
+}
+
+.example {
+  font-size: 10px;
+  font-weight: 80;
 }

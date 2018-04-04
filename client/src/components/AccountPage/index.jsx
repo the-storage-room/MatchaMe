@@ -6,6 +6,7 @@ import BioInfo from './BioInfo.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
 import SideNavbar from './SideNavbar.jsx'
 import Button from '../globals/Button/index.jsx';
+import Footer from '../globals/Footer/index.jsx';
 import style from './AccountPage.css';
 
 class Account extends Component {
@@ -20,10 +21,10 @@ class Account extends Component {
   }
 
   nextPage = {
-    '/account/bio': '/account/tags/user',
-    '/account/tags/user': '/account/tags/pref',
-    '/account/tags/pref': '/account/photoupload',
-    '/account/photoupload': '/dashboard'
+    '/onboarding/bio': '/onboarding/tags/user',
+    '/onboarding/tags/user': '/onboarding/tags/pref',
+    '/onboarding/tags/pref': '/onboarding/photoupload',
+    '/onboarding/photoupload': '/dashboard'
   }
 
   onNextClick = () => {
@@ -56,17 +57,21 @@ class Account extends Component {
       photoupload: <PhotoUpload renderButton={this.shouldRenderNextButton}/>
     }
 
-    console.log(this.props)
     return (
       <div>
         {
           this.state.isFirstTimeUser
           ? null
           : <div><Navbar />
-            <SideNavbar history={this.props.history}/>
+            <SideNavbar 
+              history={this.props.history}
+              currentPage={this.state.currentPage}
+              tagtype={this.state.tagtype}
+              />
             </div>
           }
         <div className={style.body}>
+          <div className={style.holder}>
           {pages[this.props.match.params.page]}
         { 
           this.state.renderButton
@@ -79,7 +84,9 @@ class Account extends Component {
             className={'disabled'}
             />
         }
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }
