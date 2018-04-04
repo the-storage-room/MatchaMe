@@ -59,7 +59,6 @@
     'column1 column2 column3 column4';
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 30px 30px;
-  border-bottom: 1px solid rgb(150, 150, 150);
 }
 
 .dropdown-container {

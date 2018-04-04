@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import io from 'socket.io-client';
 
-import Navbar from '../globals/Navbar/index.jsx';
 import MatchRoom from './MatchRoom.jsx';
 import NoMatch from './NoMatch.jsx';
 import WarningBox from './WarningBox.jsx'
@@ -46,7 +45,6 @@ class MyMatch extends Component {
   render() {
     return (
       <div>
-        <Navbar />
         <WarningBox
           show={this.state.showWarningBox}
           onClose={this.toggleWarningBox}

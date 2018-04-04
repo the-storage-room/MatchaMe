@@ -11,11 +11,9 @@
     "start:matchmaker-service": "cd matchmaker-service && nodemon bin/entry.js",
     "start:s3-server": "cd s3-server && nodemon bin/entry.js",
     "start:redis-server": "cd redis-server && nodemon bin/entry.js",
-    "db:setup:rest-server":
-      "cd rest-server && babel-node src/config/database/setup.js",
+    "db:setup:rest-server": "cd rest-server && babel-node src/config/database/setup.js",
     "buildEnv": "node bin/buildEnv.js",
-    "start":
-      "(npm-run-all -p start:static-server start:rest-server start:socket-server start:s3-server) & (npm-run-all -p start:redis-server start:matchmaker-service)",
+    "start": "(npm-run-all -p start:static-server start:rest-server start:socket-server start:s3-server) & (npm-run-all -p start:redis-server start:matchmaker-service)",
     "i:rest-server": "cd rest-server && npm install",
     "i:socket-server": "cd socket-server && npm install",
     "i:static-server": "cd client/server && npm install",
@@ -23,8 +21,7 @@
     "i:mm-service": "cd matchmaker-service && npm install",
     "i:s3-server": "cd s3-server && npm install",
     "i:redis-server": "cd redis-server && npm install",
-    "install-all":
-      "npm-run-all -p i:rest-server i:socket-server i:static-server i:client i:mm-service i:s3-server i:redis-server"
+    "install-all": "npm-run-all -p i:rest-server i:socket-server i:static-server i:client i:mm-service i:s3-server i:redis-server"
   },
   "repository": {
     "type": "git",

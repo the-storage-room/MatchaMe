@@ -51,57 +51,60 @@ class BioInfo extends Component {
     return (
       <div>
         <div className={style.basicMargin}>
-          Birthdate: (Format: XX/XX/XXXX)
+          Date of Birth: 
           <Input 
-            placeholder="Month" 
+            placeholder="XX" 
             onChange={this.handleInputChange} 
-            name={'month'}
+            name="month"
+            maxLength='2'
+            type="text"
+            />
+          <Input 
+            placeholder="XX" 
+            onChange={this.handleInputChange} 
+            name="month"
             maxLength='2'
             />
           <Input 
-            placeholder="Day" 
+            placeholder="XXXX" 
             onChange={this.handleInputChange} 
-            name={'day'}
-            maxLength='2'
-            />
-          <Input 
-            placeholder="Year" 
-            onChange={this.handleInputChange} 
-            name={'year'}
+            name="year"
             maxLength='4'
             />
+            Example: 07 31 1988
         </div>
         <div className={style.basicMargin}>
           ZIP Code 
           <Input 
             type="text"
-            placeholder="ZIP Code goes here"
+            placeholder="XXXXX"
             onChange={this.handleInputChange} 
-            name='location'
+            name="location"
             maxLength='5'
             value={this.props.location}
             />
         </div>
         <div className={style.basicMargin}>
-          gender: 
+          Gender: 
           <Gender
             type='gender'
             handleGenderChange={this.handleGenderChange}
             />
         </div>
         <div>
-          gender preferences: 
+          Gender preferences:
           <Gender
             type='pref'
             handleGenderChange={this.handleGenderChange}
             />
         </div>
         <div className={style.basicMargin}>
-          bio: 
+          Bio: 
           <textarea 
             placeholder="Bio goes HERE"
             onChange={this.handleInputChange} 
-            name={'bio'}
+            name="bio"
+
             >
           </textarea>
         </div>
@@ -125,5 +128,4 @@ const mapStateToProps = (state) => {
     location: state.bioData.location
   };
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(BioInfo);

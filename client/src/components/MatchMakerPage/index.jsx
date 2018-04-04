@@ -6,7 +6,6 @@ import style from './MatchMaker.css';
 import Comments from './Comments.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
 import Button from '../globals/Button/index.jsx';
-import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/matchmaker_page_actions';
 import Footer from '../globals/Footer/index.jsx';
 import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';
@@ -73,12 +72,12 @@ class MatchMaker extends Component {
     let user1Age = this.props.user1 && turnBirthdayIntoAge(this.props.user1.age)
     let user2Age = this.props.user2 && turnBirthdayIntoAge(this.props.user2.age)
 
-    let sortedComments;
-    if (this.props.comments) {
-      sortedComments = this.props.comments.sort((a, b) => {
-        return b.votes - a.votes 
-      })
-    }
+    // let sortedComments;
+    // if (this.props.comments) {
+    //   sortedComments = this.props.comments.sort((a, b) => {
+    //     return b.votes - a.votes 
+    //   })
+    // }
     if (this.props.matchid) {
       return (
         <div>
@@ -161,7 +160,7 @@ class MatchMaker extends Component {
             <div className={style.chatroom}>
               <Comments
                 submitComment={this.submitComment}
-                comments={sortedComments}
+                comments={this.props.comments}
                 voteOnComment={this.voteOnComment}
                 />
             </div>

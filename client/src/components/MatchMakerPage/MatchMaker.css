@@ -106,15 +106,15 @@
 }
 
 .noMatch {
-  grid-area: nomatch;
-  margin: 100px;
-  padding: 100px;
-  background-color: whitesmoke;
+  margin: 30px;
+  padding: 30px;
+  background-color:whitesmoke;
+  text-align: center;
 }
 
 .noMatchText {
   padding: 30px;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 70;
 }
 
@@ -245,6 +245,11 @@
 
 @media (min-width:450px) {
 
+  .noMatch {
+    margin: 70px;
+    padding: 70px;
+  }
+
   .biography {
     margin: 5px 0 0 15px;
     font-size: 12px;
@@ -257,7 +262,7 @@
   .wrapper {
     display: grid;
     grid-gap: 3px;
-    grid-template-rows: 60px 300px 200px 100px 600px;
+    grid-template-rows: 60px 300px 150px 100px 600px;
     grid-template-columns: 50vw 50vw;
     height: 200vh;
     grid-template-areas: 
@@ -301,6 +306,18 @@
 
 
 @media (min-width: 768px) {
+
+  .noMatch {
+    margin: 100px;
+    padding: 100px;
+  }
+  
+  .noMatchText {
+    padding: 30px;
+    font-size: 30px;
+    font-weight: 70;
+  }
+
   .wrapper {
     display: grid;
     grid-gap: 3px;

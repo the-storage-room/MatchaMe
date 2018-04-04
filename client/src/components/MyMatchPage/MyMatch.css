@@ -1,27 +1,33 @@
-.header {
-  grid-area: header;
-  position: relative;
+.smallimg {
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
 }
 
-.smalluser1photos {
-  grid-area: smallerphotos;
-  position: relative;
+.smallphotosforchat {
+  width: 80%;
+  margin: auto;
 }
+
 
 .smallerphotosgrid {
+  grid-gap: 5px;
   display: grid;
-  grid-gap: 3px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 100%;
+  grid-template-rows: 50px;
   grid-template-areas: 
   "img1 img2 img3 img4";
 }
 
-.next {
-  position: relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.img1,
+.img2,
+.img3,
+.img4 {
+  max-width: 130%;
+  max-height: 130%;
+  min-width: 100%;
+  min-height: 100%;
+  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
 }
 
 .img1 {
@@ -44,8 +50,280 @@
   position: relative;
   overflow: hidden;
 }
+.chatroom {
+  margin-top: -150px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mainimgforchat {
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+  max-width: 200%;
+  max-height: 200%;
+}
+
+.mainphotoforchat {
+  height: 300px;
+  width: 300px;
+  margin: -60px auto 0 auto;
+}
+
+.chatRoom {
+  width: 100%;
+}
+
+.chatProfile {
+  margin: 0 auto;
+}
+
+.endMatch {
+  overflow: hidden;
+  z-index: 5;
+  position: fixed;
+  top:62px;
+  right: 7px;
+}
+
+.toggleProfile {
+  overflow: hidden;
+  z-index: 5;
+  position: fixed;
+  top:62px;
+  left: 7px;
+}
+
+.chatMessage {
+  max-width: 80%;
+  padding-top:3px;
+}
+
+.waiting {
+  text-align: center;
+  font-weight: 100;
+}
+
+.enter {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+}
+
+
+
+.chatHeader {
+  border-bottom: solid rgba(0, 0, 0, 0.089) 1px;
+  height: 40px;
+  background-color: white;
+  text-align: center;
+  line-height: 40px;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 60px;
+}
+
+.chatProfile {
+  margin-top: 100px;
+}
+
+.theirAvatarHeader {
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding:3px 5px;
+}
+
+.textbox {
+  margin: 0 10px;
+  width: 80%;
+  height: 95%;
+  border: none;
+  float: left;  
+  font-size: 15px;
+  font-weight: 120;
+  padding: 30px 10px;
+}
+
+.textbox:focus {
+  outline:0;
+}
+
+.chatItem {
+  margin-left: 5px;
+  display: inline-block;
+  width: 96%;
+  height: 40px;
+}
+
+.yourMessage {
+ margin-top: 12px;
+ float: right;
+}
+
+.theirMessage {
+  margin-top: 12px;
+  float: left;
+}
+
+.yourAvatar {
+  float: right;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding:10px;
+}
+
+.theirAvatar {
+  float: left;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  padding:10px;
+}
+
+.yourTime,
+.theirTime {
+  margin: 17px;
+  font-size: 10px;
+  opacity:0;
+  height: auto;
+  transition:0s 3s;
+}
+
+.theirTime {
+  float: left;
+}
+
+.yourTime {
+  float: right;
+}
+
+
+.theirMessage:hover + .theirTime,
+.yourMessage:hover + .yourTime {
+  opacity:1;
+  transition:0s;
+}
+
+
+.chatFeed {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+.chatBox {
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  height: 80px;
+  border-top: solid rgba(0, 0, 0, 0.089) 1px;
+  bottom: 0;
+}
+
+.chatTextarea {
+  flex: 1;
+}
+
+form {
+  width: 80%;
+}
+
+.next {
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.buttons > * {
+  margin: 15px;
+}
+
+.warningBackdrop {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.514);
+}
+
+.warningBox {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+  z-index: 9999;
+  background-color:whitesmoke;
+  font-size: 16px;
+  position: relative;
+  text-align: center;
+  font-weight: 120;
+}
+
+
+.warningText {
+  padding: 20px;
+}
+
+.nomatchwrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  grid-template-areas: 
+  "header"
+  "nomatch";
+}
+
+.prompt {
+  font-size: 30px;
+  position: relative;
+  text-align: center;
+  font-weight: 120;
+}
+
+.noMatch {
+  margin: 30px;
+  padding: 30px;
+  background-color:whitesmoke;
+  text-align: center;
+}
+
+.noMatchText {
+  padding: 30px;
+  font-size: 20px;
+  font-weight: 70;
+}
+
+.message {
+  grid-area: message;
+  position: relative;
+  height: 80px;
+  font-size: 28px;
+  color: rgb(19, 37, 27);
+  font-weight: 300;
+  text-align: center;
+  padding: 10px;
+}
 
 .bio {
+  margin: 0 10px;
   grid-area: bio;
   position: relative;
 }
@@ -57,38 +335,31 @@
 
 .mainimg {
   margin-left: 50%;
-  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+  max-width: 120%;
+  max-height: 120%;
   transform: translateX(-50%);
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-.img1,
-.img2,
-.img3,
-.img4 {
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+.mainphoto {
+  grid-area: mainphoto;
+  position: relative;
+  overflow: hidden;
 }
 
-.footer {
-  height: 200px;
-  background-color: rgb(233, 233, 233);
-  color:rgb(4, 185, 95);
-  text-align: center;
-  vertical-align: middle;
-  line-height: 200px;
-}
-
-.wrapper {
+.pendingwrapper {
+  overflow-x: hidden;
   display: grid;
-  grid-gap: 3px;
-  grid-template-rows: auto 5fr .5fr 2fr 2fr 2fr;
-  height: 100vh;
+  grid-template-rows: 60px 80px 300px auto 200px;
+  grid-template-columns: 100vw;
+  height: auto;
+  width: auto;
   grid-template-areas: 
   "header"
+  "message"
   "mainphoto"
-  "smallerphotos"
   "bio"
   "buttons";
 }
@@ -107,10 +378,6 @@
   background-color: rgb(188, 209, 197);
   border-radius: 2px;
   font-size: 10px;
-}
-
-.smallerphotos {
-  margin: 0px;
 }
 
 .name {
@@ -133,75 +400,122 @@
   min-width: 200px;
 }
 
+
+.header{
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  top: 0;
+}
+
+.smallphotosforchat {
+  max-width: 600px;
+}
+
 @media (min-width:450px) {
 
-  .rating {
-    font-size: 20px;
+
+
+  
+
+  .bio {
+    margin: 0 16px;
   }
 
-  .mainimg {
-    min-height: 100%;
-    width: auto;
+  .warningBox {
+    width: 400px;
+    height: 270px;
+    margin-top: -200px;
+    margin-left: -200px;
+    font-size: 25px;
   }
-  .wrapper {
+  
+  .warningText {
+    padding: 40px;
+  }
+  .noMatch {
+    margin: 70px;
+    padding: 70px;
+  }
+  .pendingwrapper {
+    overflow-x: hidden;
     display: grid;
-    grid-gap: 3px;
-    grid-template-rows: 60px 370px 1fr 2fr 2fr;
-    grid-template-columns: 1fr 1fr;
-    height: 100vh;
+    grid-template-rows: 60px 80px 400px 90px 200px;
+    grid-template-columns: 100vw;
+    height: auto;
+    width: auto;
     grid-template-areas: 
-    "header header"
-    "mainphoto mainphoto"
-    "smallerphotos smallerphotos"
-    "bio slider"
-    "bio buttons";
+    "header"
+    "message"
+    "mainphoto"
+    "bio"
+    "buttons";
   }
-
 }
 
 @media (min-width: 600px) {
-  .smallerphotosgrid {
-    grid-gap: 6px;
-  }  
 
-  .wrapper {
-    grid-template-rows: auto 2fr 1fr 1fr;
+
+
+
+  .header {
+    grid-area: header;
+    position: relative;
+  }
+
+  .smallerphotosgrid {
+    grid-template-rows: 70px;
+  }
+
+  .message {
+    padding: 15px;
+    font-size: 35px;
+  }
+
+  .mainphoto {
+    margin: 0px 5px 4px 20px; 
+  }
+
+
+  .smallphotos {
+    grid-area: smallphotos;
+    position: relative;
+    margin: 0 30px;
+  }
+
+  .pendingwrapper {
+    display: grid;
+    grid-template-rows: auto 100px 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     height: 100vh;
+    width: auto;
     grid-template-areas: 
     "header header"
+    "message message"
+    "mainphoto smallphotos"
     "mainphoto bio"
-    "mainphoto slider"
-    "smallerphotos buttons"
+    "buttons buttons";
   }
 
-  .smallerphotos {
-    margin: 0px 5px 40px 20px;
-  }
-
-  .mainimg {
-    min-width: 100%;
-    height: 100%;
-    width: auto;
-  }
-
-  .smallerphotos {
-    margin: 0px 5px 40px 20px;
+  .noMatch {
+    margin: 100px;
+    padding: 100px;
   }
   
-  .mainphoto {
-    margin: 20px 5px 4px 20px; 
+  .noMatchText {
+    padding: 30px;
+    font-size: 30px;
+    font-weight: 70;
   }
-  
   .bio {
     margin: 20px;
-    border-bottom: solid 1px rgba(0, 0, 0, 0.089);
   }
 
   .name {
     font-size: 40px;
     font-weight: 90;
-    margin: 0px 25px 10px 15px;
+    margin: 0px 25px 10px 25px;
   }
 
   .age {
@@ -223,70 +537,106 @@
     margin: 20px;
     min-width: 200px;
   }
+}
 
-  .rating {
-    font-size: 30px;
-    position: absolute;
-    padding-bottom: 15px;
-    top: 20px;
-    font-weight: 120;
-    color: rgb(19, 37, 27);
+@media (min-width: 768px) {
+
+  .chatHeader {
+    height: 40px;
+    top: 80px;
+  }
+  
+  .endMatch {
+    top:80px;
+  }
+  
+  .toggleProfile {
+    top: 80px;
   }
 }
 
 @media (min-width: 900px) {
 
-
-  .buttons {
-    margin: 30px;
+  .chatroom {
+    margin-top: -60px;
   }
 
-  .smallerphotos {
-    margin: 0px 5px 40px 20px;
+  .chatProfile {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    width: 50%;
   }
-  
+
   .mainphoto {
-    margin: 20px 5px 4px 20px; 
+    margin-left: 30px;
   }
-  
+
   .bio {
-    margin: 20px;
-    border-bottom: solid 1px rgba(0, 0, 0, 0.089);
+    display: block;
+    margin-right: 60px;
   }
 
-  .name {
-    font-size: 60px;
-    font-weight: 90;
-    margin: 0px 25px 10px 15px;
+  .smallerphotosgrid {
+    grid-gap: 15px;
+    grid-template-rows: 100px;
   }
 
-  .age {
-    font-size: 20px;
-    font-weight: 80;
-    margin: 20px;
+  .smallphotos {
+    margin: 0 60px 0 30px;
   }
 
-  .tag {
-    font-size: 15px;
-    font-weight: 80;
-    margin: 20px;
-    padding: 10px;
-  }
-
-  .biography {
-    font-size: 20px;
-    font-weight: 120;
-    margin: 20px;
-    min-width: 400px;
-  }
-
-  .rating {
-    font-size: 60px;
-    position: absolute;
-    padding-bottom: 10px;
-    top: 20px;
-    font-weight: 120;
-    color: rgb(19, 37, 27);
+  .chatroom {
+    width: 50%;
   }
   
+  .toggleProfile {
+    visibility: hidden;
+    position: fixed;
+    top:62px;
+    left: 7px;
+  }
+  
+  .chatMessage {
+    max-width: 80%;
+    padding-top:3px;
+  }
+  
+  .waiting {
+    text-align: center;
+    font-weight: 100;
+  }
+  
+  .enter {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+  }
+
+  .chatHeader {
+    height: 40px;
+    top: 80px;
+    width: 50%;
+  }
+
+.chatBox {
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  width: 50%;
+  z-index: 5;
+  height: 80px;
+  border-top: solid rgba(0, 0, 0, 0.089) 1px;
+  bottom: 0;
+}
+}
+
+
+@media (min-width: 1000px) {
+  .smallerphotosgrid {
+    grid-gap: 20px;
+    grid-template-rows: 100px;
+  }
 }
