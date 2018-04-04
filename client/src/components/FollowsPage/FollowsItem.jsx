@@ -59,7 +59,10 @@ const
             {user2.firstname} {user2.lastname[0]}
           </h3>
         </div>
-        <Button onClick={() => onClick(matchId, starred, index)} className={starred ? 'yellowStar' : 'greyStar'} />
+        <div onClick={() => onClick(matchId, starred, index)} >
+          <img className={starred ? style.starLeaf : style.unstarLeaf} src="http://www.learnandflourish.com/wp-content/uploads/2013/01/small-leaf2.png" />
+        </div>
+        {/* <Button onClick={() => onClick(matchId, starred, index)} className={starred ? 'yellowStar' : 'greyStar'} /> */}
       </div >
     );
   };

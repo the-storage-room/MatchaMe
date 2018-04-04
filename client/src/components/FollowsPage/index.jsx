@@ -22,11 +22,13 @@ class Follows extends Component {
     return (
       <div className={style.followsContainer}>
         {starred.length > 0 ? <div className={style.starredContainer}>
+          <div className={style.favMsg}>Your favorite matches</div>
           <FollowsContainer data={starred} handleStar={this.handleStar} />
-        </div> : <div className={style.noStar}>You have no starred matches!</div>}
+        </div> : <div className={style.noStar}>You have no favorites!</div>}
         {allOthers.length > 0 ? <div className={style.resultsContainer}>
+          <div className={style.matchMsg}>Most recent matches</div>
           <FollowsContainer data={allOthers} handleStar={this.handleStar} />
-        </div> : <div className={style.noFollow}>You have no following matches!</div>}
+        </div> : <div className={style.noFollow}>Match more people!</div>}
       </div>
     );
   }

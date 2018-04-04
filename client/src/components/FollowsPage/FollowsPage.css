@@ -71,14 +71,36 @@
   float: right;
 }
 
-.noStar {
-  font-size: 20px;
-  text-align: center;
+.unstarLeaf, .starLeaf {
+  height: 70%;
+  width: 46%;
+  padding-left: 30px;
+  padding-top: 16px;
 }
 
-.noFollow {
-  font-size: 20px;
+.starLeaf {
+  -webkit-filter: brightness(0.9);
+  filter: brightness(0.9);
+}
+
+.starLeaf:hover {
+  opacity: 0.5;
+}
+
+.unstarLeaf {
+  opacity: 0.5;
+}
+
+.unstarLeaf:hover {
+  opacity: 1;
+}
+
+.favMsg, .matchMsg, .noStar, .noFollow {
   text-align: center;
+  font: inherit;
+  font-size: 18px;
+  font-weight: normal;
+  padding-top: 20px;
 }
 
 @media (min-width: 768px) {
@@ -101,6 +123,13 @@
   .followItem {
     padding: 20px 0px 0px 35px;
   }
+
+  
+.unstarLeaf, .starLeaf {
+    height: 60%;
+  }
+
+  
 }
 
 @media (min-width: 1000px) {
@@ -145,4 +174,11 @@
   .h3 {
     font-size: 14px;
   }
+
+
+  .unstarLeaf, .starLeaf {
+    height: 100%;
+    width: 25%;
+  }
+  
 }
