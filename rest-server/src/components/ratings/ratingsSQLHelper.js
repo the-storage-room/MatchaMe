@@ -47,7 +47,7 @@ export const updateTotalAttractivenessHelper = () => {
   return `
     UPDATE users
     SET totalattractiveness=(totalattractiveness+$1)
-    WHERE id=$2
+    WHERE id=$2 
     RETURNING totalattractiveness, totalNumOfRatings
   `;
 };
