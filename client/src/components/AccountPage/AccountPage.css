@@ -178,3 +178,19 @@ input[name=location]:focus {
   width: auto;
   margin: 0;
 }
+
+.smallphoto {
+  display: inline-block;
+  margin: 5px;
+  background-color: whitesmoke;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.photoholder{
+  margin-left: 15px;
+}

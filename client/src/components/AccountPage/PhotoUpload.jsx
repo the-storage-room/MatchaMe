@@ -73,7 +73,6 @@ class PhotoUpload extends Component {
   }
 
   componentWillReceiveProps = () => {
-    console.log(this.props.userPhotos)
     if (
       this.state.currentFunc === 'primary' || 
       this.state.currentFunc === 'delete'
@@ -91,6 +90,7 @@ class PhotoUpload extends Component {
   }
 
   render() {
+    console.log(this.props.userPhotos[0])
     return (
       <div>
         <div className = {style.photoPage}>
@@ -124,7 +124,57 @@ class PhotoUpload extends Component {
             }
             </form>
           </div>
-          <div className={style.basicMargin}>
+          <div className={style.photoholder}>
+            <div className={style.smallphoto}>
+              {
+                this.props.userPhotos[0] &&
+              <img 
+                width="150"
+                height="150"
+                className={style.smallimg}
+                src={this.props.userPhotos[0].url}
+                onClick={() => this.handlePhotoClick(1)}
+                />
+              }
+            </div>
+            <div className={style.smallphoto}>
+            {
+                this.props.userPhotos[1] &&
+              <img 
+                width="150"
+                height="150"
+                className={style.smallimg}
+                src={this.props.userPhotos[1].url}
+                onClick={() => this.handlePhotoClick(1)}
+                />
+              }
+            </div>
+            <div className={style.smallphoto}>
+            {
+                this.props.userPhotos[1] &&
+              <img 
+                width="150"
+                height="150"
+                className={style.smallimg}
+                src={this.props.userPhotos[1].url}
+                onClick={() => this.handlePhotoClick(1)}
+                />
+              }
+            </div>
+            <div className={style.smallphoto}>
+            {
+                this.props.userPhotos[1] &&
+              <img 
+                width="150"
+                height="150"
+                className={style.smallimg}
+                src={this.props.userPhotos[1].url}
+                onClick={() => this.handlePhotoClick(1)}
+                />
+              }
+            </div>
+          </div>
+          {/* <div className={style.basicMargin}>
             <TargetPhoto photo={this.props.userPhotos[this.state.targetPhoto]}/>
           </div>
           <div className={style.smallImageHolder}>
@@ -139,10 +189,10 @@ class PhotoUpload extends Component {
                   />
                 )
             }
-          </div>
+          </div> */}
         </div>
         <div>
-          <div>
+          {/* <div>
           <Button
             text="Delete Photo"
             onClick={this.handleDeletePhoto}
@@ -155,8 +205,8 @@ class PhotoUpload extends Component {
             onClick={this.handleSetPrimaryPhoto}
             className="primaryTrue"
             />
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             {
               this.state.targetPhoto === 0 ?
               <img
@@ -164,7 +214,7 @@ class PhotoUpload extends Component {
                 src="http://moziru.com/images/star-clipart-clear-background-5.png" />
               : null
             }
-          </div>
+          </div> */}
         </div>
       </div>
     )
