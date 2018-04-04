@@ -93,14 +93,13 @@ progress::-webkit-progress-value {
     padding: 5px;
   }
 
-
 }
 
 @media (min-width: 1000px) {
   .column {
     margin-left: 50px;
   }
-  
+
   .choice {
     margin-left: 20px;
     padding-left: 10px;
@@ -108,4 +107,5 @@ progress::-webkit-progress-value {
     float: right;
     width: 70%;
   }
+
 }
