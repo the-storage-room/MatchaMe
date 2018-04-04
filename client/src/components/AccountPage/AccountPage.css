@@ -157,17 +157,17 @@ input[name=location]:focus {
 .inputfile + label {
   font-size: 1.25em;
   font-weight: 700;
-  color: white;
-  background-color: black;
+  color: rgb(0, 0, 0);
+  background-color: rgb(188, 209, 197);
   display: inline-block;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-  background-color: red;
+  color: rgb(255, 255, 255);
 }
 
 .inputfile:focus + label {
-	outline: 1px dotted #000;
-	outline: -webkit-focus-ring-color auto 5px;
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
 }

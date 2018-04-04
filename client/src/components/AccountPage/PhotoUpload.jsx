@@ -106,7 +106,14 @@ class PhotoUpload extends Component {
                   className={style.inputfile}
                   onChange={this.handleUploadChange}
                   />
-              <label htmlFor="file">{this.state.filename}</label>
+              <label htmlFor="file">
+                <img
+                  className={style.icon}
+                  height="24" width="24"
+                  src={window.location.origin + '/images/upload.png'} 
+                  />
+                {this.state.filename}
+                </label>
             </form>
             <Button 
               onClick={this.handleSubmit} 

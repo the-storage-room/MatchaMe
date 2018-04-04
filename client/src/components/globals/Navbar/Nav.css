@@ -50,7 +50,8 @@
 .column3:hover,
 .column4:hover,
 .avatar {
-  color: rgb(167, 255, 2);
+  cursor: default;
+  color: rgb(202, 255, 209);
 }
 .wrapper {
   display: grid;
@@ -88,8 +89,8 @@
 }
 
 li:hover {
-  cursor: pointer;
-  color: rgb(167, 255, 2);
+  cursor: default;
+  color: rgb(202, 255, 209);
 }
 
 @media (min-width: 768px) {
@@ -106,7 +107,7 @@ li:hover {
   .column3,
   .column4,
   .avatar {
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     vertical-align: middle;
     line-height: 80px;
@@ -141,7 +142,7 @@ li:hover {
     z-index: 5;
     background-color: rgb(46, 46, 46);
     color: gray;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .avatar:hover li {
@@ -149,7 +150,7 @@ li:hover {
   }
 
   li:hover {
-    cursor: pointer;
-    color: rgb(167, 255, 2);
+    cursor: default;
+    color: rgb(202, 255, 209);
   }
 }
