@@ -20,6 +20,25 @@ button:focus {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
+.photo {
+  background-color: whitesmoke;
+  color: rgba(0, 0, 0, 0.705);
+  border: none;
+  padding: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin: 5px;
+  margin-left: 30px;
+  font-weight: 160;
+  vertical-align: top;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  
+}
+
 .small {
   background-color: rgb(188, 209, 197);
   border: none;
@@ -37,10 +56,10 @@ button:focus {
   height: 25px;
 }
 
-.defaultButton:hover {
-  color: rgb(255, 255, 255);
+.photo:hover {
+color: rgb(40, 209, 71);
 }
-
+.defaultButton:hover,
 .small:hover {
   color: rgb(255, 255, 255);
 }

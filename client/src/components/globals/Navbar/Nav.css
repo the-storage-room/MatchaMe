@@ -36,7 +36,7 @@
 }
 
 .logo {
-  color: rgb(144, 196, 165);
+  color: rgb(202, 255, 209);
   z-index: 2;
   grid-area: logo;
   font-size: 30px;
@@ -52,6 +52,10 @@
 .avatar {
   cursor: default;
   color: rgb(202, 255, 209);
+}
+
+.logo:hover {
+  color: rgb(83, 207, 135);
 }
 .wrapper {
   display: grid;
@@ -114,7 +118,6 @@ li:hover {
   }
 
   .logo {
-    color: rgb(144, 196, 165);
     font-size: 50px;
     overflow: visible;
   }

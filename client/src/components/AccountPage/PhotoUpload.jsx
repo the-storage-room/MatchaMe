@@ -98,7 +98,7 @@ class PhotoUpload extends Component {
             Upload Some Photos!
           </div>
           <div className={style.basicMargin}>
-            <form>
+            <form className={style.form}>
                 <input 
                   type="file" 
                   name="file" 
@@ -109,16 +109,20 @@ class PhotoUpload extends Component {
               <label htmlFor="file">
                 <img
                   className={style.icon}
-                  height="24" width="24"
+                  height="20" width="20"
                   src={window.location.origin + '/images/upload.png'} 
                   />
-                {this.state.filename}
+                {" " + this.state.filename}
                 </label>
-            </form>
+            {
+              this.state.filename !== "Choose a file" &&
             <Button 
               onClick={this.handleSubmit} 
               text={"Submit"}
+              className={"photo"}
               />
+            }
+            </form>
           </div>
           <div className={style.basicMargin}>
             <TargetPhoto photo={this.props.userPhotos[this.state.targetPhoto]}/>
