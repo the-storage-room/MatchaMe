@@ -11,7 +11,8 @@ import {
 export const fetchAllPhotosQuery = async userId => {
   try {
     const queryString = fetchAllPhotosHelper();
-    const { rows } = await db.query(queryString, [userId]);
+    let { rows } = await db.query(queryString, [userId]);
+    rows.length === 0 ? rows = [{ url: 'https://i.imgur.com/p4wvSiO.jpg' }] : null
     return rows;
   } catch (err) {
     console.log('Error on fetchAllPhotosQuery', err);
@@ -21,7 +22,8 @@ export const fetchAllPhotosQuery = async userId => {
 export const fetchPrimaryPhotoQuery = async userId => {
   try {
     const queryString = fetchPrimaryPhotoHelper();
-    const { rows } = await db.query(queryString, [userId]);
+    let { rows } = await db.query(queryString, [userId]);
+    rows.length === 0 ? rows = [{ url: 'https://i.imgur.com/p4wvSiO.jpg' }] : null
     return rows[0];
   } catch (err) {
     console.log('Error with fetchPrimaryPhotoQuery', err);
@@ -32,7 +34,7 @@ export const addPhotoQuery = async ({ body }) => {
   try {
     const { url, id } = body;
     const queryString = addPhotoHelper()
-    const data = await db.query(queryString, [url,id]);
+    const data = await db.query(queryString, [url, id]);
     return data
   } catch (err) {
     console.error

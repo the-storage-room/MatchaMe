@@ -195,36 +195,6 @@ button:focus {
   padding: 2px;
 }
 
-.greyStar,
-.yellowStar {
-  display: flex;
-  background-color: grey;
-  height: 50%;
-  width: 40%;
-  align-items: center;
-  justify-content: center;
-  margin: 17px;
-}
-
-.greyStar:before {
-  width: 20px;
-  content: '\2605';
-  color: lightgrey;
-}
-
-.greyStar:hover:before {
-  content: '\2605';
-  color: gold;
-}
-.yellowStar:before {
-  content: '\2605';
-  color: gold;
-}
-
-.yellowStar:hover:before {
-  color: lightgrey;
-}
-
 .X {
   position: absolute;
   top: -20px;
@@ -357,4 +327,14 @@ button:focus {
 .endMatch:hover {
   background-color: pink;
   border: solid rgb(3, 3, 3) 1px;
+}
+ 
+
+@media(min-width: 100px) {
+  .yellowStar {
+    width: 25%;
+  }
+  .greyStar {
+    width: 25%;
+  }
 }

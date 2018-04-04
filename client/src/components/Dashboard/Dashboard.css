@@ -58,9 +58,10 @@ progress::-webkit-progress-value {
   min-height: 100%;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   .column {
     float: left;
+    width: 38%;
   }
 
   .column2 {
@@ -73,7 +74,7 @@ progress::-webkit-progress-value {
     padding-top: 30px;
     margin-top: 30px;
     margin-right: 49px;
-    width: 72%;
+    width: 75%;
   }
 
   .welcome {
@@ -91,10 +92,20 @@ progress::-webkit-progress-value {
   .countdown {
     padding: 5px;
   }
+
 }
 
 @media (min-width: 1000px) {
   .column {
-    padding-left: 115px;
+    margin-left: 50px;
   }
+  
+  .choice {
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-bottom: 19px;
+    float: right;
+    width: 70%;
+  }
+
 }
