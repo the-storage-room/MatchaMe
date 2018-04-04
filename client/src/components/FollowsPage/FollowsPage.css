@@ -1,116 +1,116 @@
 .followsContainer {
-	display: flex;
-	flex-flow: column nowrap;
-	padding: 17px 4px 3px 4px;
-	margin: 25px 15px 25px 25px;
-	background-color: rgb(245, 245, 245);
-	justify-content: space-between;
-	align-items: center;
-	min-height: 500px;
-	width: 87%;
-	position: static;
-	font-weight: lighter;
-	font-family: inherit;
-	font-size: 12px;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 17px 4px 3px 4px;
+  margin: 25px 15px 25px 25px;
+  background-color: rgb(245, 245, 245);
+  justify-content: space-between;
+  align-items: center;
+  min-height: 500px;
+  width: 87%;
+  position: static;
+  font-weight: lighter;
+  font-family: inherit;
+  font-size: 12px;
 }
 
 .starredContainer {
-	display: grid;
-	margin: 0px 0px 0 0px;
-	padding: 1px 0px 0px -1px;
-	width: 350px;
-	height: 100%;
+  display: grid;
+  margin: 0px 0px 0 0px;
+  padding: 1px 0px 0px -1px;
+  width: 350px;
+  height: 100%;
 }
 .resultsContainer {
-	display: grid;
-	margin: 0px 0px 0 0px;
-	padding: 1px 0px 0px -1px;
-	width: 350px;
-	height: 100%;
+  display: grid;
+  margin: 0px 0px 0 0px;
+  padding: 1px 0px 0px -1px;
+  width: 350px;
+  height: 100%;
 }
 
 .avatar {
-	object-fit: cover;
-	border-radius: 77%;
-	width: 55%;
-	height: 81%;
-	padding-top: 5px;
+  object-fit: cover;
+  border-radius: 77%;
+  width: 55%;
+  height: 81%;
+  padding-top: 5px;
 }
 
 .followItem {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: 50px;
-	grid-template-areas: 'user1, decision, user2, starred';
-	width: 320px;
-	height: 93px;
-	padding: 20px 0px 0px 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 50px;
+  grid-template-areas: 'user1, decision, user2, starred';
+  width: 320px;
+  height: 93px;
+  padding: 20px 0px 0px 18px;
 }
 
 .h3 {
-	float: right;
-	width: 55px;
-	height: 13px;
-	padding: 10px;
-	max-width: 130px;
-	font-size: 12px;
+  float: right;
+  width: 55px;
+  height: 13px;
+  padding: 10px;
+  max-width: 130px;
+  font-size: 12px;
 }
 
 .user1 {
-	float: left;
+  float: left;
 }
 
 .user2 {
-	float: right;
+  float: right;
 }
 
 .decision {
-	max-width: 130px;
-	padding: 14px;
-	float: right;
+  max-width: 130px;
+  padding: 14px;
+  float: right;
 }
 /* 
 @media (min-width: 700px) {
-	.followsContainer {
-		width: 93%;
-	}
+  .followsContainer {
+    width: 93%;
+  }
 
-	.followItem {
-		width: 395px;
-	}
+  .followItem {
+    width: 395px;
+  }
 
-	.avatar {
-		width: 50%;
-		height: 100%;
-	}
+  .avatar {
+    width: 50%;
+    height: 100%;
+  }
 
-	.h3 {
-		padding: 18px;
-	}
+  .h3 {
+    padding: 18px;
+  }
 } */
 
 @media (min-width: 800px) {
-	.followsContainer {
-		display: flex;
-		flex-flow: column nowrap;
-		padding: 17px 4px 10px 0px;
-		margin: 25px 69px 25px 70px;
-		background-color: rgb(245, 245, 245);
-		justify-content: space-between;
-		align-items: center;
-		min-height: 500px;
-		width: 83%;
-		position: static;
-		font-weight: lighter;
-		font-family: inherit;
-		font-size: 12px;
-	}
+  .followsContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 17px 4px 10px 0px;
+    margin: 25px 69px 25px 70px;
+    background-color: rgb(245, 245, 245);
+    justify-content: space-between;
+    align-items: center;
+    min-height: 500px;
+    width: 83%;
+    position: static;
+    font-weight: lighter;
+    font-family: inherit;
+    font-size: 12px;
+  }
 }
 
 @media (min-width: 1000px) {
-	.followsContainer {
-		width: 100%;
-		padding: 17px 4px 10px 0px;
-		margin: 25px 69px 25px 45px;
-	}
+  .followsContainer {
+    width: 100%;
+    padding: 17px 4px 10px 0px;
+    margin: 25px 69px 25px 45px;
+  }
 }

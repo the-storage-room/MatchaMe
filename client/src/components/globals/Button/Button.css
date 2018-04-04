@@ -1,344 +1,344 @@
 button:focus {
-	outline: 0;
+  outline: 0;
 }
 
 .defaultButton {
-	background-color: rgb(188, 209, 197);
-	border: none;
-	color: rgba(0, 0, 0, 0.705);
-	padding: 15px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
-	margin: 5px;
-	border-radius: 2px;
-	font-size: 15px;
-	font-weight: 80;
-	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background-color: rgb(188, 209, 197);
+  border: none;
+  color: rgba(0, 0, 0, 0.705);
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin: 5px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 80;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .small {
-	background-color: rgb(188, 209, 197);
-	border: none;
-	color: rgba(0, 0, 0, 0.705);
-	padding: 10px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
-	margin: 5px;
-	border-radius: 2px;
-	font-size: 10px;
-	font-weight: 80;
+  background-color: rgb(188, 209, 197);
+  border: none;
+  color: rgba(0, 0, 0, 0.705);
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin: 5px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 80;
 }
 
 .defaultButton:hover {
-	color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .small:hover {
-	color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .red {
-	background-color: rgb(218, 172, 172);
-	border: none;
-	color: rgba(0, 0, 0, 0.705);
-	padding: 15px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
-	margin: 5px;
-	border-radius: 2px;
-	font-size: 15px;
-	font-weight: 80;
-	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background-color: rgb(218, 172, 172);
+  border: none;
+  color: rgba(0, 0, 0, 0.705);
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin: 5px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 80;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .red:hover {
-	color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 @media (max-width: 767px) {
-	.defaultButton,
-	.red {
-		font-size: 14px;
-		padding: 10px;
-	}
+  .defaultButton,
+  .red {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 
 .tag {
-	display: inline-block;
-	background-color: rgb(241, 234, 234);
-	color: rgb(3, 3, 3);
-	font-size: 12px;
-	padding: 7px;
-	width: 50px;
-	border: solid rgb(240, 176, 176) 1px;
-	border-radius: 2px;
-	margin: 5px;
+  display: inline-block;
+  background-color: rgb(241, 234, 234);
+  color: rgb(3, 3, 3);
+  font-size: 12px;
+  padding: 7px;
+  width: 50px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  margin: 5px;
 }
 
 .tag:hover {
-	background-color: pink;
-	border: solid rgb(3, 3, 3) 1px;
+  background-color: pink;
+  border: solid rgb(3, 3, 3) 1px;
 }
 
 .tag:active {
-	background-color: rgb(226, 126, 126);
+  background-color: rgb(226, 126, 126);
 }
 
 .selected {
-	display: inline-block;
-	background-color: pink;
-	color: rgb(3, 3, 3);
-	border: solid rgb(240, 176, 176) 1px;
-	border-radius: 2px;
-	font-size: 10px;
-	padding: 7px;
-	margin: 5px;
-	width: 50px;
+  display: inline-block;
+  background-color: pink;
+  color: rgb(3, 3, 3);
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  font-size: 10px;
+  padding: 7px;
+  margin: 5px;
+  width: 50px;
 }
 
 .selected:hover {
-	background-color: pink;
-	border: solid rgb(3, 3, 3) 1px;
+  background-color: pink;
+  border: solid rgb(3, 3, 3) 1px;
 }
 
 .selected:active {
-	background-color: rgb(255, 166, 166);
+  background-color: rgb(255, 166, 166);
 }
 
 .next,
 .disabled {
-	position: fixed;
-	z-index: 10;
-	top: 200px;
-	right: 150px;
-	width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid rgb(236, 61, 149);
-	border-bottom: 25px solid transparent;
-	background-color: rgba(245, 245, 245, 0);
+  position: fixed;
+  z-index: 10;
+  top: 200px;
+  right: 150px;
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 50px solid rgb(236, 61, 149);
+  border-bottom: 25px solid transparent;
+  background-color: rgba(245, 245, 245, 0);
 }
 
 .disabled {
-	opacity: 0.1;
-	cursor: not-allowed;
+  opacity: 0.1;
+  cursor: not-allowed;
 }
 
 .next:hover {
-	width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid rgb(221, 119, 119);
-	border-bottom: 25px solid transparent;
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 50px solid rgb(221, 119, 119);
+  border-bottom: 25px solid transparent;
 }
 
 .next:active {
-	width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid rgb(24, 255, 109);
-	border-bottom: 25px solid transparent;
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 50px solid rgb(24, 255, 109);
+  border-bottom: 25px solid transparent;
 }
 
 .primaryTrue,
 .delete {
-	background-color: lightgrey;
-	display: flex;
-	border: solid black 1px;
-	margin: 3px;
-	padding: 2px;
+  background-color: lightgrey;
+  display: flex;
+  border: solid black 1px;
+  margin: 3px;
+  padding: 2px;
 }
 
 .delete:hover,
 .primaryTrue:hover {
-	display: flex;
-	background-color: yellowgreen;
-	border: solid black 1px;
-	margin: 3px;
-	padding: 2px;
+  display: flex;
+  background-color: yellowgreen;
+  border: solid black 1px;
+  margin: 3px;
+  padding: 2px;
 }
 
 .primaryTrue:active,
 .delete:active {
-	background-color: pink;
-	display: flex;
-	border: solid black 1px;
-	margin: 3px;
-	padding: 2px;
+  background-color: pink;
+  display: flex;
+  border: solid black 1px;
+  margin: 3px;
+  padding: 2px;
 }
 
 .greyStar,
 .yellowStar {
-	display: flex;
-	background-color: grey;
-	height: 50%;
-	width: 40%;
-	align-items: center;
-	justify-content: center;
-	margin: 17px;
+  display: flex;
+  background-color: grey;
+  height: 50%;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  margin: 17px;
 }
 
 .greyStar:before {
-	width: 20px;
-	content: '\2605';
-	color: lightgrey;
+  width: 20px;
+  content: '\2605';
+  color: lightgrey;
 }
 
 .greyStar:hover:before {
-	content: '\2605';
-	color: gold;
+  content: '\2605';
+  color: gold;
 }
 .yellowStar:before {
-	content: '\2605';
-	color: gold;
+  content: '\2605';
+  color: gold;
 }
 
 .yellowStar:hover:before {
-	color: lightgrey;
+  color: lightgrey;
 }
 
 .X {
-	position: absolute;
-	top: -20px;
-	right: 10px;
-	background-color: rgb(241, 234, 234);
-	color: rgb(3, 3, 3);
-	font-size: 12px;
-	padding: 7px;
-	border: solid rgb(240, 176, 176) 1px;
-	border-radius: 2px;
-	margin: 5px;
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  background-color: rgb(241, 234, 234);
+  color: rgb(3, 3, 3);
+  font-size: 12px;
+  padding: 7px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  margin: 5px;
 }
 
 .X:hover {
-	background-color: pink;
-	border: solid rgb(3, 3, 3) 1px;
+  background-color: pink;
+  border: solid rgb(3, 3, 3) 1px;
 }
 
 .X:before {
-	content: '\274C';
+  content: '\274C';
 }
 
 .X:hover:before {
-	color: black;
+  color: black;
 }
 
 .upvote {
-	border: none;
-	float: right;
-	top: -20px;
-	right: 10px;
-	color: rgba(136, 136, 136, 0.356);
-	margin: 1px;
-	padding: 4px 4px 2px 4px;
-	box-shadow: none;
-	background: none;
+  border: none;
+  float: right;
+  top: -20px;
+  right: 10px;
+  color: rgba(136, 136, 136, 0.356);
+  margin: 1px;
+  padding: 4px 4px 2px 4px;
+  box-shadow: none;
+  background: none;
 }
 
 .upvoteSelected {
-	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-	background-color: transparent;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background-color: transparent;
 
-	color: rgba(44, 184, 74, 0.356);
-	border: none;
-	float: right;
-	top: -20px;
-	right: 10px;
-	margin: 1px;
-	padding: 4px 4px 2px 4px;
+  color: rgba(44, 184, 74, 0.356);
+  border: none;
+  float: right;
+  top: -20px;
+  right: 10px;
+  margin: 1px;
+  padding: 4px 4px 2px 4px;
 }
 
 .upvote:before {
-	content: '\25b2';
+  content: '\25b2';
 }
 
 .upvoteSelected:before {
-	content: '\25b2';
+  content: '\25b2';
 }
 
 .upvote:hover {
-	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .upvote:active {
-	background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 .upvote:hover:before {
-	color: rgba(44, 184, 74, 0.356);
+  color: rgba(44, 184, 74, 0.356);
 }
 
 .downvote {
-	background-color: transparent;
-	border: none;
-	float: right;
-	top: -20px;
-	right: 10px;
-	color: rgba(136, 136, 136, 0.356);
-	margin: 1px;
-	padding: 4px 4px 2px 4px;
-	box-shadow: none;
+  background-color: transparent;
+  border: none;
+  float: right;
+  top: -20px;
+  right: 10px;
+  color: rgba(136, 136, 136, 0.356);
+  margin: 1px;
+  padding: 4px 4px 2px 4px;
+  box-shadow: none;
 }
 
 .downvoteSelected {
-	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-	background-color: transparent;
-	color: rgba(255, 0, 0, 0.342);
-	border: none;
-	float: right;
-	top: -20px;
-	right: 10px;
-	margin: 1px;
-	padding: 4px 4px 2px 4px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background-color: transparent;
+  color: rgba(255, 0, 0, 0.342);
+  border: none;
+  float: right;
+  top: -20px;
+  right: 10px;
+  margin: 1px;
+  padding: 4px 4px 2px 4px;
 }
 
 .downvote:before {
-	content: '\25bc';
+  content: '\25bc';
 }
 
 .downvote:active {
-	background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 .downvoteSelected:before {
-	content: '\25bc';
+  content: '\25bc';
 }
 
 .downvote:hover {
-	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .downvote:hover:before {
-	color: rgba(255, 0, 0, 0.342);
+  color: rgba(255, 0, 0, 0.342);
 }
 
 .endMatch {
-	float: left;
-	background-color: whitesmoke;
-	color: rgb(3, 3, 3);
-	font-size: 16px;
-	padding: 14px 40px;
-	border: solid rgb(240, 176, 176) 1px;
-	border-radius: 2px;
-	margin: 5px;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
-	width: 30px;
+  float: left;
+  background-color: whitesmoke;
+  color: rgb(3, 3, 3);
+  font-size: 16px;
+  padding: 14px 40px;
+  border: solid rgb(240, 176, 176) 1px;
+  border-radius: 2px;
+  margin: 5px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  width: 30px;
 }
 
 .endMatch:hover {
-	background-color: pink;
-	border: solid rgb(3, 3, 3) 1px;
+  background-color: pink;
+  border: solid rgb(3, 3, 3) 1px;
 }

@@ -6,27 +6,27 @@ import style from './InitializePage.css';
 import actions from '../../../Redux/actions/initialize_actions';
 
 class Initialize extends Component {
-	componentDidMount = () => {
-		console.log('history', this.props.history);
-		this.props.initialize(this.props.history);
-	};
+  componentDidMount = () => {
+    console.log('history', this.props.history);
+    this.props.initialize(this.props.history);
+  };
 
-	render() {
-		return <div>Please Wait while the App Initializes!</div>;
-	}
+  render() {
+    return <div>Please Wait while the App Initializes!</div>;
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-	return bindActionCreators(
-		{
-			initialize: actions.initialize,
-		},
-		dispatch
-	);
+  return bindActionCreators(
+    {
+      initialize: actions.initialize,
+    },
+    dispatch
+  );
 };
 
 const mapStateToProps = () => {
-	return {};
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Initialize);
