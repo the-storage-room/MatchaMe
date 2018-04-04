@@ -30,15 +30,15 @@ class Dashboard extends Component {
           : 3000 < totalPoints <= 5000 ? percentage = (totalPoints / 5000) * 100
             : 5000 < totalPoints <= 10000 ? percentage = (totalPoints / 10000) * 100
               : percentage = 100;
-    percentage < 10 ? percentage = 5 : null;
-    totalPoints <= 0 ? pointsLeft = 0 - totalPoints
-      : 0 < totalPoints <= 1000 ? pointsLeft = 1000 - totalPoints
+    (0 < percentage <= 5 && percentage !== 0) ? percentage = 5 : null;
+    totalPoints < 0 ? pointsLeft = 0 - totalPoints
+      : 0 <= totalPoints <= 1000 ? pointsLeft = 1000 - totalPoints
         : 1000 < totalPoints <= 3000 ? pointsLeft = 3000 - totalPoints
           : 3000 < totalPoints <= 5000 ? pointsLeft = 5000 - totalPoints
             : 5000 < totalPoints <= 10000 ? pointsLeft = 10000 - totalPoints
               : pointsLeft = 0;
-    totalPoints <= 0 ? rankName = 'Bad Matchmaker'
-      : 0 < totalPoints <= 1000 ? rankName = 'Matchmaker'
+    totalPoints < 0 ? rankName = 'Bad Matchmaker'
+      : 0 <= totalPoints <= 1000 ? rankName = 'Matchmaker'
         : 1000 < totalPoints <= 3000 ? rankName = 'Cupid'
           : 3000 < totalPoints <= 5000 ? rankName = 'Yenta'
             : 5000 < totalPoints <= 10000 ? rankName = 'Love Doctor'
