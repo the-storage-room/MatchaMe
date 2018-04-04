@@ -6,6 +6,7 @@ import BioInfo from './BioInfo.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
 import SideNavbar from './SideNavbar.jsx'
 import Button from '../globals/Button/index.jsx';
+import Footer from '../globals/Footer/index.jsx';
 import style from './AccountPage.css';
 
 class Account extends Component {
@@ -85,6 +86,7 @@ class Account extends Component {
         }
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

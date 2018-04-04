@@ -53,7 +53,7 @@ class Comments extends Component {
               type="text"
               id="chatTextarea"
               autoComplete="off"
-              placeholder="Say something..."
+              placeholder="Talk about it..."
               className={style.textbox}
               onChange={this.handleTextareaChange}
               />

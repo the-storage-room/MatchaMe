@@ -2,12 +2,14 @@
   height: 100vh;
   background-color: whitesmoke;
   width: 100vw;
-  position: fixed;
+  position: relative;
 }
 
 .holder {
+  z-index: 0;
+  overflow-y: scroll;
   width: 50%;
-  height: 100%;
+  height: auto;
   margin: 0 auto;
   padding: 40px 50px;
   background-color: white;  
@@ -23,13 +25,19 @@ input[name=year],
 textarea[name=bio],
 input[name=location] {
   font-size: 12px;
-  padding: 15px;
-  margin: 5px 5px 22px 5px;
+  padding: 10px 15px;
+  margin: 5px 5px 0px 0px;
   display: inline-block;
   border: none;
   background: #f1f1f1;
   resize: none;
 }
+
+textarea[name=bio] {
+  width: 300px;
+  height: 70px;
+}
+
 
 input[name=month]{
   width: 20px;
@@ -54,7 +62,7 @@ input[name=location]:focus {
 }
 
 .basicMargin {
-  margin: 30px;
+  margin: 15px;
 }
 
 .targetBox {
@@ -123,4 +131,9 @@ input[name=location]:focus {
 .activenavbutton {
   color: rgb(255, 255, 255);
   cursor: default;
+}
+
+.example {
+  font-size: 10px;
+  font-weight: 80;
 }
