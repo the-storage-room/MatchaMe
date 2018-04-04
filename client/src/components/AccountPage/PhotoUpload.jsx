@@ -17,11 +17,15 @@ class PhotoUpload extends Component {
         targetPhoto: 0,
         file: null,
         currentFunc: null,
+        filename: "Choose a file"
     };
   }
 
   handleUploadChange = (e) => {
-    this.setState({ file: e.target.files[0] });
+    this.setState({ 
+      file: e.target.files[0],
+      filename: e.target.files[0].name
+    });
   }
 
   handleSubmit = () => {
@@ -95,13 +99,14 @@ class PhotoUpload extends Component {
           </div>
           <div className={style.basicMargin}>
             <form>
-              <label>
-              Upload:
-                <input
-                  type="file"
+                <input 
+                  type="file" 
+                  name="file" 
+                  id="file" 
+                  className={style.inputfile}
                   onChange={this.handleUploadChange}
-                />
-              </label>
+                  />
+              <label htmlFor="file">{this.state.filename}</label>
             </form>
             <Button 
               onClick={this.handleSubmit} 

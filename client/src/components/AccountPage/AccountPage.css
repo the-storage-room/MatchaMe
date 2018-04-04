@@ -67,8 +67,8 @@ input[name=location]:focus {
 }
 
 .targetBox {
-  width: 500px;
-  height: 400px;
+  width: 250px;
+  height: 200px;
   float: left;
   overflow: hidden;
 }
@@ -143,4 +143,31 @@ input[name=location]:focus {
   margin: 0px 0 40px 15px;
   font-size: 40px;
   font-weight: 80;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: red;
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
 }
