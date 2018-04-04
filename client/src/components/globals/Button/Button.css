@@ -97,45 +97,33 @@ button:focus {
 }
 
 .tag {
+  border: none;
   display: inline-block;
-  background-color: rgb(241, 234, 234);
+  background-color: rgb(188, 209, 197);
   color: rgb(3, 3, 3);
   font-size: 12px;
   padding: 7px;
-  width: 50px;
-  border: solid rgb(240, 176, 176) 1px;
+  width: auto;
   border-radius: 2px;
   margin: 5px;
 }
 
 .tag:hover {
-  background-color: pink;
-  border: solid rgb(3, 3, 3) 1px;
+  color: white;
 }
 
 .tag:active {
-  background-color: rgb(226, 126, 126);
+  background-color: rgb(45, 102, 45, 0.76);
 }
 
 .selected {
   display: inline-block;
-  background-color: pink;
-  color: rgb(3, 3, 3);
-  border: solid rgb(240, 176, 176) 1px;
-  border-radius: 2px;
-  font-size: 10px;
+  background-color: rgb(45, 102, 45, 0.76);
+  font-size: 12px;
   padding: 7px;
+  width: auto;
+  border-radius: 2px;
   margin: 5px;
-  width: 50px;
-}
-
-.selected:hover {
-  background-color: pink;
-  border: solid rgb(3, 3, 3) 1px;
-}
-
-.selected:active {
-  background-color: rgb(255, 166, 166);
 }
 
 .next,

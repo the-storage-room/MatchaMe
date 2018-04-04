@@ -56,14 +56,17 @@ class Account extends Component {
       photoupload: <PhotoUpload renderButton={this.shouldRenderNextButton}/>
     }
 
-    console.log(this.props)
     return (
       <div>
         {
           this.state.isFirstTimeUser
           ? null
           : <div><Navbar />
-            <SideNavbar history={this.props.history}/>
+            <SideNavbar 
+              history={this.props.history}
+              currentPage={this.state.currentPage}
+              tagtype={this.state.tagtype}
+              />
             </div>
           }
         <div className={style.body}>
