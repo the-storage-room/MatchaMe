@@ -20,8 +20,9 @@ class LandingPage extends Component {
     return (
       <div>
         <Switch>
-          <Route path='/' component={Main} />
-          <Route path='/bio' component={Bio} />
+          <Route path="/" component={Main} />
+          <Route path="/bio" component={Bio} />
+          
         </Switch>
       </div>
     );

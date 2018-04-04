@@ -21,7 +21,7 @@ class HomeNav extends React.Component {
           <li>
             Experience
           </li>
-          <li>
+          <li onClick={() => this.props.history.push('/bio')}>
             Team
           </li>
           <li>
