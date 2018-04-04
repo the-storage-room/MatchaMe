@@ -77,27 +77,21 @@
   padding-right: 5px;
 }
 
-/* @media (min-width: 700px) {
-  .boardwrapper {
-    margin: 0px 35px 0 105px;
-  }
-} */
-
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   .leaderboardContainer {
     display: grid;
     min-height: 500px;
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: center;
-    margin: 25px 0px 25px 15px;
+    margin: 24px -33px 25px 106px;
     padding: 15px 0px 0px 29px;
     background-color: rgb(245, 245, 245);
     font-family: inherit;
     font-weight: lighter;
     float: right;
-    width: 79%;
-  }
+    width: 87%;
+}
 
   .boardwrapper {
     display: grid;
@@ -110,7 +104,30 @@
 
 @media (min-width: 1000px) {
   .leaderboardContainer {
-    margin: 25px 0px 25px 0px;
-    padding: 15px 0px 0px 8px;
+    margin-top: 0px;
+    margin-left: 60px;
+    padding-right: 20px;
+    width: 87%;
+  }
+
+  .avatar {
+    height: 65%;
+    width: 40%
+  }
+
+  .username {
+    font-size: 16px;
+  }
+
+  .pRC {
+    font-size: 16px;
+  }
+
+  .rank {
+    font-size: 32px;
+  }
+
+  .boardwrapper {
+    width: 100%;
   }
 }

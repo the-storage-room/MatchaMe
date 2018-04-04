@@ -20,34 +20,17 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    const { totalPoints } = this.props.powerRanking;
-    if (totalPoints <= 0) {
-      const pointsLeft = 0 - totalPoints;
-      this.setState({ pointsToGo: pointsLeft, width: 0 });
-    } else if (
-      0 < totalPoints <= 250 ||
-      1000 < totalPoints <= 1500 ||
-      3000 < totalPoints <= 3500 ||
-      5000 < totalPoints <= 6250
-    ) {
-      this.setState({ width: 25 });
-    } else if (
-      250 < totalPoints <= 500 ||
-      1500 < totalPoints <= 2000 ||
-      3500 < totalPoints <= 4000 ||
-      6250 < totalPoints <= 7500
-    ) {
-      this.setState({ width: 50 });
-    } else if (
-      500 < totalPoints <= 750 ||
-      2000 < totalPoints <= 2500 ||
-      4000 < totalPoints <= 4500 ||
-      7500 < totalPoints <= 8750
-    ) {
-      this.setState({ width: 75 });
-    } else if (totalPoints === 1000 || totalPoints === 3000 || totalPoints === 5000 || totalPoints === 10000) {
-      this.setState({ width: 100 });
-    }
+    const { totalPoints } = this.props.powerRanking
+    let percentage;
+    totalPoints <= 0 ? percentage = 0
+      : 0 < totalPoints <= 1000 ? percentage = (totalPoints / 1000) * 100
+        : 1000 < totalPoints <= 3000 ? percentage = (totalPoints / 3000) * 100
+          : 3000 < totalPoints <= 5000 ? percentage = (totalPoints / 5000) * 100
+            : 5000 < totalPoints <= 10000 ? percentage = (totalPoints / 10000) * 100
+              : percentage = 100;
+    percentage < 10 ? percentage = 5 : null;
+    this.setState({ width: percentage })
+
     if (0 < totalPoints <= 1000) {
       const pointsLeft = 1000 - totalPoints;
       this.setState({ pointsToGo: pointsLeft, status: 'Matchmaker' });
