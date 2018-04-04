@@ -1,1 +1,100 @@
+.column {
+  font-weight: lighter;
+  text-align: center;
+  height: 460px;
+}
 
+.welcome {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.photo {
+  margin: 25px;
+  padding: 5px 5px 5px 5px;
+  border-style: solid;
+  border-radius: 50%;
+  width: 250px;
+  height: 250;
+}
+
+.userranking {
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.countdown {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+progress {
+  height: 1em;
+  width: 15em;
+  vertical-align: 0.8em;
+  border-radius: 8px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #b8b8b8;
+  border-radius: 8px;
+}
+
+progress::-webkit-progress-value {
+  background-color: rgb(188, 209, 197);
+  border-radius: 8px;
+}
+
+.choice {
+  width: 60%;
+  padding-left: 100px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.row {
+  min-height: 100%;
+}
+
+@media (min-width: 800px) {
+  .column {
+    float: left;
+  }
+
+  .column2 {
+    float: right;
+    padding-right: 85px;
+    width: 50%;
+  }
+
+  .choice {
+    padding-top: 30px;
+    margin-top: 30px;
+    margin-right: 49px;
+    width: 72%;
+  }
+
+  .welcome {
+    padding-top: 60px;
+  }
+
+  .status {
+    padding: 5px;
+  }
+
+  .userBoardPlace {
+    padding: 5px;
+  }
+
+  .countdown {
+    padding: 5px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .column {
+    padding-left: 115px;
+  }
+}

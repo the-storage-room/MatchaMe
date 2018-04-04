@@ -1,5 +1,5 @@
 button:focus {
-  outline:0;
+  outline: 0;
 }
 
 .defaultButton {
@@ -117,17 +117,18 @@ button:focus {
   background-color: rgb(255, 166, 166);
 }
 
-.next, .disabled{
+.next,
+.disabled {
   position: fixed;
   z-index: 10;
   top: 200px;
   right: 150px;
   width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid rgb(236, 61, 149);
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 50px solid rgb(236, 61, 149);
   border-bottom: 25px solid transparent;
-  background-color:rgba(245, 245, 245, 0);
+  background-color: rgba(245, 245, 245, 0);
 }
 
 .disabled {
@@ -137,21 +138,22 @@ button:focus {
 
 .next:hover {
   width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid rgb(221, 119, 119);
-	border-bottom: 25px solid transparent;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 50px solid rgb(221, 119, 119);
+  border-bottom: 25px solid transparent;
 }
 
 .next:active {
   width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid rgb(24, 255, 109);
-	border-bottom: 25px solid transparent;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 50px solid rgb(24, 255, 109);
+  border-bottom: 25px solid transparent;
 }
 
-.primaryTrue, .delete {
+.primaryTrue,
+.delete {
   background-color: lightgrey;
   display: flex;
   border: solid black 1px;
@@ -159,7 +161,8 @@ button:focus {
   padding: 2px;
 }
 
-.delete:hover, .primaryTrue:hover {
+.delete:hover,
+.primaryTrue:hover {
   display: flex;
   background-color: yellowgreen;
   border: solid black 1px;
@@ -167,7 +170,8 @@ button:focus {
   padding: 2px;
 }
 
-.primaryTrue:active, .delete:active {
+.primaryTrue:active,
+.delete:active {
   background-color: pink;
   display: flex;
   border: solid black 1px;
@@ -177,24 +181,27 @@ button:focus {
 
 .greyStar,
 .yellowStar {
-  float: right;
-  border: 1px black solid;
-  background-color: rgb(17, 17, 17);
+  display: flex;
+  background-color: grey;
+  height: 50%;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  margin: 17px;
 }
 
 .greyStar:before {
   width: 20px;
-  content: "\2605";
+  content: '\2605';
   color: lightgrey;
 }
 
-
 .greyStar:hover:before {
-  content: "\2605";
+  content: '\2605';
   color: gold;
 }
 .yellowStar:before {
-  content: "\2605";
+  content: '\2605';
   color: gold;
 }
 
@@ -221,7 +228,7 @@ button:focus {
 }
 
 .X:before {
-  content: "\274C"
+  content: '\274C';
 }
 
 .X:hover:before {
@@ -235,7 +242,7 @@ button:focus {
   right: 10px;
   color: rgba(136, 136, 136, 0.356);
   margin: 1px;
-  padding:  4px 4px 2px 4px;
+  padding: 4px 4px 2px 4px;
   box-shadow: none;
   background: none;
 }
@@ -250,15 +257,15 @@ button:focus {
   top: -20px;
   right: 10px;
   margin: 1px;
-  padding:  4px 4px 2px 4px;
+  padding: 4px 4px 2px 4px;
 }
 
 .upvote:before {
-  content: "\25b2"
+  content: '\25b2';
 }
 
 .upvoteSelected:before {
-  content: "\25b2"
+  content: '\25b2';
 }
 
 .upvote:hover {
@@ -281,10 +288,9 @@ button:focus {
   right: 10px;
   color: rgba(136, 136, 136, 0.356);
   margin: 1px;
-  padding:  4px 4px 2px 4px;
+  padding: 4px 4px 2px 4px;
   box-shadow: none;
 }
-
 
 .downvoteSelected {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
@@ -295,11 +301,11 @@ button:focus {
   top: -20px;
   right: 10px;
   margin: 1px;
-  padding:  4px 4px 2px 4px;
+  padding: 4px 4px 2px 4px;
 }
 
 .downvote:before {
-  content: "\25bc"
+  content: '\25bc';
 }
 
 .downvote:active {
@@ -307,7 +313,7 @@ button:focus {
 }
 
 .downvoteSelected:before {
-  content: "\25bc"
+  content: '\25bc';
 }
 
 .downvote:hover {
