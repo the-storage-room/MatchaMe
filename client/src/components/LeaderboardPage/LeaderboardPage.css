@@ -1,86 +1,116 @@
 .leaderboardContainer {
-  display: flex;
-  min-height: 500px;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 65px;
-  padding: 65px;
-  border: solid rgb(240, 176, 176) 1px;
-  border-radius: 3px;
-  background-color:rgb(245, 245, 245);
+	display: flex;
+	min-height: 500px;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: center;
+	margin: 25px 15px 25px 25px;
+	padding: 15px;
+	background-color: rgb(245, 245, 245);
+	font-family: inherit;
+	font-weight: lighter;
 }
 
-
-.avatar {
-  float: left;
-  object-fit: cover;
-  border-radius:50%;
-  width: 80px;
-  height: 80px;
-  padding:10px;
-}
-
-.followItem {
-display: inline-block;
-width: 800px;
-height: 100px;
-border-top: solid rgb(240, 176, 176) 1px;
-border-radius: 3px;
-border-bottom: solid rgb(240, 176, 176) 1px;
-border-radius: 3px;
-}
-
-.h3 {
-float: right;
-width: 130px;
-height: 20px;
-padding:10px;
-max-width: 130px;
-font-weight: normal;
-font-size: 20px;
-}
-
-.user1 {
-float: left;
+.leaderboardItems {
+	display: flex;
+	width: 500px;
+	height: 100px;
+	border-top: solid rgb(240, 176, 176) 1px;
+	border-radius: 3px;
+	border-bottom: solid rgb(240, 176, 176) 1px;
+	margin: auto;
+	padding: auto;
 }
 
 .rank {
-max-width: 130px;
-padding:30px;
-float: left;
-font-weight: normal;
-font-size: 46px;
+	max-width: 100px;
+	padding: 15px;
+	float: left;
+	font-weight: normal;
+	font-size: 35px;
+	margin: auto;
 }
 
+.avatar {
+	float: left;
+	object-fit: cover;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+	margin: auto;
+}
 
 .username {
-  margin-top: 20px;
-  float: left;
-  padding:10px;
-  font-weight: normal;
-  font-size: 30px;
-}
-.powerranking {
-  position: relative;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 40px;  
-  font-size: 30px;
-}
-
-.powerrankingTitle {
-  text-align: center;
-  vertical-align: middle;
-  margin-top: 23px;
-
+	margin: auto;
+	padding: 5px 5px 5px 5px;
+	font-size: 14px;
 }
 
 .pRC {
-  z-index: 0;
-  float: right;
-  position: relative;
-  width: 20%;
-  height: 100%;
-  margin-right: 30px;
+	font-size: 12px;
+	float: right;
+	margin: auto;
+	padding: 5px 10px 5px 5px;
+	text-align: center;
+}
+
+.powerrankingTitle {
+	padding-bottom: 5px;
+}
+
+.powerranking {
+	padding-top: 5px;
+}
+
+.boardwrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 100px;
+	grid-template-areas: 'rank, avatar, username, pRC';
+	margin: 0px 35px 0 0px;
+}
+
+.col1 {
+	display: flex;
+	flex-direction: row;
+	padding-right: 5px;
+}
+
+/* @media (min-width: 700px) {
+	.boardwrapper {
+		margin: 0px 35px 0 105px;
+	}
+} */
+
+@media (min-width: 800px) {
+	.leaderboardContainer {
+		display: grid;
+		min-height: 500px;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		align-items: center;
+		margin: 25px 0px 25px 15px;
+		padding: 15px 0px 0px 29px;
+		background-color: rgb(245, 245, 245);
+		font-family: inherit;
+		font-weight: lighter;
+		float: right;
+		width: 79%;
+	}
+
+	.boardwrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 100px;
+		grid-template-areas: 'rank, avatar, username, pRC';
+		padding: -4px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.leaderboardContainer {
+		margin: 25px 0px 25px 0px;
+		padding: 15px 0px 0px 8px;
+	}
 }
