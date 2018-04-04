@@ -50,6 +50,9 @@ class BioInfo extends Component {
     console.log(this.props)
     return (
       <div>
+        <div className={style.tagHead}>
+          Please enter your info!
+        </div>
         <div className={style.basicMargin}>
           Date of Birth: 
           <div>

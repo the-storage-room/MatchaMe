@@ -64,19 +64,11 @@ class Tags extends Component {
   render() {
     return (
       <div>
-        <Button
-          text="Save!"
-          onClick={this.handleSave}
-          />
-        <div className={style.basicMargin}>
-          Tag Picker!
-        </div>
-        <div className={style.basicMargin}>
-          Pick 3 Tags to Describe 
+        <div className={style.tagHead}>
           {
             this.props.type === 'user' 
-            ? ' YOURSELF' 
-            : ' YOUR IDEAL MATCH'
+            ? ' I am a...' 
+            : 'My Ideal Match is a...'
           }
         </div>
         <div className={style.basicMargin}>

@@ -90,6 +90,9 @@ class PhotoUpload extends Component {
     return (
       <div>
         <div className = {style.photoPage}>
+          <div className={style.tagHead}>
+            Upload Some Photos!
+          </div>
           <div className={style.basicMargin}>
             <form>
               <label>

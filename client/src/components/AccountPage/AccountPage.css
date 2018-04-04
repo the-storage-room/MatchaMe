@@ -10,8 +10,9 @@
   overflow-y: scroll;
   width: 50%;
   height: auto;
+  min-height: 80vh;
   margin: 0 auto;
-  padding: 40px 50px;
+  padding: 60px 60px 0 60px;
   background-color: white;  
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
@@ -106,7 +107,7 @@ input[name=location]:focus {
 
 .sidenav {
   width: 120px;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   top: 230px;
   left: 30px;
@@ -135,5 +136,11 @@ input[name=location]:focus {
 
 .example {
   font-size: 10px;
+  font-weight: 80;
+}
+
+.tagHead {
+  margin: 0px 0 40px 15px;
+  font-size: 40px;
   font-weight: 80;
 }

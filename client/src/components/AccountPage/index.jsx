@@ -76,12 +76,14 @@ class Account extends Component {
         { 
           this.state.renderButton
           ? <Button 
-              className={'next'}
+              className={'save'}
+              text={"Save and Continue"}
               onClick={this.onNextClick}
               />
           :
           <Button 
             className={'disabled'}
+            text={"Save and Continue"}
             />
         }
           </div>
