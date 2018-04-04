@@ -63,18 +63,18 @@
 .decision {
   grid-area: decision;
   width: auto;
-  height: 100%;
   font-size: 28px;
   text-align: center;
   color: rgb(19, 37, 27);
-  padding: 50px 15px 0px 6px;
+  padding: 40px 15px 0px 6px;
   font-weight: 300;
+  background-color: whitesmoke;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 .chatroom {
   grid-area: chatroom;
   position: relative;
   overflow-y: scroll;
-  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
 }
 
 .next {
@@ -162,10 +162,11 @@
 }
 
 .comments {
+  border-left: rgba(255, 0, 0, 0.253) solid 5px;
   z-index: 7;
   height: 100%;
   width: 100%;
-  background-color:rgba(248, 244, 244, 0.404);
+  background-color:rgba(248, 244, 244, 0.623);
 }
 
 .textbox {
@@ -299,7 +300,7 @@
 
   .decision{
     margin: 0 15px;
-    padding-top: 20px;
+    padding-top: 16px;
     font-size: 30px;
   }
 }
@@ -358,10 +359,11 @@
   
   .decision {
     width: auto;
-    height: 100%;
+    height: 70%;
     font-size: 40px;
     color: rgb(19, 37, 27);
     padding: 30px 15px 0px 6px;
+    margin: 10px;
     font-weight: 300;
   }
   .chatroom {
