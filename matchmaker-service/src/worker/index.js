@@ -1,5 +1,5 @@
 import cron from 'cron';
-import matchaMe from './matchmakingService.js'
+import { matchaMe } from './matchmakingService.js';
 
 const CronJob = cron.CronJob;
 
@@ -8,11 +8,11 @@ export const job = new CronJob({
   onTick: async () => {
     try {
       await matchaMe();
-      console.log('matchmaking worker finished!')
+      console.log('matchmaking worker finished!');
     } catch (err) {
-      console.log('error on matchmaker service cron', err)
+      console.log('error on matchmaker service cron', err);
     }
     start: true;
-    timeZone: 'America/Los Angeles'
+    timeZone: 'America/Los Angeles';
   }
 });
