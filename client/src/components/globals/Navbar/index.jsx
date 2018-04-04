@@ -48,15 +48,15 @@ class Navbar extends React.Component {
             <ul className={style['dropdown-menu']}>
               <li
                 className={style['dropdown-menu-item']}
-                onClick={() => this.props.history.push('/logout')}
-              >
-                Logout
-              </li>
-              <li
-                className={style['dropdown-menu-item']}
                 onClick={() => this.props.history.push('/account/bio')}
               >
                 Setting
+              </li>
+              <li
+                className={style['dropdown-menu-item']}
+                onClick={() => this.props.history.push('/logout')}
+              >
+                Logout
               </li>
             </ul>
           </div>
