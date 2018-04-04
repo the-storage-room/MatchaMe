@@ -41,7 +41,7 @@ const FollowsItem = ({
     }
   };
   return (
-    <div className={style.followItem}>
+    < div className={style.followItem} >
       <div className={style.user1}>
         <img className={style.avatar} src={user1.photos[0].url} />
         <h3 className={style.h3}>
@@ -59,7 +59,7 @@ const FollowsItem = ({
         </h3>
       </div>
       <Button onClick={() => onClick(matchId, starred, index)} className={starred ? 'yellowStar' : 'greyStar'} />
-    </div>
+    </div >
   );
 };
 
