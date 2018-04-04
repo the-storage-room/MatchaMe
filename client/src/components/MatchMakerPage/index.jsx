@@ -6,7 +6,6 @@ import style from './MatchMaker.css';
 import Comments from './Comments.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
 import Button from '../globals/Button/index.jsx';
-import Profile from '../globals/Profile/index.jsx';
 import actions from '../../../Redux/actions/matchmaker_page_actions';
 import Footer from '../globals/Footer/index.jsx';
 import turnBirthdayIntoAge from '../../utils/turnBirthdayIntoAge';

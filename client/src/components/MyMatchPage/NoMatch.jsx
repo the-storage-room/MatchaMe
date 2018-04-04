@@ -1,7 +1,6 @@
 import React from 'react';
 
 import style from './MyMatch.css';
-import Profile from '../globals/Profile/index.jsx';
 import Button from '../globals/Button/index.jsx';
 import Footer from '../globals/Footer/index.jsx';
 import Navbar from '../globals/Navbar/index.jsx';
