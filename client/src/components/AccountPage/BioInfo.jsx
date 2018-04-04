@@ -52,6 +52,7 @@ class BioInfo extends Component {
       <div>
         <div className={style.basicMargin}>
           Date of Birth: 
+          <div>
           <Input 
             placeholder="XX" 
             onChange={this.handleInputChange} 
@@ -72,9 +73,11 @@ class BioInfo extends Component {
             maxLength='4'
             />
             Example: 07 31 1988
+          </div>
         </div>
         <div className={style.basicMargin}>
           ZIP Code 
+        </div>
           <Input 
             type="text"
             placeholder="XXXXX"
@@ -83,7 +86,6 @@ class BioInfo extends Component {
             maxLength='5'
             value={this.props.location}
             />
-        </div>
         <div className={style.basicMargin}>
           Gender: 
           <Gender
@@ -108,10 +110,12 @@ class BioInfo extends Component {
             >
           </textarea>
         </div>
-        <Button
-          onClick={this.handleClick}
-          text="Save"
-        />
+        <div className={style.save}>
+          <Button
+            onClick={this.handleClick}
+            text="Save"
+            />
+        </div>
       </div>
     )
   }

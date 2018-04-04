@@ -20,10 +20,10 @@ class Account extends Component {
   }
 
   nextPage = {
-    '/account/bio': '/account/tags/user',
-    '/account/tags/user': '/account/tags/pref',
-    '/account/tags/pref': '/account/photoupload',
-    '/account/photoupload': '/dashboard'
+    '/onboarding/bio': '/onboarding/tags/user',
+    '/onboarding/tags/user': '/onboarding/tags/pref',
+    '/onboarding/tags/pref': '/onboarding/photoupload',
+    '/onboarding/photoupload': '/dashboard'
   }
 
   onNextClick = () => {
@@ -70,6 +70,7 @@ class Account extends Component {
             </div>
           }
         <div className={style.body}>
+          <div className={style.holder}>
           {pages[this.props.match.params.page]}
         { 
           this.state.renderButton
@@ -82,6 +83,7 @@ class Account extends Component {
             className={'disabled'}
             />
         }
+          </div>
         </div>
       </div>
     );
