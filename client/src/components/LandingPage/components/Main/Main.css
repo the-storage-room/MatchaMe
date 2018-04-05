@@ -1,25 +1,30 @@
-.header {
+.mainPhotoContainer {
+  position: relative;
   text-align: center;
+  /* color: white; */
+}
+.mainPhoto {
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
-.logo {
-  text-align: center;
-  font-size: 35px;
-  background-color: white;
-  color:rgb(4, 185, 95);
+.mainCaption {
+  font: Helvetica;
+  font-size: 30px;
+  letter-spacing: 1px;
+  
   text-align: center;
   vertical-align: middle;
-  margin: 20px 0 0 10px;
-  line-height: 60px;
+  /* color: white; */
+  font-weight: lighter;
+  position: relative;
+  top: 45px;
+  transform: translateY(-50%); 
+  
+  /* transform: translate(-50%, -50%); */
+  
 }
 
-.joinButton {
-  margin: 0 20px 20px 0;
-}
-
-.boatPhoto {
-  display: block;
-  margin: 0 10px 10 px 0;
-}
 
 /* 1280 x 853 */

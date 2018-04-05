@@ -2,7 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import style from './Main.css';
-import HomeNav from '../HomeNav/index.jsx';
+import Header from '../Header/index.jsx';
+import Footer from '../../../globals/Footer/index.jsx';
 
 class Main extends React.Component {
   constructor() {
@@ -12,26 +13,23 @@ class Main extends React.Component {
     };
   }
   
+  
   render() {
     return (
       <div className={style.wrapper}>
-        <header> 
-          <div className={style.logo}>
-            <button className={style.joinButton}>join</button>
-            MatchaMe
-          </div> 
-        </header>
-        <HomeNav />
-        <div >
+        <Header props={this.props} />
+        <div className={style.mainPhotoContainer}>
           <img 
-            className={style.boatPhoto}
-            src="https://c2.staticflickr.com/4/3111/3123004665_5cd4f1eafc_o.jpg"
-            height="653px"
-            width="1080px"
+            className={style.mainPhoto}
+            src="https://i.imgur.com/lCqj6w4.jpg"
           />
+          
         </div>
-        <footer>
-        </footer>
+        
+        <div className={style.mainCaption}>
+          <h4>Find your perfect match.</h4>
+        </div>
+        <Footer />
       </div>
     );
   }

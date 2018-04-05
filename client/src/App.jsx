@@ -15,8 +15,18 @@ import Leaderboard from './components/LeaderboardPage/index.jsx';
 import Account from './components/AccountPage/index.jsx';
 import Initialize from './components/InitializePage/index.jsx';
 import Home from './components/HomePage/index.jsx';
+<<<<<<< HEAD
 import Protected from './components/globals/Protected';
+=======
+import Protected from '../src/components/globals/Protected/index';
+<<<<<<< HEAD
+>>>>>>> moar landing page
 import actions from '../Redux/actions/initialize_actions';
+=======
+import Bio from '../src/components/LandingPage/components/Bio/index.jsx';
+import About from '../src/components/LandingPage/components/About/index.jsx';
+import Main from '../src/components/LandingPage/components/Main/index.jsx';
+>>>>>>> moar landing page
 
 class App extends Component {
   constructor() {
@@ -62,7 +72,9 @@ class App extends Component {
             path="/account/:page(bio|photoupload)"
             component={props => <Protected component={Account} {...props} />}
           />
-          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/" component={Main} />
+          <Route exact path="/bio" component={Bio} />
+          <Route exact path="/about" component={About} />
         </Switch>
       </div>
     );

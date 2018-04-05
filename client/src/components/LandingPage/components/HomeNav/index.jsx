@@ -10,12 +10,14 @@ class HomeNav extends React.Component {
 
     };
   }
-
+  componentDidMount() {
+    console.log(this.props)
+  }
   render() {
     return (
       <div className={style.navbar}>
         <ul className={style.ul}>
-          <li>
+          <li onClick={() => this.props.history.push('/about')}>
             About
           </li>
           <li>
