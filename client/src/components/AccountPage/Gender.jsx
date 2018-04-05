@@ -40,11 +40,9 @@ class Gender extends Component {
     })
     let genderNumber = this.convertGenderStateToNumber(newGenderState);
     this.props.handleGenderChange(this.props.type, genderNumber);
-
   }
 
   render () {
-    console.log(this.state.genderState)
     return (
       <div>
       <Button 

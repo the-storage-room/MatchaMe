@@ -2,15 +2,21 @@ import React from 'react';
 
 import style from './AccountPage.css';
 
-const SideNavbar = ({ history, currentPage, tagtype }) => {
+const SideNavbar = ({ history, currentPage, tagtype, route }) => {
 
 
   const generateClass = (page) => {
     if (page === currentPage || page === tagtype) {
       return 'activenavbutton'
-    } else {
+    } else if (route === 'account'){
       return 'navbutton'
+    } else {
+      return 'onboardnavbutton'
     }
+  }
+
+  const clickIfNotOnboarding = (path) => {
+    route === 'account' && history.push(path)
   }
 
 
@@ -18,25 +24,25 @@ const SideNavbar = ({ history, currentPage, tagtype }) => {
     <div className={style.sidenav}>
       <div
         className={style[generateClass('bio')]}
-        onClick={() => history.push('/account/bio')}
+        onClick={() => clickIfNotOnboarding('/account/bio')}
         >
         Basic Info
       </div>
       <div
         className={style[generateClass('user')]}
-        onClick={() => history.push('/account/tags/user')}
+        onClick={() => clickIfNotOnboarding('/account/tags/user')}
         >
         Your Tags
       </div>
       <div
         className={style[generateClass('pref')]}
-        onClick={() => history.push('/account/tags/pref')}
+        onClick={() => clickIfNotOnboarding('/account/tags/pref')}
         >
         Match Tags
       </div>
       <div
         className={style[generateClass('photoupload')]}
-        onClick={() => history.push('/account/photoupload')}
+        onClick={() => clickIfNotOnboarding('/account/photoupload')}
         >
         Photo Upload
       </div>
