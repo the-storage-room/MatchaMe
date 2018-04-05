@@ -46,13 +46,9 @@ class Navbar extends React.Component {
           <div className={style.column4} onClick={() => this.props.history.push('/dashboard')}>
             Dashboard
           </div>
-          <div
-            className={style.avatar}
-            onMouseOver={() => {
-              console.log('hoverhovehover')
-              this.setState({ showDropdown: !this.state.showDropdown });
-            }}
-          >
+          <div className={style.avatar} onMouseOver={() => {
+            this.setState({ showDropdown: !this.state.showDropdown });
+          }}>
             <Avatar />
           </div>
         </div>

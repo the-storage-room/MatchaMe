@@ -9,10 +9,12 @@ class Protected extends Component {
     try {
       const { NODE_ENV } = process.env;
       const { signupStatus, history } = this.props
-      if (NODE_ENV === 'PRODUCTION') {
+      console.log('props', this.props)
+      if (NODE_ENV === 'DEVELOPMENT') {
         const { exp } = jwtDecode(localStorage.token);
         if (exp < Math.floor(Date.now() / 1000)) {
           history.push('/login')
+          console.log('signupStat', this.props.signupStatus)
           signupStatus === 0 || signupStatus === false ? history.push('/onboarding/bio') : null;
         } else {
           signupStatus === 0 || signupStatus === false ? history.push('/onboarding/bio') : null;
