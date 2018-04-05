@@ -198,7 +198,7 @@ const mapStateToProps = ({ matches, comments }) => {
     matchid: matches[matches.length - 1] && matches[matches.length - 1].id,
     user1: matches[matches.length - 1] && matches[matches.length - 1].user1,
     user2: matches[matches.length - 1] && matches[matches.length - 1].user2,
-    comments: comments.length && comments || matches[matches.length - 1] && matches[matches.length - 1],
+    comments: comments.length && comments || matches[matches.length - 1] && matches[matches.length - 1].comments,
   }
 }
 

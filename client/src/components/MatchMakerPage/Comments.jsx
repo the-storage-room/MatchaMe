@@ -82,7 +82,7 @@ class Comments extends Component {
                   />
                 )
             })
-            : "no comments yet..."
+            : <div className={style.nocomments}>no comments yet...</div>
           }
         </div>
       </div>

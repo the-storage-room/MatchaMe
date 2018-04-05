@@ -204,6 +204,12 @@
   min-width: 90%
 }
 
+.nocomments {
+  font-size: 15px;
+  font-weight: 80;
+  margin-left: 10px;
+}
+
 .zero {
   float: right;
   padding: 10px;
