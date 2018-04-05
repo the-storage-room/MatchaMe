@@ -17,7 +17,6 @@ import Initialize from './components/InitializePage/index.jsx';
 import Home from './components/HomePage/index.jsx';
 import Protected from '../src/components/globals/Protected/index';
 import actions from '../Redux/actions/initialize_actions';
-import Logout from '../src/components/Auth/Logout.jsx';
 
 class App extends Component {
   constructor() {
@@ -36,7 +35,6 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/logout" component={Logout} />
 
           <Route path="/home" component={props => <Protected component={Home} {...props} />} />
           <Route path="/dashboard" component={props => <Protected component={Dashboard} {...props} />} />
