@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import actions from '../../../../Redux/actions/signup_status_actions';
 
 class Protected extends Component {
   componentDidMount() {
@@ -29,16 +28,4 @@ class Protected extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({
-    signupstatus: actions.fetchUserSignupStatus
-  }, dispatch)
-}
-
-const mapStateToProps = state => {
-  return {
-    signupStatus: state.signupStatus
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Protected);
+export default Protected;
