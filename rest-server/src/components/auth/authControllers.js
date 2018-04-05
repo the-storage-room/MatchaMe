@@ -18,7 +18,7 @@ export const loginController = async (req, res) => {
     delete rows[0].password;
     const { id, email } = rows[0];
     const token = await generateToken(id, email);
-    rows[0].token = token;
+    rows[0].token = token.accessToken;
     return res.status(200).header(`Authorization: bearer ${JSON.stringify(token.accessToken)}`).send(rows[0]);
   } catch (err) {
     throw new Error(err);
