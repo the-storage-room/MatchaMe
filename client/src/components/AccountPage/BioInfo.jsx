@@ -23,7 +23,7 @@ class BioInfo extends Component {
   }
 
   handleClick = () => {
-    this.props.updateBioData({location: this.state.location})
+    this.props.updateBioData({ location: this.state.location })
   }
 
   handleGenderChange = (state, genderNum) => {
@@ -47,69 +47,68 @@ class BioInfo extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <div className={style.basicMargin}>
-          Date of Birth: 
+          Date of Birth:
           <div>
-          <Input 
-            placeholder="MM" 
-            onChange={this.handleInputChange} 
-            name="month"
-            maxLength='2'
-            type="text"
+            <Input
+              placeholder="MM"
+              onChange={this.handleInputChange}
+              name="month"
+              maxLength='2'
+              type="text"
             />
-          <Input 
-            placeholder="DD" 
-            onChange={this.handleInputChange} 
-            name="month"
-            maxLength='2'
+            <Input
+              placeholder="DD"
+              onChange={this.handleInputChange}
+              name="month"
+              maxLength='2'
             />
-          <Input 
-            placeholder="YYYY" 
-            onChange={this.handleInputChange} 
-            name="year"
-            maxLength='4'
+            <Input
+              placeholder="YYYY"
+              onChange={this.handleInputChange}
+              name="year"
+              maxLength='4'
             />
           </div>
         </div>
         <div className={style.basicMargin}>
           ZIP Code:
           <div>
-            <Input 
+            <Input
               type="text"
               placeholder="XXXXX"
-              onChange={this.handleInputChange} 
+              onChange={this.handleInputChange}
               name="location"
               maxLength='5'
               value={this.props.location}
-              />
+            />
           </div>
         </div>
         <div className={style.basicMargin}>
-          Gender: 
+          Gender:
           <Gender
             type='gender'
             handleGenderChange={this.handleGenderChange}
-            />
+          />
         </div>
         <div className={style.basicMargin}>
           Gender preferences:
           <Gender
             type='pref'
             handleGenderChange={this.handleGenderChange}
-            />
+          />
         </div>
         <div className={style.basicMargin}>
-          Bio: 
+          Bio:
           <div>
-          <textarea 
-            placeholder="Who are you?"
-            onChange={this.handleInputChange} 
-            name="bio"
+            <textarea
+              placeholder="Who are you?"
+              onChange={this.handleInputChange}
+              name="bio"
             >
-          </textarea>
+            </textarea>
           </div>
         </div>
       </div>
