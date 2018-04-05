@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import actions from '../../../../Redux/actions/protected_page_actions';
+import actions from '../../../../Redux/actions/signup_status_actions';
 
 class Protected extends Component {
   componentDidMount() {
