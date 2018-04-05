@@ -48,7 +48,8 @@ class Navbar extends React.Component {
           </div>
           <div
             className={style.avatar}
-            onClick={() => {
+            onMouseOver={() => {
+              console.log('hoverhovehover')
               this.setState({ showDropdown: !this.state.showDropdown });
             }}
           >
