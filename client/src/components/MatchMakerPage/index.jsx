@@ -19,12 +19,19 @@ class MatchMaker extends Component {
     };
   }
 
+<<<<<<< HEAD
   decideOnMatch = vote => {
     const voteObject = {
       matchId: this.props.matchid,
       user1_id: this.props.user1,
       user2_id: this.props.user2,
       activevoting: this.props.activevoting,
+=======
+  decideOnMatch = (vote) => {
+    let { matchid } = this.props;
+    const voteObject = {
+      matchId: matchid,
+>>>>>>> [bug] comments refresh on matchmaker rate
       starred: 0,
       decision: vote
     };
@@ -59,20 +66,14 @@ class MatchMaker extends Component {
     } else {
       let newPhoto = this.state.user2target;
       newPhoto += 1;
-      if (newPhoto === this.props.user2.photos.length) {
-        console.log('hi');
-        newPhoto = 0;
-      }
+      if (newPhoto === this.props.user2.photos.length) { newPhoto = 0 }
       this.setState({
         user2target: newPhoto
       });
     }
   };
 
-  componentDidMount = () => {
-    this.refreshComments();
-  };
-
+  
   render() {
     let user1Age =
       this.props.user1 && turnBirthdayIntoAge(this.props.user1.age);
@@ -197,10 +198,8 @@ const mapStateToProps = ({ matches, comments }) => {
     matchid: matches[matches.length - 1] && matches[matches.length - 1].id,
     user1: matches[matches.length - 1] && matches[matches.length - 1].user1,
     user2: matches[matches.length - 1] && matches[matches.length - 1].user2,
-    activevoting:
-      matches[matches.length - 1] && matches[matches.length - 1].activevoting,
-    comments: comments
-  };
-};
+    comments: comments.length && comments || matches[matches.length - 1] && matches[matches.length - 1],
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatchMaker);

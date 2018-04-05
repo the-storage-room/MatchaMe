@@ -50,8 +50,12 @@ export default {
           payload: newMatches
         });
         dispatch({
+<<<<<<< HEAD
           type: 'FOLLOW_UNSTARRED_SUCCESS',
           payload: newFollows
+=======
+          type: 'MATCHMAKER_COMMENTS_CLEARED',
+>>>>>>> [bug] comments refresh on matchmaker rate
         });
       } catch (err) {
         console.error;
