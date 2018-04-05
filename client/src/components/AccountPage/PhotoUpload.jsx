@@ -34,15 +34,12 @@ class PhotoUpload extends Component {
     });
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
     const formData = new FormData();
     formData.append('file', this.state.file);
     formData.append('id', this.props.userId);
     formData.append('username', this.props.username);
     this.props.uploadPhoto(formData);
-    this.setState({
-      currentFunc: 'add'
-    })
   }
 
   handleDeletePhoto = () => {
@@ -50,18 +47,12 @@ class PhotoUpload extends Component {
     const { url, id } = this.props.userPhotos[index];
     const key = url.slice(46);
     this.props.deletePhoto(key, id, index)
-    this.setState({
-      currentFunc: 'delete'
-    })
   }
 
   handleSetPrimaryPhoto = () => {
     const index = this.state.hoverTarget;
     const { id } = this.props.userPhotos[index];
     this.props.updatePrimaryPhoto(id, index)
-    this.setState({
-      currentFunc: 'primary'
-    })
   }
 
   componentDidMount = () => {
@@ -72,22 +63,9 @@ class PhotoUpload extends Component {
     this.props.renderButton(this.props.userPhotos.length)
   }
 
-  // componentWillReceiveProps = () => {
-  //   if (
-  //     this.state.currentFunc === 'primary' || 
-  //     this.state.currentFunc === 'delete'
-  //   ) {
-  //     this.setState({
-  //       targetPhoto: 0
-  //     })
-  //   } else if (
-  //     this.state.currentFunc === 'add'
-  //   ) {
-  //     this.setState({
-  //       targetPhoto: this.props.userPhotos.length - 1
-  //     })
-  //   }
-  // }
+  formPreventDefault = (e) => {
+    e.preventDefault();
+  }
 
   render() {
     return (
@@ -97,7 +75,10 @@ class PhotoUpload extends Component {
             Upload Your Photos!
           </div>
           <div className={style.basicMargin}>
-            <form className={style.form}>
+            <form 
+              onSubmit={this.formPreventDefault}
+              className={style.form}
+              >
                 <input 
                   type="file" 
                   name="file" 
@@ -112,11 +93,11 @@ class PhotoUpload extends Component {
                   src={window.location.origin + '/images/upload.png'} 
                   />
                 {" " + this.state.filename}
-                </label>
+              </label>
             {
               this.state.filename !== "Choose a file" &&
             <Button 
-              onClick={this.handleSubmit} 
+              onClick={() => this.handleSubmit()} 
               text={"Submit"}
               className={"photo"}
               />
