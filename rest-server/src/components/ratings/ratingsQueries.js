@@ -7,7 +7,7 @@ import {
   fetchSingleUserAttractivenessHelper,
   updateRaterRateeRelationshipHelper,
   updateTotalAttractivenessHelper,
-  updateAverageAttractivenessHelper,
+  updateAverageAttractivenessHelper
 } from './ratingsSQLHelper';
 
 export const fetchMultipleUsersQuery = async id => {
@@ -36,6 +36,7 @@ export const fetchMultipleUsersQuery = async id => {
     let photos = [];
 
     for (let i = 0; i < userRows.length; i++) {
+      userRows[i].tags = [];
       for (let z = 0; z < tagRows.length; z++) {
         if (userRows[i].id === tagRows[z].id) {
           if (tagRows[z].type === 0) {
@@ -51,6 +52,7 @@ export const fetchMultipleUsersQuery = async id => {
     }
 
     for (let i = 0; i < userRows.length; i++) {
+      userRows[i].photos = [];
       for (let z = 0; z < photoRows.length; z++) {
         if (userRows[i].id === photoRows[z].id) {
           photos.push(photoRows[z].url);
@@ -73,7 +75,6 @@ export const updateRaterRateeRelationshipQuery = async body => {
     return data;
   } catch (err) {}
 };
-
 
 export const updateTotalAttractivenessQuery = async ({
   attractiveness,

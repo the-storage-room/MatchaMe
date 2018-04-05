@@ -4,9 +4,11 @@ export const fetchMultipleUsersHelper = () => {
     FROM USERS
     WHERE users.averageattractiveness > $1
     AND users.averageattractiveness < $2
+    AND signupcomplete=true
     AND id NOT in
     (SELECT ratee FROM raterratee
       WHERE rater=$3)
+    AND NOT id=$3
     ORDER BY RANDOM()
     LIMIT 10
   `;

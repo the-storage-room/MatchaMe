@@ -30,18 +30,28 @@ export default {
       newMatches.pop();
       voteObject.userId = id;
       voteObject.powerranking = totalPoints;
+      const { follows } = getState();
+      let newFollows = JSON.parse(JSON.stringify(follows));
+      newFollows.allOthers.push(voteObject);
+      newFollows.allOthers.sort((a, b) => a.id - b.id);
       try {
         await axios.put(
           `${REST_SERVER_URL}/api/matchmaking/updateMatchmaking`,
           voteObject
         );
-        if (newMatches.length === 2) {
-          const data = await axios.get(`${REST_SERVER_URL}/api/matchmaking/fetchPendingMatchmaking/${id}`);
-          newMatches = data.data.concat(newMatches)
+        if (newMatches.length === 0) {
+          const data = await axios.get(
+            `${REST_SERVER_URL}/api/matchmaking/fetchPendingMatchmaking/${id}`
+          );
+          newMatches = data.data.concat(newMatches);
         }
         dispatch({
           type: 'MATCHMAKER_RATING_SUBMITTED',
           payload: newMatches
+        });
+        dispatch({
+          type: 'FOLLOW_UNSTARRED_SUCCESS',
+          payload: newFollows
         });
       } catch (err) {
         console.error;
