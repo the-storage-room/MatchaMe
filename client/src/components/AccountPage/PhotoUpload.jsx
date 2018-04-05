@@ -32,12 +32,13 @@ class PhotoUpload extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = () => {
     const formData = new FormData();
     formData.append('file', this.state.file);
     formData.append('id', this.props.userId);
     formData.append('username', this.props.username);
     this.props.uploadPhoto(formData);
+    setTimeout(()=>this.setState({filename: "Choose a file"}), 500)
   }
 
   handleDeletePhoto = () => {
@@ -54,11 +55,11 @@ class PhotoUpload extends Component {
   }
 
   componentDidMount = () => {
-    this.props.renderButton(this.props.userPhotos.length)
+    this.props.renderButton(this.props.userPhotos.length === 4)
   }
 
   componentDidUpdate = () => {
-    this.props.renderButton(this.props.userPhotos.length)
+    this.props.renderButton(this.props.userPhotos.length === 4)
   }
 
   formPreventDefault = (e) => {
@@ -73,6 +74,8 @@ class PhotoUpload extends Component {
             Upload Your Photos!
           </div>
           <div className={style.basicMargin}>
+            {
+              this.props.userPhotos.length < 4 &&
             <form 
               onSubmit={this.formPreventDefault}
               className={style.form}
@@ -101,6 +104,7 @@ class PhotoUpload extends Component {
               />
             }
             </form>
+            }
           </div>
           <div className={style.photoholder}>
             <div 

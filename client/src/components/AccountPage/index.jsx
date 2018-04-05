@@ -69,7 +69,7 @@ class Account extends Component {
     } else if (this.state.currentPage === 'tags') {
       this.props.updateTagsData(this.state.tagtype, this.state.tagsTemp);
     } else if (this.state.currentPage === 'photoupload') {
-      this.props.updateSignupStatus();
+      this.props.updateSignupStatus(this.props.history);
     }
   }
 
@@ -130,19 +130,20 @@ class Account extends Component {
         <div className={style.body}>
           <div className={style.holder}>
           {pages[this.props.match.params.page]}
-          { 
-          this.state.renderButton
-          ? <Button 
-              className={'save'}
-              onClick={this.onNextClick}
-              text={"Save and Continue"}
-              />
-          :
-          <Button 
-            className={'disabled'}
-            text={"Save and Continue"}
-            />
-        }
+          { (this.state.route === 'account' && 
+            this.state.currentPage === 'photoupload')
+            ? null 
+            : this.state.renderButton
+              ? <Button 
+                className={'save'}
+                onClick={this.onNextClick}
+                text={"Save and Continue"}
+                />
+              : <Button 
+                className={'disabled'}
+                text={"Save and Continue"}
+                />
+          }
           </div>
         </div>
         <Footer />

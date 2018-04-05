@@ -114,7 +114,7 @@ export default {
       }
     }
   },
-  updateSignupStatus() {
+  updateSignupStatus(history) {
     return async (dispatch, getState) => {
       try {
       const { id } = getState().accountData;
@@ -125,6 +125,7 @@ export default {
         type: 'SIGNUP_COMPLETE',
         payload: 1
         });
+      history.push('/home');
       } catch (err) {
         console.error
       }

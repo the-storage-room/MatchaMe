@@ -9,12 +9,12 @@
   z-index: 0;
   overflow-y: scroll;
   width: 50%;
-  height: auto;
+  height: calc(100vh - 60px);
   min-height: 80vh;
   margin: 0 auto;
   padding: 60px 60px 0 60px;
   background-color: white;  
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 0 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .save {
