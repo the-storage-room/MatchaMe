@@ -7,7 +7,7 @@ const { REDIS_SERVER_URL } = process.env;
 
 export default {
   initialize(history, location = '/home') {
-    console.log('change location from above as just history', location)
+    console.log('i should be changing', location)
     return async (dispatch, getState) => {
       try {
         const { id } = await window.localStorage;
