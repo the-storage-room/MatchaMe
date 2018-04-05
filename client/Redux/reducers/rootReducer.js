@@ -12,7 +12,7 @@ import ratings from './ratingsReducer';
 import signupStatus from './signupStatusReducer';
 import tags from './tagsReducer';
 import comments from './commentsReducer';
-import rehydrate from './rehydrateReducer';
+import initializeState from './initializeStateReducer';
 
 const rootReducer = combineReducers({
   accountData,
@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
   ratings,
   tags,
   comments,
-  rehydrate
+  initializeState,
 });
 
 export default rootReducer;

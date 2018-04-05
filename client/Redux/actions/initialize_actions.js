@@ -6,7 +6,8 @@ const { REST_SERVER_URL } = process.env;
 const { REDIS_SERVER_URL } = process.env;
 
 export default {
-  initialize(history) {
+  initialize(history, location = '/home') {
+    console.log('change location from above as just history', location)
     return async (dispatch, getState) => {
       try {
         const { id } = await window.localStorage;
@@ -17,7 +18,6 @@ export default {
           `${REDIS_SERVER_URL}/redis/leaderboard/fetchLeaderboardAndRank/${id}`
         );
 
-        console.log(redisData.data);
         dispatch({
           type: 'USER_ACCOUNT_DATA_RECIEVED',
           payload: data.accountData || null
@@ -66,7 +66,7 @@ export default {
           type: 'LEADERBOARD_RECIEVED',
           payload: redisData.data.leaderboard || null
         });
-        history && history.push('/home');
+        history.push(location);
       } catch (err) {
         console.error;
       }
