@@ -48,9 +48,9 @@ class BioInfo extends Component {
     if (this.props.age) {
       let ageString = this.props.age.toString();
 
-      let year = ageString.slice(0,4);
-      let month = ageString.slice(0,2);
-      let day = ageString.slice(0,2);
+      let year = ageString.slice(0, 4);
+      let month = ageString.slice(0, 2);
+      let day = ageString.slice(0, 2);
 
       ageState = {
         year: Number(year),
@@ -60,72 +60,71 @@ class BioInfo extends Component {
 
       this.setState(ageState)
     }
-      
+
     const bioState = {
       location: this.props.location,
       bio: this.props.bio,
       gender: this.props.gender,
       pref: this.props.pref,
     }
-      this.setState(bioState)
+    this.setState(bioState)
 
-      this.props.setIndexState(bioState, ageState)
+    this.props.setIndexState(bioState, ageState)
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <div className={style.tagHead}>
           Please enter your info!
         </div>
         <div className={style.basicMargin}>
-          Date of Birth: 
+          Date of Birth:
           <div>
-          <Input 
-            placeholder="MM" 
-            onChange={this.handleInputChange} 
-            name="month"
-            maxLength='2'
-            type="text"
-            value={this.state.month}
+            <Input
+              placeholder="MM"
+              onChange={this.handleInputChange}
+              name="month"
+              maxLength='2'
+              type="text"
+              value={this.state.month}
             />
-          <Input 
-            placeholder="DD" 
-            onChange={this.handleInputChange} 
-            name="day"
-            maxLength='2'
-            value={this.state.day}
+            <Input
+              placeholder="DD"
+              onChange={this.handleInputChange}
+              name="day"
+              maxLength='2'
+              value={this.state.day}
             />
-          <Input 
-            placeholder="YYYY" 
-            onChange={this.handleInputChange} 
-            name="year"
-            maxLength='4'
-            value={this.state.year}
+            <Input
+              placeholder="YYYY"
+              onChange={this.handleInputChange}
+              name="year"
+              maxLength='4'
+              value={this.state.year}
             />
           </div>
         </div>
         <div className={style.basicMargin}>
           ZIP Code:
           <div>
-            <Input 
+            <Input
               type="text"
               placeholder="XXXXX"
-              onChange={this.handleInputChange} 
+              onChange={this.handleInputChange}
               name="location"
               maxLength='5'
               value={this.state.location}
-              />
+            />
           </div>
         </div>
         <div className={style.basicMargin}>
-          Gender: 
+          Gender:
           <Gender
             type='gender'
             handleGenderChange={this.handleGenderChange}
             gender={this.props.gender}
-            />
+          />
         </div>
         <div className={style.basicMargin}>
           Gender preferences:
@@ -133,18 +132,18 @@ class BioInfo extends Component {
             type='pref'
             handleGenderChange={this.handleGenderChange}
             gender={this.props.pref}
-            />
+          />
         </div>
         <div className={style.basicMargin}>
-          Bio: 
+          Bio:
           <div>
-          <textarea 
-            placeholder="Who are you?"
-            onChange={this.handleInputChange} 
-            name="bio"
-            value={this.state.bio}
+            <textarea
+              placeholder="Who are you?"
+              onChange={this.handleInputChange}
+              name="bio"
+              value={this.state.bio}
             >
-          </textarea>
+            </textarea>
           </div>
         </div>
       </div>
