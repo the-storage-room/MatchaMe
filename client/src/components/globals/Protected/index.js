@@ -17,10 +17,11 @@ class Protected extends Component {
     try {
       const { NODE_ENV } = process.env;
       const { signupStatus, history, location, component, initializeState } = this.props;
-      if (!localStorage.token) {
-        history.push('/login')
-      } else {
-        const { exp } = jwtDecode(localStorage.token);
+      if (NODE_ENV = 'PRODUCTION') {
+        !localStorage.token ?
+          history.push('/login')
+          :
+          const { exp } = jwtDecode(localStorage.token);
         const path = location.pathname.slice(1, 11);
         if (exp > Math.floor(Date.now() / 1000) && signupStatus === false && path !== 'onboarding') {
           history.push('/onboarding/bio')
