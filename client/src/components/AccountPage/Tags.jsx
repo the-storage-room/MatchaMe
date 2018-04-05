@@ -17,14 +17,10 @@ class Tags extends Component {
     };
   }
 
-  handleSave = () => {
-    this.props.updateTagsData(this.props.type, this.state.tagsTemp)
-  }
-
   addToTagArray = (tag) => {
     const { type, tagsData } = this.props
     const tagsArray = tagsData[type]
-    if (tagsArray.includes(tag)) {
+    if (tagsArray && tagsArray.includes(tag)) {
       tagsArray
         .splice(tagsArray
           .indexOf(tag), 1);
@@ -35,11 +31,13 @@ class Tags extends Component {
         .setState(
           {tagsTemp: tagsArray}
         )
+        this.props.setIndexState({tagsTemp: tagsArray});
     } else if (
       tagsArray.length < 3
     ) {
       tagsArray.push(tag);
       this.setState({tagsTemp: tagsArray})
+      this.props.setIndexState({tagsTemp: tagsArray});
       if ( tagsArray.length === 3 ) {
         this.props
           .renderButton(true);
@@ -50,9 +48,11 @@ class Tags extends Component {
   componentDidMount = () => {
     const { type } = this.props;
     const tagsArray = this.props.tagsData[type];
-    this.setState({ 
+    const tagsTemp = { 
       tagsTemp: tagsArray,
-    });
+    }
+    this.setState(tagsTemp);
+    this.props.setIndexState(tagsTemp);
   }
 
   componentDidUpdate = () => {
@@ -64,19 +64,11 @@ class Tags extends Component {
   render() {
     return (
       <div>
-        <Button
-          text="Save!"
-          onClick={this.handleSave}
-          />
-        <div className={style.basicMargin}>
-          Tag Picker!
-        </div>
-        <div className={style.basicMargin}>
-          Pick 3 Tags to Describe 
+        <div className={style.tagHead}>
           {
             this.props.type === 'user' 
-            ? ' YOURSELF' 
-            : ' YOUR IDEAL MATCH'
+            ? ' I am a...' 
+            : 'My Ideal Match is a...'
           }
         </div>
         <div className={style.basicMargin}>
@@ -97,11 +89,6 @@ class Tags extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    updateTagsData: actions.updateTagsData,
-  }, dispatch);
-}
 
 const mapStateToProps = (state) => {
   return {
@@ -109,4 +96,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tags);
+export default connect(mapStateToProps)(Tags);

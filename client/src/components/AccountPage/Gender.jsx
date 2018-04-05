@@ -21,6 +21,16 @@ class Gender extends Component {
     fmo: 7,
   }
 
+  numberToGenderObject = {
+    1: ['m'],
+    2: ['f'],
+    3: ['o'],
+    4: ['f','m'],
+    5: ['m','o'],
+    6: ['f','o'],
+    7: ['f','m','o']
+  }
+
   convertGenderStateToNumber = (arrayOfGender) => {
     let genderString = arrayOfGender.join('')
     return this.genderToNumberObject[genderString]
@@ -40,7 +50,13 @@ class Gender extends Component {
     })
     let genderNumber = this.convertGenderStateToNumber(newGenderState);
     this.props.handleGenderChange(this.props.type, genderNumber);
+  }
 
+  componentDidMount = () => {
+    this.props.gender &&
+    this.setState({
+      genderState: this.numberToGenderObject[this.props.gender],
+    })
   }
 
   render () {

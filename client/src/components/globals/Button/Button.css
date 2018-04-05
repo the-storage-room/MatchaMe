@@ -20,7 +20,27 @@ button:focus {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-.small {
+.photo {
+  background-color: whitesmoke;
+  color: rgba(0, 0, 0, 0.705);
+  border: none;
+  padding: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  margin: 5px;
+  margin-left: 30px;
+  font-weight: 160;
+  vertical-align: top;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  
+}
+
+.small,
+.primaryTrue {
   background-color: rgb(188, 209, 197);
   border: none;
   color: rgba(0, 0, 0, 0.705);
@@ -37,11 +57,12 @@ button:focus {
   height: 25px;
 }
 
-.defaultButton:hover {
-  color: rgb(255, 255, 255);
+.photo:hover {
+color: rgb(188, 209, 197);
 }
-
-.small:hover {
+.defaultButton:hover,
+.small:hover,
+.primaryTrue {
   color: rgb(255, 255, 255);
 }
 
@@ -67,7 +88,8 @@ button:focus {
   color: rgb(255, 255, 255);
 }
 
-.redsmall {
+.redsmall,
+.delete {
   background-color: rgb(218, 172, 172);
   border: none;
   color: rgba(0, 0, 0, 0.705);
@@ -84,7 +106,8 @@ button:focus {
   height: 25px;
 }
 .redsmall:hover,
-.red:hover {
+.red:hover,
+.delete:hover {
   color: rgb(255, 255, 255);
 }
 
@@ -119,6 +142,11 @@ button:focus {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
+.tag:focus,
+.selected:focus {
+  color: rgb(255, 255, 234);
+}
+
 .selected {
   color: rgb(255, 255, 234);
   border: none;
@@ -128,71 +156,65 @@ button:focus {
   padding: 8px 10px;
   width: auto;
   border-radius: 2px;
-  margin: 10px 6px;
+  margin: 10px 10px 10px 0;
   font-weight: 100;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-.next,
+.save,
 .disabled {
-  position: fixed;
+  border-radius: 2px;
+  position: absolute;
   z-index: 10;
-  top: 200px;
-  right: 150px;
-  width: 0;
-  height: 0;
-  border-top: 25px solid transparent;
-  border-left: 50px solid rgb(236, 61, 149);
-  border-bottom: 25px solid transparent;
-  background-color: rgba(245, 245, 245, 0);
+  height: 60px;
+  width: 200px;
+  margin-top: -30px;
+  margin-left: -100px;
+  top: 515px;
+  left: 67%;
+  background-color: rgb(45, 102, 45, 0.76);
+  border: none;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  font-size: 15px;
+  font-weight: 80;
+}
+
+.save{
+  font-size: 18px;
+  font-weight: 200;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .disabled {
-  opacity: 0.1;
+  opacity: 0.2;
   cursor: not-allowed;
 }
 
-.next:hover {
-  width: 0;
-  height: 0;
-  border-top: 25px solid transparent;
-  border-left: 50px solid rgb(221, 119, 119);
-  border-bottom: 25px solid transparent;
+.save:hover {
+  background-color: rgba(49, 165, 49, 0.76);
 }
 
-.next:active {
-  width: 0;
-  height: 0;
-  border-top: 25px solid transparent;
-  border-left: 50px solid rgb(24, 255, 109);
-  border-bottom: 25px solid transparent;
+.primaryTrue {
+  background-color: rgb(207, 182, 182);
+  margin: 3px;
+  padding: 2px;
+  z-index: 11;
+  position:absolute;
+  bottom:5px;
+  right:5px;
 }
 
-.primaryTrue,
 .delete {
-  background-color: lightgrey;
-  display: flex;
-  border: solid black 1px;
+  background-color: rgb(207, 182, 182);
   margin: 3px;
   padding: 2px;
-}
-
-.delete:hover,
-.primaryTrue:hover {
-  display: flex;
-  background-color: yellowgreen;
-  border: solid black 1px;
-  margin: 3px;
-  padding: 2px;
-}
-
-.primaryTrue:active,
-.delete:active {
-  background-color: pink;
-  display: flex;
-  border: solid black 1px;
-  margin: 3px;
-  padding: 2px;
+  z-index: 11;
+  position:absolute;
+  top:5px;
+  right:5px;
 }
 
 .X {

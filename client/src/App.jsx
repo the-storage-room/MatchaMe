@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+  
 import './index.css';
 
 import LandingPage from './components/LandingPage/index.jsx';
@@ -16,11 +16,17 @@ import Account from './components/AccountPage/index.jsx';
 import Initialize from './components/InitializePage/index.jsx';
 import Home from './components/HomePage/index.jsx';
 import Protected from '../src/components/globals/Protected/index';
+import actions from '../Redux/actions/initialize_actions';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {};
+  }
+
+  componentDidMount = () => {
+    // if they have an active web token
+    // initialize with the webtoken
   }
 
   render() {
@@ -66,4 +72,5 @@ class App extends Component {
   }
 }
 
-export default App
+
+export default App;

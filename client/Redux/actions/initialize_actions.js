@@ -66,7 +66,7 @@ export default {
           type: 'LEADERBOARD_RECIEVED',
           payload: redisData.data.leaderboard || null
         });
-        history.push('/home');
+        history && history.push('/home');
       } catch (err) {
         console.error;
       }

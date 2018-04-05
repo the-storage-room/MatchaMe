@@ -1,15 +1,15 @@
 import axios from 'axios';
 import s3service from './s3service';
 
-const { BUCKET , REST_SERVER_URL} = process.env;
+const { BUCKET , REST_SERVER_URL } = process.env;
 
 module.exports = {
   addPhoto: async (input, cb) => {
     const filename = generateNewFileName(input.body.username)
     const url = `https://s3-us-west-1.amazonaws.com/${BUCKET}/${filename}`;
     try {
-      await s3service
-        .addPhoto(BUCKET, input.files.file, filename, (data) => {;
+      const data = await s3service
+        .addPhoto(BUCKET, input.files.file, filename, () => {
         })
       await axios
         .post(
@@ -24,7 +24,7 @@ module.exports = {
   deletePhoto: async (req, cb) => {
     const { userId, photoKey, photoId } = req.params;
     try {
-      const data = await s3service.deletePhoto(BUCKET, photoKey, (data) => {
+      const data = await s3service.deletePhoto(BUCKET, photoKey, () => {
       })
       await axios
         .delete(`${REST_SERVER_URL}/api/photos/deletePhoto/${userId}/${photoId}`)
