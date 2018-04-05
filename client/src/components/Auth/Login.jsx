@@ -18,6 +18,7 @@ class Login extends Component {
   }
 
   submitAuthData = async (e) => {
+    console.log('this.props from login', this.props)
     const { username, password } = this.state;
     e.preventDefault();
     const body = {
@@ -44,7 +45,7 @@ class Login extends Component {
   handleInputChange = (e) => {
     const { value, name } = e.target;
     this.setState({ [name]: value });
-  } 
+  }
 
   render() {
     return (
