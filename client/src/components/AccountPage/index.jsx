@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import PhotoUpload from './PhotoUpload.jsx';
 import Tags from './Tags.jsx';
@@ -8,6 +10,7 @@ import SideNavbar from './SideNavbar.jsx'
 import Button from '../globals/Button/index.jsx';
 import Footer from '../globals/Footer/index.jsx';
 import style from './AccountPage.css';
+import actions from '../../../Redux/actions/account_page_actions';
 
 class Account extends Component {
   constructor() {
@@ -15,8 +18,16 @@ class Account extends Component {
     this.state = {
       isFirstTimeUser: false,
       currentPage: 'bio',
-      tagtype: null,
-      renderButton: false
+      tagtype: undefined,
+      renderButton: false,
+      route: '',
+      location: '',
+      bio: '',
+      month: '',
+      day: '',
+      year: '',
+      gender: 0,
+      pref: 0,
     };
   }
 
@@ -31,10 +42,21 @@ class Account extends Component {
     '/account/photoupload': '/home',
   }
 
+  handleGenderChange = (state, genderNum) => {
+    this.setState({ [state]: genderNum });
+  }
+
+  handleBioInputChange = (update) => {
+    this.setState(update);
+  }
+
   onNextClick = () => {
-    let { pathname } = this.props.location;
-    this.props.history.push(this.nextPage[pathname])
+    let { url } = this.props.match;
+    this.props.history.push(this.nextPage[url])
     this.shouldRenderNextButton(false)
+    this.props.updateBioData({
+      location: this.state.location
+    })
   }
 
   shouldRenderNextButton = (bool) => {
@@ -47,7 +69,8 @@ class Account extends Component {
   }
 
   componentWillMount = () => {
-    let route = this.props.location.pathname.slice(1,8);
+    console.log(this.props)
+    let route = this.props.match.path.slice(1,8);
     let { page, tagtype } = this.props.match.params;
     this.setState({
       currentPage: page,
@@ -58,10 +81,21 @@ class Account extends Component {
 
   render () {
     let pages = {
-      bio: <BioInfo renderButton={this.shouldRenderNextButton} />,
-      tags: <Tags type={this.props.match.params.tagtype} renderButton={this.shouldRenderNextButton}/>,
-      photoupload: <PhotoUpload renderButton={this.shouldRenderNextButton}/>
+      bio: <BioInfo
+        renderButton={this.shouldRenderNextButton}
+        handleBioInputChange={this.handleBioInputChange}
+        handleGenderChange={this.handleGenderChange}
+        />,
+      tags: <Tags 
+        type={this.props.match.params.tagtype} 
+        renderButton={this.shouldRenderNextButton}
+        />,
+      photoupload: <PhotoUpload 
+        renderButton={this.shouldRenderNextButton}
+        />
     }
+
+    console.log(this.state.currentPage)
 
     return (
       <div>
@@ -99,4 +133,17 @@ class Account extends Component {
   }
 }
 
-export default Account;
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    updateBioData: actions.updateBioData,
+  }, dispatch);
+}
+
+const mapStateToProps = (state) => {
+  return {
+    location: state.bioData.location
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account);

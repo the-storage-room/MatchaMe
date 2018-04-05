@@ -4,9 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Input from '../globals/Input/index.jsx';
 import Gender from './Gender.jsx';
-import actions from '../../../Redux/actions/account_page_actions';
 import style from './AccountPage.css';
-import Button from '../globals/Button/index.jsx';
 
 class BioInfo extends Component {
   constructor() {
@@ -28,11 +26,13 @@ class BioInfo extends Component {
 
   handleGenderChange = (state, genderNum) => {
     this.setState({ [state]: genderNum });
+    this.props.handleGenderChange(state,genderNum);
   }
 
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({ [name]: value });
+    this.props.handleBioInputChange({ [name]: value });
   }
 
   componentDidUpdate = () => {
@@ -43,6 +43,12 @@ class BioInfo extends Component {
       }
     }
     this.props.renderButton(allValuesEntered);
+  }
+
+  componentDidMount = () => {
+    this.setState({
+      location: this.props.location
+    })
   }
 
   render() {
@@ -84,7 +90,7 @@ class BioInfo extends Component {
               onChange={this.handleInputChange} 
               name="location"
               maxLength='5'
-              value={this.props.location}
+              value={this.state.location}
               />
           </div>
         </div>
@@ -118,15 +124,9 @@ class BioInfo extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    updateBioData: actions.updateBioData,
-  }, dispatch);
-}
-
 const mapStateToProps = (state) => {
   return {
     location: state.bioData.location
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(BioInfo);
+export default connect(mapStateToProps)(BioInfo);
