@@ -39,7 +39,8 @@ button:focus {
   
 }
 
-.small {
+.small,
+.primaryTrue {
   background-color: rgb(188, 209, 197);
   border: none;
   color: rgba(0, 0, 0, 0.705);
@@ -60,7 +61,8 @@ button:focus {
 color: rgb(188, 209, 197);
 }
 .defaultButton:hover,
-.small:hover {
+.small:hover,
+.primaryTrue {
   color: rgb(255, 255, 255);
 }
 
@@ -86,7 +88,8 @@ color: rgb(188, 209, 197);
   color: rgb(255, 255, 255);
 }
 
-.redsmall {
+.redsmall,
+.delete {
   background-color: rgb(218, 172, 172);
   border: none;
   color: rgba(0, 0, 0, 0.705);
@@ -103,7 +106,8 @@ color: rgb(188, 209, 197);
   height: 25px;
 }
 .redsmall:hover,
-.red:hover {
+.red:hover,
+.delete:hover {
   color: rgb(255, 255, 255);
 }
 
@@ -193,31 +197,24 @@ color: rgb(188, 209, 197);
   background-color: rgba(49, 165, 49, 0.76);
 }
 
-.primaryTrue,
+.primaryTrue {
+  background-color: rgb(207, 182, 182);
+  margin: 3px;
+  padding: 2px;
+  z-index: 11;
+  position:absolute;
+  bottom:5px;
+  right:5px;
+}
+
 .delete {
-  background-color: lightgrey;
-  display: flex;
-  border: solid black 1px;
+  background-color: rgb(207, 182, 182);
   margin: 3px;
   padding: 2px;
-}
-
-.delete:hover,
-.primaryTrue:hover {
-  display: flex;
-  background-color: yellowgreen;
-  border: solid black 1px;
-  margin: 3px;
-  padding: 2px;
-}
-
-.primaryTrue:active,
-.delete:active {
-  background-color: pink;
-  display: flex;
-  border: solid black 1px;
-  margin: 3px;
-  padding: 2px;
+  z-index: 11;
+  position:absolute;
+  top:5px;
+  right:5px;
 }
 
 .X {

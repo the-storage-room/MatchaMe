@@ -179,7 +179,8 @@ input[name=location]:focus {
   margin: 0;
 }
 
-.smallphoto {
+.smallphoto,
+.primaryphoto {
   display: inline-block;
   margin: 5px;
   background-color: whitesmoke;
@@ -189,8 +190,13 @@ input[name=location]:focus {
   -o-object-fit: cover;
   object-fit: cover;
   overflow: hidden;
+  position: relative;
 }
 
 .photoholder{
   margin-left: 15px;
+}
+
+.primaryphoto {
+  /* border-radius: 50%; */
 }

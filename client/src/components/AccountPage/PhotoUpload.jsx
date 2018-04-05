@@ -14,11 +14,17 @@ class PhotoUpload extends Component {
   constructor() {
     super();
     this.state = {
-        targetPhoto: 0,
         file: null,
         currentFunc: null,
-        filename: "Choose a file"
+        filename: "Choose a file",
+        hoverTarget: null,
     };
+  }
+
+  handleMouseHover = (img) => {
+    this.setState({
+      hoverTarget: img
+    })
   }
 
   handleUploadChange = (e) => {
@@ -39,14 +45,8 @@ class PhotoUpload extends Component {
     })
   }
 
-  handleLittlePhotoClick = (photo) => {
-    this.setState({
-      targetPhoto: photo
-    })
-  }
-
   handleDeletePhoto = () => {
-    const index = this.state.targetPhoto
+    const index = this.state.hoverTarget;
     const { url, id } = this.props.userPhotos[index];
     const key = url.slice(46);
     this.props.deletePhoto(key, id, index)
@@ -56,7 +56,7 @@ class PhotoUpload extends Component {
   }
 
   handleSetPrimaryPhoto = () => {
-    const index = this.state.targetPhoto
+    const index = this.state.hoverTarget;
     const { id } = this.props.userPhotos[index];
     this.props.updatePrimaryPhoto(id, index)
     this.setState({
@@ -72,25 +72,24 @@ class PhotoUpload extends Component {
     this.props.renderButton(this.props.userPhotos.length)
   }
 
-  componentWillReceiveProps = () => {
-    if (
-      this.state.currentFunc === 'primary' || 
-      this.state.currentFunc === 'delete'
-    ) {
-      this.setState({
-        targetPhoto: 0
-      })
-    } else if (
-      this.state.currentFunc === 'add'
-    ) {
-      this.setState({
-        targetPhoto: this.props.userPhotos.length - 1
-      })
-    }
-  }
+  // componentWillReceiveProps = () => {
+  //   if (
+  //     this.state.currentFunc === 'primary' || 
+  //     this.state.currentFunc === 'delete'
+  //   ) {
+  //     this.setState({
+  //       targetPhoto: 0
+  //     })
+  //   } else if (
+  //     this.state.currentFunc === 'add'
+  //   ) {
+  //     this.setState({
+  //       targetPhoto: this.props.userPhotos.length - 1
+  //     })
+  //   }
+  // }
 
   render() {
-    console.log(this.props.userPhotos[0])
     return (
       <div>
         <div className = {style.photoPage}>
@@ -125,96 +124,111 @@ class PhotoUpload extends Component {
             </form>
           </div>
           <div className={style.photoholder}>
-            <div className={style.smallphoto}>
+            <div 
+              className={style.primaryphoto}
+              >
               {
                 this.props.userPhotos[0] &&
               <img 
+                onMouseEnter={() => this.handleMouseHover(0)}
                 width="150"
                 height="150"
                 className={style.smallimg}
                 src={this.props.userPhotos[0].url}
-                onClick={() => this.handlePhotoClick(1)}
                 />
               }
             </div>
             <div className={style.smallphoto}>
             {
-                this.props.userPhotos[1] &&
-              <img 
-                width="150"
-                height="150"
-                className={style.smallimg}
-                src={this.props.userPhotos[1].url}
-                onClick={() => this.handlePhotoClick(1)}
-                />
-              }
-            </div>
-            <div className={style.smallphoto}>
-            {
-                this.props.userPhotos[1] &&
-              <img 
-                width="150"
-                height="150"
-                className={style.smallimg}
-                src={this.props.userPhotos[1].url}
-                onClick={() => this.handlePhotoClick(1)}
-                />
-              }
-            </div>
-            <div className={style.smallphoto}>
-            {
-                this.props.userPhotos[1] &&
-              <img 
-                width="150"
-                height="150"
-                className={style.smallimg}
-                src={this.props.userPhotos[1].url}
-                onClick={() => this.handlePhotoClick(1)}
-                />
-              }
-            </div>
-          </div>
-          {/* <div className={style.basicMargin}>
-            <TargetPhoto photo={this.props.userPhotos[this.state.targetPhoto]}/>
-          </div>
-          <div className={style.smallImageHolder}>
-            {
-              this.props.userPhotos
-                .map((photo, index) => 
-                  <PhotoItem
-                  key={photo.id}
-                  photo={photo}
-                  index={index}
-                  onClick={() => this.handleLittlePhotoClick(index)}
-                  />
-                )
+              this.props.userPhotos[1] &&
+            <img 
+              onMouseEnter={() => this.handleMouseHover(1)}
+              width="150"
+              height="150"
+              className={style.smallimg}
+              src={this.props.userPhotos[1].url}
+              />
             }
-          </div> */}
-        </div>
-        <div>
-          {/* <div>
-          <Button
-            text="Delete Photo"
-            onClick={this.handleDeletePhoto}
-            className="delete"
-            />
-          </div>
-          <div>
-          <Button
-            text="Set as Primary Photo"
-            onClick={this.handleSetPrimaryPhoto}
-            className="primaryTrue"
-            />
-          </div> */}
-          {/* <div>
             {
-              this.state.targetPhoto === 0 ?
-              <img
-                className={style.star}
-                src="http://moziru.com/images/star-clipart-clear-background-5.png" />
-              : null
+              (
+                this.state.hoverTarget === 1 && 
+                this.props.userPhotos[1]
+              ) &&
+              <div>
+              <Button
+                text="Delete"
+                onClick={this.handleDeletePhoto}
+                className="delete"
+                />
+              <Button
+                text="Set as Avatar"
+                onClick={this.handleSetPrimaryPhoto}
+                className="primaryTrue"
+                />
+              </div>
             }
-          </div> */}
+            </div>
+            <div className={style.smallphoto}>
+            {
+              this.props.userPhotos[2] &&
+            <img 
+              onMouseEnter={() => this.handleMouseHover(2)}
+              width="150"
+              height="150"
+              className={style.smallimg}
+              src={this.props.userPhotos[2].url}
+              />
+            }
+            {
+              (
+                this.state.hoverTarget === 2 && 
+                this.props.userPhotos[2]
+              ) &&
+              <div>
+              <Button
+                text="Delete"
+                onClick={this.handleDeletePhoto}
+                className="delete"
+                />
+              <Button
+                text="Set as Avatar"
+                onClick={this.handleSetPrimaryPhoto}
+                className="primaryTrue"
+                />
+              </div>
+            }
+            </div>
+            <div className={style.smallphoto}>
+            {
+              this.props.userPhotos[3] &&
+            <img 
+              onMouseEnter={() => this.handleMouseHover(3)}
+              width="150"
+              height="150"
+              className={style.smallimg}
+              src={this.props.userPhotos[3].url}
+              />
+            }
+            {
+              (
+                this.state.hoverTarget === 3 && 
+                this.props.userPhotos[3]
+              ) &&
+              <div>
+              <Button
+                text="Delete"
+                onClick={this.handleDeletePhoto}
+                className="delete"
+                />
+              <Button
+                text="Set as Avatar"
+                onClick={this.handleSetPrimaryPhoto}
+                className="primaryTrue"
+                />
+              </div>
+            }
+            </div>
+          </div>
         </div>
       </div>
     )

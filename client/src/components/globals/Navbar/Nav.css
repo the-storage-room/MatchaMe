@@ -55,7 +55,7 @@
 }
 
 .logo:hover {
-  color: grey;
+  color: rgb(111, 255, 133);
 }
 .wrapper {
   display: grid;
