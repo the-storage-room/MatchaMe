@@ -20,13 +20,9 @@ class BioInfo extends Component {
     };
   }
 
-  handleClick = () => {
-    this.props.updateBioData({location: this.state.location})
-  }
-
   handleGenderChange = (state, genderNum) => {
     this.setState({ [state]: genderNum });
-    this.props.handleGenderChange(state,genderNum);
+    this.props.handleGenderChange({ [state]: genderNum });
   }
 
   handleInputChange = (event) => {
@@ -46,12 +42,38 @@ class BioInfo extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({
-      location: this.props.location
-    })
+
+    let ageState;
+
+    if (this.props.age) {
+      let ageString = this.props.age.toString();
+
+      let year = ageString.slice(0,4);
+      let month = ageString.slice(0,2);
+      let day = ageString.slice(0,2);
+
+      ageState = {
+        year: Number(year),
+        month: Number(month),
+        day: Number(day),
+      }
+
+      this.setState(ageState)
+    }
+      
+    const bioState = {
+      location: this.props.location,
+      bio: this.props.bio,
+      gender: this.props.gender,
+      pref: this.props.pref,
+    }
+      this.setState(bioState)
+
+      this.props.setIndexState(bioState, ageState)
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <div className={style.tagHead}>
@@ -66,18 +88,21 @@ class BioInfo extends Component {
             name="month"
             maxLength='2'
             type="text"
+            value={this.state.month}
             />
           <Input 
             placeholder="DD" 
             onChange={this.handleInputChange} 
             name="day"
             maxLength='2'
+            value={this.state.day}
             />
           <Input 
             placeholder="YYYY" 
             onChange={this.handleInputChange} 
             name="year"
             maxLength='4'
+            value={this.state.year}
             />
           </div>
         </div>
@@ -99,6 +124,7 @@ class BioInfo extends Component {
           <Gender
             type='gender'
             handleGenderChange={this.handleGenderChange}
+            gender={this.props.gender}
             />
         </div>
         <div className={style.basicMargin}>
@@ -106,6 +132,7 @@ class BioInfo extends Component {
           <Gender
             type='pref'
             handleGenderChange={this.handleGenderChange}
+            gender={this.props.pref}
             />
         </div>
         <div className={style.basicMargin}>
@@ -115,6 +142,7 @@ class BioInfo extends Component {
             placeholder="Who are you?"
             onChange={this.handleInputChange} 
             name="bio"
+            value={this.state.bio}
             >
           </textarea>
           </div>
@@ -124,9 +152,13 @@ class BioInfo extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ bioData }) => {
   return {
-    location: state.bioData.location
+    location: bioData.location,
+    bio: bioData.bio,
+    gender: bioData.gender,
+    pref: bioData.preference,
+    age: bioData.age
   };
 }
 export default connect(mapStateToProps)(BioInfo);

@@ -28,6 +28,7 @@ class Account extends Component {
       year: '',
       gender: 0,
       pref: 0,
+      tagsTemp: [],
     };
   }
 
@@ -42,21 +43,34 @@ class Account extends Component {
     '/account/photoupload': '/home',
   }
 
-  handleGenderChange = (state, genderNum) => {
-    this.setState({ [state]: genderNum });
+  handleGenderChange = (update) => {
+    this.setState(update);
   }
 
   handleBioInputChange = (update) => {
     this.setState(update);
   }
 
-  onNextClick = () => {
+  onNextClick = (tagData) => {
     let { url } = this.props.match;
     this.props.history.push(this.nextPage[url])
     this.shouldRenderNextButton(false)
-    this.props.updateBioData({
-      location: this.state.location
-    })
+
+    let age = this.state.year + this.state.month + this.state.day;
+
+    if (this.state.currentPage === 'bio') {
+      this.props.updateBioData({
+        location: this.state.location,
+        bio: this.state.bio,
+        gender: this.state.gender,
+        preference: this.state.pref,
+        age: age,
+      })
+    } else if (this.state.currentPage === 'tags') {
+      this.props.updateTagsData(this.state.tagtype, this.state.tagsTemp);
+    } else if (this.state.currentPage === 'photoupload') {
+      this.props.updateSignupStatus();
+    }
   }
 
   shouldRenderNextButton = (bool) => {
@@ -68,8 +82,12 @@ class Account extends Component {
     }
   }
 
+  setIndexState = (bio, age) => {
+    this.setState(bio);
+    age && this.setState(age);
+  }
+
   componentWillMount = () => {
-    console.log(this.props)
     let route = this.props.match.path.slice(1,8);
     let { page, tagtype } = this.props.match.params;
     this.setState({
@@ -85,17 +103,17 @@ class Account extends Component {
         renderButton={this.shouldRenderNextButton}
         handleBioInputChange={this.handleBioInputChange}
         handleGenderChange={this.handleGenderChange}
+        setIndexState={this.setIndexState}
         />,
       tags: <Tags 
         type={this.props.match.params.tagtype} 
         renderButton={this.shouldRenderNextButton}
+        setIndexState={this.setIndexState}
         />,
       photoupload: <PhotoUpload 
         renderButton={this.shouldRenderNextButton}
         />
     }
-
-    console.log(this.state.currentPage)
 
     return (
       <div>
@@ -136,7 +154,9 @@ class Account extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    updateSignupStatus: actions.updateSignupStatus,
     updateBioData: actions.updateBioData,
+    updateTagsData: actions.updateTagsData,
   }, dispatch);
 }
 

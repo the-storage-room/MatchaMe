@@ -129,7 +129,7 @@ class Rate extends Component {
           </div>
           <div className={style.bio}>
             <div className={style.name}>
-            {this.props.userToRate.firstname} {this.props.userToRate.lastname[0]}.
+            {this.props.userToRate.firstname} {this.props.userToRate.lastname && this.props.userToRate.lastname[0]}.
             </div>
             <div className={style.age}>
             {realAge} years old

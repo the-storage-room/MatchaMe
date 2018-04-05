@@ -17,10 +17,6 @@ class Tags extends Component {
     };
   }
 
-  handleSave = () => {
-    this.props.updateTagsData(this.props.type, this.state.tagsTemp)
-  }
-
   addToTagArray = (tag) => {
     const { type, tagsData } = this.props
     const tagsArray = tagsData[type]
@@ -35,11 +31,13 @@ class Tags extends Component {
         .setState(
           {tagsTemp: tagsArray}
         )
+        this.props.setIndexState({tagsTemp: tagsArray});
     } else if (
       tagsArray.length < 3
     ) {
       tagsArray.push(tag);
       this.setState({tagsTemp: tagsArray})
+      this.props.setIndexState({tagsTemp: tagsArray});
       if ( tagsArray.length === 3 ) {
         this.props
           .renderButton(true);
@@ -50,9 +48,11 @@ class Tags extends Component {
   componentDidMount = () => {
     const { type } = this.props;
     const tagsArray = this.props.tagsData[type];
-    this.setState({ 
+    const tagsTemp = { 
       tagsTemp: tagsArray,
-    });
+    }
+    this.setState(tagsTemp);
+    this.props.setIndexState(tagsTemp);
   }
 
   componentDidUpdate = () => {
@@ -89,11 +89,6 @@ class Tags extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    updateTagsData: actions.updateTagsData,
-  }, dispatch);
-}
 
 const mapStateToProps = (state) => {
   return {
@@ -101,4 +96,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tags);
+export default connect(mapStateToProps)(Tags);
