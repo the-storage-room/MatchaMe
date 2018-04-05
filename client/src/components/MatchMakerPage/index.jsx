@@ -19,19 +19,10 @@ class MatchMaker extends Component {
     };
   }
 
-<<<<<<< HEAD
-  decideOnMatch = vote => {
-    const voteObject = {
-      matchId: this.props.matchid,
-      user1_id: this.props.user1,
-      user2_id: this.props.user2,
-      activevoting: this.props.activevoting,
-=======
   decideOnMatch = (vote) => {
     let { matchid } = this.props;
     const voteObject = {
       matchId: matchid,
->>>>>>> [bug] comments refresh on matchmaker rate
       starred: 0,
       decision: vote
     };
@@ -141,14 +132,14 @@ class MatchMaker extends Component {
               } are a...`}
               <div className={style.decidebuttons}>
                 <Button
-                  text={`Good Couple`}
-                  onClick={() => this.decideOnMatch('approved')}
-                />
+                    text={`Good Match`}
+                    onClick={()=>this.decideOnMatch('approved')}
+                    />
                 <Button
-                  text={`Bad Couple`}
-                  onClick={() => this.decideOnMatch('rejected')}
-                  className={'red'}
-                />
+                    text={`Bad Match`}
+                    onClick={()=>this.decideOnMatch('rejected')}
+                    className={'red'}
+                    />
               </div>
             </div>
             <div className={style.chatroom}>
