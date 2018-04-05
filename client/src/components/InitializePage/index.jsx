@@ -7,12 +7,16 @@ import actions from '../../../Redux/actions/initialize_actions';
 
 class Initialize extends Component {
   componentDidMount = () => {
-    console.log('history', this.props.history);
     this.props.initialize(this.props.history);
   };
 
   render() {
-    return <div>Please Wait while the App Initializes!</div>;
+    return <div className={style.loadingContainer}>
+      <div className={style.message}>
+        Loading...
+      </div>
+      <img className={style.loadingImage} src='https://media3.giphy.com/media/XcJKsYtKPk0Vy/giphy.gif' />
+    </div>;
   }
 }
 

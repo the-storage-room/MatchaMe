@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 import style from './Nav.css';
 // import Logo from '../Logo/index.jsx';
@@ -12,6 +13,17 @@ class Navbar extends React.Component {
     this.state = {
       showDropdown: false,
     };
+  }
+
+  logoutClick = async () => {
+    const { REST_SERVER_URL } = process.env;
+    try {
+      await axios.get(`${REST_SERVER_URL}/api/auth/logout`)
+      localStorage.clear();
+      await this.props.history.push('/')
+    } catch (err) {
+      console.log('error on logout', err)
+    }
   }
 
   render() {
@@ -34,12 +46,9 @@ class Navbar extends React.Component {
           <div className={style.column4} onClick={() => this.props.history.push('/dashboard')}>
             Dashboard
           </div>
-          <div
-            className={style.avatar}
-            onClick={() => {
-              this.setState({ showDropdown: !this.state.showDropdown });
-            }}
-          >
+          <div className={style.avatar} onMouseOver={() => {
+            this.setState({ showDropdown: !this.state.showDropdown });
+          }}>
             <Avatar />
           </div>
         </div>
@@ -54,7 +63,7 @@ class Navbar extends React.Component {
               </li>
               <li
                 className={style['dropdown-menu-item']}
-                onClick={() => this.props.history.push('/logout')}
+                onClick={this.logoutClick}
               >
                 Logout
               </li>

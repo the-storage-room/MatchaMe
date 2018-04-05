@@ -8,21 +8,19 @@ import Navbar from '../globals/Navbar/index.jsx';
 const NoMatch = ({ checkForNewMatch }) => {
   return (
     <div>
-      <div className={style.nomatchwrapper}>
-        <div className={style.header}>
-          <Navbar />
-        </div>
-        <div className={style.noMatch}>
-          <div className={style.noMatchText}>
-            You have no match!
+      <Navbar />
+
+      <div className={style.noMatch}>
+        <div className={style.noMatchText}>
+          You have no match!
           </div>
-          <Button 
-            text={"Refresh"}
-            onClick={() => checkForNewMatch()}
-            />
-        </div>
+        <Button
+          text={"Refresh"}
+          onClick={() => checkForNewMatch()}
+        />
       </div>
-        <Footer />
+
+      <Footer />
     </div>
   );
 }

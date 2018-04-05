@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-  
+
 import './index.css';
 
 import LandingPage from './components/LandingPage/index.jsx';
@@ -35,13 +35,14 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+
           <Route path="/home" component={props => <Protected component={Home} {...props} />} />
           <Route path="/dashboard" component={props => <Protected component={Dashboard} {...props} />} />
           <Route path="/initialize" component={Initialize} />
           <Route path="/rate" component={props => <Protected component={Rate} {...props} />} />
           <Route
             path="/matchmaker"
-            component={props => <Protected component={MatchMaker} {...props} />}
+            component={props => < Protected component={MatchMaker} {...props} />}
           />
           <Route path="/follows" component={props => <Protected component={Follows} {...props} />} />
           <Route path="/mymatch" component={props => <Protected component={MyMatch} {...props} />} />
