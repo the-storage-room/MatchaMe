@@ -2,7 +2,7 @@
 let entryState = 
   {
     user: [], 
-    mate: [],
+    pref: [],
   }
 
 

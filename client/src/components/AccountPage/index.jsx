@@ -24,7 +24,11 @@ class Account extends Component {
     '/onboarding/bio': '/onboarding/tags/user',
     '/onboarding/tags/user': '/onboarding/tags/pref',
     '/onboarding/tags/pref': '/onboarding/photoupload',
-    '/onboarding/photoupload': '/dashboard'
+    '/onboarding/photoupload': '/home',
+    '/account/bio': '/account/tags/user',
+    '/account/tags/user': '/account/tags/pref',
+    '/account/tags/pref': '/account/photoupload',
+    '/account/photoupload': '/home',
   }
 
   onNextClick = () => {
@@ -43,10 +47,12 @@ class Account extends Component {
   }
 
   componentWillMount = () => {
+    let route = this.props.location.pathname.slice(1,8);
     let { page, tagtype } = this.props.match.params;
     this.setState({
       currentPage: page,
-      tagtype: tagtype
+      tagtype: tagtype,
+      route: route
     })
   }
 
@@ -60,25 +66,24 @@ class Account extends Component {
     return (
       <div>
         {
-          this.state.isFirstTimeUser
-          ? null
-          : <div><Navbar />
-            <SideNavbar 
-              history={this.props.history}
-              currentPage={this.state.currentPage}
-              tagtype={this.state.tagtype}
-              />
-            </div>
-          }
+          (this.state.route === 'account') && 
+          <div><Navbar /></div>
+        }
+          <SideNavbar 
+            history={this.props.history}
+            currentPage={this.state.currentPage}
+            tagtype={this.state.tagtype}
+            route={this.state.route}
+            />
         <div className={style.body}>
           <div className={style.holder}>
           {pages[this.props.match.params.page]}
-        { 
+          { 
           this.state.renderButton
           ? <Button 
               className={'save'}
-              text={"Save and Continue"}
               onClick={this.onNextClick}
+              text={"Save and Continue"}
               />
           :
           <Button 

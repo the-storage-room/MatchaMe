@@ -18,7 +18,7 @@ class BioInfo extends Component {
       day: '',
       year: '',
       gender: 0,
-      preference: 0,
+      pref: 0,
     };
   }
 
@@ -36,10 +36,9 @@ class BioInfo extends Component {
   }
 
   componentDidUpdate = () => {
-    let { state } = this
     let allValuesEntered = true;
-    for (let key in state) {
-      if (!state[key]) {
+    for (let key in this.state) {
+      if (!this.state[key]) {
         allValuesEntered = false;
       }
     }
@@ -47,7 +46,6 @@ class BioInfo extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <div className={style.tagHead}>
@@ -66,7 +64,7 @@ class BioInfo extends Component {
           <Input 
             placeholder="DD" 
             onChange={this.handleInputChange} 
-            name="month"
+            name="day"
             maxLength='2'
             />
           <Input 

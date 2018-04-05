@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import TargetPhoto from './TargetPhoto.jsx';
-import PhotoItem from './PhotoItem.jsx';
 import Button from '../globals/Button/index.jsx';
 import actions from '../../../Redux/actions/account_page_actions';
 import style from './AccountPage.css';

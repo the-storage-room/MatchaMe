@@ -44,6 +44,7 @@ class Gender extends Component {
   }
 
   render () {
+    console.log(this.state.genderState)
     return (
       <div>
       <Button 

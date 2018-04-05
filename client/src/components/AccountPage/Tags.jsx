@@ -24,7 +24,7 @@ class Tags extends Component {
   addToTagArray = (tag) => {
     const { type, tagsData } = this.props
     const tagsArray = tagsData[type]
-    if (tagsArray.includes(tag)) {
+    if (tagsArray && tagsArray.includes(tag)) {
       tagsArray
         .splice(tagsArray
           .indexOf(tag), 1);
