@@ -6,6 +6,7 @@ export default {
   fetchUserSignupStatus() {
     return async (dispatch, getState) => {
       const { id } = await getState().signupcomplete;
+      console.log('id', id)
       try {
         const data = await axios
           .get(`${REST_SERVER_URL}/api/users/fetchSingleUser/${id}`);
