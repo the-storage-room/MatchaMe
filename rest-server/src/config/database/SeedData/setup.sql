@@ -280,7 +280,7 @@ insert into photo (url, userid, primaryphoto) values ('https://encrypted-tbn0.gs
 insert into photo (url, userid, primaryphoto) values ('https://i2.wp.com/guycounseling.com/wp-content/uploads/2018/02/chris-evans.jpg?resize=678%2C448&ssl=1', 2, 1);
 insert into photo (url, userid, primaryphoto) values ('http://img.wennermedia.com/social/rs-239344-chris-evans.jpg', 2, 0);
 insert into photo (url, userid, primaryphoto) values ('https://i.pinimg.com/736x/cf/25/b6/cf25b63555e2c0e992db519b54234301--chris-evans-chris-delia.jpg', 2, 0);
-insert into photo (url, userid, primaryphoto) values ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXo5czL61TQcKH0mmj3cpTrfMZKFSMHv0AF7sM03sIGe7eb7eK', 2, 0);
+insert into photo (url, userid, primaryphoto) values ('https://i0.wp.com/www.usmagazine.com/wp-content/uploads/2018/01/chris-evans-hot.jpg?crop=0px%2C19px%2C1378px%2C724px&resize=1200%2C630&ssl=1', 2, 0);
 
 insert into photo (url, userid, primaryphoto) values ('http://www.themalaymailonline.com/uploads/articles/2017/2017-07/Robert_Downey_SPIDER-MAN_030717.JPG', 3, 1);
 insert into photo (url, userid, primaryphoto) values ('http://highlighthollywood.com/wp-content/uploads/2016/11/robert-downey-jr-vote-300x203.jpghttps://randomuser.me/api/portraits/men/59.jpg', 3, 0);
