@@ -37,15 +37,12 @@ class Protected extends Component {
       if (exp < roundedExp) {
         history.push('/login');
       } else if (!initializeState) {
-        console.log(this.props);
         initialize(history, this.props.location.pathname);
-        console.log(this.props.initializeState);
       } else if (signupStatus === false && path !== 'onboarding') {
         history.push('/onboarding/bio');
-        console.log(4, path);
       }
     } catch (err) {
-      console.log('error in protected', err);
+      console.error('error in protected', err);
     }
   };
 

@@ -24,10 +24,6 @@ class App extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => {
-    // if they have an active web token
-    // initialize with the webtoken
-  }
 
   render() {
     return (
@@ -42,8 +38,8 @@ class App extends Component {
           <Route path="/rate" component={props => <Protected component={Rate} {...props} />} />
           <Route
             path="/matchmaker"
-            component={props => < Protected component={MatchMaker} {...props} />}
-          />
+            component={props => <Protected component={MatchMaker} {...props} />}
+            />
           <Route path="/follows" component={props => <Protected component={Follows} {...props} />} />
           <Route path="/mymatch" component={props => <Protected component={MyMatch} {...props} />} />
           <Route

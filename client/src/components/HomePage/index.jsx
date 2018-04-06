@@ -28,7 +28,7 @@ class HomePage extends Component {
             >
             <img 
               className={style.photo}
-              src={window.location.origin + '/images/matchame-romance.jpg'}/>
+              src={'https://s3-us-west-1.amazonaws.com/ajjjthesis/matchame-romance.jpg'}/>
             <div className={style.overlay}>
             </div>
               <div className={style.text}>See Your Match!</div>
@@ -39,7 +39,7 @@ class HomePage extends Component {
             >
             <img 
               className={style.photo}
-              src={window.location.origin + '/images/matchame-matchmaker.jpg'}/>
+              src={'https://s3-us-west-1.amazonaws.com/ajjjthesis/matchame-matchmaker.jpg'}/>
             <div className={style.overlay}>
             </div>
               <div className={style.text}>Matchmaker!</div>
@@ -50,7 +50,7 @@ class HomePage extends Component {
             >
             <img 
               className={style.photo}
-              src={window.location.origin + '/images/matchame-judge.jpg'}/>
+              src={'https://s3-us-west-1.amazonaws.com/ajjjthesis/matchame-judge.jpg'}/>
             <div className={style.overlay}>
             </div>
               <div className={style.text}>Rate Others!</div>
