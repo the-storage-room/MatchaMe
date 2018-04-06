@@ -1,5 +1,4 @@
-
-export default (state = {starred: null, allOthers: null}, action) => {
+export default (state = { starred: [], allOthers: [] }, action) => {
   switch (action.type) {
     case 'USER_FOLLOWS_RECIEVED':
       return (state = action.payload);
@@ -10,4 +9,4 @@ export default (state = {starred: null, allOthers: null}, action) => {
     default:
       return state;
   }
-}
+};

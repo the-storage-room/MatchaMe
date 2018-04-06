@@ -1,4 +1,3 @@
-
 export default (state = {}, action) => {
   switch (action.type) {
     case 'USER_POWERRANKING_RECIEVED':
@@ -6,4 +5,4 @@ export default (state = {}, action) => {
     default:
       return state;
   }
-}
+};
