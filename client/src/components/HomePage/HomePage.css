@@ -4,9 +4,9 @@
 }
 
 .logo {
-  font-size: 40px;
+  font-size: 60px;
   background-color: white;
-  color:rgb(4, 185, 95);
+  color: rgb(144, 196, 165);
   text-align: center;
   vertical-align: middle;
   line-height: 60px;
@@ -82,7 +82,7 @@
   width: 100%;
   opacity: 0;
   transition: .4s ease;
-  background-color: rgba(4, 185, 94, 0.705);
+  background-color:  rgba(144, 196, 165, 0.74);
 }
 
 .text {

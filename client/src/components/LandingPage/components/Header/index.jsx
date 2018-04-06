@@ -24,6 +24,12 @@ class Header extends React.Component {
             >
               MatchaMe
             </div> 
+            <div 
+              className={style.login}
+              onClick={() => this.props.history.push('/login')}
+            >
+              Login
+            </div> 
           </div>
           
         </header>

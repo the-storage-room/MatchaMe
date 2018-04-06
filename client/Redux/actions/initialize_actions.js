@@ -11,7 +11,6 @@ export default {
     return async (dispatch, getState) => {
       try {
         const { id } = await jwtDecode(localStorage.token);
-        // const id = 12;
         const { data } = await axios.get(
           `${REST_SERVER_URL}/api/initialize/${id}`
         );

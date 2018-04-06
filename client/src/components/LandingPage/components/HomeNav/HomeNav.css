@@ -4,11 +4,16 @@
   margin-top: 10px;
 }
 
-li {
+.li {
   display: inline-block;
   font: Helvetica;
   letter-spacing: 4px;
   text-transform: uppercase;
   font-weight: lighter;
   margin: 10px 45px 30px 45px;
+}
+
+.li:hover {
+    background-color: white;
+    color:  rgb(144, 196, 165);
 }

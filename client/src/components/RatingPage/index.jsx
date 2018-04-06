@@ -66,7 +66,8 @@ class Rate extends Component {
     }
     this.setState({
       trigger: true,
-      selected: false
+      selected: false,
+      target: 0,
     });
   };
 
