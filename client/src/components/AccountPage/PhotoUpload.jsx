@@ -76,7 +76,7 @@ class PhotoUpload extends Component {
           <div className={style.tagHead}>
             Upload Your Photos!
           </div>
-          <div className={style.basicMargin}>
+          <div className={style.formHolder}>
             {
               this.props.userPhotos.length < 4 &&
             <form 

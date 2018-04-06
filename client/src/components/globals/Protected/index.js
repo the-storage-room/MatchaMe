@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import store from '../../../../Redux';
 import jwtDecode from 'jwt-decode';
 import action from '../../../../Redux/actions/initialize_status_actions';
 import initialize from '../../../../Redux/actions/initialize_actions';
@@ -37,15 +36,12 @@ class Protected extends Component {
       if (exp < roundedExp) {
         history.push('/login');
       } else if (!initializeState) {
-        console.log(this.props);
         initialize(history, this.props.location.pathname);
-        console.log(this.props.initializeState);
       } else if (signupStatus === false && path !== 'onboarding') {
         history.push('/onboarding/bio');
-        console.log(4, path);
       }
     } catch (err) {
-      console.log('error in protected', err);
+      console.error('error in protected', err);
     }
   };
 

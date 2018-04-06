@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import io from 'socket.io-client';
 
 import style from './MyMatch.css';
 import Button from '../globals/Button/index.jsx';
 import ChatItem from './ChatItem.jsx';
+
+const { SOCKET_SERVER_URL } = process.env;
 
 class Chatroom extends Component {
   constructor() {
@@ -10,11 +13,22 @@ class Chatroom extends Component {
     this.state = {
       chatFeed: [],
       message: '',
+      socket: null,
     }
   }
 
+  componentWillMount = () => {
+    let socket = io(SOCKET_SERVER_URL, {
+      query: {
+        matchId: this.props.matchId
+      }
+    });
+    this.setState({ socket: socket });
+  }
+
+
   componentDidMount = () => {
-    const { socket } = this.props;
+    const { socket } = this.state;
     socket.on('connect', () => {
       socket.emit('client.ready');
     });
@@ -34,6 +48,11 @@ class Chatroom extends Component {
     })
   }
 
+  componentWillUnmount = () => {
+    const { socket } = this.state;
+    socket.close();
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.submitMessage();
@@ -41,8 +60,8 @@ class Chatroom extends Component {
 
   submitMessage = () => {
     if (this.state.message.length > 0) {
-      const { message } = this.state;
-      const { socket, username, firstname } = this.props;
+      const { message, socket } = this.state;
+      const { username, firstname } = this.props;
       const time = Date.now()
       socket.emit('client.chat', JSON.stringify({
           message,
