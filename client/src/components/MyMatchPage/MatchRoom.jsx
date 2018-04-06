@@ -171,8 +171,7 @@ class MatchRoom extends Component {
             </div>
             { this.state.showChatroom && 
               <div className={style.chatroom}>
-                <Chatroom 
-                  socket={socket}
+                <Chatroom
                   user2firstname={user2.firstname}
                   username={username}
                   firstname={firstname}
@@ -181,6 +180,7 @@ class MatchRoom extends Component {
                   toggleWarningBox={toggleWarningBox}
                   isSuccessful={isSuccessful}
                   toggleProfile={() => this.toggleProfile()}
+                  matchId={matchId}
                   />
               </div>
             }

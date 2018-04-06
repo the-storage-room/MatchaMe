@@ -15,7 +15,6 @@ class MyMatch extends Component {
     super();
     this.state = {
       showWarningBox: false,
-      socket: null,
     };
   }
 
@@ -29,18 +28,6 @@ class MyMatch extends Component {
     this.toggleWarningBox();
     this.props.rejectOrEndCurrentMatch();
   }
-
-  componentWillMount= () => {
-    if (this.props.currentMatch) {
-      this.socket = io(SOCKET_SERVER_URL, {
-        query: {
-          matchId: this.props.currentMatch.matchid
-        }
-      });
-      this.setState({ socket: this.socket });
-    }
-  }
-
 
   render() {
     return (
@@ -60,7 +47,6 @@ class MyMatch extends Component {
             acceptCurrentMatch={this.props.acceptCurrentMatch}
             firstAccept={this.props.currentMatch.firstaccept}
             toggleWarningBox={this.toggleWarningBox}
-            socket={this.state.socket}
             username={this.props.username}
             firstname={this.props.firstname}
             yourPhoto={this.props.yourPhoto}
