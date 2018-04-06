@@ -22,13 +22,11 @@ class Rate extends Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    if (this.state.trigger) {
-      nextProps.userToRate &&
-        this.setState({
-          rating: `${nextProps.userToRate.firstname} is a...`,
-          trigger: false
-        });
-    }
+    nextProps.userToRate &&
+      this.setState({
+        rating: `${nextProps.userToRate.firstname} is a...`,
+        trigger: false
+      });
   };
 
   componentDidMount = () => {
@@ -178,7 +176,10 @@ class Rate extends Component {
             </div>
             <div className={style.noMatch}>
               <div className={style.noMatchText}>No Matches left to rate!</div>
-              <Button text={'Refresh'} />
+              <Button
+                text={'Refresh'}
+                onClick={this.props.fetchMoreUsersToRate}
+              />
             </div>
           </div>
           <Footer />

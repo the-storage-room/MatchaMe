@@ -11,44 +11,62 @@ class Navbar extends React.Component {
   constructor() {
     super();
     this.state = {
-      showDropdown: false,
+      showDropdown: false
     };
   }
 
   logoutClick = async () => {
     const { REST_SERVER_URL } = process.env;
     try {
-      await axios.get(`${REST_SERVER_URL}/api/auth/logout`)
-      localStorage.clear();
-      await this.props.history.push('/')
+      await axios.get(`${REST_SERVER_URL}/api/auth/logout`);
+      localStorage.removeItem('token');
+      await this.props.history.push('/');
     } catch (err) {
-      console.error('error on logout', err)
+      console.log('error on logout', err);
     }
-  }
+  };
 
   render() {
     return (
       <div>
         <div className={style.wrapper}>
           <div className={style.side} />
-          <div className={style.column1} onClick={() => this.props.history.push('/rate')}>
+          <div
+            className={style.column1}
+            onClick={() => this.props.history.push('/rate')}
+          >
             Rate
           </div>
-          <div className={style.column2} onClick={() => this.props.history.push('/matchmaker')}>
+          <div
+            className={style.column2}
+            onClick={() => this.props.history.push('/matchmaker')}
+          >
             MatchMaker
           </div>
-          <div className={style.logo} onClick={() => this.props.history.push('/home')}>
+          <div
+            className={style.logo}
+            onClick={() => this.props.history.push('/home')}
+          >
             MatchaMe
           </div>
-          <div className={style.column3} onClick={() => this.props.history.push('/mymatch')}>
+          <div
+            className={style.column3}
+            onClick={() => this.props.history.push('/mymatch')}
+          >
             My Match
           </div>
-          <div className={style.column4} onClick={() => this.props.history.push('/dashboard')}>
+          <div
+            className={style.column4}
+            onClick={() => this.props.history.push('/dashboard')}
+          >
             Dashboard
           </div>
-          <div className={style.avatar} onClick={() => {
-            this.setState({ showDropdown: !this.state.showDropdown });
-          }}>
+          <div
+            className={style.avatar}
+            onClick={() => {
+              this.setState({ showDropdown: !this.state.showDropdown });
+            }}
+          >
             <Avatar />
           </div>
         </div>
@@ -77,7 +95,7 @@ class Navbar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    photos: state.userPhotos,
+    photos: state.userPhotos
   };
 };
 
