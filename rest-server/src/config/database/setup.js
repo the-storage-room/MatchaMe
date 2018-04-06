@@ -238,7 +238,7 @@ const createPhotoTable = async () => {
       CREATE TABLE IF NOT EXISTS Photo
       (
         id     SERIAL ,
-        url    VARCHAR(128) NOT NULL ,
+        url    VARCHAR(400) NOT NULL ,
         userId INT NOT NULL ,
         primaryPhoto SMALLINT NOT NULL DEFAULT 0 ,
         CONSTRAINT PK_Photo PRIMARY KEY (id),
