@@ -34,6 +34,8 @@ class Main extends React.Component {
         <div className={style.intro}>
           <h3> The world's first crowdsourced dating service </h3>
         </div>
+        <div className={style.introBorder}>
+        </div>
 
         <div className={style.grid}>
           <div className={style.gridItem1}>

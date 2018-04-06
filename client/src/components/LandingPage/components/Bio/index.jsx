@@ -20,8 +20,6 @@ class Bio extends React.Component {
         <Header />
         <p className={style.bioIntro}> 
           Meet the talented engineers who created MatchaMe </p>
-          
-          
         <div className={style.grid}>
           <div className={style.gridItem1}>
            
@@ -34,7 +32,7 @@ class Bio extends React.Component {
               src="https://i.imgur.com/NE1lYL2.jpg"
             />
             <div className={style.overlay}>
-              <div className={style.text}> hi i'm alice </div>
+              <div className={style.text}> hi my name is alice and i'm a dev </div>
             </div>
           </div>
           <div className={style.jackPhoto}>
@@ -43,7 +41,7 @@ class Bio extends React.Component {
               src="https://i.imgur.com/hfTiO6g.jpg"
             />
             <div className={style.overlay}>
-              <div className={style.text}> hi i'm jack </div>
+              <div className={style.text}> hi my name is jack and i'm a dev </div>
             </div>
           </div>
           <div className={style.justinPhoto}>
@@ -52,7 +50,7 @@ class Bio extends React.Component {
               src="https://i.imgur.com/fwh9Mth.jpg"
             />
             <div className={style.overlay}>
-              <div className={style.text}> hi i'm justin </div>
+              <div className={style.text}> hi my name is justin and i'm a dev </div>
             </div>
           </div>
           <div className={style.jonPhoto}>
@@ -61,7 +59,7 @@ class Bio extends React.Component {
               src="https://i.imgur.com/idx90oT.jpg"
             />
             <div className={style.overlay}>
-              <div className={style.text}> hi i'm jon </div>
+              <div className={style.text}> hi my name is jon and i'm a dev </div>
             </div>
           </div>
         </div>
