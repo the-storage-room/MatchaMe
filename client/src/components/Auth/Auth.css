@@ -6,9 +6,48 @@
   align-items: center;
   padding: 65px 65px 0px 65px;
   margin: auto;
+ 
+}
+
+.wrapper {
+  background-image: url("https://i.imgur.com/3QmChvP.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.signupForm {
+  
+  align-content: center;
+ 
 }
 
 .passwordForm {
   -webkit-text-security: disc;
   -moz-text-security: disc;
+}
+
+input[name=username],
+input[name=password],
+input[name=email],
+input[name=firstname],
+input[name=lastname] {
+  font-size: 12px;
+  padding: 10px 15px;
+  margin: 5px 5px 0px 0px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+}
+
+input[name=username]:focus,
+input[name=password]:focus,
+input[name=email]:focus,
+input[name=firstname]:focus,
+input[name=lastname]:focus {
+  background-color: #ddd;
+  outline: none;
 }

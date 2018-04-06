@@ -19,12 +19,21 @@ class Experience extends React.Component {
         <Header />
         <div className={style.grid}>
           <div className={style.gridItem1}>
-            Rate a person based on how hot you think they are
+            Rate people based on how they are
           </div>
           <div className={style.gridItem2}>
             <img
               className={style.photo}
               src="https://i.imgur.com/Bj3lBxt.png"
+            />
+          </div>
+          <div className={style.gridItem3}>
+            Think they make a good match? You decide.
+          </div>
+          <div className={style.gridItem4}>
+            <img 
+              className={style.photo}
+              src="https://i.imgur.com/dWJr77o.png"
             />
           </div>
         </div>

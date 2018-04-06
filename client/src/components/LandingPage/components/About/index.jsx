@@ -23,18 +23,22 @@ class About extends React.Component {
       <div className={style.wrapper}>  
         <Header props={this.props} />
         <div className={style.photosContainer}>
-          <div className={style.gridItem1}>
+          <div className={style.leftMainPhoto}>
             <img 
-              className={style.photo}
+              className={style.leftMainPhotoSize}
               src="https://i.imgur.com/jv8cBN8.jpg"
             />
           </div>
-          <div className={style.gridItem2}>
+          <div className={style.rightMainPhoto}>
             <img 
               className={style.photo}
               src="https://i.imgur.com/wW0SmpE.jpg"
             />
           </div>
+          <br />
+          <div className={style.introParagraph}>
+            asklfjasdlk
+          </div>  
         </div>
         <div>
            

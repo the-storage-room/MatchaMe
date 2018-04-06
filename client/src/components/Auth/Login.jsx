@@ -46,31 +46,30 @@ class Login extends Component {
 
   render() {
     return (
-      <div className={style.signupContainer}>
-        <form className={style.signupForm}>
-          <Input
-            name="username"
-            type="text"
-            placeholder="Enter username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
-          />{' '}
-          <br />
-          <Input
-            className={style.passwordForm}
-            name="password"
-            type="password"
-            placeholder="Enter password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />{' '}
-          <br />
-          <Button
-            className={style.signupButton}
-            text="Login"
-            onClick={e => this.submitAuthData(e)}
-          />
-        </form>
+      <div className={style.wrapper}>
+        <div className={style.signupContainer}>
+          <form className={style.signupForm}>
+            <Input
+              name="username"
+              type="text"
+              placeholder="Enter username"
+              value={this.state.username}
+              onChange={this.handleInputChange}
+            /> <br />
+            <Input className={style.passwordForm}
+              name="password"
+              type="password"
+              placeholder="Enter password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+            /> <br />
+            <Button
+              className={style.signupButton}
+              text="Login"
+              onClick={(e) => this.submitAuthData(e)}
+            />
+          </form>
+        </div>
       </div>
     );
   }

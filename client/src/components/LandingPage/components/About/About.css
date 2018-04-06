@@ -4,7 +4,7 @@
   grid-row-gap: 0;
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
-  justify-items: center;
+  
 }
 
 .photo {
@@ -14,12 +14,25 @@
   background-position: 50% 50%;
 }
 
-.gridItem1 {
+.leftMainPhotoSize {
+  width: 100%;
+  height: 99.65%;
+}
+
+.leftMainPhoto {
   grid-column: 1 / 3;
   grid-row: 1 / 2
 }
 
-.gridItem2 {
+.rightMainPhoto {
   grid-column: 3 / 4;
-  grid-row: 1;
+  grid-row: 1 / 2;
+}
+
+.introParagraph {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

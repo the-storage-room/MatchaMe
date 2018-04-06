@@ -27,39 +27,50 @@ class Bio extends React.Component {
           </div>
           <br />
           <br />
-          <div className={style.gridItem2}>
+          <div className={style.alicePhoto}>
             <img 
               className={style.photo}
               src="https://i.imgur.com/NE1lYL2.jpg"
               height="200px"
               width="300px"
             />
-            {/* <div className={style.overlay}></div>
-            <div className={style.alice}> hi i'm alice </div> */}
+            <div className={style.overlay}>
+              <div className={style.text}> hi i'm alice </div>
+            </div>
+            
           </div>
-          <div className={style.gridItem3}>
+          <div className={style.jackPhoto}>
             <img 
               className={style.photo}
               src="https://i.imgur.com/hfTiO6g.jpg"
               height="200px"
               width="300px"
             />
+            <div className={style.overlay}>
+              <div className={style.text}> hi i'm jack </div>
+            </div>
           </div>
-          <div className={style.gridItem4}>
+          <div className={style.justinPhoto}>
             <img 
               className={style.photo}
               src="https://i.imgur.com/fwh9Mth.jpg"
               height="200px"
               width="300px"
             />
+            <div className={style.overlay}>
+              <div className={style.text}> hi i'm justin </div>
+            </div>
           </div>
-          <div className={style.gridItem5}>
+          <div className={style.jonPhoto}>
             <img 
               className={style.photo}
               src="https://i.imgur.com/idx90oT.jpg"
               height="200px"
               width="300px"
             />
+            <div className={style.overlay}>
+              <div className={style.text}> hi i'm jon </div>
+            </div>
           </div>
           
         </div>
