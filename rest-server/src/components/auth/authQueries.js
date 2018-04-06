@@ -13,9 +13,9 @@ export const loginQuery = async body => {
 
 export const signupQuery = async body => {
   try {
-    const { username, password, email } = body;
-    const queryString = signupHelper(body);
-    const data = await db.query(queryString, [username, password, email]);
+    const { username, password, email, firstname, lastname } = body;
+    const queryString = signupHelper(queryString)
+    const data = await db.query(queryString, [username, password, email, firstname, lastname]);
     return data;
   } catch (err) {}
 };

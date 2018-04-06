@@ -29,6 +29,7 @@ export const signupController = async (req, res) => {
   try {
     req.body.password = await hashPassword(req.body.password);
     const { rows } = await signupQuery(req.body);
+    console.log(rows)
     const { id, username } = rows[0];
     const token = await generateToken(id, username);
     rows[0].token = token.accessToken;

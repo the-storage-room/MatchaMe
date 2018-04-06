@@ -1,0 +1,149 @@
+
+
+.mainPhotoContainer {
+  position: relative;
+  text-align: center;
+  
+  /* color: white; */
+}
+.mainPhoto {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.mainCaption {
+  font: Helvetica;
+  font-size: 30px;
+  letter-spacing: 1px;
+  
+  text-align: center;
+  vertical-align: middle;
+  /* color: white; */
+  font-weight: lighter;
+  position: relative;
+  top: 10px;
+  
+  transform: translateY(-50%); 
+  
+  /* transform: translate(-50%, -50%); */
+  
+}
+
+.intro {
+  font: Garamond;
+  font-size: 35px;
+  letter-spacing: 1px;
+  position: relative;
+  text-align: center;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  margin-right: 100px;
+  margin-left: 100px;
+  font-weight: lighter;
+  font-style: italic;
+ 
+}
+
+.introBorder {
+  border-bottom: 5px thin blue;
+}
+
+.join {
+  font: Helvetica;
+  font-size: 25px;
+  letter-spacing: 1px;
+  position: relative;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 100px;
+  margin-left: 100px;
+  font-weight: lighter;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 3px;
+  grid-row-gap: 0;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.gridItem1 {
+  display: flex;
+  grid-column: 1 / 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin: auto;
+  font: Helvetica;
+  font-weight: lighter;
+  font-size: 27px;
+}
+
+.gridItem2 {
+  grid-column: 2 / 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.gridItem3 {
+  display: flex;
+  grid-column: 2 / 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin: auto;
+  font: Helvetica;
+  font-weight: lighter;
+  font-size: 27px;
+}
+
+.gridItem4 {
+  grid-column: 1 / 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  
+}
+
+.gridItem5 {
+  display: flex;
+  grid-column: 1 / 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin: auto;
+  font: Helvetica;
+  font-weight: lighter;
+  font-size: 27px;
+}
+
+.gridItem6 {
+  grid-column: 2 / 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.gridItem7 {
+  grid-column: 2 / 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  margin: auto;
+  font: Helvetica;
+  font-weight: lighter;
+  font-size: 27px;
+}
+
+.gridItem8 {
+  grid-column: 1 / 2;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.photo {
+  width: 100%;
+  min-height:100%;
+  min-width: 80%;
+  background-position: 50% 50%;
+}
+
+
+/* 1280 x 853 */

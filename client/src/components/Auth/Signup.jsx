@@ -14,17 +14,21 @@ class Signup extends Component {
     this.state = {
       email: '',
       password: '',
-      username: ''
+      username: '',
+      firstname: '',
+      lastname: ''
     };
   }
 
   submitAuthData = async (e) => {
     e.preventDefault();
-    const { username, email, password } = this.state;
+    const { username, email, password, firstname, lastname } = this.state;
     const body = {
       username,
       email,
-      password
+      password,
+      firstname, 
+      lastname
     }
     try {
       const data = await axios.post(`${REST_SERVER_URL}/api/auth/signup`, body);
@@ -41,32 +45,48 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className={style.signupContainer}>
-        <form className={style.signupForm}>
-          <Input
-            name="username"
-            type="text"
-            placeholder="Enter username"
-            onChange={this.handleInputChange}
-          /> <br />
-          <Input 
-            name="email"
-            type="text"
-            placeholder="Enter e-mail"
-            onChange={this.handleInputChange}
-          /> <br />
-          <Input 
-            name="password"
-            type="password"
-            placeholder="Enter password"
-            onChange={this.handleInputChange}
-          /> <br />
-          <Button
-            className={style.signupButton}
-            text="Sign Up"
-            onClick={(e) => this.submitAuthData(e)}
-          />
-        </form>
+      <div className={style.wrapper}>
+        <div className={style.signupContainer}>
+          <form className={style.signupForm}>
+            <Input
+              name="username"
+              type="text"
+              placeholder="Enter username"
+              onChange={this.handleInputChange}
+            /> <br />
+            <Input 
+              name="email"
+              type="text"
+              placeholder="Enter e-mail"
+              onChange={this.handleInputChange}
+            /> <br />
+            <Input 
+              name="firstname"
+              type="text"
+              placeholder="Enter first name"
+              onChange={this.handleInputChange}
+            /> <br />
+            <Input 
+              name="lastname"
+              type="text"
+              placeholder="Enter last name"
+              onChange={this.handleInputChange}
+            /> <br />
+            <Input 
+              name="password"
+              type="password"
+              placeholder="Enter password"
+              onChange={this.handleInputChange}
+            /> <br />
+            <div className={style.submit}>
+            <Button
+              className={style.signupButton}
+              text="Sign Up"
+              onClick={(e) => this.submitAuthData(e)}
+            />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

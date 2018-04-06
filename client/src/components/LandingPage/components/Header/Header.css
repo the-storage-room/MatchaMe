@@ -1,0 +1,25 @@
+.headerContainer {
+
+}
+
+
+.logo {
+  text-align: center;
+  font-size: 35px;
+  background-color: white;
+  color: rgb(144, 196, 165);
+  text-align: center;
+  vertical-align: middle;
+  margin: 20px 0 10px 0;
+  
+  line-height: 60px;
+}
+
+.joinButton {
+  /* margin: 0 20px 20px 0; */
+  
+}
+
+.joinButtonContainer {
+  
+}

@@ -12,12 +12,16 @@ export const signupHelper = () => {
       username, 
       password, 
       email,
-      signupComplete 
+      firstname,
+      lastname,
+      signupComplete
     )
     VALUES (
       $1,
       $2,
       $3,
+      $4,
+      $5,
       '0'
     )
     RETURNING id, email, username, signupComplete

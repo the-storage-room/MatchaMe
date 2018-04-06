@@ -1,0 +1,139 @@
+.grid {
+  display: grid;
+  grid-gap: 3px;
+  grid-row-gap: 0;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  text-align: center;
+  justify-items: center;
+  
+}
+
+.bioIntro {
+  font: Helvetica;
+  font-weight: lighter;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  text-align: center;
+}
+
+.gridItem1 {
+  grid-column: 1 / 3;
+  grid-row: 1 ;
+  font: Helvetica;
+  font-weight: lighter;
+
+}
+
+.alicePhoto {
+  grid-column: 1 / 3;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  position: relative;
+}
+
+.alicePhoto > img {
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+}
+
+.jackPhoto {
+  grid-column: 3 / 5;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  position: relative;
+}
+
+.jackPhoto > img {
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+}
+
+.justinPhoto {
+  grid-column: 1 / 3;
+  grid-row-start: 5;
+  grid-row-end: 9;
+  position: relative;
+}
+
+.justinPhoto > img {
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+}
+
+.jonPhoto {
+  grid-column: 3 / 5;
+  grid-row-start: 5;
+  grid-row-end: 9;
+  position: relative
+}
+
+.jonPhoto > img {
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+}
+
+
+.photo {
+  width: 100%;
+  min-height:100%;
+  min-width: 80%;
+  background-position: 50% 50%;
+}
+
+
+.alicePhoto:hover .overlay,
+.jackPhoto:hover .overlay,
+.justinPhoto:hover .overlay,
+.jonPhoto:hover .overlay {
+  opacity: .9;
+} 
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: 	#87CEFA;
+}
+
+.text {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  text-rendering: optimizeLegibility;
+}
+
+.join {
+  font: Helvetica;
+  font-size: 25px;
+  letter-spacing: 1px;
+  position: relative;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 100px;
+  margin-left: 100px;
+  font-weight: lighter;
+}
+
+span {
+  font-weight: bold;
+  color: rgb(144, 196, 165);
+}

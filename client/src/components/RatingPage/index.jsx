@@ -51,7 +51,7 @@ class Rate extends Component {
         target: photo
       });
     }
-  };
+  }
 
   submitUserAttractiveness = () => {
     if (!this.state.selected) {

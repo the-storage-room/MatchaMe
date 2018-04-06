@@ -10,7 +10,7 @@ export const updateUserAttractivenessController = async (req, res) => {
   try {
     const score = {
       attractiveness: req.body.attractiveness,
-      ratee: req.body.ratee
+      ratee: req.body.ratee,
     };
     let { rows } = await updateTotalAttractivenessQuery(score);
     const newTotalAttractivenessScore = rows[0].totalattractiveness;
