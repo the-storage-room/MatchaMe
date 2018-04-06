@@ -23,10 +23,11 @@ class Rate extends Component {
 
   componentWillReceiveProps = nextProps => {
     if (this.state.trigger) {
-      this.setState({
-        rating: `${nextProps.userToRate.firstname} is a...`,
-        trigger: false
-      });
+      nextProps.userToRate &&
+        this.setState({
+          rating: `${nextProps.userToRate.firstname} is a...`,
+          trigger: false
+        });
     }
   };
 
