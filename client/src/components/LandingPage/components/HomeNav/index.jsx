@@ -17,16 +17,16 @@ class HomeNav extends React.Component {
     return (
       <div className={style.navbar}>
         <ul className={style.ul}>
-          <li onClick={() => this.props.history.push('/about')}>
+          <li className={style.li} onClick={() => this.props.history.push('/about')}>
             About
           </li>
-          <li onClick={() => this.props.history.push('/experience')}>
+          <li className={style.li} onClick={() => this.props.history.push('/experience')}>
             Experience
           </li>
-          <li onClick={() => this.props.history.push('/match')}>
+          <li className={style.li} onClick={() => this.props.history.push('/match')}>
             Match
           </li>
-          <li onClick={() => this.props.history.push('/bio')}>
+          <li className={style.li} onClick={() => this.props.history.push('/bio')}>
             Team
           </li>
         </ul>

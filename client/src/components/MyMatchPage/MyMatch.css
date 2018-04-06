@@ -58,17 +58,17 @@
 }
 
 .mainimgforchat {
-  -o-object-fit: cover;
-  object-fit: cover;
-  overflow: hidden;
-  max-width: 200%;
-  max-height: 200%;
+  max-width: 150%;
+  max-height: 150%;
 }
 
 .mainphotoforchat {
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
   height: 300px;
-  width: 300px;
-  margin: -60px auto 0 auto;
+  width: 400px;
+  margin: -30px auto 0 auto;
 }
 
 .chatRoom {
