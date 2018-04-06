@@ -46,7 +46,7 @@ class Navbar extends React.Component {
           <div className={style.column4} onClick={() => this.props.history.push('/dashboard')}>
             Dashboard
           </div>
-          <div className={style.avatar} onMouseOver={() => {
+          <div className={style.avatar} onClick={() => {
             this.setState({ showDropdown: !this.state.showDropdown });
           }}>
             <Avatar />
@@ -59,7 +59,7 @@ class Navbar extends React.Component {
                 className={style['dropdown-menu-item']}
                 onClick={() => this.props.history.push('/account/bio')}
               >
-                Setting
+                Settings
               </li>
               <li
                 className={style['dropdown-menu-item']}
