@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import style from './Bio.css';
 import Header from '../Header/index.jsx';
 import Footer from '../../../globals/Footer/index.jsx';
+import Button from '../../../globals/Button/index.jsx';
 
 class Bio extends React.Component {
   constructor() {
@@ -62,6 +63,15 @@ class Bio extends React.Component {
             <div className={style.overlay}>
               <div className={style.text}> hi i'm jon </div>
             </div>
+          </div>
+        </div>
+        <div className={style.join}>
+          Discover your match today.
+          <div>
+            <Button
+              text="Join"
+              onClick={() => this.props.history.push('/signup')}
+            />
           </div>
         </div>
         <Footer />

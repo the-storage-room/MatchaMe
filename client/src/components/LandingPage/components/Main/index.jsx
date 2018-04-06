@@ -63,6 +63,15 @@ class Main extends React.Component {
               src="https://i.imgur.com/qF5LR3P.png"
             />
           </div>
+          <div className={style.gridItem7}>
+            See your match
+          </div>
+          <div className={style.gridItem8}>
+            <img 
+              className={style.photo}
+              src="https://i.imgur.com/DTZgrde.png"
+            />
+          </div>
         </div>
         <div className={style.join}>
           Discover your match today.

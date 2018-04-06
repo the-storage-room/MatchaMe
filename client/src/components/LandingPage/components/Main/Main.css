@@ -32,7 +32,7 @@
 
 .intro {
   font: Garamond;
-  font-size: 30px;
+  font-size: 35px;
   letter-spacing: 1px;
   position: relative;
   text-align: center;
@@ -63,8 +63,6 @@
   grid-row-gap: 0;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  
-  
 }
 
 .gridItem1 {
@@ -75,17 +73,14 @@
   margin: auto;
   font: Helvetica;
   font-weight: lighter;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .gridItem2 {
   grid-column: 2 / 3;
   grid-row-start: 1;
   grid-row-end: 2;
-  
 }
-
-
 
 .gridItem3 {
   display: flex;
@@ -95,7 +90,7 @@
   margin: auto;
   font: Helvetica;
   font-weight: lighter;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .gridItem4 {
@@ -113,13 +108,29 @@
   margin: auto;
   font: Helvetica;
   font-weight: lighter;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .gridItem6 {
   grid-column: 2 / 3;
   grid-row-start: 3;
   grid-row-end: 4;
+}
+
+.gridItem7 {
+  grid-column: 2 / 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  margin: auto;
+  font: Helvetica;
+  font-weight: lighter;
+  font-size: 30px;
+}
+
+.gridItem8 {
+  grid-column: 1 / 2;
+  grid-row-start: 4;
+  grid-row-end: 5;
 }
 
 .photo {
