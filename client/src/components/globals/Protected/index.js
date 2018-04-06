@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import action from '../../../../Redux/actions/initialize_status_actions';
 import initialize from '../../../../Redux/actions/initialize_actions';
+import style from './Protected.css';
+import Navbar from '../Navbar/index.jsx';
 
 class Protected extends Component {
   constructor() {
@@ -43,7 +45,6 @@ class Protected extends Component {
       } else if (signupStatus === false && path !== 'onboarding') {
         history.push('/onboarding/bio');
       }
-      this.setState({ cat: false })
     } catch (err) {
       console.error('error in protected', err);
     }
