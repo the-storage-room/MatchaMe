@@ -20,6 +20,16 @@ class BioInfo extends Component {
     };
   }
 
+  validator = {
+    location: 5,
+    bio: 1,
+    month: 2,
+    day: 2,
+    year: 4,
+    gender: 1,
+    pref: 1,
+  }
+
   handleGenderChange = (state, genderNum) => {
     this.setState({ [state]: genderNum });
     this.props.handleGenderChange({ [state]: genderNum });
@@ -32,13 +42,14 @@ class BioInfo extends Component {
   }
 
   componentDidUpdate = () => {
-    let allValuesEntered = true;
+    let renderFalse;
     for (let key in this.state) {
-      if (!this.state[key]) {
-        allValuesEntered = false;
+      let length = this.state[key].length || this.state[key].toString().length
+      if ((length < this.validator[key])) {
+        renderFalse = true;
       }
     }
-    this.props.renderButton(allValuesEntered);
+    renderFalse ? this.props.renderButton(false) : this.props.renderButton(true)
   }
 
   componentDidMount = () => {
