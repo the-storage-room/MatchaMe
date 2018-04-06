@@ -87,7 +87,7 @@ const mapStateToProps = ({ currentMatch, accountData, userPhotos }) => {
     currentMatch: currentMatch,
     username: accountData.username,
     firstname: accountData.firstname,
-    yourPhoto: userPhotos[0].url,
+    yourPhoto: userPhotos[0] && userPhotos[0].url,
     
   };
 }

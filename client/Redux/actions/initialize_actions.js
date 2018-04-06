@@ -17,7 +17,9 @@ export default {
         const redisData = await axios.get(
           `${REDIS_SERVER_URL}/redis/leaderboard/fetchLeaderboardAndRank/${id}`
         );
-
+        dispatch({
+          type: 'INITIALIZE_STATUS_TRUE',
+        })
         dispatch({
           type: 'USER_ACCOUNT_DATA_RECIEVED',
           payload: data.accountData || null
@@ -38,9 +40,9 @@ export default {
           type: 'USER_POWERRANKING_RECIEVED',
           payload:
             {
-              totalPoints: data.powerRankingData.totalPoints,
-              rank: redisData.data.rank
-            } || null
+              totalPoints: data.powerRankingData.totalPoints || 0,
+              rank: redisData.data.rank || 0
+            }
         });
         dispatch({
           type: 'USER_SIGNUP_STATUS_RECIEVED',

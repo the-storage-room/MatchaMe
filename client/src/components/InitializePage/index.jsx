@@ -11,12 +11,14 @@ class Initialize extends Component {
   };
 
   render() {
-    return <div className={style.loadingContainer}>
+    console.log(this.props)
+    return (<div className={style.loadingContainer}>
       <div className={style.message}>
         Loading...
       </div>
       <img className={style.loadingImage} src='https://media3.giphy.com/media/XcJKsYtKPk0Vy/giphy.gif' />
-    </div>;
+    </div>
+    );
   }
 }
 

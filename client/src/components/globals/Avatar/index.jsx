@@ -16,7 +16,7 @@ class Avatar extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-		photo: state.userPhotos[0].url,
+		photo: state.userPhotos[0] && state.userPhotos[0].url,
 	};
 };
 

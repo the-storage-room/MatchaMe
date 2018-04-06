@@ -76,7 +76,6 @@ export const fetchStarredMatchesQuery = async ({ userId }) => {
         match.active = active;
       }
     }
-    console.log('Success on fetchStarredMatchesQuery');
     return rows;
   } catch (err) {
     console.log('Error on fetchStarredMatchesQuery', err);
@@ -118,7 +117,6 @@ export const fetchUnstarredMatchesQuery = async ({ userId }) => {
         match.active = active;
       }
     }
-    console.log('Success on fetchUnStarredMatchesQuery');
     return rows;
   } catch (err) {
     console.log('Error on fetchUnstarredMatchesQuery', err);
@@ -128,7 +126,6 @@ export const fetchUnstarredMatchesQuery = async ({ userId }) => {
 export const starSingleMatchQuery = async ({ userId, matchId }) => {
   try {
     const data = await db.query(starSingleMatchHelper(), [matchId, userId]);
-    console.log('Success on starSingleMatchQuery');
     return data;
   } catch (err) {
     console.log('Error on starSingleMatchQuery', err);
@@ -138,7 +135,6 @@ export const starSingleMatchQuery = async ({ userId, matchId }) => {
 export const unstarSingleMatchQuery = async ({ matchId, userId }) => {
   try {
     const data = await db.query(unstarSingleMatchHelper(), [matchId, userId]);
-    console.log('Success on unstarSingleMatchQuery', data);
     return data;
   } catch (err) {
     console.log('Error on unstarSingleMatchQuery', err);
