@@ -63,7 +63,7 @@ class Dashboard extends Component {
         <div className={style.wrapper}>
           <div className={style.column}>
             <div className={style.welcome}>Welcome back, {firstname}</div>
-            <img className={style.photo} src={photos[0].url} />
+            <img className={style.photo} src={photos[0] && photos[0].url} />
             <div className={style.info}>
               <div className={style.userranking}>Points: {totalPoints} </div>
               <div className={style.status}>You are currently a {this.state.status}</div>

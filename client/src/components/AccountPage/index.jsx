@@ -69,7 +69,7 @@ class Account extends Component {
     } else if (this.state.currentPage === 'tags') {
       this.props.updateTagsData(this.state.tagtype, this.state.tagsTemp);
     } else if (this.state.currentPage === 'photoupload') {
-      this.props.updateSignupStatus(this.props.history);
+      this.props.history.push('/home')
     }
   }
 
