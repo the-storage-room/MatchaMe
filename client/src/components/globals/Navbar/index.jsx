@@ -20,8 +20,6 @@ class Navbar extends React.Component {
     try {
       await axios.get(`${REST_SERVER_URL}/api/auth/logout`);
       localStorage.removeItem('token');
-      localStorage.removeItem('signupStatus');
-      localStorage.removeItem('persist:root');
       await this.props.history.push('/');
     } catch (err) {
       console.log('error on logout', err);

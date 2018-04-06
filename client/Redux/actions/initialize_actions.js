@@ -18,8 +18,8 @@ export default {
           `${REDIS_SERVER_URL}/redis/leaderboard/fetchLeaderboardAndRank/${id}`
         );
         dispatch({
-          type: 'INITIALIZE_STATUS_TRUE',
-        })
+          type: 'INITIALIZE_STATUS_TRUE'
+        });
         dispatch({
           type: 'USER_ACCOUNT_DATA_RECIEVED',
           payload: data.accountData || null
@@ -38,11 +38,10 @@ export default {
         });
         dispatch({
           type: 'USER_POWERRANKING_RECIEVED',
-          payload:
-            {
-              totalPoints: data.powerRankingData.totalPoints || 0,
-              rank: redisData.data.rank || 0
-            }
+          payload: {
+            totalPoints: data.powerRankingData.totalPoints || 0,
+            rank: redisData.data.rank || 0
+          }
         });
         dispatch({
           type: 'USER_SIGNUP_STATUS_RECIEVED',
@@ -68,7 +67,6 @@ export default {
           type: 'LEADERBOARD_RECIEVED',
           payload: redisData.data.leaderboard || null
         });
-        localStorage.setItem('signupStatus', data.signupStatusData);
         history.push(location);
       } catch (err) {
         console.error;
