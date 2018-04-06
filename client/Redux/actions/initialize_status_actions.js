@@ -6,11 +6,10 @@ export default {
   updateInitializeState() {
     return async (dispatch, getState) => {
       let { initializeState } = getState();
-      console.log('initial state from action', intialState)
+      console.log('initial state from action', initializeState)
       try {
         dispatch({
-          type: 'USER_SIGNUP_STATUS_RECEIVED';
-          payload: true,
+          type: 'INITIALIZE_STATUS_TRUE',
         })
       } catch (err) {
         console.log('error on update initialize state action', err)
