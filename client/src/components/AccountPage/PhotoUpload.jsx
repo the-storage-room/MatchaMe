@@ -55,10 +55,13 @@ class PhotoUpload extends Component {
   }
 
   componentDidMount = () => {
+    this.props.userPhotos.length === 4 && this.props.updateSignupStatus();
     this.props.renderButton(this.props.userPhotos.length === 4)
+    
   }
 
   componentDidUpdate = () => {
+    this.props.userPhotos.length === 4 && this.props.updateSignupStatus();
     this.props.renderButton(this.props.userPhotos.length === 4)
   }
 
@@ -223,6 +226,7 @@ const mapDispatchToProps = (dispatch) => {
     uploadPhoto: actions.uploadPhoto,
     deletePhoto: actions.deletePhoto,
     updatePrimaryPhoto: actions.updatePrimaryPhoto,
+    updateSignupStatus: actions.updateSignupStatus,
   }, dispatch);
 }
 

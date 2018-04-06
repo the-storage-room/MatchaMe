@@ -113,7 +113,7 @@ export default {
       }
     }
   },
-  updateSignupStatus(history) {
+  updateSignupStatus() {
     return async (dispatch, getState) => {
       try {
         const { id } = getState().accountData;
@@ -123,7 +123,6 @@ export default {
         dispatch({
           type: 'SIGNUP_COMPLETE'
         });
-        history.push('/home');
       } catch (err) {
         console.error
       }
