@@ -20,7 +20,6 @@ class About extends React.Component {
 
   render () {
     return (
-      
       <div className={style.wrapper}>  
         <Header />
         
@@ -52,7 +51,7 @@ class About extends React.Component {
             />
           </div>
           <div className={style.firstInfo}>
-           <p> MatchaMe is powered by an algorithm that selects partners based on <span>your</span> settings. </p>
+           <p> <span>MatchaMe</span> is powered by an algorithm that selects partners based on <span>your</span> settings. </p>
            <p> Other users then vote to determine your final match.</p>
            <p> This means that each potential partner is guaranteed to be the perfect one for <span>you</span>. </p>
           </div>

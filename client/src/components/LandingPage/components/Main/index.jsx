@@ -44,7 +44,7 @@ class Main extends React.Component {
           <div className={style.gridItem2}>
             <img
               className={style.photo}
-              src="https://i.imgur.com/vvpGPEk.png"
+              src="https://i.imgur.com/6N2GqDr.png"
             />
           </div>
           <div className={style.gridItem3}>
@@ -53,7 +53,7 @@ class Main extends React.Component {
           <div className={style.gridItem4}>
             <img 
               className={style.photo}
-              src="https://i.imgur.com/tLHV3xN.png"
+              src="https://i.imgur.com/lGS15Cd.png"
             />
           </div>
           <div className={style.gridItem5}>
@@ -62,11 +62,11 @@ class Main extends React.Component {
           <div className={style.gridItem6}>
             <img 
               className={style.photo}
-              src="https://i.imgur.com/qF5LR3P.png"
+              src="https://i.imgur.com/ghR34mm.png"
             />
           </div>
           <div className={style.gridItem7}>
-            See your match
+            Connect with your match
           </div>
           <div className={style.gridItem8}>
             <img 
