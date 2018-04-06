@@ -49,9 +49,8 @@ const fetchData = async () => {
       let rank = await client.rpushAsync('leaderboard', JSON.stringify(user));
       client.set(`${user.id}`, rank);
     }
-    console.log('Job Finished!');
   } catch (err) {
-    console.log('Error with retrieving users', err);
+    console.error('Error with retrieving users', err);
   }
 };
 

@@ -59,7 +59,6 @@ export const updateMatchmakingQuery = async (
       matchId,
       increaseAmount
     ]);
-    console.log('Success with updateMatchmakingQuery');
     return rows[0];
   } catch (err) {
     console.log('Error with updateMatchmakingQuery: ', err);
@@ -69,7 +68,6 @@ export const updateMatchmakingQuery = async (
 export const inactivateMatchMakingQuery = async ({ matchId }) => {
   try {
     const { rows } = await db.query(inactivateMatchMakingHelper(), [matchId]);
-    console.log('Success with inactivateMatchMakingQuery');
     return rows[0];
   } catch (err) {
     console.log('Error with inactivateMatchMakingQuery: ', err);

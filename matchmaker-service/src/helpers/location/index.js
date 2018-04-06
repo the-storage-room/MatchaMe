@@ -96,10 +96,9 @@ export const findCoordinatesAndCalculateDistance = async (
       user2Lat
     );
     let finalDistance = Math.floor(distanceExact);
-    console.log('success on calculateDistance', finalDistance);
     return finalDistance;
   } catch (err) {
-    console.log('error on calculateDistance', err);
+    console.error('error on calculateDistance', err);
     if (err) throw err;
   }
 };

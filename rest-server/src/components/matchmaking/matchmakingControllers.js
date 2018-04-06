@@ -41,12 +41,10 @@ export const updateMatchmakingController = async (req, res) => {
         req.body,
         increaseAmount
       );
-      console.log('approved:', approvedcount, ' - rejected:', rejectedcount);
       if (approvedcount + rejectedcount > 15) {
         if (approvedcount - rejectedcount > 5) {
           await addStageTwoQuery(req.body);
           await inactivateMatchMakingQuery(req.body);
-          console.log('Added to StageTwo');
         }
         if (rejectedcount - approvedcount > 5) {
           await inactivateMatchMakingQuery(req.body);

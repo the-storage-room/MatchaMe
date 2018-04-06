@@ -87,7 +87,6 @@ export const updateUserRankingForTrueQuery = async matchId => {
     const queryString2 = updateAndDecreasePRForTrueAndNoHelper();
     const data2 = await db.query(queryString2, [matchId]);
     dataObj['decreasedPR'] = data2;
-    console.log('Success on updateUserRankingForTrueQuery');
     return dataObj;
   } catch (err) {
     console.log('Error on updateUserRankingForTrueQuery', err);
@@ -103,7 +102,6 @@ export const updateUserRankingForFalseQuery = async matchId => {
     const queryString2 = updateAndIncreasePRForFalseAndYesHelper();
     const data2 = await db.query(queryString2, [matchId]);
     dataObj['decreasedPR'] = data2;
-    console.log('Success on updateUserRankingsForFalseQuery', dataObj);
   } catch (err) {
     console.log('Error on updateUserRankingsForFalseQuery', err);
   }

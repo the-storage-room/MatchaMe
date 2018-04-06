@@ -20,7 +20,7 @@ export const fetchAllUsersQuery = async () => {
     }
     return rows;
   } catch (err) {
-    console.log('Error with fetchAllUsersQuery :', err);
+    console.error('Error with fetchAllUsersQuery :', err);
   }
 };
 
@@ -30,6 +30,6 @@ export const fetchUserAndTheirPreferenceTagsQuery = async (userId, type) => {
     const { rows } = await db.query(queryString, [userId, type]);
     return rows;
   } catch (err) {
-    console.log('Error on fetchUserAndTheirPreferenceTagsQuery', err);
+    console.error('Error on fetchUserAndTheirPreferenceTagsQuery', err);
   }
 };

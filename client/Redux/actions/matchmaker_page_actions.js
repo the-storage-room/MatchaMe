@@ -30,6 +30,7 @@ export default {
       newMatches.pop();
       voteObject.userId = id;
       voteObject.powerranking = totalPoints;
+      voteObject.activevoting = 1;
       const { follows } = getState();
       let newFollows = JSON.parse(JSON.stringify(follows));
       newFollows.allOthers.push(voteObject);
@@ -100,15 +101,11 @@ export default {
   voteOnCommentOnMatch(commentId, vote, index) {
     return async (dispatch, getState) => {
       try {
-        const { matches } = getState();
-        const newMatches = JSON.parse(JSON.stringify(matches));
-        newMatches[newMatches.length - 1].comments[index].votes += vote;
         await axios.put(
           `${REST_SERVER_URL}/api/comments/voteOnComment/${commentId}/${vote}`
         );
         dispatch({
           type: 'MATCHMAKER_COMMENT_VOTED',
-          payload: newMatches
         });
       } catch (err) {
         console.error;

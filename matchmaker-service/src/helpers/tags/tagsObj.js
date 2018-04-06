@@ -965,7 +965,7 @@ export const tagsObj = {
 
 // const findWeightOfTags = (tagNumber1, tagNumber2) => {
 //   console.log(tagNumber1)
-//   console.log(tagNumber2)
+//   (tagNumber2)
 //   return tagsObj[tagNumber1][tagNumber2]
 // }
 

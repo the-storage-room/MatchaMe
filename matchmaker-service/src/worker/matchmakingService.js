@@ -28,14 +28,13 @@ export const matchaMe = async () => {
           );
           if (score >= 36 && distanceApart <= 25) return possibleMatch;
         });
-        console.log(`${user.id}: ${filteredList.length}`);
         for(let matched of filteredList) {
           insertIntoMatchQuery(user.id, matched.id)
         }
       }
     }
   } catch (error) {
-    console.log('Error with matchMakeMe Function :', error);
+    console.error('Error with matchMakeMe Function :', error);
   }
 };
 

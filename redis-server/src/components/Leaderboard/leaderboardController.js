@@ -9,6 +9,6 @@ export const fetchLeaderboardAndRank = async (req, res) => {
     data.leaderboard = result.map(user => JSON.parse(user));
     res.send(data);
   } catch (err) {
-    console.log('Error with fetchTop25leadersController :', err);
+    console.error('Error with fetchTop25leadersController :', err);
   }
 };

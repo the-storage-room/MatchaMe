@@ -43,7 +43,6 @@ export default {
       try {
         const tagState = getState().tags;
         const { id } = getState().accountData;
-        console.log(tagState, id)
         tagState[type] = tags;
         const newTagState = JSON.parse(JSON.stringify(tagState));
         await axios
@@ -122,8 +121,7 @@ export default {
       await axios
           .put(`${REST_SERVER_URL}/api/users/updateUserInfo`, signupStatusData)
       dispatch({
-        type: 'SIGNUP_COMPLETE',
-        payload: 1
+        type: 'SIGNUP_COMPLETE'
         });
       history.push('/home');
       } catch (err) {

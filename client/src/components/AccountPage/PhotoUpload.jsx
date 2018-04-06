@@ -38,7 +38,7 @@ class PhotoUpload extends Component {
     formData.append('id', this.props.userId);
     formData.append('username', this.props.username);
     this.props.uploadPhoto(formData);
-    setTimeout(()=>this.setState({filename: "Choose a file"}), 500)
+    this.setState({filename: "Choose a file"});
   }
 
   handleDeletePhoto = () => {

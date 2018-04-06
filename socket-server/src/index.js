@@ -7,7 +7,6 @@ const server = http.createServer();
 const io = SocketIo(server);
 
 io.on('connection', (client) => {
-  console.log('client connected');
   const { matchId } = client.handshake.query;
   const room = matchId;
   

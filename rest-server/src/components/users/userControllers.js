@@ -46,7 +46,6 @@ export const updateUserRankingController = async (req, res) => {
     if (finalDecision === 'fail') {
       updateUserRankingForFalseQuery(matchId);
     }
-    console.log('Success on updateUserRankingController');
     res.status(200).send();
   } catch (err) {
     console.log('Error on updateUserRankingController', err);

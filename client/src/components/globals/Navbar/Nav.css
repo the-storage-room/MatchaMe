@@ -55,7 +55,7 @@
 }
 
 .logo:hover {
-  color: rgb(111, 255, 133);
+  color: rgb(144, 236, 156);
 }
 .wrapper {
   display: grid;
@@ -68,8 +68,8 @@
 
 .dropdown-container {
   position: absolute;
-  top: 61px;
-  right: 0;
+  top: 60px;
+  right: 0px;
 }
 
 .dropdown-menu {
@@ -83,17 +83,17 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 50px;
+  height: 49px;
   width: 100px;
   right: 0;
   z-index: 5;
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(188, 209, 197);
   font-size: 12px;
 }
 
 li:hover {
   cursor: default;
-  color: rgb(202, 255, 209);
+  background-color: rgb(164, 194, 177);
 }
 
 @media (min-width: 768px) {
@@ -126,11 +126,10 @@ li:hover {
   }
 
   .dropdown-container {
-    top: 81px;
+    top: 80px;
   }
 
   li:hover {
     cursor: default;
-    color: rgb(202, 255, 209);
   }
 }

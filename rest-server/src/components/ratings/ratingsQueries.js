@@ -82,7 +82,6 @@ export const updateTotalAttractivenessQuery = async ({
 }) => {
   try {
     const queryString = await updateTotalAttractivenessHelper();
-    console.log(attractiveness, ratee);
     const data = await db.query(queryString, [attractiveness, ratee]);
     return data;
   } catch (err) {
@@ -93,7 +92,6 @@ export const updateTotalAttractivenessQuery = async ({
 export const updateAverageAttractivenessQuery = async body => {
   try {
     const queryString = await updateAverageAttractivenessHelper(body);
-    console.log(queryString);
     const data = await db.query(queryString);
     return data;
   } catch (err) {

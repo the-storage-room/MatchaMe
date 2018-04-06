@@ -15,6 +15,8 @@ export const fetchUnstarredMatchesHelper = () => {
   ON match.id=outcomes.matchid
   WHERE starred=0
   AND outcomes.userid=$1
+  ORDER BY match.id
+  LIMIT 10;
   `;
 };
 

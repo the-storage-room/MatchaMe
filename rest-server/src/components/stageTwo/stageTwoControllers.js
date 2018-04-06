@@ -16,7 +16,6 @@ export const fetchStageTwoController = async (req, res) => {
 export const acceptStageTwoController = async (req, res) => {
   try {
     const data = await acceptStageTwoQuery(req.params);
-    console.log('Success with acceptStageTwoController');
     res.status(200).send(data);
   } catch (err) {
     console.log('Error with acceptStageTwoController', err);
@@ -26,7 +25,6 @@ export const acceptStageTwoController = async (req, res) => {
 export const rejectOrEndStageTwoController = async (req, res) => {
   try {
     const data = await rejectOrEndStageTwoQuery(req.params);
-    console.log('Success with rejectStageTwoController');
     res.status(200).send(data);
   } catch (err) {
     console.log('Error with rejectStageTwoController', err);

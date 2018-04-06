@@ -142,7 +142,7 @@ class BioInfo extends Component {
               onChange={this.handleInputChange}
               name="bio"
               value={this.state.bio}
-            >
+              >
             </textarea>
           </div>
         </div>
@@ -153,11 +153,11 @@ class BioInfo extends Component {
 
 const mapStateToProps = ({ bioData }) => {
   return {
-    location: bioData.location,
-    bio: bioData.bio,
-    gender: bioData.gender,
-    pref: bioData.preference,
-    age: bioData.age
+    location: bioData.location || "",
+    bio: bioData.bio || "",
+    gender: bioData.gender || "",
+    pref: bioData.preference || "",
+    age: bioData.age || "",
   };
 }
 export default connect(mapStateToProps)(BioInfo);
