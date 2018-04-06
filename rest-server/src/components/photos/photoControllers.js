@@ -10,7 +10,6 @@ export const fetchAllPhotosController = async (req, res) => {
   try {
     const { userId } = req.params;
     const data = await fetchAllPhotosQuery(userId);
-    console.log('Successfully used fetchAllPhotosController');
     res.status(200).send(data);
   } catch (err) {
     console.log('Error with fetchAllPhotosController');
@@ -21,7 +20,6 @@ export const fetchPrimaryPhotoController = async (req, res) => {
   try {
     const { userId } = req.params;
     const data = await fetchPrimaryPhotoQuery(userId);
-    console.log('Successfully used fetchPrimaryPhotoController');
     res.status(200).send(data);
   } catch (err) {
     console.log('Error with fetchPrimaryPhotoController');

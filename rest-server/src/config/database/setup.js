@@ -3,7 +3,6 @@ import db from './index';
 const dropStageTwoTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS StageTwo`);
-    console.log('successfully dropped StageTwo Table');
   } catch (err) {
     console.log('error dropping StageTwo Table ');
   }
@@ -12,7 +11,6 @@ const dropStageTwoTable = async () => {
 const dropCommentsTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Comments`);
-    console.log('successfully dropped Comments Table');
   } catch (err) {
     console.log('error dropping Comments Table ');
   }
@@ -21,7 +19,6 @@ const dropCommentsTable = async () => {
 const dropUsersTagsTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Users_Tags`);
-    console.log('successfully dropped Users_Tags Table');
   } catch (err) {
     console.log('error dropping Users_Tags Table ');
   }
@@ -30,7 +27,6 @@ const dropUsersTagsTable = async () => {
 const dropMatchTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Rating`);
-    console.log('successfully dropped Match Table');
   } catch (err) {
     console.log('error dropping Match Table ');
   }
@@ -39,7 +35,6 @@ const dropMatchTable = async () => {
 const dropOutcomesTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Outcomes`);
-    console.log('successfully dropped Outcomes Table');
   } catch (err) {
     console.log('error dropping Outcomes Table');
   }
@@ -48,7 +43,6 @@ const dropOutcomesTable = async () => {
 const dropRaterRateeTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Rating`);
-    console.log('successfully dropped RaterRatee Table');
   } catch (err) {
     console.log('error dropping RaterRatee Table ');
   }
@@ -57,7 +51,6 @@ const dropRaterRateeTable = async () => {
 const dropPhotoTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Photo`);
-    console.log('successfully dropped Photo Table');
   } catch (err) {
     console.log('error dropping Photo Table ');
   }
@@ -66,7 +59,6 @@ const dropPhotoTable = async () => {
 const dropTagsTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Tags`);
-    console.log('successfully dropped Tags Table');
   } catch (err) {
     console.log('error dropping Tags Table ');
   }
@@ -75,7 +67,6 @@ const dropTagsTable = async () => {
 const dropUsersTable = async () => {
   try {
     await db.query(`DROP TABLE IF EXISTS Users`);
-    console.log('successfully dropped Users Table');
   } catch (err) {
     console.log('error dropping Users Table ');
   }
@@ -84,7 +75,6 @@ const dropUsersTable = async () => {
 const createDatabase = async () => {
   try {
     await db.query(`CREATE DATABASE MatchMe`);
-    console.log('successfully Created Database');
   } catch (err) {
     console.log('Error creating database');
   }
@@ -93,7 +83,6 @@ const createDatabase = async () => {
 const dropDatabase = async () => {
   try {
     await db.query(`DROP DATABASE IF EXISTS MatchMe`);
-    console.log('successfully Dropping Database');
   } catch (err) {
     console.log('error dropping database ');
   }
@@ -111,7 +100,6 @@ const createTagsTable = async () => {
       )
       `
     );
-    console.log('Successfully Created Tags Table');
   } catch (err) {
     console.log('Error creating Tags Table', err);
   }
@@ -144,7 +132,6 @@ const createUsersTable = async () => {
       )
       `
     );
-    console.log('Successfully Created Users Table');
   } catch (err) {
     console.log('Error creating Users Table', err);
   }
@@ -168,7 +155,6 @@ const createUsersTagsTable = async () => {
       )
       `
     );
-    console.log('Successfully Created UsersTags Table');
   } catch (err) {
     console.log('Error creating Users_Tags Table', err);
   }
@@ -194,7 +180,6 @@ const createMatchTable = async () => {
       )
       `
     );
-    console.log('Successfully Created Match Table');
   } catch (err) {
     console.log('Error creating Match Table', err);
   }
@@ -219,7 +204,6 @@ const createOutcomesTable = async () => {
       )
       `
     );
-    console.log('Successfully Created Outcomes Table');
   } catch (err) {
     console.log('Error creating Outcomes Table', err);
   }
@@ -242,7 +226,6 @@ const createRaterRateeTable = async () => {
       )
       `
     );
-    console.log('Successfully Created RaterRatee Table');
   } catch (err) {
     console.log('Error creating RaterRatee Table', err);
   }
@@ -264,7 +247,6 @@ const createPhotoTable = async () => {
       )
       `
     );
-    console.log('Successfully Created Photo Table');
   } catch (err) {
     console.log('Error creating Photo Table', err);
   }
@@ -290,7 +272,6 @@ const createStageTwoTable = async () => {
       )
       `
     );
-    console.log('Successfully Created StageTwo Table');
   } catch (err) {
     console.log('Error creating StageTwo Table', err);
   }
@@ -316,7 +297,6 @@ const createCommentTable = async () => {
       )
       `
     );
-    console.log('Successfully Created Comment Table');
   } catch (err) {
     console.log('Error creating Comment Table', err);
   }

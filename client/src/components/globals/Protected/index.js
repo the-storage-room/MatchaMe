@@ -13,35 +13,33 @@ class Protected extends Component {
     }
   }
 
-  componentDidMount() {
-    try {
-      const { NODE_ENV } = process.env;
-      const { signupStatus, history, location, component, initializeState } = this.props;
-      if (NODE_ENV = 'PRODUCTION') {
-        !localStorage.token ?
-          history.push('/login')
-          :
-          const { exp } = jwtDecode(localStorage.token);
-        const path = location.pathname.slice(1, 11);
-        if (exp > Math.floor(Date.now() / 1000) && signupStatus === false && path !== 'onboarding') {
-          history.push('/onboarding/bio')
-        } else if (exp > Math.floor(Date.now() / 1000) && signupStatus === true) {
-          console.log('initialize', initializeState)
-          console.log('store', store.getState())
-          if (initializeState === false && component.name !== 'HomePage') {
-            console.log('initializeState', initializeState)
-            initializeState = true;
-            history.push('/initialize')
-          }
-        } else if (exp < Math.floor(Date.now() / 1000)) {
-          history.push('/login')
-        }
-      }
-    } catch (err) {
-      console.log('error in protected', err)
-
-    }
-  }
+  // componentDidMount() {
+  //   try {
+  //     const { NODE_ENV } = process.env;
+  //     const { signupStatus, history, location, component, initializeState } = this.props;
+  //     if (NODE_ENV = 'PRODUCTION') {
+  //       if (!localStorage.token) {
+  //         history.push('/login')
+  //       } else {
+  //         const { exp } = jwtDecode(localStorage.token);
+  //         const path = location.pathname.slice(1, 11);
+  //         if (exp > Math.floor(Date.now() / 1000) && signupStatus === false && path !== 'onboarding') {
+  //           history.push('/onboarding/bio')
+  //         } else if (exp > Math.floor(Date.now() / 1000) && signupStatus === true) {
+  //           console.log('initialize', initializeState)
+  //           console.log('store', store.getState())
+  //           if (initializeState === false && component.name !== 'HomePage') {
+  //             console.log('initializeState', initializeState)
+  //             initializeState = true;
+  //             history.push('/initialize')
+  //           }
+  //         } else if (exp < Math.floor(Date.now() / 1000)) {
+  //           history.push('/login')
+  //         }
+  //   } catch (err) {
+  //     console.log('error in protected', err)
+  //   }
+  // }
 
   render() {
     const { component: Component } = this.props;

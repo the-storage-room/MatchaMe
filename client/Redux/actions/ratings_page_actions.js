@@ -6,7 +6,6 @@ export default {
   fetchMoreUsersToRate() {
     return async (dispatch, getState) => {
       const { id } = await getState().accountData;
-      console.log(id);
       try {
         const data = await axios.get(
           `${REST_SERVER_URL}/api/ratings/fetchMultipleUsers/${id}`
@@ -35,7 +34,6 @@ export default {
           const data = await axios.get(
             `${REST_SERVER_URL}/api/ratings/fetchMultipleUsers/${id}`
           );
-          console.log(data.data);
           newRatings = data.data.concat(newRatings);
         }
         dispatch({

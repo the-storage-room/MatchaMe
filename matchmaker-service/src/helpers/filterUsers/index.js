@@ -58,7 +58,7 @@ export const filterUsersQuery = async userObj => {
     }
     return rows;
   } catch (error) {
-    console.log('Error with filterUsersQuery: ', error);
+    console.error('Error with filterUsersQuery: ', error);
   }
 };
 
@@ -66,8 +66,7 @@ export const insertIntoMatchQuery = async(user1_id, user2_id) => {
   try {
     let queryString = insertIntoMatchHelper(user1_id, user2_id);
     await db.query(queryString)
-    console.log('success on insertIntoMatchQuery')
   } catch (err) {
-    console.log('err on insertIntoMatchQuery', err)
+    console.error('err on insertIntoMatchQuery', err)
   }
 }

@@ -30,6 +30,7 @@ export default {
       newMatches.pop();
       voteObject.userId = id;
       voteObject.powerranking = totalPoints;
+      voteObject.activevoting = 1;
       const { follows } = getState();
       let newFollows = JSON.parse(JSON.stringify(follows));
       newFollows.allOthers.push(voteObject);
@@ -50,12 +51,8 @@ export default {
           payload: newMatches
         });
         dispatch({
-<<<<<<< HEAD
           type: 'FOLLOW_UNSTARRED_SUCCESS',
           payload: newFollows
-=======
-          type: 'MATCHMAKER_COMMENTS_CLEARED',
->>>>>>> [bug] comments refresh on matchmaker rate
         });
       } catch (err) {
         console.error;

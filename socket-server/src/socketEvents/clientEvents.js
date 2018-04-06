@@ -6,7 +6,6 @@ import {
 } from './serverEvents';
 
 const clientReady = async ({ client, room }) => {
-  console.log('client ready heard');
   try {
     const data = await db.fetchChats(room)
     if (data.length) {
@@ -20,7 +19,6 @@ const clientReady = async ({ client, room }) => {
 };
 
 const clientDisconnect = ({ io, room }) => {
-  console.log('client disconnected');
   serverLeave({ io, room });
 };  
 

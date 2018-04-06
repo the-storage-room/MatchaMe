@@ -15,7 +15,7 @@ import Leaderboard from './components/LeaderboardPage/index.jsx';
 import Account from './components/AccountPage/index.jsx';
 import Initialize from './components/InitializePage/index.jsx';
 import Home from './components/HomePage/index.jsx';
-import Protected from '../src/components/globals/Protected/index';
+import Protected from './components/globals/Protected';
 import actions from '../Redux/actions/initialize_actions';
 
 class App extends Component {

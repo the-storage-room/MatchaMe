@@ -30,7 +30,6 @@ class MatchMaker extends Component {
   };
 
   submitComment = comment => {
-    console.log('in Submit Comment');
     let { matchid } = this.props;
     this.props.addCommentOnMatch(matchid, comment);
   };

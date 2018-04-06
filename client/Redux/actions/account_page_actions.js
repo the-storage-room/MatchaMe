@@ -43,7 +43,6 @@ export default {
       try {
         const tagState = getState().tags;
         const { id } = getState().accountData;
-        console.log(tagState, id)
         tagState[type] = tags;
         const newTagState = JSON.parse(JSON.stringify(tagState));
         await axios

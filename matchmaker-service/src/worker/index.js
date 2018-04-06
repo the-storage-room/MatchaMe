@@ -10,7 +10,7 @@ export const job = new CronJob({
       await matchaMe();
       console.log('matchmaking worker finished!');
     } catch (err) {
-      console.log('error on matchmaker service cron', err);
+      console.error('error on matchmaker service cron', err);
     }
     start: true;
     timeZone: 'America/Los Angeles';

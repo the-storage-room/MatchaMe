@@ -22,7 +22,7 @@ class Navbar extends React.Component {
       localStorage.clear();
       await this.props.history.push('/')
     } catch (err) {
-      console.log('error on logout', err)
+      console.error('error on logout', err)
     }
   }
 

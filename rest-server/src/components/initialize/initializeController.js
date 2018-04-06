@@ -69,8 +69,6 @@ export const fetchInitializeController = async (req, res) => {
     data.ratingData = await fetchMultipleUsersQuery(req.params.userId);
 
     data.matchData = await fetchPendingMatchmakingQuery(req.params);
-
-    console.log('Success with fetchInitializeController: ');
     res.send(data);
   } catch (err) {
     console.log('Error with fetchInitializeController: ', err);

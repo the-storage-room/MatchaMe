@@ -11,7 +11,6 @@ export const fetchAllTagsQuery = async () => {
   try {
     const queryString = fetchAllTagsHelper();
     const { rows } = await db.query(queryString);
-    console.log('Success on fetchAllTagsQuery');
     return rows;
   } catch (err) {
     console.log('Error on fetchAllTagsQuery', err);
@@ -22,7 +21,6 @@ export const fetchUserAndTheirPreferenceTagsQuery = async (userId, type) => {
   try {
     const queryString = fetchUserAndTheirPreferenceTagsHelper();
     const { rows } = await db.query(queryString, [userId, type]);
-    console.log('Success on fetchUserAndTheirPreferenceTagsQuery');
     return rows;
   } catch (err) {
     console.log('Error on fetchUserAndTheirPreferenceTagsQuery', err);
@@ -31,10 +29,8 @@ export const fetchUserAndTheirPreferenceTagsQuery = async (userId, type) => {
 
 export const putUserAndPreferencesTagsQuery = async (userId, tags, type) => {
   try {
-    console.log(userId, tags, type);
     const deleteQueryString = deleteUserTagsHelper();
     await db.query(deleteQueryString, [userId, type]);
-    console.log('Success on deleteUserTags');
     const postQueryString = postUserAndPreferenceTagsHelper();
     await tags.forEach(tag => {
       db.query(postQueryString, [userId, tag, type]);
