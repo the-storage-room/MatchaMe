@@ -121,8 +121,7 @@ export default {
       await axios
           .put(`${REST_SERVER_URL}/api/users/updateUserInfo`, signupStatusData)
       dispatch({
-        type: 'SIGNUP_COMPLETE',
-        payload: 1
+        type: 'SIGNUP_COMPLETE'
         });
       history.push('/home');
       } catch (err) {
