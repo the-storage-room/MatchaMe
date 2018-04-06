@@ -15,7 +15,7 @@ export default {
         dispatch({
           type: 'USER_ACCOUNT_DATA_UPDATED',
           payload: accountData
-          });
+        });
       } catch (err) {
         console.error
       }
@@ -32,7 +32,7 @@ export default {
         dispatch({
           type: 'USER_BIO_DATA_UPDATED',
           payload: bioData
-          });
+        });
       } catch (err) {
         console.error
       }
@@ -50,7 +50,7 @@ export default {
         dispatch({
           type: 'USER_TAGS_UPDATED',
           payload: newTagState
-          });
+        });
       } catch (err) {
         console.error
       }
@@ -68,7 +68,7 @@ export default {
           dispatch({
             type: 'USER_PHOTO_ADDED',
             payload: photoData.data
-            });
+          });
         }, 2000)
       } catch (err) {
         console.error
@@ -87,7 +87,7 @@ export default {
         dispatch({
           type: 'USER_PHOTO_DELETED',
           payload: newUserPhotos,
-          });
+        });
       } catch (err) {
         console.error
       }
@@ -103,11 +103,11 @@ export default {
       newUserPhotos.unshift(newPrimary)
       try {
         await axios.
-        put(`${REST_SERVER_URL}/api/photos/updatePrimaryPhoto/${id}/${photoId}`)
+          put(`${REST_SERVER_URL}/api/photos/updatePrimaryPhoto/${id}/${photoId}`)
         dispatch({
           type: 'USER_PRIMARY_PHOTO_UPDATED',
           payload: newUserPhotos
-          });
+        });
       } catch (err) {
         console.error
       }
@@ -116,14 +116,14 @@ export default {
   updateSignupStatus(history) {
     return async (dispatch, getState) => {
       try {
-      const { id } = getState().accountData;
-      const signupStatusData = { signupcomplete: 1, id: id};
-      await axios
+        const { id } = getState().accountData;
+        const signupStatusData = { signupcomplete: 1, id: id };
+        await axios
           .put(`${REST_SERVER_URL}/api/users/updateUserInfo`, signupStatusData)
-      dispatch({
-        type: 'SIGNUP_COMPLETE'
+        dispatch({
+          type: 'SIGNUP_COMPLETE'
         });
-      history.push('/home');
+        history.push('/home');
       } catch (err) {
         console.error
       }
