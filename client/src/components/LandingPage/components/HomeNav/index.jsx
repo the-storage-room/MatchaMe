@@ -20,14 +20,14 @@ class HomeNav extends React.Component {
           <li onClick={() => this.props.history.push('/about')}>
             About
           </li>
-          <li>
+          <li onClick={() => this.props.history.push('/experience')}>
             Experience
+          </li>
+          <li onClick={() => this.props.history.push('/match')}>
+            Match
           </li>
           <li onClick={() => this.props.history.push('/bio')}>
             Team
-          </li>
-          <li>
-            Match
           </li>
         </ul>
       </div>

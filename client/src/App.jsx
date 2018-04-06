@@ -20,13 +20,16 @@ import Protected from './components/globals/Protected';
 =======
 import Protected from '../src/components/globals/Protected/index';
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> moar landing page
-import actions from '../Redux/actions/initialize_actions';
 =======
+>>>>>>> landing page experience
+import actions from '../Redux/actions/initialize_actions';
 import Bio from '../src/components/LandingPage/components/Bio/index.jsx';
 import About from '../src/components/LandingPage/components/About/index.jsx';
 import Main from '../src/components/LandingPage/components/Main/index.jsx';
->>>>>>> moar landing page
+import Experience from '../src/components/LandingPage/components/Experience/index.jsx';
+import Match from '../src/components/LandingPage/components/Match/index.jsx';
 
 class App extends Component {
   constructor() {
@@ -75,6 +78,8 @@ class App extends Component {
           <Route exact path="/" component={Main} />
           <Route exact path="/bio" component={Bio} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/experience" component={Experience} />
+          <Route exact path="/match" component={Match} />
         </Switch>
       </div>
     );

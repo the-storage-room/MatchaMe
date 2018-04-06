@@ -26,7 +26,6 @@ export default {
       let newRatings = JSON.parse(JSON.stringify(ratings));
       newRatings.pop();
       try {
-<<<<<<< HEAD
         await axios.put(
           `${REST_SERVER_URL}/api/ratings/updateUserRating`,
           ratingObject
@@ -38,16 +37,6 @@ export default {
           newRatings = data.data.concat(newRatings);
         }
         dispatch({
-=======
-        await axios
-          .put(`${REST_SERVER_URL}/api/ratings/updateUserRating`, ratingObject);
-          if (newRatings.length === 0) {
-            const data = await axios.get(`${REST_SERVER_URL}/api/ratings/fetchMultipleUsers/${id}`);
-            console.log(data.data)
-            newRatings = data.data.concat(newRatings)
-          }
-      dispatch({
->>>>>>> landing page and ratings
           type: 'RATING_SUBMITTED',
           payload: newRatings
         });

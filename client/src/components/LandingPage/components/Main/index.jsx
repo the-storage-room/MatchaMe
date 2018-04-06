@@ -18,6 +18,12 @@ class Main extends React.Component {
     return (
       <div className={style.wrapper}>
         <Header props={this.props} />
+        <div className={style.mainCaption}>
+          <h4>Find your perfect match.</h4>
+        </div>
+        <br />
+        <br />
+        
         <div className={style.mainPhotoContainer}>
           <img 
             className={style.mainPhoto}
@@ -26,9 +32,10 @@ class Main extends React.Component {
           
         </div>
         
-        <div className={style.mainCaption}>
-          <h4>Find your perfect match.</h4>
-        </div>
+        
+        <br />
+        <br />
+        <br />
         <Footer />
       </div>
     );

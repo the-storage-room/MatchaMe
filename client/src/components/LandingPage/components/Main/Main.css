@@ -19,7 +19,8 @@
   /* color: white; */
   font-weight: lighter;
   position: relative;
-  top: 45px;
+  top: 10px;
+  
   transform: translateY(-50%); 
   
   /* transform: translate(-50%, -50%); */
