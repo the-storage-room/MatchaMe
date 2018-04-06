@@ -48,6 +48,21 @@ class BioInfo extends Component {
       if ((length < this.validator[key])) {
         renderFalse = true;
       }
+      if (['day','month','year','location'].includes(key) && Number(this.state[key]).toString() === 'NaN' ) {
+        renderFalse = true;
+      }
+      if (key === 'month' && Number(this.state[key]) > 12) {
+        renderFalse = true;
+      }
+      if (key === 'day' && Number(this.state[key]) > 31) {
+        renderFalse = true;
+      }
+      if (key === 'year' && Number(this.state[key]) > 1999) {
+        renderFalse = true;
+      }
+      if (key === 'year' && Number(this.state[key]) < 1900) {
+        renderFalse = true;
+      }
     }
     renderFalse ? this.props.renderButton(false) : this.props.renderButton(true)
   }
@@ -60,13 +75,13 @@ class BioInfo extends Component {
       let ageString = this.props.age.toString();
 
       let year = ageString.slice(0, 4);
-      let month = ageString.slice(0, 2);
-      let day = ageString.slice(0, 2);
+      let month = ageString.slice(4, 6);
+      let day = ageString.slice(6, 8);
 
       ageState = {
-        year: Number(year),
-        month: Number(month),
-        day: Number(day),
+        year: year,
+        month: month,
+        day: day,
       }
 
       this.setState(ageState)
