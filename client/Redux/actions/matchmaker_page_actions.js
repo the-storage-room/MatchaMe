@@ -54,6 +54,9 @@ export default {
           type: 'FOLLOW_UNSTARRED_SUCCESS',
           payload: newFollows
         });
+        dispatch({
+          type: 'MATCHMAKER_COMMENTS_CLEARED',
+        });
       } catch (err) {
         console.error;
       }
