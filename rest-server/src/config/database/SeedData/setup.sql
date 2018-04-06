@@ -283,7 +283,7 @@ insert into photo (url, userid, primaryphoto) values ('https://i.pinimg.com/736x
 insert into photo (url, userid, primaryphoto) values ('https://i0.wp.com/www.usmagazine.com/wp-content/uploads/2018/01/chris-evans-hot.jpg?crop=0px%2C19px%2C1378px%2C724px&resize=1200%2C630&ssl=1', 2, 0);
 
 insert into photo (url, userid, primaryphoto) values ('http://www.themalaymailonline.com/uploads/articles/2017/2017-07/Robert_Downey_SPIDER-MAN_030717.JPG', 3, 1);
-insert into photo (url, userid, primaryphoto) values ('http://highlighthollywood.com/wp-content/uploads/2016/11/robert-downey-jr-vote-300x203.jpghttps://randomuser.me/api/portraits/men/59.jpg', 3, 0);
+insert into photo (url, userid, primaryphoto) values ('http://www.californiamuseum.org/sites/main/files/imagecache/lightbox/main-images/robertdowneyjr_cahalloffameinductee.png', 3, 0);
 insert into photo (url, userid, primaryphoto) values ('http://highlighthollywood.com/wp-content/uploads/2016/11/robert-downey-jr-vote-300x203.jpg', 3, 0);
 insert into photo (url, userid, primaryphoto) values ('https://www.thewrap.com/wp-content/uploads/2015/04/Robert-Downey-Jr.-Tonight-Show.jpg', 3, 0);
 
