@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 import turnBirthdayIntoAge from '../../src/utils/turnBirthdayIntoAge';
 
@@ -7,10 +8,9 @@ const { REDIS_SERVER_URL } = process.env;
 
 export default {
   initialize(history, location = '/home') {
-    console.log('i should be changing', location)
     return async (dispatch, getState) => {
       try {
-        const { id } = await window.localStorage;
+        const { id } = await jwtDecode(localStorage.token);
         const { data } = await axios.get(
           `${REST_SERVER_URL}/api/initialize/${id}`
         );

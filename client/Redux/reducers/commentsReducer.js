@@ -6,7 +6,7 @@ export default (state = [], action) => {
     case 'MATCHMAKER_COMMENT_ADDED':
       return (state = action.payload);
     case 'MATCHMAKER_COMMENT_VOTED':
-      return (state = action.payload);
+      return state;
     case 'MATCHMAKER_COMMENTS_CLEARED':
       return (state = []);
     default:

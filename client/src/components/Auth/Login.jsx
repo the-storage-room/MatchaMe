@@ -26,8 +26,6 @@ class Login extends Component {
     };
     try {
       const data = await axios.post(`${REST_SERVER_URL}/api/auth/login`, body);
-      localStorage.setItem('id', data.data.id);
-      localStorage.setItem('email', data.data.email);
       localStorage.setItem('token', data.data.token);
       if (data) {
         this.props.history.push('/initialize');
