@@ -309,7 +309,7 @@ insert into photo (url, userid, primaryphoto) values ('https://hips.hearstapps.c
 
 insert into photo (url, userid, primaryphoto) values ('https://nerdist.com/wp-content/uploads/2017/12/Ryan-Reynolds.jpg', 8, 1);
 insert into photo (url, userid, primaryphoto) values ('https://www.usmagazine.com/wp-content/uploads/ryan-reynolds-e7a1bb56-c014-4e0b-94ec-8609b42574c1.jpg', 8, 0);
-insert into photo (url, userid, primaryphoto) values ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX1KWG3imyyIJn-HJfq8VB73cXg4vTGCGAojhUXVbRfSmJ_IC0', 8, 0);
+insert into photo (url, userid, primaryphoto) values ('https://cnet1.cbsistatic.com/img/4W6s5J--KI3IzHtF01-rSfdjp20=/1600x900/2015/12/28/9738bcd3-a6bd-4832-b516-eeec7bc10ccc/deadpool1-gallery-image.jpg', 8, 0);
 insert into photo (url, userid, primaryphoto) values ('https://parade.com/wp-content/uploads/2017/08/Ryan-Reynolds-Hitmans-Bodyguard-FTR.jpg', 8, 0);
 
 insert into photo (url, userid, primaryphoto) values ('https://smhttp-ssl-33667.nexcesscdn.net/manual/wp-content/uploads/2017/05/mens-idris-elba-blue-coat-grey-t-shirt-1170x600.jpg', 9, 1);
