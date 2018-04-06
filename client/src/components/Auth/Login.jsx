@@ -17,7 +17,7 @@ class Login extends Component {
     };
   }
 
-  submitAuthData = async (e) => {
+  submitAuthData = async e => {
     const { username, password } = this.state;
     e.preventDefault();
     const body = {
@@ -35,14 +35,14 @@ class Login extends Component {
         this.props.history.push('/login');
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     const { value, name } = e.target;
     this.setState({ [name]: value });
-  }
+  };
 
   render() {
     return (
@@ -54,18 +54,21 @@ class Login extends Component {
             placeholder="Enter username"
             value={this.state.username}
             onChange={this.handleInputChange}
-          /> <br />
-          <Input className={style.passwordForm}
+          />{' '}
+          <br />
+          <Input
+            className={style.passwordForm}
             name="password"
             type="password"
             placeholder="Enter password"
             value={this.state.password}
             onChange={this.handleInputChange}
-          /> <br />
+          />{' '}
+          <br />
           <Button
             className={style.signupButton}
             text="Login"
-            onClick={(e) => this.submitAuthData(e)}
+            onClick={e => this.submitAuthData(e)}
           />
         </form>
       </div>
