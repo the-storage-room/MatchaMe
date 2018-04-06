@@ -35,7 +35,7 @@ class Dashboard extends Component {
             : 5000 < totalPoints <= 10000
               ? (percentage = totalPoints / 10000 * 100)
               : (percentage = 100);
-    console.log('this is total points', totalPoints);
+
     totalPoints < 0
       ? (pointsLeft = 0 - totalPoints)
       : 0 <= totalPoints <= 1000
@@ -81,7 +81,7 @@ class Dashboard extends Component {
             : 5000 < totalPoints <= 10000
               ? (percentage = totalPoints / 10000 * 100)
               : (percentage = 100);
-    console.log('this is total points', totalPoints);
+
     totalPoints < 0
       ? (pointsLeft = 0 - totalPoints)
       : 0 <= totalPoints <= 1000
