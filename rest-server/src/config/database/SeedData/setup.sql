@@ -280,10 +280,10 @@ insert into photo (url, userid, primaryphoto) values ('https://encrypted-tbn0.gs
 insert into photo (url, userid, primaryphoto) values ('https://i2.wp.com/guycounseling.com/wp-content/uploads/2018/02/chris-evans.jpg?resize=678%2C448&ssl=1', 2, 1);
 insert into photo (url, userid, primaryphoto) values ('http://img.wennermedia.com/social/rs-239344-chris-evans.jpg', 2, 0);
 insert into photo (url, userid, primaryphoto) values ('https://i.pinimg.com/736x/cf/25/b6/cf25b63555e2c0e992db519b54234301--chris-evans-chris-delia.jpg', 2, 0);
-insert into photo (url, userid, primaryphoto) values ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXo5czL61TQcKH0mmj3cpTrfMZKFSMHv0AF7sM03sIGe7eb7eK', 2, 0);
+insert into photo (url, userid, primaryphoto) values ('https://i0.wp.com/www.usmagazine.com/wp-content/uploads/2018/01/chris-evans-hot.jpg?crop=0px%2C19px%2C1378px%2C724px&resize=1200%2C630&ssl=1', 2, 0);
 
 insert into photo (url, userid, primaryphoto) values ('http://www.themalaymailonline.com/uploads/articles/2017/2017-07/Robert_Downey_SPIDER-MAN_030717.JPG', 3, 1);
-insert into photo (url, userid, primaryphoto) values ('http://highlighthollywood.com/wp-content/uploads/2016/11/robert-downey-jr-vote-300x203.jpghttps://randomuser.me/api/portraits/men/59.jpg', 3, 0);
+insert into photo (url, userid, primaryphoto) values ('http://www.californiamuseum.org/sites/main/files/imagecache/lightbox/main-images/robertdowneyjr_cahalloffameinductee.png', 3, 0);
 insert into photo (url, userid, primaryphoto) values ('http://highlighthollywood.com/wp-content/uploads/2016/11/robert-downey-jr-vote-300x203.jpg', 3, 0);
 insert into photo (url, userid, primaryphoto) values ('https://www.thewrap.com/wp-content/uploads/2015/04/Robert-Downey-Jr.-Tonight-Show.jpg', 3, 0);
 
@@ -309,7 +309,7 @@ insert into photo (url, userid, primaryphoto) values ('https://hips.hearstapps.c
 
 insert into photo (url, userid, primaryphoto) values ('https://nerdist.com/wp-content/uploads/2017/12/Ryan-Reynolds.jpg', 8, 1);
 insert into photo (url, userid, primaryphoto) values ('https://www.usmagazine.com/wp-content/uploads/ryan-reynolds-e7a1bb56-c014-4e0b-94ec-8609b42574c1.jpg', 8, 0);
-insert into photo (url, userid, primaryphoto) values ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX1KWG3imyyIJn-HJfq8VB73cXg4vTGCGAojhUXVbRfSmJ_IC0', 8, 0);
+insert into photo (url, userid, primaryphoto) values ('https://cnet1.cbsistatic.com/img/4W6s5J--KI3IzHtF01-rSfdjp20=/1600x900/2015/12/28/9738bcd3-a6bd-4832-b516-eeec7bc10ccc/deadpool1-gallery-image.jpg', 8, 0);
 insert into photo (url, userid, primaryphoto) values ('https://parade.com/wp-content/uploads/2017/08/Ryan-Reynolds-Hitmans-Bodyguard-FTR.jpg', 8, 0);
 
 insert into photo (url, userid, primaryphoto) values ('https://smhttp-ssl-33667.nexcesscdn.net/manual/wp-content/uploads/2017/05/mens-idris-elba-blue-coat-grey-t-shirt-1170x600.jpg', 9, 1);
