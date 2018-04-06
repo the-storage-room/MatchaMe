@@ -6,8 +6,9 @@ export default {
   updateInitializeState() {
     return async (dispatch, getState) => {
       let { initializeState } = getState();
-      console.log('initial state from action', initializeState)
+      console.log('initialize state from actions', initializeState)
       try {
+        console.log('hello ')
         dispatch({
           type: 'INITIALIZE_STATUS_TRUE',
         })
