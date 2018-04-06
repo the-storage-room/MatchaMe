@@ -57,7 +57,7 @@ insert into outcomes (userid, matchid, decision) values (17, 4, 'approved');
 insert into outcomes (userid, matchid, decision) values (19, 4, 'approved');
 insert into outcomes (userid, matchid, decision) values (20, 4, 'approved');
 
-insert into stagetwo (matchid, issuccessful, active, firstaccept, secondaccept, firstrejection) values (2, 1, 1, 8, 16, null);
+insert into stagetwo (matchid, issuccessful, active, firstaccept, secondaccept, firstrejection) values (2, 0, 1, 16, null, null);
 
 insert into tags (tag) values ('Social Butterfly');
 insert into tags (tag) values ('Ambitious');
