@@ -31,20 +31,15 @@ class Bio extends React.Component {
             <img 
               className={style.photo}
               src="https://i.imgur.com/NE1lYL2.jpg"
-              height="200px"
-              width="300px"
             />
             <div className={style.overlay}>
               <div className={style.text}> hi i'm alice </div>
             </div>
-            
           </div>
           <div className={style.jackPhoto}>
             <img 
               className={style.photo}
               src="https://i.imgur.com/hfTiO6g.jpg"
-              height="200px"
-              width="300px"
             />
             <div className={style.overlay}>
               <div className={style.text}> hi i'm jack </div>
@@ -54,8 +49,6 @@ class Bio extends React.Component {
             <img 
               className={style.photo}
               src="https://i.imgur.com/fwh9Mth.jpg"
-              height="200px"
-              width="300px"
             />
             <div className={style.overlay}>
               <div className={style.text}> hi i'm justin </div>
@@ -65,14 +58,11 @@ class Bio extends React.Component {
             <img 
               className={style.photo}
               src="https://i.imgur.com/idx90oT.jpg"
-              height="200px"
-              width="300px"
             />
             <div className={style.overlay}>
               <div className={style.text}> hi i'm jon </div>
             </div>
           </div>
-          
         </div>
         <Footer />
       </div>

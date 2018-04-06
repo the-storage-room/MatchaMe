@@ -17,14 +17,7 @@ class Header extends React.Component {
       <div>
         <header>
           <div className={style.headerContainer}>
-            <div className={style.joinButtonContainer}>
-              <button 
-                className={style.joinButton}
-                onClick={() => this.props.history.push('/signup')}
-              >
-                join
-              </button>
-            </div>
+           
             <div 
               className={style.logo}
               onClick={() => this.props.history.push('/')}

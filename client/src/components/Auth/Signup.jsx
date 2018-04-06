@@ -78,11 +78,13 @@ class Signup extends Component {
               placeholder="Enter password"
               onChange={this.handleInputChange}
             /> <br />
+            <div className={style.submit}>
             <Button
               className={style.signupButton}
               text="Sign Up"
               onClick={(e) => this.submitAuthData(e)}
             />
+            </div>
           </form>
         </div>
       </div>

@@ -18,15 +18,13 @@
   overflow: hidden;
 }
 
-.signupForm {
-  
-  align-content: center;
- 
-}
-
 .passwordForm {
   -webkit-text-security: disc;
   -moz-text-security: disc;
+}
+
+.signupForm {
+  vertical-align: center;
 }
 
 input[name=username],
@@ -51,3 +49,7 @@ input[name=lastname]:focus {
   background-color: #ddd;
   outline: none;
 }
+/* 
+.signupButton {
+  align-content: center;
+} */

@@ -12,6 +12,8 @@
   font: Helvetica;
   font-weight: lighter;
   font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: -10px;
   text-align: center;
 }
 

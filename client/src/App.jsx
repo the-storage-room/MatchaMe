@@ -15,15 +15,7 @@ import Leaderboard from './components/LeaderboardPage/index.jsx';
 import Account from './components/AccountPage/index.jsx';
 import Initialize from './components/InitializePage/index.jsx';
 import Home from './components/HomePage/index.jsx';
-<<<<<<< HEAD
 import Protected from './components/globals/Protected';
-=======
-import Protected from '../src/components/globals/Protected/index';
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> moar landing page
-=======
->>>>>>> landing page experience
 import actions from '../Redux/actions/initialize_actions';
 import Bio from '../src/components/LandingPage/components/Bio/index.jsx';
 import About from '../src/components/LandingPage/components/About/index.jsx';
