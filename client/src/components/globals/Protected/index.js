@@ -11,16 +11,15 @@ class Protected extends Component {
     super();
   }
 
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.signupStatus === true) {
+      this.props.history.push(this.props.location.pathname);
+    }
+  };
+
   componentDidMount = async () => {
     try {
-      const {
-        signupStatus,
-        history,
-        location,
-        initializeState,
-        initialize
-      } = this.props;
-
+      const { history, location, initializeState, initialize } = this.props;
       const path = location.pathname.slice(1, 11);
       const roundedExp = Math.floor(Date.now() / 1000);
 

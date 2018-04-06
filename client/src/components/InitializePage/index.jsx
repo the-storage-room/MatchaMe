@@ -6,18 +6,23 @@ import style from './InitializePage.css';
 import actions from '../../../Redux/actions/initialize_actions';
 
 class Initialize extends Component {
-  componentDidMount = () => {
-    this.props.initialize(this.props.history);
+  componentDidMount = async () => {
+    if (localStorage.token) {
+      this.props.initialize(this.props.history);
+    } else {
+      this.props.history.push('/login');
+    }
   };
 
   render() {
-    console.log(this.props)
-    return (<div className={style.loadingContainer}>
-      <div className={style.message}>
-        Loading...
+    return (
+      <div className={style.loadingContainer}>
+        <div className={style.message}>Loading...</div>
+        <img
+          className={style.loadingImage}
+          src="https://media3.giphy.com/media/XcJKsYtKPk0Vy/giphy.gif"
+        />
       </div>
-      <img className={style.loadingImage} src='https://media3.giphy.com/media/XcJKsYtKPk0Vy/giphy.gif' />
-    </div>
     );
   }
 }
@@ -25,7 +30,7 @@ class Initialize extends Component {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      initialize: actions.initialize,
+      initialize: actions.initialize
     },
     dispatch
   );

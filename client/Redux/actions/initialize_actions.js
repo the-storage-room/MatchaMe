@@ -68,6 +68,7 @@ export default {
           type: 'LEADERBOARD_RECIEVED',
           payload: redisData.data.leaderboard || null
         });
+        localStorage.setItem('signupStatus', data.signupStatusData);
         history.push(location);
       } catch (err) {
         console.error;
