@@ -19,12 +19,14 @@ class MatchMaker extends Component {
     };
   }
 
-  decideOnMatch = (vote) => {
-    let { matchid } = this.props;
+  decideOnMatch = vote => {
+    let { matchid, user1, user2 } = this.props;
     const voteObject = {
       matchId: matchid,
       starred: 0,
-      decision: vote
+      decision: vote,
+      user1_id: user1,
+      user2_id: user2
     };
     this.props.postMatchmakerDecision(voteObject);
   };
@@ -56,14 +58,15 @@ class MatchMaker extends Component {
     } else {
       let newPhoto = this.state.user2target;
       newPhoto += 1;
-      if (newPhoto === this.props.user2.photos.length) { newPhoto = 0 }
+      if (newPhoto === this.props.user2.photos.length) {
+        newPhoto = 0;
+      }
       this.setState({
         user2target: newPhoto
       });
     }
   };
 
-  
   render() {
     let user1Age =
       this.props.user1 && turnBirthdayIntoAge(this.props.user1.age);
@@ -131,14 +134,14 @@ class MatchMaker extends Component {
               } are a...`}
               <div className={style.decidebuttons}>
                 <Button
-                    text={`Good Match`}
-                    onClick={()=>this.decideOnMatch('approved')}
-                    />
+                  text={`Good Match`}
+                  onClick={() => this.decideOnMatch('approved')}
+                />
                 <Button
-                    text={`Bad Match`}
-                    onClick={()=>this.decideOnMatch('rejected')}
-                    className={'red'}
-                    />
+                  text={`Bad Match`}
+                  onClick={() => this.decideOnMatch('rejected')}
+                  className={'red'}
+                />
               </div>
             </div>
             <div className={style.chatroom}>
@@ -188,8 +191,10 @@ const mapStateToProps = ({ matches, comments }) => {
     matchid: matches[matches.length - 1] && matches[matches.length - 1].id,
     user1: matches[matches.length - 1] && matches[matches.length - 1].user1,
     user2: matches[matches.length - 1] && matches[matches.length - 1].user2,
-    comments: comments.length && comments || matches[matches.length - 1] && matches[matches.length - 1].comments,
-  }
-}
+    comments:
+      (comments.length && comments) ||
+      (matches[matches.length - 1] && matches[matches.length - 1].comments)
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatchMaker);
