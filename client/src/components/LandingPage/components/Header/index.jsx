@@ -23,7 +23,6 @@ class Header extends React.Component {
               onClick={() => this.props.history.push('/')}
             >
               MatchaMe
-             
             </div> 
           </div>
           

@@ -17,6 +17,9 @@ class Match extends React.Component {
     return (
       <div>
         <Header />
+        <div>
+          This page is coming soon!
+        </div>
       </div> 
     );
   }

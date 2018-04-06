@@ -17,28 +17,35 @@ class Experience extends React.Component {
     return (
       <div>
         <Header />
-        <div className={style.grid}>
-          <div className={style.gridItem1}>
-            Rate people based on how they are
-          </div>
-          <div className={style.gridItem2}>
-            <img
-              className={style.photo}
-              src="https://i.imgur.com/Bj3lBxt.png"
-            />
-          </div>
-          <div className={style.gridItem3}>
-            Think they make a good match? You decide.
-          </div>
-          <div className={style.gridItem4}>
-            <img 
-              className={style.photo}
-              src="https://i.imgur.com/dWJr77o.png"
-            />
-          </div>
+        <div>
+          This page is coming soon!
         </div>
-        <Footer />
-      </div> 
+      </div>
+      
+      // <div>
+      //   <Header />
+      //   <div className={style.grid}>
+      //     <div className={style.gridItem1}>
+      //       Rate people based on how they are
+      //     </div>
+      //     <div className={style.gridItem2}>
+      //       <img
+      //         className={style.photo}
+      //         src="https://i.imgur.com/Bj3lBxt.png"
+      //       />
+      //     </div>
+      //     <div className={style.gridItem3}>
+      //       Think they make a good match? You decide.
+      //     </div>
+      //     <div className={style.gridItem4}>
+      //       <img 
+      //         className={style.photo}
+      //         src="https://i.imgur.com/dWJr77o.png"
+      //       />
+      //     </div>
+      //   </div>
+      //   <Footer />
+      // </div> 
     );
   }
 }

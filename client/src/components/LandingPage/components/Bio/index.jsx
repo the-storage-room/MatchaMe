@@ -19,7 +19,7 @@ class Bio extends React.Component {
       <div className={style.wrapper}>
         <Header />
         <p className={style.bioIntro}> 
-          Meet the talented engineers who created MatchaMe </p>
+          Meet the talented engineers who created <span>MatchaMe</span> </p>
         <div className={style.grid}>
           <div className={style.gridItem1}>
            
