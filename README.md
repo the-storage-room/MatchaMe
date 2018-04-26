@@ -1,14 +1,16 @@
 # MatchaMe
 Crowd sourced dating app. Rate other users, rate matches, and get matched!
 
-[![MatchaMe Demo Video] (Click here for demo video)]
+[MatchaMe Demo Video]
 (https://www.youtube.com/watch?v=4XwjCPxUgeI&feature=youtu.be)
 
 # Getting Started
 Please be sure to take care of the prerequisites before running commands.
 
-###Prerequisites
+### Prerequisites
+
 **MongoDB** Have an instance running on port `27017`. 
+
 **Redis** Have an instance of the Redis server running.
 
 1. `npm run install-all` (installs all dependencies)
