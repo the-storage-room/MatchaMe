@@ -1,98 +1,22 @@
-# AJJJ-thesis
+# MatchaMe
+Crowd sourced dating app. Rate other users, rate matches, and get matched!
 
-## Git Workflow
+[![MatchaMe Demo Video] (Click here for demo video)]
+(https://www.youtube.com/watch?v=4XwjCPxUgeI&feature=youtu.be)
 
-* create feature branch
-* git checkout -b FEATURE_NAME
-* work on feature branch
-* when finished
-* git push origin FEATURE_NAME
-* make pull request from feature branch to master
+# Getting Started
+Please be sure to take care of the prerequisites before running commands.
 
-### Getting Latest Changes
+###Prerequisites
+**MongoDB** Have an instance running on port `27017`. 
+**Redis** Have an instance of the Redis server running.
 
-* git checkout master
-* git pull origin master
-* git checkout FEATURE_NAME
-* git rebase master
-* MASTER ONLY PULL AND REBASE
+1. `npm run install-all` (installs all dependencies)
+2. `npm run start` (starts all servers)
+3. `npm run start:build` (run webpack)
 
-Initial Get Request:
+### Database Setup
+`cd` into rest-server directory
 
-/api/initialize/:userId/
-
-singleUserData:
-  {
-    id:
-    username:
-    email:
-    lastname:
-    firstname:
-    age:
-    location:
-    gender:
-    preference:
-    bio:
-    powerranking:
-    signupcomplete:
-    photos:
-  }
-
-
-stateTree = {
-  accountData: 
-    {
-      id:
-      username:
-      email:
-      firstname:
-      lastname:
-    }
-  bioData: 
-    {
-      age:
-      location:
-      gender:
-      preference:
-      bio:
-    }
-  tagData: 
-    {
-      user: [], 
-      pref: []
-    }
-  photoData: 
-    [{
-      photoid:
-      url: 
-      primaryPhoto: 
-    }]
-  powerRankingData:
-    {
-      totalPoints:
-      userRanking:
-    }
-
-  signupStatusData: boolean
-
-  outcomesData: 
-    {
-      
-    }
-  currentMatchData: 
-    {
-
-    }
-  ratingsData: 
-    [{
-    20 people to rate
-    }]
-  matchesData: 
-    [{
-      20 matches to rate
-    }]
-  leaderboardData: 
-    {
-      Top 10? on leaderboard
-    }
-}
+1. `npm run db:setup` 
+2. `npm run db:setupdata` (for seed data)
