@@ -1,8 +1,7 @@
 # MatchaMe
 Crowd sourced dating app. Rate other users, rate matches, and get matched!
 
-[![MatchaMe Demo Video](readMePhotos/demo_photo.png)]
-(https://www.youtube.com/watch?v=4XwjCPxUgeI&feature=youtu.be "MatchaMe Demo Video")
+[Demo Video](https://www.youtube.com/watch?v=4XwjCPxUgeI&feature=youtu.be)
 
 # Getting Started
 Please be sure to take care of the prerequisites before running commands.
